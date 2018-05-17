@@ -59,8 +59,13 @@ swiper {
 }
 
 .gamebox-item-arrow {
-  width: 50px;  
-  text-align: right;
+  position: relative;
+  width: 5px; 
+  height: 5px;
+  border-top: 1px solid #999;
+  border-right: 1px solid #999;
+  transform:rotate(45deg);
+  margin-right: 5px;
 }
 
 .userinfo {

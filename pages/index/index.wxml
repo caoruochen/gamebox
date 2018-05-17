@@ -18,7 +18,7 @@
         <view>{{item.name}}</view>
         <view class="gamebox-item-info_desc">{{item.desc}}</view>
       </view>
-      <view class="gamebox-item-arrow">></view>
+      <view class="gamebox-item-arrow"></view>
     </view>
     </block>
   </scroll-view>

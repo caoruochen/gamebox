@@ -1,0 +1,26 @@
+<view class="gamebox-container">
+  <swiper indicator-dots="{{false}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image" height="150"/>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <scroll-view scroll-y style="height: 200px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <block wx:for="{{games}}">
+    <view class="gamebox-item">
+      <view class="gamebox-item-logo">
+        <image src="{{item.logo}}" />
+      </view>
+      <view class="gamebox-item-info">
+        <view>{{item.name}}</view>
+        <view class="gamebox-item-info_desc">{{item.desc}}</view>
+      </view>
+      <view class="gamebox-item-arrow">></view>
+    </view>
+    </block>
+  </scroll-view>
+
+</view>

@@ -1,0 +1,73 @@
+/**index.wxss**/
+.gamebox-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+swiper {
+  width: 100%;  
+}
+
+.slide-image {
+  width: 100%;  
+}
+
+.gamebox-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  margin: 0 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.gamebox-item-logo {
+  padding: 10px 10px 10px 0;
+}
+
+.gamebox-item-logo image {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;  
+}
+
+.gamebox-item-info {
+  flex: 1;
+  line-height: 27px;
+}
+
+.gamebox-item-info .gamebox-item-info_desc {
+  font-size: 90%;
+  color: #777;
+}
+
+.gamebox-item-arrow {
+  width: 50px;  
+  text-align: right;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}

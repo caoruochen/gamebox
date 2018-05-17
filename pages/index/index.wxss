@@ -17,33 +17,45 @@ swiper {
   width: 100%;  
 }
 
+.gamebox-games {
+  padding: 10px 15px;
+  box-sizing: border-box;  
+}
+
 .gamebox-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  margin: 0 10px;
-  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
 }
 
 .gamebox-item-logo {
-  padding: 10px 10px 10px 0;
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .gamebox-item-logo image {
-  width: 60px;
-  height: 60px;
+  width:  50px;
+  height: 50px;
   border-radius: 5px;  
 }
 
 .gamebox-item-info {
   flex: 1;
-  line-height: 27px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .gamebox-item-info .gamebox-item-info_desc {
-  font-size: 90%;
-  color: #777;
+  font-size: 80%;
+  color: #999;
+  margin-top: 5px;
 }
 
 .gamebox-item-arrow {

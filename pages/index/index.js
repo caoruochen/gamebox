@@ -84,4 +84,15 @@ Page({
   scroll: function (e) {
     console.log(e)
   },
+  goto: function(event) {
+    var target = event.currentTarget;
+    var appId = target.dataset.appid
+    console.log(appId)
+    wx.navigateToMiniProgram({
+      appId: appId,
+      complete: function (e) {
+        console.log(e)
+      }
+    })
+  }
 })

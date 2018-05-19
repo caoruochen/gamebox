@@ -10,7 +10,7 @@
 
   <scroll-view class="gamebox-games" scroll-y style="height: {{gamesHeight}}" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <block wx:for="{{games}}" wx:key="*this">
-    <view class="gamebox-item">
+    <view class="gamebox-item" bindtap="goto" data-appid="wxab0b8413a26e53cf">
       <view class="gamebox-item-logo">
         <image src="{{item.logo}}" />
       </view>

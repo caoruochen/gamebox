@@ -1,97 +1,73 @@
 var app = getApp();
 var sysInfo = app.globalData.sysInfo;
 var swiperHeight = 150;
+var qkapi = 'https://snsapi.7k.cn';
+var http = require('../../util/http');
+var defaultBanners = [{
+  pic: 'https://snsgame.uimg.cn/minigame/res/banner/default.png'
+}];
+
 Page({
   data: {
     toView: 'red',
     swiperHeight: swiperHeight,
-    gamesHeight: (sysInfo.windowHeight - swiperHeight)+'px',
+    gamesHeight: sysInfo.windowHeight - swiperHeight,
     scrollTop: 0,
-    imgUrls: [
-      'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-      'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-    ],
-    games: [
-      {
-        gid: '1',
-        name: '斗兽棋',
-        desc: '智商高的人都在玩...',
-        logo: 'https://snsgame.uimg.cn/games/dsq/common/%E6%96%97%E5%85%BD%E6%A3%8B.png',
-        appId: '123'
-      },
-      {
-        gid: '1',
-        name: '斗兽棋',
-        desc: '智商高的人都在玩...',
-        logo: 'https://snsgame.uimg.cn/games/dsq/common/%E6%96%97%E5%85%BD%E6%A3%8B.png',
-        appId: '123'
-      },
-      {
-        gid: '1',
-        name: '斗兽棋',
-        desc: '智商高的人都在玩...',
-        logo: 'https://snsgame.uimg.cn/games/dsq/common/%E6%96%97%E5%85%BD%E6%A3%8B.png',
-        appId: '123'
-      },
-      {
-        gid: '1',
-        name: '斗兽棋',
-        desc: '智商高的人都在玩...',
-        logo: 'https://snsgame.uimg.cn/games/dsq/common/%E6%96%97%E5%85%BD%E6%A3%8B.png',
-        appId: '123'
-      },
-      {
-        gid: '1',
-        name: '斗兽棋',
-        desc: '智商高的人都在玩...',
-        logo: 'https://snsgame.uimg.cn/games/dsq/common/%E6%96%97%E5%85%BD%E6%A3%8B.png',
-        appId: '123'
-      },
-      {
-        gid: '1',
-        name: '斗兽棋',
-        desc: '智商高的人都在玩...',
-        logo: 'https://snsgame.uimg.cn/games/dsq/common/%E6%96%97%E5%85%BD%E6%A3%8B.png',
-        appId: '123'
-      },
-      {
-        gid: '1',
-        name: '斗兽棋',
-        desc: '智商高的人都在玩...',
-        logo: 'https://snsgame.uimg.cn/games/dsq/common/%E6%96%97%E5%85%BD%E6%A3%8B.png',
-        appId: '123'
-      },
-      {
-        gid: '1',
-        name: '斗兽棋',
-        desc: '智商高的人都在玩...',
-        logo: 'https://snsgame.uimg.cn/games/dsq/common/%E6%96%97%E5%85%BD%E6%A3%8B.png',
-        appId: '123'
-      },
-
-    ],
-    autoplay: true,
-    interval: 5000,
-    duration: 1000
+    banners: [],
+    games: []
+  },
+  onShow: function (e) {
+    this.getBanners();
+    this.getGames();
+  },
+  getBanners: function () {
+    var me = this;
+    http.get('/gamebox/banner', function (data) {
+      if (data) {
+        me.setData({
+          banners: data
+        });
+      } else {
+        me.setData({
+          banners: defaultBanners
+        });
+      }
+    });
+  },
+  getGames: function () {
+    var me = this;
+    http.get('/gamebox/games', function (data) {
+      if (data) {
+        me.setData({
+          games: data
+        });
+      }
+    });
   },
   upper: function (e) {
-    console.log(e)
   },
   lower: function (e) {
-    console.log(e)
   },
   scroll: function (e) {
-    console.log(e)
   },
   goto: function(event) {
     var target = event.currentTarget;
     var appId = target.dataset.appid
-    console.log(appId)
+    if (!appId) {
+      return;
+    }
+    var extraData = {source: '7kgames'};
+    if (target.dataset.extra) {
+      var extraData0 = JSON.parse(target.dataset.extra)
+      for (var k in extraData0) {
+        extraData[k] = extraData0[k]
+      }
+    }
     wx.navigateToMiniProgram({
       appId: appId,
+      extraData: extraData,
       complete: function (e) {
-        console.log(e)
+        //console.log(e)
       }
     })
   }

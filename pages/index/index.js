@@ -13,7 +13,7 @@ Page({
     swiperHeight: swiperHeight,
     gamesHeight: sysInfo.windowHeight - swiperHeight,
     scrollTop: 0,
-    banners: [],
+    banners: defaultBanners,
     games: []
   },
   onShow: function (e) {

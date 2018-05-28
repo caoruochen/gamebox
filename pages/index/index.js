@@ -1,74 +1,36 @@
-var app = getApp();
-var sysInfo = app.globalData.sysInfo;
-var swiperHeight = 150;
-var qkapi = 'https://snsapi.7k.cn';
-var http = require('../../util/http');
-var defaultBanners = [{
-  pic: 'https://snsgame.uimg.cn/minigame/res/banner/default.png'
-}];
-
 Page({
   data: {
-    toView: 'red',
-    swiperHeight: swiperHeight,
-    gamesHeight: sysInfo.windowHeight - swiperHeight,
-    scrollTop: 0,
-    banners: defaultBanners,
-    games: []
+    fit: "cover",
+    src: '',
+    hidden: false,
+    src1: 'https://snsgame.uimg.cn/video/game/1527334529691.mp4',
+    autoplay: true,
+    poster: "https://img.tapimg.com/market/images/ee907c5487e95b0caf0d5ecd6740c775.jpg?imageMogr2/auto-orient/thumbnail/2080x/strip/gravity/Center/crop/2080x828/format/jpg/quality/80/interlace/1"
   },
-  onShow: function (e) {
-    this.getBanners();
-    this.getGames();
+  onLoad: function () {
   },
-  getBanners: function () {
-    var me = this;
-    http.get('/gamebox/banner', function (data) {
-      if (data) {
-        me.setData({
-          banners: data
-        });
-      } else {
-        me.setData({
-          banners: defaultBanners
-        });
-      }
-    });
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh();
   },
-  getGames: function () {
-    var me = this;
-    http.get('/gamebox/games', function (data) {
-      if (data) {
-        me.setData({
-          games: data
-        });
-      }
-    });
+  onTapNavbar: function (e) {
   },
-  upper: function (e) {
+  switchChannel: function (targetChannelIndex) {
   },
-  lower: function (e) {
+  bindButtonTap: function (e) {
+    this.setData({
+      src: this.data.src1
+    })
   },
-  scroll: function (e) {
-  },
-  goto: function(event) {
-    var target = event.currentTarget;
-    var appId = target.dataset.appid
-    if (!appId) {
+  changeVideo: function (e) {
+    if (this.data.hidden) {
       return;
     }
-    var extraData = {source: '7kgames'};
-    if (target.dataset.extra) {
-      var extraData0 = JSON.parse(target.dataset.extra)
-      for (var k in extraData0) {
-        extraData[k] = extraData0[k]
-      }
-    }
-    wx.navigateToMiniProgram({
-      appId: appId,
-      extraData: extraData,
-      complete: function (e) {
-        //console.log(e)
-      }
+    this.setData({
+      src: this.data.src1,
+      hidden: true
     })
+  },
+  waiting (e) {
+    console.log('bindwaiting')
   }
-})
+});

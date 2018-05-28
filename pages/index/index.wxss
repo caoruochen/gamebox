@@ -1,94 +1,46 @@
-/**index.wxss**/
-.gamebox-container {
+.container1 {
+  background: #eee;
+  box-sizing: border-box;
+  padding: 10px;
+  height: 100%;
+}
+
+.game-item {
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.game-item-body {
+}
+
+.game-item-body image {
+}
+
+.game-item-info {
+  display: flex;  
+  justify-content: space-between;
+}
+
+.game-item-info-head {
+  display: flex;
+}
+
+.game-item-info-head_logo {
+  height: 40px;
+  width: 40px;
+}
+
+.game-item-info-head_logo image {
   height: 100%;
   width: 100%;
-  display: flex;
+}
+
+.game-item-info-head_desc {
+  display: flex;  
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
 }
 
-swiper {
-  width: 100%;  
-}
-
-.slide-image {
-  width: 100%;  
-}
-
-.gamebox-games {
-  padding: 10px 0;
-  box-sizing: border-box;  
-}
-
-.gamebox-item {
-  height: 90px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-  margin: 0 15px;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.gamebox-item-logo {
-  padding-right: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.gamebox-item-logo image {
-  width:  60px;
-  height: 60px;
-  border-radius: 5px;  
-}
-
-.gamebox-item-info {
-  flex: 1;
-  height: 100%;
-  padding-top: 12px;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.gamebox-item-info .gamebox-item-info_desc {
-  font-size: 80%;
-  color: #999;
-  margin-top: 10px;
-}
-
-.gamebox-item-arrow {
-  position: relative;
-  width: 8px; 
-  height: 8px;
-  border-top: 1px solid #999;
-  border-right: 1px solid #999;
-  transform:rotate(45deg);
-  margin-right: 5px;
-}
-
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
+.game-item-info-foot {
+  text-align: right;  
 }

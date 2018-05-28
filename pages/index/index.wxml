@@ -1,26 +1,30 @@
-<view class="gamebox-container">
-  <swiper indicator-dots="{{false}}"
-    autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}">
-    <block wx:for="{{banners}}" wx:key="*this">
-      <swiper-item>
-        <image src="{{item.pic}}" class="slide-image" style="height:{{swiperHeight}}px"  bindtap="goto" data-appid="{{item.appId}}" />
-      </swiper-item>
-    </block>
-  </swiper>
+<view class="container1">
 
-  <scroll-view class="gamebox-games" scroll-y style="height: {{gamesHeight}}px" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-    <block wx:for="{{games}}" wx:key="*this">
-    <view class="gamebox-item" bindtap="goto" data-appid="{{item.appId}}" data-extra="{{item.extra}}">
-      <view class="gamebox-item-logo">
-        <image src="{{item.pic}}" />
-      </view>
-      <view class="gamebox-item-info">
-        <view>{{item.title}}</view>
-        <view class="gamebox-item-info_desc">{{item.desc}}</view>
-      </view>
-      <view class="gamebox-item-arrow"></view>
+<block>
+  <view class="game-item">
+    <view class="game-item-body" bindtap="changeVideo">
+      <image src="{{poster}}" hidden="{{hidden}}" mode="aspectFill"></image>
+      <video hidden="{{!hidden}}" id="myVideo" src="{{src}}" controls objectFit="{{fit}}" direction="0" loop show-center-play-btn="{{false}}" autoplay="autoplay" bindwaiting="waiting"></video>
     </view>
-    </block>
-  </scroll-view>
+    <view class="game-item-info">
+      <view class="game-item-info-head">
+        <view class="game-item-info-head_logo">
+          <image src="https://snsgame.uimg.cn/minigame/res/logo/wuxianlou.png"></image>
+        </view>
+        <view class="game-item-info-head_desc">
+          <view>无限楼</view>
+          <view>敏捷 反应力</view>
+        </view>
+      </view>
+      <view class="game-item-info-foot">
+        <view>9.1分 | 567人在玩</view>
+        <view>2018.05.28</view>
+      </view>
+    </view>
+    <view class="game-item-foot">
+      <view>无限楼，比比谁最高</view>
+    </view>
+  </view>
+</block>
 
 </view>

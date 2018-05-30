@@ -1,46 +1,133 @@
-.container1 {
+.container {
+  position: relative;
   background: #eee;
-  box-sizing: border-box;
-  padding: 10px;
   height: 100%;
 }
 
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.useless {
+  color: transparent;  
+  background: #eee;
+  height:10px;
+}
+
 .game-item {
+  position: relative;
+  font-size: 14px;
   box-sizing: border-box;
   background: #fff;
   border-radius: 5px;
+  padding: 0 20px;
+}
+
+.game-item-head {
+  padding: 20px 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.game-item-head-time {
+  position: relative;
+  font-size: 27px;
+  font-weight: bold;
+  color: #303030;
+  z-index: 100;
+}
+
+.highline {
+  position: absolute;
+  background: #f9dd22;
+  bottom: 25px;
+  width: 78px;
+  height: 7px;
 }
 
 .game-item-body {
+  position: relative;
 }
 
-.game-item-body image {
+.game-item-poster {
+  border-radius: 10px;
+}
+
+.game-item-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.game-item-play {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
 }
 
 .game-item-info {
   display: flex;  
+  align-items: center;
   justify-content: space-between;
+  margin: 15px 0 13px 0;
 }
 
-.game-item-info-head {
-  display: flex;
-}
-
-.game-item-info-head_logo {
+.game-item-info-logo {
   height: 40px;
   width: 40px;
+  margin-right: 10px;
+  border-radius: 8px;
 }
 
-.game-item-info-head_logo image {
-  height: 100%;
-  width: 100%;
-}
-
-.game-item-info-head_desc {
-  display: flex;  
+.game-item-info-desc {
+  display: flex;
   flex-direction: column;
+  font-size: 12px;
+  color: #666666;
+  font-weight: 550;
+  flex: 1;
 }
 
-.game-item-info-foot {
-  text-align: right;  
+.game-item-info-desc view:nth-child(1) {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 2px;
+  color: #303030;
+}
+
+.game-item-info-pros {
+  display: flex;
+  align-items:flex-end;
+  font-weight: 550;
+}
+
+.game-item-info-pros image {
+  width: 20px;
+  height: 20px;
+  margin-right: 3px;
+}
+
+.game-item-info-pros text {
+  color: #a8a8a8;
+  font-size: 12px;
+  vertical-align: bottom;
+}
+
+.game-item-btn {
+  background: #f9dd22;
+  font-size: 16px;
+  color: #303030;
+  padding: 13px 0;
+  font-weight: bold;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  text-align: center;
 }

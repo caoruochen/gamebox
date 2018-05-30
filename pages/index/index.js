@@ -1,36 +1,72 @@
+var http = require("../../util/http");
+
+var app = getApp();
 Page({
   data: {
+    wheight: app.globalData.wheight,
+    imgWidth: app.globalData.wwidth - 40,
+    imgHeight: 300,
+    games: [],
     fit: "cover",
-    src: '',
-    hidden: false,
-    src1: 'https://snsgame.uimg.cn/video/game/1527334529691.mp4',
-    autoplay: true,
-    poster: "https://img.tapimg.com/market/images/ee907c5487e95b0caf0d5ecd6740c775.jpg?imageMogr2/auto-orient/thumbnail/2080x/strip/gravity/Center/crop/2080x828/format/jpg/quality/80/interlace/1"
   },
   onLoad: function () {
-  },
-  onPullDownRefresh: function () {
-    wx.stopPullDownRefresh();
-  },
-  onTapNavbar: function (e) {
-  },
-  switchChannel: function (targetChannelIndex) {
-  },
-  bindButtonTap: function (e) {
-    this.setData({
-      src: this.data.src1
+    wx.showLoading({
+      title: '数据加载中'
+    });
+    var me = this;
+    http.get('/gamebox/recommend', null, function (data) {
+      wx.hideLoading();
+      me.setData({
+        games: data
+      });
+    }, function (code, msg) {
+      wx.hideLoading();
+      wx.showToast({
+        title: msg || '数据加载失败',
+        icon: 'none'
+      });
     })
+  },
+  onShow: function (e) {
+  },
+  onPullDownRefresh: function (e) {
+  },
+  onReachBottom: function (e) {
+  },
+  onPageScroll: function (e) {
   },
   changeVideo: function (e) {
-    if (this.data.hidden) {
+    var target = e.currentTarget
+    var ind = target.dataset.ind
+    if (this.data.games[ind].vshow) {
       return;
     }
+    var videoCtx = wx.createVideoContext('gvideo_'+ind, this);
+    var string = "games["+ind+"].vshow";
     this.setData({
-      src: this.data.src1,
-      hidden: true
+      [string]: true
     })
+    videoCtx.play();
   },
-  waiting (e) {
-    console.log('bindwaiting')
+  videoError: function (e) {
+    console.log(e)
+  },
+  startGame: function (e) {
+    var target = e.currentTarget
+    var type = target.dataset.type
+    var appId = target.dataset.appid
+    var preview = target.dataset.preview
+    if (type == 1) {
+      wx.navigateToMiniProgram({
+        appId: appId,
+        extraData: {
+          _source: '7kminigame'
+        }
+      })
+    } else {
+      wx.previewImage({
+        urls: [preview]
+      })
+    }
   }
 });

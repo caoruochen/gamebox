@@ -1,10 +1,11 @@
 //app.js
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    var sysInfo = wx.getSystemInfoSync();
+    this.globalData.sysInfo = sysInfo;
+    this.globalData.wwidth = sysInfo.windowWidth;
+    this.globalData.wheight = sysInfo.windowHeight;
+    this.globalData.pixelRatio = sysInfo.pixelRatio;
 
     // 登录
     wx.login({
@@ -37,7 +38,6 @@ App({
     })
   },
   globalData: {
-    userInfo: null,
-    sysInfo: wx.getSystemInfoSync()
+    userInfo: null
   }
 })

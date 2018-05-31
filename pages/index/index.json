@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "7k 小游戏精选",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "backgroundColor": "#eee",
+  "onReachBottomDistance": 20
+}

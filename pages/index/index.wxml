@@ -2,7 +2,7 @@
 <block wx:for="{{games}}" wx:key="*this">
   <view class="useless">1</view>
   <view class="game-item">
-    <view class="game-item-head">
+    <view wx:if="{{item.time && item.time.length>0}}" class="game-item-head">
       <view class="highline"></view>
       <view class="game-item-head-time">{{item.time}}</view>
     </view>
@@ -10,9 +10,9 @@
     <view class="game-item-body" style="width: {{imgWidth}}px" data-ind="{{index}}" bindtap="changeVideo">
       <image class="game-item-poster" style="width: {{imgWidth}}px; height: {{imgHeight}}px;" src="{{item.poster}}" hidden="{{item.vshow}}" mode="aspectFill"></image>
       <view class="game-item-mask" style="width: {{imgWidth}}px; height: {{imgHeight}}px;">
-        <image class="game-item-play" hidden="{{item.vshow}}" src="../../images/play.png"></image>
+        <image wx:if="{{item.vsrc && item.vsrc.length>0}}" class="game-item-play" hidden="{{item.vshow}}" src="../../images/play.png"></image>
       </view>
-      <video custom-cache="{{false}}" hidden="{{!item.vshow}}" style="width: {{imgWidth}}px; height: {{imgHeight}}px;" id="gvideo_{{index}}" src="{{item.vsrc}}" controls objectFit="{{fit}}" direction="{{item.direction}}" loop show-center-play-btn="{{false}}" binderror="videoError"></video>
+      <video wx:if="{{item.vsrc && item.vsrc.length>0}}" custom-cache="{{false}}" hidden="{{!item.vshow}}" style="width: {{imgWidth}}px; height: {{imgHeight}}px;" id="gvideo_{{index}}" src="{{item.vsrc}}" controls objectFit="{{fit}}" direction="{{item.direction}}" loop show-center-play-btn="{{false}}" binderror="videoError"></video>
     </view>
 
     <view class="game-item-info" data-ind="{{index}}">

@@ -10,26 +10,36 @@ Page({
     fit: "cover",
   },
   onLoad: function () {
+    this.loadGame(true);
+  },
+  onShow: function (e) {
+  },
+  onPullDownRefresh: function (e) {
+    this.loadGame(true, true);
+  },
+  loadGame: function (refresh, stopPullDown) {
     wx.showLoading({
       title: '数据加载中'
     });
     var me = this;
     http.get('/gamebox/recommend', null, function (data) {
       wx.hideLoading();
+      if (stopPullDown) {
+        wx.stopPullDownRefresh();
+      }
       me.setData({
         games: data
       });
     }, function (code, msg) {
       wx.hideLoading();
+      if (stopPullDown) {
+        wx.stopPullDownRefresh();
+      }
       wx.showToast({
         title: msg || '数据加载失败',
         icon: 'none'
       });
     })
-  },
-  onShow: function (e) {
-  },
-  onPullDownRefresh: function (e) {
   },
   onReachBottom: function (e) {
   },
@@ -38,7 +48,9 @@ Page({
   changeVideo: function (e) {
     var target = e.currentTarget
     var ind = target.dataset.ind
-    if (this.data.games[ind].vshow) {
+    var vsrc = this.data.games[ind].vsrc
+    if (this.data.games[ind].vshow 
+        || !vsrc || vsrc.length<1) {
       return;
     }
     var videoCtx = wx.createVideoContext('gvideo_'+ind, this);

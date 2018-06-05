@@ -1,7 +1,7 @@
 .container {
   position: relative;
   background: #eee;
-  height: 100%;
+  padding: 20px 0;
 }
 
 ::-webkit-scrollbar{
@@ -10,10 +10,17 @@
   color: transparent;
 }
 
-.useless {
-  color: transparent;  
-  background: #eee;
-  height:10px;
+.game-time {
+  box-sizing: border-box;
+  margin: 0 0 8px 23px;
+  font-size: 12px;
+  color: #666666;
+}
+
+.game-time view:nth-child(2) {
+  font-size: 27px;
+  font-weight: bold;
+  color: #303030;
 }
 
 .game-item {
@@ -21,8 +28,9 @@
   font-size: 14px;
   box-sizing: border-box;
   background: #fff;
-  border-radius: 5px;
-  padding: 15px 20px;
+  border-radius: 10px;
+  margin: 0 20px 25px 20px;
+  box-shadow: 0px 9px 20px #8a8a8a;
 }
 
 .game-item-head {
@@ -53,14 +61,16 @@
 }
 
 .game-item-poster {
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .game-item-mask {
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: 8px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   background: rgba(0, 0, 0, 0.1);
 }
 
@@ -76,7 +86,8 @@
   display: flex;  
   align-items: center;
   justify-content: space-between;
-  margin: 15px 0 13px 0;
+  box-sizing: border-box;
+  padding: 15px;
 }
 
 .game-item-info-logo {

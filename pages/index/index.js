@@ -1,5 +1,6 @@
 var QKPage = require("../../libs/page");
 var http = require("../../util/http");
+var util = require("../../util/util");
 
 var app = getApp();
 var sysInfo = app.globalData.sysInfo;
@@ -71,29 +72,6 @@ QKPage({
     var type = target.dataset.type
     var appId = target.dataset.appid
     var preview = target.dataset.preview
-    if (type == 1 && appId) {
-      wx.showLoading({
-        title: '',
-        mask: true
-      });
-      wx.navigateToMiniProgram({
-        appId: appId,
-        extraData: {
-          _from: '7kminigame'
-        },
-        success: function (res) {
-        },
-        fail: function (err) {
-        },
-        complete: function (res) {
-          wx.hideLoading();
-        }
-      })
-    }
-    if (type == 2 &&preview) {
-      wx.previewImage({
-        urls: [preview]
-      })
-    }
+    util.startGame(type, appId, preview);
   }
 });

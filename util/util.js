@@ -23,6 +23,32 @@ var util = {
     }
 
     return 0
+  },
+  startGame: function (type, appId, preview) {
+    if (type == 1 && appId) {
+      wx.showLoading({
+        title: '',
+        mask: true
+      });
+      wx.navigateToMiniProgram({
+        appId: appId,
+        extraData: {
+          _from: '7kminigame'
+        },
+        success: function (res) {
+        },
+        fail: function (err) {
+        },
+        complete: function (res) {
+          wx.hideLoading();
+        }
+      })
+    }
+    if (type == 2 &&preview) {
+      wx.previewImage({
+        urls: [preview]
+      })
+    }
   }
 };
 module.exports = util

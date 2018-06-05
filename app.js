@@ -7,6 +7,8 @@ App({
     this.globalData.wheight = sysInfo.windowHeight;
     this.globalData.pixelRatio = sysInfo.pixelRatio;
 
+    wx.showShareMenu();
+
     // 登录
     wx.login({
       success: res => {

@@ -1,36 +1,26 @@
 <view class="container">
-<block wx:for="{{games}}" wx:key="*this">
-  <view class="useless">1</view>
-  <view class="game-item">
-    <view wx:if="{{item.time && item.time.length>0}}" class="game-item-head">
-      <view class="highline"></view>
-      <view class="game-item-head-time">{{item.time}}</view>
-    </view>
+  <swiper indicator-dots="{{false}}"
+    autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}">
+    <block wx:for="{{banners}}" wx:key="*this">
+      <swiper-item>
+        <image src="{{item.pic}}" class="slide-image" style="height:{{swiperHeight}}px"  bindtap="goto" data-appid="{{item.appId}}" />
+      </swiper-item>
+    </block>
+  </swiper>
 
-    <view class="game-item-body" style="width: {{imgWidth}}px" data-ind="{{index}}" bindtap="changeVideo">
-      <image class="game-item-poster" style="width: {{imgWidth}}px; height: {{imgHeight}}px;" src="{{item.poster}}" hidden="{{item.vshow}}" mode="aspectFill"></image>
-      <view class="game-item-mask" style="width: {{imgWidth}}px; height: {{imgHeight}}px;">
-        <image wx:if="{{item.vsrc && item.vsrc.length>0}}" class="game-item-play" hidden="{{item.vshow}}" src="../../images/play.png"></image>
+  <view class="gamebox-games">
+    <block wx:for="{{games}}" wx:key="*this">
+    <view class="gamebox-item" bindtap="startGame" data-appid="{{item.appId}}" data-extra="{{item.extra}}" data-type="{{item.type}}" data-preview="{{item.bg}}">
+      <view class="gamebox-item-logo">
+        <image src="{{item.logo}}" />
       </view>
-      <video wx:if="{{item.vsrc && item.vsrc.length>0}}" custom-cache="{{false}}" hidden="{{!item.vshow}}" style="width: {{imgWidth}}px; height: {{imgHeight}}px;" id="gvideo_{{index}}" src="{{item.vsrc}}" controls objectFit="{{fit}}" direction="{{item.direction}}" loop show-center-play-btn="{{false}}" binderror="videoError"></video>
-    </view>
-
-    <view class="game-item-info" data-ind="{{index}}">
-      <image class="game-item-info-logo" src="{{item.logo}}"></image>
-      <view class="game-item-info-desc">
+      <view class="gamebox-item-info">
         <view>{{item.name}}</view>
-        <view>{{item.desc}}</view>
+        <view class="gamebox-item-info_desc">{{item.desc}}</view>
       </view>
-      <!--view class="game-item-info-pros">
-        <image hidden="{{!item.hasPros}}" src="../../images/pros.png"></image>
-        <image hidden="{{item.hasPros}}" src="../../images/unpros.png"></image>
-        <text>{{item.pros}}</text>
-      </view-->
+      <view class="gamebox-item-arrow">开始</view>
     </view>
-
-    <view class="game-item-btn" bindtap="startGame" data-type="{{item.type}}" data-appid="{{item.appId}}" data-preview="{{item.bg}}">开始游戏</view>
+    </block>
   </view>
-</block>
-<view class="useless">1</view>
 
 </view>

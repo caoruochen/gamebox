@@ -18,6 +18,7 @@ QKPage({
     this.loadGame(true, true);
   },
   loadGame: function (refresh, stopPullDown) {
+    this.currentPlayVideo = -1;
     wx.showLoading({
       title: '数据加载中'
     });

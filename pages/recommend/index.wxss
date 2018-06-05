@@ -58,6 +58,8 @@
 
 .game-item-body {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .game-item-poster {

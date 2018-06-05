@@ -1,20 +1,19 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/detail/index",
     "pages/recommend/index"
   ],
   "tabBar": {
     "list": [{
-      "pagePath": "pages/index/index",
-      "text": "大厅",
-      "iconPath": "images/dating0.png",
-      "selectedIconPath": "images/dating1.png"
-    }, {
       "pagePath": "pages/recommend/index",
-      "text": "精品",
+      "text": "精选",
       "iconPath": "images/jingxuan0.png",
       "selectedIconPath": "images/jingxuan1.png"
+    }, {
+      "pagePath": "pages/index/index",
+      "text": "全部",
+      "iconPath": "images/fenlei0.png",
+      "selectedIconPath": "images/fenlei1.png"
     }]
   },
   "window":{

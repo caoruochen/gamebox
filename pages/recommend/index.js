@@ -1,7 +1,8 @@
+var QKPage = require("../../libs/page");
 var http = require("../../util/http");
 
 var app = getApp();
-Page({
+QKPage({
   data: {
     wheight: app.globalData.wheight,
     imgWidth: app.globalData.wwidth - 40,
@@ -11,8 +12,6 @@ Page({
   },
   onLoad: function () {
     this.loadGame(true);
-  },
-  onShow: function (e) {
   },
   onPullDownRefresh: function (e) {
     this.loadGame(true, true);

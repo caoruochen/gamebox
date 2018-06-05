@@ -1,3 +1,4 @@
+var QKPage = require("../../libs/page");
 var http = require("../../util/http");
 
 var app = getApp();
@@ -7,18 +8,15 @@ var defaultBanners = [{
   pic: 'https://snsgame.uimg.cn/minigame/res/banner/default.png'
 }];
 
-Page({
+QKPage({
   data: {
     swiperHeight: swiperHeight,
     banners: defaultBanners,
     games: []
   },
   onLoad: function () {
-    console.log(sysInfo)
     this.getBanners();
     this.loadGame(true);
-  },
-  onShow: function (e) {
   },
   onPullDownRefresh: function (e) {
     this.loadGame(true, true);
@@ -73,18 +71,17 @@ Page({
     var type = target.dataset.type
     var appId = target.dataset.appid
     var preview = target.dataset.preview
-    if (type == 1) {
+    if (type == 1 && appId) {
       wx.showLoading({
         title: '',
         mask: true
       });
       wx.navigateToMiniProgram({
-        appId: appId+'--',
+        appId: appId,
         extraData: {
           _from: '7kminigame'
         },
         success: function (res) {
-          console.log(res)
         },
         fail: function (err) {
         },
@@ -92,7 +89,8 @@ Page({
           wx.hideLoading();
         }
       })
-    } else {
+    }
+    if (type == 2 &&preview) {
       wx.previewImage({
         urls: [preview]
       })

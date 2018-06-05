@@ -53,22 +53,12 @@ swiper {
   margin-top: 5px;
 }
 
-.gamebox-item-arrow1 {
-  position: relative;
-  width: 5px;
-  height: 5px;
-  border-top: 1px solid #999;
-  border-right: 1px solid #999;
-  transform:rotate(45deg);
-  margin-right: 5px;
-}
-
-.gamebox-item-arrow {
+.gamebox-item-play {
   padding: 3px 7px;
   box-sizing: border-box;
-  border: 1px solid #1f78d1;
-  border-radius: 3px;
-  color: #1f78d1;
+  border: 1px solid #fbdd19;
+  border-radius: 5px;
+  color: #e2c60d;
   font-size: 14px;
   margin-right: 5px;
 }

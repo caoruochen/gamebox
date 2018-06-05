@@ -3,7 +3,7 @@
     autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}">
     <block wx:for="{{banners}}" wx:key="*this">
       <swiper-item>
-        <image src="{{item.pic}}" class="slide-image" style="height:{{swiperHeight}}px"  bindtap="goto" data-appid="{{item.appId}}" />
+        <image src="{{item.pic}}" class="slide-image" style="height:{{swiperHeight}}px"  bindtap="startGame" data-appid="{{item.appId}}" data-extra="{{item.extra}}" data-preview="{{item.bg}}" data-type="{{item.type}}" />
       </swiper-item>
     </block>
   </swiper>
@@ -18,7 +18,7 @@
         <view>{{item.name}}</view>
         <view class="gamebox-item-info_desc">{{item.desc}}</view>
       </view>
-      <view class="gamebox-item-arrow">开始</view>
+      <!--view class="gamebox-item-play">开始</view-->
     </view>
     </block>
   </view>

@@ -80,7 +80,6 @@ QKPage({
     })
   },
   videoError: function (e) {
-    console.log(e)
   },
   playGame: function (e) {
     var target = e.currentTarget;

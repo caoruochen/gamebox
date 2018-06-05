@@ -51,9 +51,6 @@ QKPage({
     if (typeof ind === 'undefined') {
       ind = target.id.substr(7)
     }
-    wx.showToast({
-      title: 'hhhhh: '+ind
-    })
     var vsrc = this.data.games[ind].vsrc;
     if (!vsrc || vsrc.length<1) {
       var type = target.dataset.type;

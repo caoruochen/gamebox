@@ -133,6 +133,14 @@
   vertical-align: bottom;
 }
 
+.game-item-info-play {
+  border: 1px solid #3884d8;
+  font-size: 13px;
+  color: #3884d8;
+  border-radius: 15px;
+  padding: 4px 15px;
+}
+
 .game-item-btn {
   background: #f9dd22;
   font-size: 16px;

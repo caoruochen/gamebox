@@ -9,7 +9,7 @@
 
   <view class="game-item">
     <view class="game-item-body" style="width: {{imgWidth}}px" data-ind="{{index}}" bindtap="changeVideo" data-type="{{item.type}}" data-appid="{{item.appId}}" data-preview="{{item.bg}}">
-      <image class="game-item-poster" style="width: {{imgWidth}}px; height: {{imgHeight}}px;" src="{{item.poster}}" hidden="{{item.vshow}}" ></image>
+      <image class="game-item-poster" mode="{{item.mode || 'aspectFill'}}" style="width: {{imgWidth}}px; height: {{imgHeight}}px;" src="{{item.poster}}" hidden="{{item.vshow}}" ></image>
       <view class="game-item-mask" style="width: {{imgWidth}}px; height: {{imgHeight}}px;">
         <image wx:if="{{item.vsrc && item.vsrc.length>0}}" class="game-item-play" hidden="{{item.vshow}}" src="../../images/play.png"></image>
       </view>
@@ -22,6 +22,7 @@
         <view>{{item.name}}</view>
         <view>{{item.desc}}</view>
       </view>
+      <view class="game-item-info-play">马上玩</view>
     </view>
 
     <!--view class="game-item-btn" bindtap="startGame" data-type="{{item.type}}" data-appid="{{item.appId}}" data-preview="{{item.bg}}">开始游戏</view-->

@@ -7,7 +7,7 @@ QKPage({
   data: {
     wheight: app.globalData.wheight,
     imgWidth: app.globalData.wwidth - 40,
-    imgHeight: 230,
+    imgHeight: 240,
     games: [],
     fit: "cover",
   },

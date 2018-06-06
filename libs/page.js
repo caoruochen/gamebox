@@ -36,6 +36,14 @@ var QKPage = function (options) {
     });
   };
 
+  if (typeof options.onShareAppMessage === 'undefined') {
+    options.onShareAppMessage = function (res) {
+      return {
+        title: '闭上眼睛点 款款都正点！7k7k游戏精选！'
+      }
+    };
+  }
+
   options.onReady = function (params) {
     this.__loginReadyHandler('ready', params);
   };

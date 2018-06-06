@@ -7,7 +7,7 @@ var QKApp = function (options) {
   var platform = 'wxxcx';
   var target = 'wx';
   var channel = config.channel || 'gamebox';
-  var pname = config.pname || '7k7kgame';
+  var pname = config.pname || '7k7kgame0';
 
   if (config.httpApi) {
     http.config({
@@ -15,7 +15,28 @@ var QKApp = function (options) {
       platform: platform,
       target: target,
       channel: channel,
-      pname: pname
+      pname: pname,
+      successCode: 200,
+      loginCode: -101,
+      login: function () {
+        var pages = getCurrentPages();
+        if (pages && pages.length > 0) {
+          var route = pages[pages.length-1].route;
+          route = route.split('/').splice(-1)[0]
+          wx.removeStorageSync('token');
+          wx.reLaunch({
+            url: route,
+            fail: function () {
+              wx.showToast({
+                title: '登录失败，请关闭重开',
+                icon: 'none',
+                mask: true
+              });
+            }
+          });
+        }
+
+      }
     });
   }
 

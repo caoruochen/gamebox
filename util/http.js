@@ -1,5 +1,8 @@
 var httpApi = null;
 var defaultParams = {};
+var loginHandler = null;
+var loginCode = -1;
+var successCode = 200;
 
 var request = function (method, url, params, success, error) {
   if (!url) {
@@ -28,8 +31,12 @@ var request = function (method, url, params, success, error) {
       if (!data) {
         hasError = true;
       } else {
-        if (data.statusCode != 200 || (data.data && data.data.status_code != 200)) {
+        if (data.statusCode != 200 || (data.data && data.data.status_code != successCode)) {
           hasError = true;
+          if (data.data.status_code == loginCode && loginHandler) {
+            loginHandler();
+            return;
+          }
           if (data.data && data.data.error_message) {
             errorMsg = data.data.error_message;
           }
@@ -57,8 +64,18 @@ var http = {
     if (options.api) {
       httpApi = options.api;
     }
+    if (options.login) {
+      loginHandler = options.login;
+      if (typeof options.loginCode !== 'undefined') {
+        loginCode = options.loginCode
+      }
+    }
+    if (typeof options.successCode !== 'undefined') {
+      successCode = options.successCode;
+    }
     for (var k in options) {
-      if (k != 'api') {
+      if (k != 'api' && k != 'login' 
+          && k != 'loginCode' && k != 'successCode') {
         defaultParams[k] = options[k];
       }
     }

@@ -1,7 +1,7 @@
 {
   "pages":[
     "pages/recommend/index",
-    "pages/index/index"
+    "pages/games/index"
   ],
   "tabBar": {
     "list": [{
@@ -10,7 +10,7 @@
       "iconPath": "images/jingxuan0.png",
       "selectedIconPath": "images/jingxuan1.png"
     }, {
-      "pagePath": "pages/index/index",
+      "pagePath": "pages/games/index",
       "text": "全部",
       "iconPath": "images/fenlei0.png",
       "selectedIconPath": "images/fenlei1.png"

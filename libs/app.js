@@ -7,7 +7,7 @@ var QKApp = function (options) {
   var platform = 'wxxcx';
   var target = 'wx';
   var channel = config.channel || 'gamebox';
-  var pname = config.pname || 'gamebox';
+  var pname = config.pname || '7k7kgame';
 
   if (config.httpApi) {
     http.config({

@@ -8,6 +8,11 @@
     </block>
   </swiper>
 
+  <!--movable-area style="height: 400px; width: 300px; background: transparent; position: fixed; top: 0; left: 0;">
+    <movable-view style="height: 50px; width: 50px; background: blue; border-radius: 10px;" direction="all">
+    </movable-view>
+  </movable-area-->
+
   <view class="gamebox-games">
     <block wx:for="{{games}}" wx:key="*this">
     <view class="gamebox-item" bindtap="startGame" data-appid="{{item.appId}}" data-extra="{{item.extra}}" data-type="{{item.type}}" data-preview="{{item.bg}}">
@@ -18,7 +23,7 @@
         <view>{{item.name}}</view>
         <view class="gamebox-item-info_desc">{{item.desc}}</view>
       </view>
-      <!--view class="gamebox-item-play">开始</view-->
+      <view class="gamebox-item-play">开始</view>
     </view>
     </block>
   </view>

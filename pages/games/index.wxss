@@ -53,11 +53,9 @@ swiper {
 }
 
 .gamebox-item-play {
-  padding: 3px 7px;
-  box-sizing: border-box;
-  border: 1px solid #fbdd19;
-  border-radius: 5px;
-  color: #e2c60d;
-  font-size: 14px;
-  margin-right: 5px;
+  border: 1px solid #3884d8;
+  font-size: 13px;
+  color: #3884d8;
+  border-radius: 15px;
+  padding: 4px 15px;
 }

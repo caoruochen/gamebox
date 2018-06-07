@@ -13,7 +13,7 @@
       <view class="game-item-mask" style="width: 100%; height: {{imgHeight}}px;">
         <image wx:if="{{item.vsrc && item.vsrc.length>0}}" class="game-item-play" hidden="{{item.vshow}}" src="../../images/play.png"></image>
       </view>
-      <video wx:if="{{item.vsrc && item.vsrc.length>0}}" hidden="{{!item.vshow}}" style="width: 100%; height: {{imgHeight}}px;" id="gvideo_{{index}}" src="{{item.vsrc}}" controls objectFit="{{fit}}" direction="{{item.direction}}" loop show-center-play-btn="{{false}}" binderror="videoError" bindplay="changeVideo" bindfullscreenchange="changeVideo"></video>
+      <!--video wx:if="{{item.vsrc && item.vsrc.length>0}}" hidden="{{!item.vshow}}" style="width: 100%; height: {{imgHeight}}px;" id="gvideo_{{index}}" src="{{item.vsrc}}" controls objectFit="{{fit}}" direction="{{item.direction}}" loop show-center-play-btn="{{false}}" binderror="videoError" bindplay="changeVideo" bindfullscreenchange="changeVideo"></video-->
     </view>
 
     <view class="game-item-info" data-ind="{{index}}" bindtap="playGame" data-type="{{item.type}}" data-appid="{{item.appId}}" data-preview="{{item.bg}}">
@@ -22,7 +22,7 @@
         <view>{{item.name}}</view>
         <view>{{item.desc}}</view>
       </view>
-      <view class="game-item-info-play">马上玩</view>
+      <view class="game-item-info-play">开始</view>
     </view>
 
   </view>

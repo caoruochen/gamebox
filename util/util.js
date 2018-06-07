@@ -24,7 +24,7 @@ var util = {
 
     return 0
   },
-  startGame: function (type, appId, preview) {
+  startGame: function (page, type, appId, preview, gameId) {
     if (type == 1 && appId) {
       wx.showLoading({
         title: '',
@@ -32,19 +32,19 @@ var util = {
       });
       wx.navigateToMiniProgram({
         appId: appId,
-        extraData: {
-          _from: '7kminigame'
-        },
         success: function (res) {
+          page.reportLog('jump', [1, gameId, appId]);
         },
         fail: function (err) {
+          page.reportLog('jump', [-1, gameId, appId]);
         },
         complete: function (res) {
           wx.hideLoading();
         }
       })
     }
-    if (type == 2 &&preview) {
+    if (type == 2 && preview) {
+      page.reportLog('jump', [10, gameId]);
       wx.previewImage({
         urls: [preview]
       })

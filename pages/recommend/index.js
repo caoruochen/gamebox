@@ -56,8 +56,9 @@ QKPage({
     if (!vsrc || vsrc.length<1) {
       var type = target.dataset.type;
       var appId = target.dataset.appid;
+      var gameId = target.dataset.gameid;
       var preview = target.dataset.preview;
-      util.startGame(type, appId, preview);
+      util.startGame(this, type, appId, preview, gameId);
       return;
     }
     if (typeof this.currentPlayVideo !== 'undefined' && this.currentPlayVideo != ind) {
@@ -83,7 +84,8 @@ QKPage({
     var target = e.currentTarget;
     var type = target.dataset.type;
     var appId = target.dataset.appid;
+    var gameId = target.dataset.gameid;
     var preview = target.dataset.preview;
-    util.startGame(type, appId, preview);
+    util.startGame(this, type, appId, preview, gameId);
   }
 });

@@ -11,8 +11,6 @@ QKApp({
     this.globalData.wwidth = sysInfo.windowWidth;
     this.globalData.wheight = sysInfo.windowHeight;
     this.globalData.pixelRatio = sysInfo.pixelRatio;
-
-    wx.showShareMenu();
   },
   globalData: {}
 })

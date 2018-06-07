@@ -4,7 +4,7 @@ var loginHandler = null;
 var loginCode = -1;
 var successCode = 200;
 
-var request = function (method, url, params, success, error) {
+var request = function (method, url, params, success, error, ignoreDefaultParams) {
   if (!url) {
     error && error(-1, 'url不能为空');
   }
@@ -17,8 +17,10 @@ var request = function (method, url, params, success, error) {
     url = httpApi + url;
   }
   params = params || {};
-  for (var k in defaultParams) {
-    params[k] = defaultParams[k];
+  if (!ignoreDefaultParams) {
+    for (var k in defaultParams) {
+      params[k] = defaultParams[k];
+    }
   }
   method = method || 'GET';
   wx.request({
@@ -80,11 +82,11 @@ var http = {
       }
     }
   },
-  get: function (url, params, success, error) {
-    request('GET', url, params, success, error);
+  get: function (url, params, success, error, ignoreDefaultParams) {
+    request('GET', url, params, success, error, ignoreDefaultParams);
   },
-  post: function (url, params, success, error) {
-    request('POST', url, params, success, error)
+  post: function (url, params, success, error, ignoreDefaultParams) {
+    request('POST', url, params, success, error, ignoreDefaultParams)
   }
 };
 

@@ -3,54 +3,42 @@ var app = getApp();
 var QKPage = function (options) {
 
   var onLoad0 = options.onLoad || null;
-  var onReady0 = options.onReady || null;
   var onShow0 = options.onShow || null;
 
-  options.__loginReadyHandler = function (stage, params) {
-    if (!this.__loginReadyStage) {
-      this.__loginReadyStage = {};
-    }
-    if (stage) {
-      this.__loginReadyStage[stage] = params;
-    }
-    if (this.__loginReady) {
-      var stages = Object.keys(this.__loginReadyStage);
-      for (var i=0; i<stages.length; i++) {
-        if (stages[i] == 'ready') {
-          onReady0 && onReady0.call(this, this.__loginReadyStage[stages[i]]);
-        }
-        if (stages[i] == 'show') {
-          onShow0 && onShow0.call(this, this.__loginReadyStage[stages[i]]);
-        }
-        delete this.__loginReadyStage[stages[i]];
-      }
-    }
+  options.onLoad = function (params) {
+    wx.showShareMenu();
+    onLoad0 && onLoad0.call(this, params)
+
+    this.reportLog('onLoad', JSON.stringify(params));
   };
 
-  options.onLoad = function (params) {
-    var me = this;
-    app.onPageReadyHandler(this, function () {
-      onLoad0 && onLoad0.call(me, params)
-      me.__loginReady = true;
-      me.__loginReadyHandler();
-    });
+  options.onShow = function () {
+    wx.showShareMenu();
+    onShow0 && onShow0.call(this)
+    this.reportLog('onShow', '');
   };
+
+  options.reportLog = function (event, log) {
+    app.reportLog(this.route, event, log);
+  }
 
   if (typeof options.onShareAppMessage === 'undefined') {
     options.onShareAppMessage = function (res) {
-      return {
-        title: '闭上眼睛点 款款都正点！7k7k游戏精选！'
+      var ret = {
+        title: '7K7K游戏'
+      };
+      if (app.shareInfo) {
+        if (app.shareInfo.title) {
+          ret.title = app.shareInfo.title;
+        }
+        if (app.shareInfo.url) {
+          ret.imageUrl = app.shareInfo.url;
+        }
       }
+      app.reportLog(this.route, 'share', [res.from, ret.title]);
+      return ret;
     };
   }
-
-  options.onReady = function (params) {
-    this.__loginReadyHandler('ready', params);
-  };
-
-  options.onShow = function (params) {
-    this.__loginReadyHandler('show', params);
-  };
 
   Page(options);
 };

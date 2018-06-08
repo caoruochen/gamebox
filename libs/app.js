@@ -10,7 +10,7 @@ var QKApp = function (options) {
   var pname = config.pname || '7k7kgame0';
 
   options.shareInfo = {
-    title: '闭上眼睛点 款款都正点！7k7k游戏精选！',
+    title: '闭上眼睛点 款款都正点！7K7K游戏精选！',
     url: ''
   }
 

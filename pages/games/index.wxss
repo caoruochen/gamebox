@@ -1,61 +1,77 @@
 .container {
   width: 100%;
   box-sizing: border-box;
+  font-size: 13px;
 }
 
-swiper {
-  width: 100%;
+.title{
+  padding: 10px 0 10px 15px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  font-size: 16px;
 }
-
-.slide-image {
-  width: 100%;
-}
-
-.gamebox-games {
-  padding: 10px 0;
-  box-sizing: border-box;
-}
-
-.gamebox-item {
+.my-info{
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
-  padding: 15px;
-  border-bottom: 1px solid #eee;
+  align-items: center;
+  padding: 20px 20px 35px;
 }
-
-.gamebox-item-logo {
-  padding-right: 10px;
+.my-info .avatar{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.my-info .lottery{
   display: flex;
   align-items: center;
-}
-
-.gamebox-item-logo image {
-  width:  50px;
+  justify-content: center;
+  width: 50px;
   height: 50px;
-  border-radius: 5px;
+  line-height: normal;
+  border: 1px solid #000;
+  border-radius: 50%;
+  font-size: 14px;
+  white-space: pre-line;
 }
-
-.gamebox-item-info {
-  flex: 1;
-  height: 100%;
+.user-info{
   display: flex;
+  flex: 1;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
+  margin-left: 20px;
+  font-size: 14px;
 }
-
-.gamebox-item-info .gamebox-item-info_desc {
-  font-size: 80%;
-  color: #999;
+.user-info view:last-child{
   margin-top: 5px;
 }
 
-.gamebox-item-play {
-  border: 1px solid #3884d8;
-  font-size: 13px;
-  color: #3884d8;
+.task-item{
+  display: flex;
+  align-items: center;
+  padding: 0 10px 0 5px;
+  border-bottom: 1px solid #000;
+}
+.task-item .icon{
+  width: 20px;
+  height: 20px;
+}
+.daily-task .task-name{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-bottom: 5px;
+  margin-left: 15px;
+}
+.daily-task .task-item .task-btn{
+  line-height: normal;
+  padding: 2px 15px;
+  border: 1px solid #000;
   border-radius: 15px;
-  padding: 4px 15px;
+  font-size: 13px;
+}
+
+.all-tasks{
+  padding-top: 12px;
+  font-size: 15px;
+  color: #cacaca;
+  text-align: center;
 }

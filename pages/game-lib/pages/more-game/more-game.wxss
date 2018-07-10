@@ -1,0 +1,11 @@
+/* pages/game-lib/pages/more-game/more-game.wxss */
+.input {
+  display: flex;
+  flex: 1;
+  box-sizing: border-box;
+  border: 1rpx solid red;
+  border-radius: 30rpx;
+  height: 60rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}

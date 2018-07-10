@@ -2,20 +2,24 @@
   "pages": [
     "pages/game-lib/index",
     "pages/games/index",
-    "pages/recommend/index"
+    "pages/recommend/index",
+    "pages/game-lib/pages/more-game/more-game"
   ],
   "tabBar": {
-    "list": [{
-      "pagePath": "pages/game-lib/index",
-      "text": "游戏库",
-      "iconPath": "images/jingxuan0.png",
-      "selectedIconPath": "images/jingxuan1.png"
-    }, {
-      "pagePath": "pages/games/index",
-      "text": "我的",
-      "iconPath": "images/fenlei0.png",
-      "selectedIconPath": "images/fenlei1.png"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/game-lib/index",
+        "text": "游戏库",
+        "iconPath": "images/jingxuan0.png",
+        "selectedIconPath": "images/jingxuan1.png"
+      },
+      {
+        "pagePath": "pages/games/index",
+        "text": "我的",
+        "iconPath": "images/fenlei0.png",
+        "selectedIconPath": "images/fenlei1.png"
+      }
+    ]
   },
   "window": {
     "backgroundTextStyle": "light",

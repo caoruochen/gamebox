@@ -1,0 +1,35 @@
+<view>
+  <!-- top -->
+  <text class=".top_one_size">{{gameName}}</text>
+    <view class="divider"/>
+  <view class=".top_two_size">
+    <text style="flex: 1;">{{userName}}</text>
+     <text>{{userGrade}}</text>
+  </view>
+    <view class="divider"/>
+  <!-- content -->
+  <view wx:for="{{categorys}}" wx:key="">
+    <view class=".item_title_size">
+      <text style="flex: 4;">{{item.category}}</text>
+      <text style="flex: 1;" bindtap="clickMore" data-id="{{index}}">更多</text>
+    </view>
+   <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+      <view class="item_content" wx:for="{{item.games}}"
+       wx:key="" wx:for-index="idx" wx:for-item="game" 
+       bindtap="clickGame" data-index="{{index}}" data-id="{{idx}}">
+
+        <image style="width: 180rpx; height: 180rpx;" 
+        src="../../pages/index/pic/timg.jpg"/>
+        <text>{{game.title}}</text>
+        <text>{{game.playerNum}}人在玩</text>
+      </view>
+    </scroll-view>
+    <!-- activity -->
+    <view wx:if="{{item.hasActivity}}" style="display: flex; flex-direction: row; padding-top: 20rpx;">
+      <image class="ad_image" 
+        src="../../pages/index/pic/timg.jpg" bindtap="clickActivity"/>
+        <image class='ad_image'
+        src="../../pages/index/pic/timg.jpg"/>
+    </view>
+  </view>
+</view>

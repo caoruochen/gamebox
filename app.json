@@ -1,25 +1,30 @@
 {
-  "pages":[
+  "pages": [
+    "pages/index/index",
+    "pages/games/index",
     "pages/recommend/index",
-    "pages/games/index"
+    "pages/more-game/more-game"
   ],
   "tabBar": {
-    "list": [{
-      "pagePath": "pages/recommend/index",
-      "text": "游戏库",
-      "iconPath": "images/jingxuan0.png",
-      "selectedIconPath": "images/jingxuan1.png"
-    }, {
-      "pagePath": "pages/games/index",
-      "text": "我的",
-      "iconPath": "images/fenlei0.png",
-      "selectedIconPath": "images/fenlei1.png"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "游戏库",
+        "iconPath": "images/jingxuan0.png",
+        "selectedIconPath": "images/jingxuan1.png"
+      },
+      {
+        "pagePath": "pages/games/index",
+        "text": "我的",
+        "iconPath": "images/fenlei0.png",
+        "selectedIconPath": "images/fenlei1.png"
+      }
+    ]
   },
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "7K7K游戏",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }

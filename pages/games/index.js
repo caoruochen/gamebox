@@ -39,8 +39,6 @@ QKPage({
   },
   onLoad: function () {
     // this.loadTask();
-    var game = new saveRecentGame();
-    console.log(game.get(1))
   },
   onPullDownRefresh: function (e) {
 

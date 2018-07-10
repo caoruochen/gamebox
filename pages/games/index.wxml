@@ -1,31 +1,37 @@
 <view class="container">
-  <swiper indicator-dots="{{false}}"
-    autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}">
-    <block wx:for="{{banners}}" wx:key="*this">
-      <swiper-item>
-        <image src="{{item.pic}}" class="slide-image" style="height:{{swiperHeight}}px"  bindtap="startGame" data-gameid="{{item.gameId}}" data-appid="{{item.appId}}" data-extra="{{item.extra}}" data-preview="{{item.bg}}" data-type="{{item.type}}" />
-      </swiper-item>
-    </block>
-  </swiper>
-
-  <!--movable-area style="height: 400px; width: 300px; background: transparent; position: fixed; top: 0; left: 0;">
-    <movable-view style="height: 50px; width: 50px; background: blue; border-radius: 10px;" direction="all">
-    </movable-view>
-  </movable-area-->
-
-  <view class="gamebox-games">
-    <block wx:for="{{games}}" wx:key="*this">
-    <view class="gamebox-item" bindtap="startGame" data-gameid="{{item.gameId}}" data-appid="{{item.appId}}" data-extra="{{item.extra}}" data-type="{{item.type}}" data-preview="{{item.bg}}">
-      <view class="gamebox-item-logo">
-        <image src="{{item.logo}}" />
+  <view class="my">
+    <view class="title">我的</view>
+    <view class="my-info">
+      <image src="../../images/fenlei0.png" class="avatar"></image>
+      <view class="user-info">
+        <view>昵称</view>
+        <view>等级</view>
+        <view>积分   红包</view>
       </view>
-      <view class="gamebox-item-info">
-        <view>{{item.name}}</view>
-        <view class="gamebox-item-info_desc">{{item.desc}}</view>
-      </view>
-      <view class="gamebox-item-play">开始</view>
+      <button class="lottery">抽\n奖</button>
     </view>
-    </block>
+  </view>
+  <view class="daily-task">
+    <view class="title">日常任务</view>
+    <view class="task-item sign-in">
+      <image src="../../images/jingxuan1.png" class="icon"></image>
+      <view class="task-name">
+        <view>签到</view>
+        <view>100金币</view>
+      </view>
+      <button class="task-btn">已签到</button>
+    </view>
+    <view class="task-item">
+      <image src="../../images/jingxuan1.png" class="icon"></image>
+      <view class="task-name">
+        <view>签到</view>
+        <view>100金币</view>
+      </view>
+      <navigator url="" class="task-btn">去完成</navigator>
+    </view>
   </view>
 
+  <view class="all-tasks">
+    全部任务
+  </view>
 </view>

@@ -6,12 +6,12 @@
   "tabBar": {
     "list": [{
       "pagePath": "pages/recommend/index",
-      "text": "精选",
+      "text": "游戏库",
       "iconPath": "images/jingxuan0.png",
       "selectedIconPath": "images/jingxuan1.png"
     }, {
       "pagePath": "pages/games/index",
-      "text": "全部",
+      "text": "我的",
       "iconPath": "images/fenlei0.png",
       "selectedIconPath": "images/fenlei1.png"
     }]

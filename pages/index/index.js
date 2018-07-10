@@ -122,7 +122,7 @@ Page({
     //   icon: 'none'
     // })
     wx.navigateTo({
-      url: 'pages/more-game/more-game',
+      url: '/pages/more-game/more-game',
     })
   },
 

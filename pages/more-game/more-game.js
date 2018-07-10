@@ -1,10 +1,12 @@
+// pages/more-game/more-game.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    currentTab: 0,
+    pageData: ["pageA", "pageB", "pageC", "pageD", "pageE"],
   },
 
   /**
@@ -61,5 +63,23 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  
+  switchNav: function(e) {
+    console.log("tab=" + e.target.dataset.current)
+    if (this.data.currentTab === e.target.dataset.current) {
+      return false;
+    } else {
+      this.setData({
+        currentTab: e.target.dataset.current
+      })
+    }
+  },
+
+  bindChange: function(e) {
+    console.log("run...")
+    this.setData({
+      currentTab: e.detail.current
+    })
   }
 })

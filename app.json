@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/games/index",
-    "pages/recommend/index"
+    "pages/recommend/index",
+    "pages/game-lib/pages/more-game/more-game"
   ],
   "tabBar": {
     "list": [{

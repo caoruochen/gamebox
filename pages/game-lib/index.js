@@ -112,12 +112,18 @@ Page({
   
   },
 
+  /**
+   * 点击更多
+   */
   clickMore: function(e) {
     var index = e.currentTarget.dataset.id
     console.log("click index="+index)
-    wx.showToast({
-      title: this.data.categorys[index].category,
-      icon: 'none'
+    // wx.showToast({
+    //   title: this.data.categorys[index].category,
+    //   icon: 'none'
+    // })
+    wx.navigateTo({
+      url: 'pages/more-game/more-game',
     })
   },
 

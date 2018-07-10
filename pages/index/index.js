@@ -1,4 +1,3 @@
-// pages/game-lib/index.js
 Page({
 
   /**

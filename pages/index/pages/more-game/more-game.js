@@ -1,4 +1,3 @@
-// pages/game-lib/pages/more-game/more-game.js
 Page({
 
   /**

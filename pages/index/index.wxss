@@ -1,4 +1,3 @@
-/* pages/game-lib/index.wxss */
 .divider {
   background-color: red;
   width: 100%;

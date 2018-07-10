@@ -1,4 +1,3 @@
-/* pages/game-lib/pages/more-game/more-game.wxss */
 .input {
   display: flex;
   flex: 1;

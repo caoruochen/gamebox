@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/game-lib/index",
+    "pages/index/index",
     "pages/games/index",
     "pages/recommend/index"
   ],
   "tabBar": {
     "list": [{
-      "pagePath": "pages/game-lib/index",
+      "pagePath": "pages/index/index",
       "text": "游戏库",
       "iconPath": "images/jingxuan0.png",
       "selectedIconPath": "images/jingxuan1.png"

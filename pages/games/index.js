@@ -4,6 +4,7 @@ var util = require("../../util/util");
 
 var app = getApp();
 var sysInfo = app.globalData.sysInfo;
+
 var swiperHeight = 150;
 var defaultBanners = [{
   pic: 'https://snsgame.uimg.cn/minigame/res/banner/default.png'

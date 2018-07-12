@@ -8,13 +8,13 @@ QKPage({
   data: {
     tabs: [],//tob标题
     games: {},//page数据
+    isLoads: {},
     activeIndex: 0,
     slideOffset: 0,
     tabW: 0,
     index: 0,
     topView: 'A',
     currentTabId: 1
-
   },
 
   onLoad: function (options) {
@@ -27,9 +27,16 @@ QKPage({
         })
       }
     });
-
-    var categoryId = options.categoryId;
-    this.loadCategoryData(0,categoryId)
+    var param = options.type
+    var pos = options.position
+    this.setData({
+      activeIndex: pos
+    })
+    
+    console.log('pos=' + pos)
+    //var defaultSelectId = categoryId - 1
+    this.data.isLoads[pos] = true
+    this.loadCategoryData(pos,param)
   },
 
   tabClick: function (e) {
@@ -60,20 +67,24 @@ QKPage({
     });
     console.log(current);
     console.log(this.data.games)
-    this.loadCategoryData(current, this.data.tabs[current].categoryId)
+    if (this.data.isLoads[current] !== undefined) {
+      return
+    }
+    this.data.isLoads[current] = true
+    this.loadCategoryData(current, this.data.tabs[current].type)
     //console.log(this.data.topView + ' ' + offsetW)
   },
 
 /**
  * 加载分类数据
  */
-  loadCategoryData: function(key, categoryId) {
-    console.log("category id="+categoryId)
+  loadCategoryData: function(key, param) {
+    console.log("type="+param)
     wx.showLoading({
       title: '数据加载中'
     });
     var that = this;
-    http.get('/gamebox/list', {category_id: categoryId},function (data) {
+    http.get('/gamebox/list', {type: param},function (data) {
       wx.hideLoading();
       console.log(data)
       var games = that.data.games;
@@ -91,5 +102,23 @@ QKPage({
         icon: 'none'
       });
     });
+  },
+
+/**
+ * item 点击事件
+ */
+  itemClick: function(e) {
+    console.log(e.currentTarget.dataset.item)
+    var game = e.currentTarget.dataset.item
+    wx.showLoading({
+      title: '',
+      mask: true
+    });
+    wx.navigateToMiniProgram({
+      appId: game.appId,
+      complete: function (res) {
+        wx.hideLoading()
+      }
+    })
   }
 })

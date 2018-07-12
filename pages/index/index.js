@@ -98,7 +98,8 @@ QKPage({
     //   icon: 'none'
     // })
     wx.navigateTo({
-      url: '/pages/more-game/more-game',
+      url: '/pages/more-game/more-game?categoryId='
+      +this.data.categorys[index].categoryId,
     })
   },
 
@@ -155,7 +156,7 @@ QKPage({
         //data[0].games.push(obj)
         //data[0].games.push(obj)
         /////////////////////
-        data[0]['hasActivity'] = true;
+        //data[0]['hasActivity'] = true;
         me.loadActivityData(data)
       }
     }, function () {
@@ -173,7 +174,7 @@ QKPage({
    */
   loadActivityData: function(gameData) {
      this.setData({
-       categorys: gameData
+       categorys: gameData.gamelist
      })
     var me = this;
     http.get('/gamebox/activity', function (activityData) {

@@ -16,6 +16,7 @@ var QKApp = function (options) {
 
   if (config.httpApi) {
     http.config({
+      version: '1.0.0',
       api: config.httpApi,
       platform: platform,
       target: target,

@@ -1,33 +1,16 @@
 <view>
-  <!-- top -->
-  <view class="top-bar">
-    <view>
-      <text class="wel">你好 </text> <text class="nick">{{userName}}</text></view>
-    <view>
-      <image src="../../images/coin.png" />
-      <text>1000</text>
+  <view class="screenshot">
+    <image wx:for="{{gameDetail.pics}}" wx:key="*this" mode="widthFix" src="{{item}}"></image>
+  </view>
+  
+  <view class="content">
+    <view class="intro">{{gameDetail.text}}</view>
+    <view class="tip">
+      这款游戏叫[{{gameDetail.name}}]，<text>长按</text>复制下面的名字，就可以在微信里搜索这款游戏并玩起来了。
     </view>
-  </view>
-  <!-- content -->
-  <view class="games">
-  <view class="content" wx:for="{{categorys}}" wx:key="">
-    <view class="item-title">
-      <view>{{item.name}}</view>
-      <view class="game-more" bindtap="clickMore" data-id="{{index}}">more</view>
+    <view class="name">{{gameDetail.name}}</view>
+    <view class="desc">
+      {{gameDetail.desc}}
     </view>
-   <scroll-view class="scroll-view_H" scroll-x>
-      <view class="item_content" wx:for="{{item.games}}"
-       wx:key="" wx:for-index="idx" wx:for-item="game" 
-       bindtap="clickGame" data-index="{{index}}" data-id="{{idx}}">
-
-        <image class="icon" src="{{game.logo}}"/>
-        <text class='game-title'>{{game.name}}</text>
-        <text class='game-desc'>{{game.playerNum}}人在玩IOS回访电话IOS</text>
-      </view>
-    </scroll-view>
-  </view>
-  </view>
-  <view class="ad">
-    <ad unit-id="adunit-a3868a599f8b3cfa"></ad>
   </view>
 </view>

@@ -4,7 +4,8 @@
     "pages/games/index",
     "pages/recommend/index",
     "pages/more-game/more-game",
-    "pages/lottery/index"
+    "pages/lottery/index",
+    "pages/detail/index"
   ],
   "tabBar": {
     "list": [

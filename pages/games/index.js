@@ -16,7 +16,7 @@ QKPage({
     games: [],
     tasks: [
       {
-        icon: '../../images/jingxuan1.png',
+        icon: '../../images/task-icon2.png',
         name: '签到',
         desc: '100金币',
         type: 1, // 任务类型：1签到，2玩游戏金币奖励，3红包奖励
@@ -26,7 +26,7 @@ QKPage({
         done: 2, // 已完成数 
       },
       {
-        icon: '../../images/jingxuan1.png',
+        icon: '../../images/task-icon2.png',
         name: '玩游戏金币奖励',
         desc: '100金币',
         type: 2, // 任务类型：1签到，2玩游戏金币奖励，3红包奖励
@@ -120,6 +120,17 @@ QKPage({
   },
   doTask: function(e){
 
+  },
+  goDetail: function(e) {
+    var gameId = e.currentTarget.dataset.gameid;
+    // wx.showToast({
+    //   title: this.data.categorys[index].category,
+    //   icon: 'none'
+    // })
+    wx.navigateTo({
+      url: '/pages/detail/index?gameId='
+      +gameId,
+    })
   }
 
 });

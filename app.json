@@ -10,7 +10,7 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "游戏库",
+        "text": "游戏",
         "iconPath": "images/jingxuan0.png",
         "selectedIconPath": "images/jingxuan1.png"
       },

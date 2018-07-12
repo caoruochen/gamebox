@@ -42,56 +42,48 @@
   display: flex;
   flex-direction: row;
   line-height: 90rpx;
+  padding: 0 30rpx 0 30rpx;
   justify-content: space-between;
 }
 
-.item-title .game-category {
-  color: #0c0c0c;
-  font-weight: bold;
-}
-
 .game-more {
-  font-size: 12px;
-  color: #353535;
-  padding-left: 20rpx;
-  box-sizing: border-box;
+
 }
 
-.scroll-view_H {
-  width: 100%;
-  white-space: nowrap;
-}
-
-.item_content {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left: 30rpx;
-}
-
-.scroll-view_H .item_content:nth-child(1) {
-  margin-left: 0;  
-}
-
-.game-icon {
+.icon {
+  width: 145rpx;
+  height: 145rpx;
   border-radius: 30rpx;
 }
 
 .game-title {
   color: #353535;
   font-size: 14px;
-  overflow-x: hidden;
-  text-align: center;
 }
 
 .game-desc {
   color: #b2b2b2;
   font-size: 11px;
-  text-align: center;
 }
 
-::-webkit-scrollbar {
+.item_content {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%;
+  align-items: center;
+}
+.scroll-view_H {
+  width: 100%;
+  white-space: nowrap;
+}
+.ad_image {
+  flex: 1;
+  height: 180rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+ ::-webkit-scrollbar {
   width: 0;
   height: 0;
   color: transparent;

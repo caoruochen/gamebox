@@ -5,17 +5,15 @@ var saveRecentGame = require("../../util/saveRecentGame");
 
 var app = getApp();
 var sysInfo = app.globalData.sysInfo;
-var userInfo = app.globalData.userInfo || {name: '张三', avatar: '../../images/fenlei0.png',sex: 1,coins: '1000', title: '贫民',level: 2};
+var userInfo = app.globalData.userInfo || {name: '张三', avatar: '../../images/defaultavatar.png', sex: 1,coins: '1000', points: '20', title: '贫民',level: 2};
 // var userInfo = {name: '张三', avatar: '../../images/fenlei0.png',sex: 1,coins: '1000', diamond: '20', title: '贫民',level: 2};
-var defaultAvatar = "";
-var avatar = userInfo.avatar || defaultAvatar;
 
 QKPage({
   data: {
     isLogin: false,
     userInfo: userInfo,
-    avatar: avatar,
-    sex: userInfo.sex > 0 ? "../../images/pros.png" : "../../images/unpros.png",
+    checkSwitch: false,
+    games: [],
     tasks: [
       {
         icon: '../../images/jingxuan1.png',
@@ -40,7 +38,11 @@ QKPage({
     ]
   },
   onLoad: function () {
-    // this.loadTask();
+    if(this.data.checkSwitch > 0){
+      // this.loadTask();
+    }else{
+      this.loadGameData();
+    }
   },
   onPullDownRefresh: function (e) {
 
@@ -65,6 +67,26 @@ QKPage({
       });
     });
   },
+  loadGameData: function () {
+    wx.showLoading({
+      title: '数据加载中'
+    });
+    var me = this;
+    http.get('/gamebox/recommends', function (data) {
+      me.setData({
+        checkSwitch: data.verifying,
+        games: data.gamelist[0].games
+      });
+      wx.hideLoading();
+    }, function () {
+      wx.hideLoading();
+      
+      wx.showToast({
+        title: msg || '数据加载失败',
+        icon: 'none'
+      });
+    });
+  }, 
   onGotUserInfo: function (e) {
     if (!e.detail || typeof e.detail.userInfo === 'undefined') {
       wx.showToast({
@@ -84,27 +106,10 @@ QKPage({
         return;
       };
       me.setData({
-        isLogin: true
+        isLogin: true,
+        userInfo: app.globalData.userInfo,
       });
-      var target = e.currentTarget
-      var type = target.dataset.type
-      if (type == 2) {
-        http.get('/user/info', {gender: e.detail.userInfo.gender}, function (data) {
-          me.setData({
-            winIndex: winIndex,
-            loseIndex: loseIndex,
-            winInfos: data.win_flags ? data.win_flags : [],
-            loseInfos: data.lose_flags ? data.lose_flags : [],
-            selectedWinInfo: (data.win_flags && data.win_flags.length>0) ? data.win_flags[winIndex] : '',
-            selectedLoseInfo: (data.lose_flags && data.lose_flags.length>0) ? data.lose_flags[loseIndex] : ''
-          });
-          wx.hideLoading();
-        }, function () {
-          wx.hideLoading();
-        })
-      } else {
-        wx.hideLoading();
-      }
+      wx.hideLoading();
     });
   },
   goLottery: function(e){

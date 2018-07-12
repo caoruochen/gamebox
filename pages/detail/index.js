@@ -2,9 +2,6 @@ var QKPage = require("../../libs/page");
 var http = require("../../util/http");
 var util = require("../../util/util");
 
-var app = getApp();
-var ratio = app.globalData.wwidth / 750;
-
 QKPage({
   /**
    * 页面的初始数据
@@ -13,16 +10,79 @@ QKPage({
     userName: 'ysx',
     userGrade: '土豪2000',
     hasActivity: false,
-    categorys: [],
-    wwidth: app.globalData.wwidth,
-    gameItemWidth: (app.globalData.wwidth-150*ratio) / 4 // 60 padding + 3*30 margin
+    categorys: []
+    // categorys: [
+    //   {
+    //     name: '最近常玩',
+    //     hasActivity: true,
+    //     games: [
+    //       {
+    //         name: '无限楼',
+    //         playerNum: '100万'
+    //       },
+    //       {
+    //         name: '弹珠',
+    //         playerNum: '99万'
+    //       },
+    //       {
+    //         name: '你画我猜',
+    //         playerNum: '100万'
+    //       },
+    //       {
+    //         name: '谁是卧底',
+    //         playerNum: '99万'
+    //       },
+    //     ]
+    //   },
+    //   {
+    //     name: '小编推荐',
+    //     games: [
+    //       {
+    //         name: '有点意思',
+    //         playerNum: '10万'
+    //       },
+    //       {
+    //         name: '别踩我',
+    //         playerNum: '89万'
+    //       },
+    //       {
+    //         name: '狼人杀',
+    //         playerNum: '10万'
+    //       },
+    //       {
+    //         name: '100层',
+    //         playerNum: '89万'
+    //       },
+    //     ]
+    //   },
+    //   {
+    //     name: '精彩游戏',
+    //     games: [
+    //       {
+    //         name: '有点意思',
+    //         playerNum: '10万'
+    //       },
+    //       {
+    //         name: '别踩我',
+    //         playerNum: '89万'
+    //       },
+    //       {
+    //         name: '狼人杀',
+    //         playerNum: '10万'
+    //       },
+    //       {
+    //         name: '100层',
+    //         playerNum: '89万'
+    //       },
+    //     ]
+    //   }
+    // ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData)
     this.loadGameData()
     this.setPrefInfo()
   },
@@ -32,6 +92,11 @@ QKPage({
    */
   clickMore: function(e) {
     var index = e.currentTarget.dataset.id
+    console.log("click index="+index)
+    // wx.showToast({
+    //   title: this.data.categorys[index].category,
+    //   icon: 'none'
+    // })
     wx.navigateTo({
       url: '/pages/more-game/more-game?categoryId='
       +this.data.categorys[index].categoryId,
@@ -44,6 +109,7 @@ QKPage({
   clickGame: function(e) {
     var index = e.currentTarget.dataset.index
     var idx = e.currentTarget.dataset.id
+    //console.log("click game index="+index+",id="+idx)
     
     wx.showLoading({
       title: '',
@@ -87,6 +153,10 @@ QKPage({
           logo: 'https://snsgame.uimg.cn/video/game/wxl/logo.jpg',
           playerNum: 1000
         }
+        //data[0].games.push(obj)
+        //data[0].games.push(obj)
+        /////////////////////
+        //data[0]['hasActivity'] = true;
         me.loadActivityData(data)
       }
     }, function () {

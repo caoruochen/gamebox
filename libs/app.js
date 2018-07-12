@@ -16,7 +16,6 @@ var QKApp = function (options) {
 
   if (config.httpApi) {
     http.config({
-      version: '1.0.0',
       api: config.httpApi,
       platform: platform,
       target: target,
@@ -159,8 +158,8 @@ var QKApp = function (options) {
                 sex: data.sex,
                 avatar: data.avatar
               };
-              wx.setStorageSync('userInfo', userInfo);
-              me.globalData.userInfo = userInfo;
+              // wx.setStorageSync('userInfo', userInfo);
+              // me.globalData.userInfo = userInfo;
             }
             start.call(me, params);
           });

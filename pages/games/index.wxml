@@ -40,34 +40,35 @@
     </view>
   </view>
 
-  <view wx:if="{{checkSwitch > 0}}" class="daily-task">
-    <view class="task-head">
-      <view class="title">日常任务<text>({{1}}/{{tasks.length}})</text></view>
-      <text>一键领取</text>
-    </view>
-    <view wx:for="{{tasks}}" wx:key="{{index}}}" class="task-item">
-      <image src="{{item.icon}}" class="icon"></image>
-      <view class="task-info">
-        <view class="task-name">{{item.name}}</view>
-        <view class="task-award">{{item.desc}}</view>
+  <view wx:if="{{!checkSwitch}}">
+    <view class="daily-task">
+      <view class="task-head">
+        <view class="title">日常任务<text>({{1}}/{{tasks.length}})</text></view>
+        <text>一键领取</text>
       </view>
-      <button wx:if="{{!isLogin}}" open-type="getUserInfo" class="task-btn" bindgetuserinfo="onGotUserInfo">{{item.type == 1 ? (item.status > 0 ? '已签到' : '签到') : (item.status > 1 ? '已完成' : '去完成')}}</button>
-      <button wx:elif="{{isLogin && item.type == 1}}" class="task-btn" bindtap="signIn">{{item.status > 0 ? '已签到' : '签到'}}</button>
-      <navigator wx:elif="{{isLogin && item.type > 1}}" url="" class="task-btn" bindtap="doTask">{{item.status > 1 ? '已完成' : '去完成'}}</navigator>
+      <view wx:for="{{tasks}}" wx:key="{{index}}}" class="task-item">
+        <image src="{{item.icon}}" class="icon"></image>
+        <view class="task-info">
+          <view class="task-name">{{item.name}}</view>
+          <view class="task-award">{{item.desc}}</view>
+        </view>
+        <button wx:if="{{!isLogin}}" open-type="getUserInfo" class="task-btn" bindgetuserinfo="onGotUserInfo">{{item.type == 1 ? (item.status > 0 ? '已签到' : '签到') : (item.status > 1 ? '已完成' : '去完成')}}</button>
+        <button wx:elif="{{isLogin && item.type == 1}}" class="task-btn" bindtap="signIn">{{item.status > 0 ? '已签到' : '签到'}}</button>
+        <navigator wx:elif="{{isLogin && item.type > 1}}" url="" class="task-btn" bindtap="doTask">{{item.status > 1 ? '已完成' : '去完成'}}</navigator>
+      </view>
+    </view>
+    <view class="all-tasks">
+      全部任务
     </view>
   </view>
-  <!-- <view wx:else>
+  <view wx:else>
     <view class="item_content" wx:for="{{games}}"
        wx:key="" wx:for-index="idx" wx:for-item="game" 
        bindtap="clickGame" data-index="{{index}}" data-id="{{idx}}">
-      <image class="icon" src="{{game.logo}}"/></image>
+      <image class="icon" src="{{game.logo}}"></image>
       <text class='game-title'>{{game.name}}</text>
       <text class='game-desc'>{{game.playerNum}}人在玩IOS回访电话IOS</text>
     </view>
-  </view> -->
-
-  <view class="all-tasks">
-    全部任务
   </view>
 
   <ad unit-id="adunit-aca0430fe657a9b6"></ad>

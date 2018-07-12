@@ -12,7 +12,7 @@ QKPage({
   data: {
     isLogin: false,
     userInfo: userInfo,
-    checkSwitch: 0,
+    checkSwitch: false,
     games: [],
     tasks: [
       {
@@ -74,8 +74,10 @@ QKPage({
     var me = this;
     http.get('/gamebox/recommends', function (data) {
       me.setData({
-        games: data.gamelist
-      })
+        checkSwitch: data.verifying,
+        games: data.gamelist[0].games
+      });
+      wx.hideLoading();
     }, function () {
       wx.hideLoading();
       

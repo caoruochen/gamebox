@@ -5,7 +5,7 @@ var saveRecentGame = require("../../util/saveRecentGame");
 
 var app = getApp();
 var sysInfo = app.globalData.sysInfo;
-var userInfo = app.globalData.userInfo || {name: '张三', avatar: '../../images/fenlei0.png',sex: 1,coins: '1000', title: '贫民',level: 2};
+var userInfo = app.globalData.userInfo || {name: '张三', avatar: '../../images/fenlei0.png',sex: 1,coins: '0', title: '贫民',level: 1};
 var defaultAvatar = "";
 var avatar = userInfo.avatar || defaultAvatar;
 

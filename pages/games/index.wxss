@@ -182,3 +182,27 @@ image{
 .ad {
   margin-top: 40rpx;
 }
+
+.icon {
+  width: 145rpx;
+  height: 145rpx;
+  border-radius: 30rpx;
+}
+
+.game-title {
+  color: #353535;
+  font-size: 14px;
+}
+
+.game-desc {
+  color: #b2b2b2;
+  font-size: 11px;
+}
+
+.item_content {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%;
+  align-items: center;
+}

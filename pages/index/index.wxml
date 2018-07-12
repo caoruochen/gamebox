@@ -1,4 +1,4 @@
-<view class="container">
+<view>
   <!-- top -->
   <view class="top-bar">
     <view>
@@ -15,15 +15,14 @@
       <view>{{item.name}}</view>
       <view class="game-more" bindtap="clickMore" data-id="{{index}}">more</view>
     </view>
-   <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+   <scroll-view class="scroll-view_H" scroll-x>
       <view class="item_content" wx:for="{{item.games}}"
        wx:key="" wx:for-index="idx" wx:for-item="game" 
        bindtap="clickGame" data-index="{{index}}" data-id="{{idx}}">
 
-        <image style="width: 180rpx; height: 180rpx; border-radius: 30rpx;" 
-        src="{{game.logo}}"/>
-        <text>{{game.name}}</text>
-        <text>{{game.playerNum}}人在玩</text>
+        <image class="icon" src="{{game.logo}}"/>
+        <text class='game-title'>{{game.name}}</text>
+        <text class='game-desc'>{{game.playerNum}}人在玩IOS回访电话IOS</text>
       </view>
     </scroll-view>
   </view>

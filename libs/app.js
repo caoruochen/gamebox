@@ -158,8 +158,8 @@ var QKApp = function (options) {
                 sex: data.sex,
                 avatar: data.avatar
               };
-              wx.setStorageSync('userInfo', userInfo);
-              me.globalData.userInfo = userInfo;
+              // wx.setStorageSync('userInfo', userInfo);
+              // me.globalData.userInfo = userInfo;
             }
             start.call(me, params);
           });

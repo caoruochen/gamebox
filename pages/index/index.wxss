@@ -34,7 +34,7 @@
 
 .content {
   box-sizing: border-box;
-  padding: 30rpx 0;
+  padding: 30rpx 0; 
   border-bottom: 1px solid #ededed;
 }
 
@@ -42,11 +42,28 @@
   display: flex;
   flex-direction: row;
   line-height: 90rpx;
+  padding: 0 30rpx 0 30rpx;
   justify-content: space-between;
 }
 
 .game-more {
 
+}
+
+.icon {
+  width: 145rpx;
+  height: 145rpx;
+  border-radius: 30rpx;
+}
+
+.game-title {
+  color: #353535;
+  font-size: 14px;
+}
+
+.game-desc {
+  color: #b2b2b2;
+  font-size: 11px;
 }
 
 .item_content {

@@ -108,10 +108,17 @@ QKPage({
   clickGame: function(e) {
     var index = e.currentTarget.dataset.index
     var idx = e.currentTarget.dataset.id
-    console.log("click game index="+index+",id="+idx)
-    wx.showToast({
-      title: this.data.categorys[index].games[idx].name,
-      icon: 'none'
+    //console.log("click game index="+index+",id="+idx)
+    
+    wx.showLoading({
+      title: '',
+      mask: true
+    });
+    wx.navigateToMiniProgram({
+      appId: this.data.categorys[index].games[idx].appId,
+      complete: function(res) {
+        wx.hideLoading()
+      }
     })
   },
 
@@ -145,7 +152,7 @@ QKPage({
           logo: 'https://snsgame.uimg.cn/video/game/wxl/logo.jpg',
           playerNum: 1000
         }
-        data[0].games.push(obj)
+        //data[0].games.push(obj)
         //data[0].games.push(obj)
         /////////////////////
         data[0]['hasActivity'] = true;

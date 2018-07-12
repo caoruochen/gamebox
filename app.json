@@ -11,15 +11,27 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "游戏库",
+        "text": "游戏",
+        "iconPath": "images/game0.png",
+        "selectedIconPath": "images/game1.png",
+        "selectedColor": "#000000",
+        "color": "#8f8f8f"
+      },
+      {
+        "pagePath": "pages/recommend/index",
+        "text": "精选",
         "iconPath": "images/jingxuan0.png",
-        "selectedIconPath": "images/jingxuan1.png"
+        "selectedIconPath": "images/jingxuan1.png",
+        "selectedColor": "#000000",
+        "color": "#8f8f8f"
       },
       {
         "pagePath": "pages/games/index",
         "text": "我的",
-        "iconPath": "images/fenlei0.png",
-        "selectedIconPath": "images/fenlei1.png"
+        "iconPath": "images/my0.png",
+        "selectedIconPath": "images/my1.png",
+        "selectedColor": "#000000",
+        "color": "#8f8f8f"
       }
     ]
   },

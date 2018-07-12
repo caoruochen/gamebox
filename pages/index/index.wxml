@@ -12,17 +12,18 @@
   <view class="games">
   <view class="content" wx:for="{{categorys}}" wx:key="">
     <view class="item-title">
-      <view>{{item.name}}</view>
-      <view class="game-more" bindtap="clickMore" data-id="{{index}}">more</view>
+      <view class="game-category">{{item.name}}</view>
+      <view class="game-more" bindtap="clickMore" data-type="{{item.type}}" data-id="{{index}}">更多</view>
     </view>
    <scroll-view class="scroll-view_H" scroll-x>
       <view class="item_content" wx:for="{{item.games}}"
+       style="width: {{gameItemWidth}}px"
        wx:key="" wx:for-index="idx" wx:for-item="game" 
        bindtap="clickGame" data-index="{{index}}" data-id="{{idx}}">
 
-        <image class="icon" src="{{game.logo}}"/>
-        <text class='game-title'>{{game.name}}</text>
-        <text class='game-desc'>{{game.playerNum}}人在玩IOS回访电话IOS</text>
+        <image class="game-icon" src="{{game.logo}}" style="width: {{gameItemWidth}}px; height: {{gameItemWidth}}px;"/>
+        <view style="width:{{gameItemWidth}}px;" class='game-title'>{{game.name}}你好你好你好</view>
+        <view style="width:{{gameItemWidth}}px;" class='game-desc'>{{game.playerNum}}人在玩</view>
       </view>
     </scroll-view>
   </view>

@@ -73,7 +73,8 @@
     </view>
   </view>
 
-  <ad unit-id="adunit-aca0430fe657a9b6"></ad>
-  <!-- <ad unit-id="adunit-45cb07bb615f7ee9"></ad> -->
+  <view class="ad">
+    <ad unit-id="adunit-45cb07bb615f7ee9"></ad>
+  </view>
 
 </view>

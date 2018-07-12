@@ -2,36 +2,31 @@
   <view class="my">
     <view class="title">我的</view>
     <view class="my-info">
-      <image src="../../images/fenlei0.png" class="avatar"></image>
+      <image src="{{avatar}}" class="avatar"></image>
       <view class="user-info">
-        <view>昵称</view>
-        <view>等级</view>
-        <view>积分   红包</view>
+        <view>{{userInfo.name}}</view>
+        <view>等级:{{userInfo.level}}</view>
+        <view>积分:{{userInfo.coins}}</view>
       </view>
-      <button class="lottery">抽\n奖</button>
+      <button class="lottery" bindtap="goLottery">抽\n奖</button>
     </view>
   </view>
   <view class="daily-task">
     <view class="title">日常任务</view>
-    <view class="task-item sign-in">
-      <image src="../../images/jingxuan1.png" class="icon"></image>
+    <view wx:for="{{tasks}}" wx:key="{{index}}}" class="task-item">
+      <image src="{{item.icon}}" class="icon"></image>
       <view class="task-name">
-        <view>签到</view>
-        <view>100金币</view>
+        <view>{{item.name}}</view>
+        <view>{{item.desc}}</view>
       </view>
-      <button class="task-btn">已签到</button>
-    </view>
-    <view class="task-item">
-      <image src="../../images/jingxuan1.png" class="icon"></image>
-      <view class="task-name">
-        <view>签到</view>
-        <view>100金币</view>
-      </view>
-      <navigator url="" class="task-btn">去完成</navigator>
+      <button wx:if="{{!isLogin}}" open-type="getUserInfo" class="task-btn" bindgetuserinfo="onGotUserInfo">{{item.type == 1 ? (item.status > 0 ? '已签到' : '签到') : (item.status > 1 ? '已完成' : '去完成')}}</button>
+      <button wx:elif="{{isLogin && item.type == 1}}" class="task-btn" bindtap="signIn">{{item.status > 0 ? '已签到' : '签到'}}</button>
+      <navigator wx:elif="{{isLogin && item.type > 1}}" url="" class="task-btn" bindtap="doTask">{{item.status > 1 ? '已完成' : '去完成'}}</navigator>
     </view>
   </view>
 
   <view class="all-tasks">
     全部任务
   </view>
+
 </view>

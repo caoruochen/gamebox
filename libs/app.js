@@ -49,36 +49,82 @@ var QKApp = function (options) {
   var onShow0 = options.onShow || null;
   var onHide0 = options.onHide || null;
 
-  var loginUser = {};
+  var globalLoginUser = null;
   var currentTS0 = -1;
   var currentTS1 = -1;
+  
+  options.$saveLoginUser = function (user, detail, cb) {
+    var userInfo = this.globalData.userInfo;
+    if (userInfo) {
+      cb();
+      return;
+    }
 
+    var uid = -1;
+    if (globalLoginUser) {
+      uid = globalLoginUser.uid;
+    }
+    var param = user;
+    var me = this;
+    param.detail = JSON.stringify(detail);
+    http.post('/miniapps/updateuser', param, function (data) {
+      me.globalData.userInfo = data;
+      wx.setStorageSync('userInfo', data);
+      cb();
+    }, function () {
+      wx.hideLoading();
+      setTimeout(function () {
+        wx.showToast({
+          title: '授权失败，请重试',
+          icon: 'none',
+          mask: true
+        });
+        cb(true);
+      }, 1000)
+    });
+  };
+  
   options.onLaunch = function (params) {
     currentTS0 = (new Date()).getTime();
-    var uid = wx.getStorageSync('uid');
-    var token = wx.getStorageSync('token');
-    var expire = wx.getStorageSync('expire');
+    var loginUser = wx.getStorageSync('loginUser');
+    var uid = -1, token = null, expire = -1;
     var isLogin = false;
-
+    if (loginUser) {
+      uid = loginUser.uid;
+      token = loginUser.token;
+      expire = loginUser.expire;
+      globalLoginUser = loginUser;
+    }
     if (uid && token && expire) {
       var ts = parseInt((new Date()).getTime()/1000);
       if (ts < (expire - 3600)) { // 提前1小时刷新token
         isLogin = true;
       }
     }
+    var userInfo = wx.getStorageSync('userInfo');
+    if (!this.globalData.userInfo) {
+      if (userInfo) {
+        userInfo.uid = uid;
+        this.globalData.userInfo = userInfo;
+      }
+    };
 
+    var me = this;
     var start = function (params) {
-      this.loginUser = {
-        uid: uid,
-        token: token,
-        expire: expire
-      };
-      loginUser = this.loginUser;
-      http.config(this.loginUser);
+      http.config({
+        uid: globalLoginUser ? globalLoginUser.uid : -1,
+        token: globalLoginUser ? globalLoginUser.token : '',
+        expire: globalLoginUser ? globalLoginUser.expire : 0
+      });
+      if (!me.globalData.userInfo) {
+        var userInfo = wx.getStorageSync('userInfo');
+        if (userInfo) {
+          me.globalData.userInfo = userInfo;
+        }
+      }
     };
 
     if (!isLogin) {
-      var me = this;
       wx.login({
         success: function (res) {
           var param = {
@@ -98,10 +144,23 @@ var QKApp = function (options) {
                 me.shareInfo.url = data.shareUrl;
               }
             }
-
-            wx.setStorageSync('uid', uid);
-            wx.setStorageSync('token', token);
-            wx.setStorageSync('expire', expire);
+            var loginUser = {
+              uid: uid,
+              token: token,
+              expire: expire
+            };
+            wx.setStorageSync('loginUser', loginUser);
+            me.globalData.loginUser = loginUser;
+            globalLoginUser = loginUser;
+            if (data.name && data.avatar) {
+              var userInfo = {
+                name: data.name,
+                sex: data.sex,
+                avatar: data.avatar
+              };
+              wx.setStorageSync('userInfo', userInfo);
+              me.globalData.userInfo = userInfo;
+            }
             start.call(me, params);
           });
         }
@@ -138,7 +197,7 @@ var QKApp = function (options) {
     var param = {
       t0: currentTS0,
       t1: currentTS1,
-      uid: loginUser ? loginUser.uid : -1,
+      uid: globalLoginUser ? globalLoginUser.uid : -1,
       wb: sysInfo.brand,
       wm: sysInfo.model,
       wv: sysInfo.version,

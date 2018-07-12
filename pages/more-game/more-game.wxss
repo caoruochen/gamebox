@@ -1,24 +1,63 @@
 /* pages/more-game/more-game.wxss */
-.swiper-tab {
+page {
+  height: 100%;
+}
+view , scroll-view{
+  padding: 0px;
+  margin: 0px;
+}
+.weui-navbar{
+   width: 100%;
+   position: fixed;
+   border-bottom: 1px solid #0000ff;
+   box-sizing: border-box;
+   white-space: nowrap; 
+   z-index: 100;
+   background: white;
+}
+.rec{
   width: 100%;
-  border-bottom: 2rpx solid gainsboro;
-  text-align: center;
-  line-height:80rpx;
+  height: 7%;
 }
-.swiper-tab-list {
-  font-size: 30rpx;
+.weui-navbar .default-item{
+  /*width:25%;*/
   display: inline-block;
-  width: 20%;
-  color: #777;
+  text-align: center;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  height: 7%;
+  padding-bottom: 20rpx;
 }
-.on {
-  color: #7cba23;
-  border-bottom: 5rpx solid #7cba23;
+.weui-navbar .item_on{
+   color: #0000ff;
+}
+.weui-navbar-slider{
+    position: absolute;
+    width: 160rpx;
+    height: 2px;
+    content:"";
+    background: #0000ff;
+    bottom: 0px;
+    left: 12.5rpx;
+    transition: transform .3s;
+}
+.swiper-box{
+  height: 100%;
+  border-bottom: 1px solid #d1d1d1;
+}
+.swiper-box .swiper-item{
+   text-align: center;
+   padding-top: 200rpx;
+   height: 100%;
 }
 .item-content {
   display: flex;
   flex-direction: row;
   margin: 20rpx;
   background-color: gray;
- 
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }

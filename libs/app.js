@@ -53,7 +53,7 @@ var QKApp = function (options) {
   var globalLoginUser = null;
   var currentTS0 = -1;
   var currentTS1 = -1;
-  
+
   options.$saveLoginUser = function (user, detail, cb) {
     var userInfo = this.globalData.userInfo;
     if (userInfo) {
@@ -68,7 +68,7 @@ var QKApp = function (options) {
     var param = user;
     var me = this;
     param.detail = JSON.stringify(detail);
-    http.post('/miniapps/updateuser', param, function (data) {
+    http.get('/user/info', param, function (data) {
       me.globalData.userInfo = data;
       wx.setStorageSync('userInfo', data);
       cb();
@@ -84,7 +84,7 @@ var QKApp = function (options) {
       }, 1000)
     });
   };
-  
+
   options.onLaunch = function (params) {
     currentTS0 = (new Date()).getTime();
     var loginUser = wx.getStorageSync('loginUser');

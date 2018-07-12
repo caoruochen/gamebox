@@ -5,7 +5,8 @@ var saveRecentGame = require("../../util/saveRecentGame");
 
 var app = getApp();
 var sysInfo = app.globalData.sysInfo;
-var userInfo = app.globalData.userInfo || {name: '张三', avatar: '../../images/fenlei0.png',sex: 1,coins: '0', title: '贫民',level: 1};
+var userInfo = app.globalData.userInfo || {name: '张三', avatar: '../../images/fenlei0.png',sex: 1,coins: '1000', title: '贫民',level: 2};
+// var userInfo = {name: '张三', avatar: '../../images/fenlei0.png',sex: 1,coins: '1000', diamond: '20', title: '贫民',level: 2};
 var defaultAvatar = "";
 var avatar = userInfo.avatar || defaultAvatar;
 
@@ -14,6 +15,7 @@ QKPage({
     isLogin: false,
     userInfo: userInfo,
     avatar: avatar,
+    sex: userInfo.sex > 0 ? "../../images/pros.png" : "../../images/unpros.png",
     tasks: [
       {
         icon: '../../images/jingxuan1.png',
@@ -84,7 +86,25 @@ QKPage({
       me.setData({
         isLogin: true
       });
-      wx.hideLoading();
+      var target = e.currentTarget
+      var type = target.dataset.type
+      if (type == 2) {
+        http.get('/user/info', {gender: e.detail.userInfo.gender}, function (data) {
+          me.setData({
+            winIndex: winIndex,
+            loseIndex: loseIndex,
+            winInfos: data.win_flags ? data.win_flags : [],
+            loseInfos: data.lose_flags ? data.lose_flags : [],
+            selectedWinInfo: (data.win_flags && data.win_flags.length>0) ? data.win_flags[winIndex] : '',
+            selectedLoseInfo: (data.lose_flags && data.lose_flags.length>0) ? data.lose_flags[loseIndex] : ''
+          });
+          wx.hideLoading();
+        }, function () {
+          wx.hideLoading();
+        })
+      } else {
+        wx.hideLoading();
+      }
     });
   },
   goLottery: function(e){

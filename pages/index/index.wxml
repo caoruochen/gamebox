@@ -22,7 +22,7 @@
        bindtap="clickGame" data-index="{{index}}" data-id="{{idx}}">
 
         <image class="game-icon" src="{{game.logo}}" style="width: {{gameItemWidth}}px; height: {{gameItemWidth}}px;"/>
-        <view style="width:{{gameItemWidth}}px;" class='game-title'>{{game.name}}你好你好你好</view>
+        <view style="width:{{gameItemWidth}}px;" class='game-title'>{{game.name}}</view>
         <view style="width:{{gameItemWidth}}px;" class='game-desc'>{{game.playerNum}}人在玩</view>
       </view>
     </scroll-view>

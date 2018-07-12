@@ -5,16 +5,13 @@ var saveRecentGame = require("../../util/saveRecentGame");
 
 var app = getApp();
 var sysInfo = app.globalData.sysInfo;
-var userInfo = app.globalData.userInfo || {name: '张三', avatar: '../../images/fenlei0.png',sex: 1,coins: '1000', title: '贫民',level: 2};
+var userInfo = app.globalData.userInfo || {name: '张三', avatar: '../../images/defaultavatar.png', sex: 1,coins: '1000', diamond: '20', title: '贫民',level: 2};
 // var userInfo = {name: '张三', avatar: '../../images/fenlei0.png',sex: 1,coins: '1000', diamond: '20', title: '贫民',level: 2};
-var defaultAvatar = "";
-var avatar = userInfo.avatar || defaultAvatar;
 
 QKPage({
   data: {
     isLogin: false,
     userInfo: userInfo,
-    avatar: avatar,
     sex: userInfo.sex > 0 ? "../../images/pros.png" : "../../images/unpros.png",
     tasks: [
       {

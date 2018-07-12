@@ -28,4 +28,7 @@
     </scroll-view>
   </view>
   </view>
+  <view class="ad">
+    <ad unit-id="adunit-a3868a599f8b3cfa"></ad>
+  </view>
 </view>

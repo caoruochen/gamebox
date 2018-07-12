@@ -75,3 +75,7 @@
   color: #cacaca;
   text-align: center;
 }
+
+.ad {
+  margin-top: 40rpx;
+}

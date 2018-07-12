@@ -28,5 +28,7 @@
   <view class="all-tasks">
     全部任务
   </view>
-
+  <view class="ad">
+    <ad unit-id="adunit-45cb07bb615f7ee9"></ad>
+  </view>
 </view>

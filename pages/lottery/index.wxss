@@ -1,0 +1,36 @@
+.container{
+  overflow: hidden;
+}
+.turntable{
+  position: relative;
+  width: 80%;
+  margin: 20% auto 0;
+}
+.turntable image{
+  display: block;
+  width: auto;
+  height: auto;
+}
+.turntable .pointer{
+  width: 30%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.turntable .rotate{
+  width: 86%;
+  height: 86%;
+  position: absolute;
+  left: 7%;
+  top: 7%;
+}
+.turntable .rotate image{
+  width: 100%;
+  height: 100%;
+}
+.turntable-bg{
+  width: 100%;
+  height: auto;
+}

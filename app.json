@@ -15,6 +15,12 @@
         "selectedIconPath": "images/jingxuan1.png"
       },
       {
+        "pagePath": "pages/recommend/index",
+        "text": "精选",
+        "iconPath": "images/jingxuan0.png",
+        "selectedIconPath": "images/jingxuan1.png"
+      },
+      {
         "pagePath": "pages/games/index",
         "text": "我的",
         "iconPath": "images/fenlei0.png",

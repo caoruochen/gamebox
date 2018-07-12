@@ -138,6 +138,16 @@ QKPage({
       console.log(data)
       if (data) {
         // 是否显示活动图
+        ///////////////
+        var obj = 
+        {
+          name: '无限楼',
+          logo: 'https://snsgame.uimg.cn/video/game/wxl/logo.jpg',
+          playerNum: 1000
+        }
+        data[0].games.push(obj)
+        //data[0].games.push(obj)
+        /////////////////////
         data[0]['hasActivity'] = true;
         me.loadActivityData(data)
       }
@@ -172,7 +182,7 @@ QKPage({
       });
     });
   },
-  
+
   /**
    * 设置配置信息
    */

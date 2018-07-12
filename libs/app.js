@@ -11,7 +11,7 @@ var QKApp = function (options) {
 
   options.shareInfo = {
     title: '闭上眼睛点 款款都正点！7K7K游戏精选！',
-    url: ''
+    url: '../../images/share.jpg'
   }
 
   if (config.httpApi) {

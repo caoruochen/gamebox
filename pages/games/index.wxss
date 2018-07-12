@@ -4,12 +4,13 @@ image{
 }
 .container {
   width: 100%;
+  height: 100%;
   box-sizing: border-box;
-  font-size: 13px;
+  background-color: #eff2f6;
 }
 
 .my{
-  background-color: yellow;
+  background-image: linear-gradient(bottom, #f6c749, #f3b244);
 }
 .my-info{
   display: flex;
@@ -26,7 +27,7 @@ image{
   display: flex;
 }
 .base-info > view{
-  font-size: 16px;
+  font-size: 19px;
   font-weight: bold;
 } 
 .base-info image{
@@ -65,10 +66,15 @@ image{
   font-size: 14px;
 }
 .user-info .coins{
+  display: flex;
+  align-items: center;
   margin-top: 5px;
 }
+.user-info .coins text{
+  font-size: 15px;
+}
 .user-info .coins image{
-  width: 15px;
+  width: 20px;
 }
 .user-info .coins .coins-icon{
   margin-right: 4px;
@@ -108,7 +114,7 @@ image{
 }
 .my .banner > view .center-block view:last-child{
   font-size: 12px;
-  color: #cacaca;
+  color: #666;
   margin-top: 5px;
 }
 .my .banner > view .right-arrow{
@@ -117,20 +123,31 @@ image{
 }
 
 .daily-task{
-  /*margin-top: 10px;*/
+  background-color: #fff;
 }
 .daily-task .task-head{
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 8px 10px;
-    border-bottom: 1px solid　#cacaca;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 8px 12px 10px;
+  border-bottom: 1px solid #e4e4e4;
 }
 .daily-task .title{
-  font-size: 14px;
+  position: relative;
+  padding-left: 13px;
+  font-size: 15px;
+  color: #666;
+}
+.daily-task .title:before{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: #f3b244;
 }
 .daily-task .task-head > text{
   padding: 0;
-  border: 0 solid transparent;
+  border-width: 0;
   margin: 0;
   line-height: normal;
   font-size: 12px;
@@ -139,43 +156,59 @@ image{
 .task-item{
   display: flex;
   align-items: center;
-  padding: 4px 10px 4px 8px;
-  border-bottom: 1px solid　#cacaca;
+  padding-left: 20px;
+  padding-right: 10px;
 }
-.task-item .icon{
-  width: 20px;
-  height: 20px;
+.task-item .task-icon{
+  width: 32px;
+}
+.task-item .right-block{
+  display: flex;
+  flex: 1;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e4e4e4;
+  margin-left: 10px;
+}
+.task-item:last-of-type .right-block{
+  padding-bottom: 30px;
+  border-bottom-width: 0;
 }
 .daily-task .task-info{
   display: flex;
   flex: 1;
   flex-direction: column;
   padding-bottom: 5px;
-  margin-left: 15px;
 }
 .daily-task .task-item .task-name{
-  font-size: 12px;
+  font-size: 15px;
   font-weight: bold;
-  color: #000;
+  color: #111;
 }
 .daily-task .task-item .task-award{
-  font-size: 10px;
-  color: #cacaca;
+  font-size: 13px;
+  color: #666;
 }
 .daily-task .task-item .task-btn{
   line-height: normal;
   padding: 2px 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   font-size: 13px;
   color: #fff;
-  background-color: yellow;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.daily-task .task-item .task-btn.active{
+  background-color: #f6c344;
+  border: 1px solid #f6c344;
 }
 
 .all-tasks{
   padding-top: 12px;
   margin-bottom: 20px;
   font-size: 15px;
-  color: #cacaca;
+  color: #666;
   text-align: center;
 }
 

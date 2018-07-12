@@ -3,3 +3,7 @@ page {
   box-sizing: border-box;
   font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "Microsoft YaHei", "ST Heiti", SimHei, sans-serif;
 }
+
+.ad {
+  padding: 20px 10px;
+}

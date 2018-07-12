@@ -1,114 +1,90 @@
-Page({
+var QKPage = require("../../libs/page");
+var http = require("../../util/http");
+var util = require("../../util/util");
 
+QKPage({
   /**
    * 页面的初始数据
    */
   data: {
-    gameName: '游戏',
     userName: 'ysx',
     userGrade: '土豪2000',
     hasActivity: false,
-    categorys: [
-      {
-        category: '最近常玩',
-        hasActivity: true,
-        games: [
-          {
-            title: '无限楼',
-            playerNum: '100万'
-          },
-          {
-            title: '弹珠',
-            playerNum: '99万'
-          },
-          {
-            title: '你画我猜',
-            playerNum: '100万'
-          },
-          {
-            title: '谁是卧底',
-            playerNum: '99万'
-          },
-        ]
-      },
-      {
-        category: '小编推荐',
-        games: [
-          {
-            title: '有点意思',
-            playerNum: '10万'
-          },
-          {
-            title: '别踩我',
-            playerNum: '89万'
-          },
-          {
-            title: '狼人杀',
-            playerNum: '10万'
-          },
-          {
-            title: '100层',
-            playerNum: '89万'
-          },
-        ]
-      }
-    ]
+    categorys: []
+    // categorys: [
+    //   {
+    //     name: '最近常玩',
+    //     hasActivity: true,
+    //     games: [
+    //       {
+    //         name: '无限楼',
+    //         playerNum: '100万'
+    //       },
+    //       {
+    //         name: '弹珠',
+    //         playerNum: '99万'
+    //       },
+    //       {
+    //         name: '你画我猜',
+    //         playerNum: '100万'
+    //       },
+    //       {
+    //         name: '谁是卧底',
+    //         playerNum: '99万'
+    //       },
+    //     ]
+    //   },
+    //   {
+    //     name: '小编推荐',
+    //     games: [
+    //       {
+    //         name: '有点意思',
+    //         playerNum: '10万'
+    //       },
+    //       {
+    //         name: '别踩我',
+    //         playerNum: '89万'
+    //       },
+    //       {
+    //         name: '狼人杀',
+    //         playerNum: '10万'
+    //       },
+    //       {
+    //         name: '100层',
+    //         playerNum: '89万'
+    //       },
+    //     ]
+    //   },
+    //   {
+    //     name: '精彩游戏',
+    //     games: [
+    //       {
+    //         name: '有点意思',
+    //         playerNum: '10万'
+    //       },
+    //       {
+    //         name: '别踩我',
+    //         playerNum: '89万'
+    //       },
+    //       {
+    //         name: '狼人杀',
+    //         playerNum: '10万'
+    //       },
+    //       {
+    //         name: '100层',
+    //         playerNum: '89万'
+    //       },
+    //     ]
+    //   }
+    // ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+    this.loadGameData()
+    this.setPrefInfo()
   },
 
   /**
@@ -126,16 +102,22 @@ Page({
     })
   },
 
+  /**
+   * 点击游戏
+   */
   clickGame: function(e) {
     var index = e.currentTarget.dataset.index
     var idx = e.currentTarget.dataset.id
     console.log("click game index="+index+",id="+idx)
     wx.showToast({
-      title: this.data.categorys[index].games[idx].title,
+      title: this.data.categorys[index].games[idx].name,
       icon: 'none'
     })
   },
 
+  /**
+   * 点击活动
+   */
   clickActivity: function(e) {
     console.log(e)
     wx.showToast({
@@ -144,4 +126,61 @@ Page({
     })
   },
 
+  /**
+   * 加载游戏数据信息
+   */
+  loadGameData: function () {
+    wx.showLoading({
+      title: '数据加载中'
+    });
+    var me = this;
+    http.get('/gamebox/recommends', function (data) {
+      console.log(data)
+      if (data) {
+        // 是否显示活动图
+        data[0]['hasActivity'] = true;
+        me.loadActivityData(data)
+      }
+    }, function () {
+      wx.hideLoading();
+      
+      wx.showToast({
+        title: msg || '数据加载失败',
+        icon: 'none'
+      });
+    });
+  }, 
+
+  /**
+   * 加载活动数据
+   */
+  loadActivityData: function(gameData) {
+     this.setData({
+       categorys: gameData
+     })
+    var me = this;
+    http.get('/gamebox/activity', function (activityData) {
+      wx.hideLoading();
+      console.log(activityData)
+      
+    }, function () {
+      wx.hideLoading();
+
+      wx.showToast({
+        title: msg || '数据加载失败',
+        icon: 'none'
+      });
+    });
+  },
+  
+  /**
+   * 设置配置信息
+   */
+  setPrefInfo: function(e) {
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log("screenWidth="+res.screenWidth+", screenHeight="+ res.screenHeight)
+      },
+    })
+  },
 })

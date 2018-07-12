@@ -1,6 +1,9 @@
 <view class="container">
 
-<block wx:for="{{games}}" wx:key="*this">
+<block wx:for="{{games}}" wx:key="*this" wx:for-index="idx">
+  <view class="ad" wx:if="{{idx==2}}">
+    <ad unit-id="adunit-50b4e36757dd0d68"></ad>
+  </view>
 
   <view wx:if="{{item.time && item.time.length>0}}" class="game-time">
     <view>{{item.time}}</view>

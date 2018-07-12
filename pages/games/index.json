@@ -1,7 +1,3 @@
 {
-  "navigationBarTitleText": "7K7K游戏",
-  "enablePullDownRefresh": true,
-  "backgroundTextStyle": "dark",
-  "backgroundColor": "#eee",
-  "onReachBottomDistance": 20
+  "navigationBarTitleText": "我的"
 }

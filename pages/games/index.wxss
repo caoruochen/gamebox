@@ -1,25 +1,47 @@
+image{
+  width: auto;
+  height: auto;
+}
 .container {
   width: 100%;
   box-sizing: border-box;
   font-size: 13px;
 }
 
-.title{
-  padding: 10px 0 10px 15px;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
-  font-size: 16px;
+.my{
+  background-color: yellow;
 }
 .my-info{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 20px 35px;
+  padding: 20px 20px 25px;
 }
 .my-info .avatar{
   width: 60px;
   height: 60px;
   border-radius: 50%;
+}
+.base-info{
+  display: flex;
+}
+.base-info image{
+  width: 16px;
+  margin-left: 10px;
+}
+.my-info .level{
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 15px;
+  margin-top: 10px;
+  background-color: #fff;
+}
+.my-info .level image{
+  width: 10px;
+  margin-right: 5px;
+}
+.my-info .level text{
+  font-size: 10px;
 }
 .my-info .lottery{
   display: flex;
@@ -34,44 +56,124 @@
   white-space: pre-line;
 }
 .user-info{
-  display: flex;
   flex: 1;
-  flex-direction: column;
   margin-left: 20px;
   font-size: 14px;
 }
-.user-info view:last-child{
+.user-info .coins{
   margin-top: 5px;
 }
+.user-info .coins image{
+  width: 15px;
+}
+.user-info .coins .coins-icon{
+  margin-right: 4px;
+}
+.user-info .coins .diamond-icon{
+  margin-left: 6px;
+  margin-right: 2px;
+}
+.my .banner{
+  display: flex;
+  width: 90%;
+  padding-bottom: 30px;
+  margin: 0 auto;
+}
+.my .banner > view{
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  padding: 11px 5px 25px 11px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.my .banner > view:last-child{
+  margin-left: 3%;
+}
+.my .banner > view .left-icon{
+  width: 20px;
+}
+.my .banner > view .center-block{
+  flex: 1;
+  margin-left: 8px;
+}
+.my .banner > view .center-block view:first-child{
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+}
+.my .banner > view .center-block view:last-child{
+  font-size: 12px;
+  color: #cacaca;
+  margin-top: 5px;
+}
+.my .banner > view .right-arrow{
+  width: 10px;
+}
 
+.daily-task{
+  /*margin-top: 10px;*/
+}
+.daily-task .task-head{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 8px 10px;
+    border-bottom: 1px solid　#cacaca;
+}
+.daily-task .title{
+  font-size: 14px;
+}
+.daily-task .task-head > text{
+  padding: 0;
+  border: 0 solid transparent;
+  margin: 0;
+  line-height: normal;
+  font-size: 12px;
+  color: blue;
+}
 .task-item{
   display: flex;
   align-items: center;
-  padding: 0 10px 0 5px;
-  border-bottom: 1px solid #000;
+  padding: 4px 10px 4px 8px;
+  border-bottom: 1px solid　#cacaca;
 }
 .task-item .icon{
   width: 20px;
   height: 20px;
 }
-.daily-task .task-name{
+.daily-task .task-info{
   display: flex;
   flex: 1;
   flex-direction: column;
   padding-bottom: 5px;
   margin-left: 15px;
 }
+.daily-task .task-item .task-name{
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+}
+.daily-task .task-item .task-award{
+  font-size: 10px;
+  color: #cacaca;
+}
 .daily-task .task-item .task-btn{
   line-height: normal;
   padding: 2px 15px;
-  border: 1px solid #000;
   border-radius: 15px;
   font-size: 13px;
+  color: #fff;
+  background-color: yellow;
 }
 
 .all-tasks{
   padding-top: 12px;
+  margin-bottom: 20px;
   font-size: 15px;
   color: #cacaca;
   text-align: center;
+}
+
+.ad {
+  margin-top: 40rpx;
 }

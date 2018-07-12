@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/games/index",
     "pages/recommend/index",
-    "pages/more-game/more-game"
+    "pages/more-game/more-game",
+    "pages/lottery/index"
   ],
   "tabBar": {
     "list": [

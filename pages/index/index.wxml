@@ -1,15 +1,19 @@
 <view class="container">
   <!-- top -->
   <view class="top-bar">
-    <text style="flex: 1; margin-left: 30rpx;">{{userName}}</text>
-     <text style="margin-right: 30rpx;">{{userGrade}}</text>
+    <view>
+      <text class="wel">你好 </text> <text class="nick">{{userName}}</text></view>
+    <view>
+      <image src="../../images/coin.png" />
+      <text>1000</text>
+    </view>
   </view>
-    <view class="divider"/>
   <!-- content -->
+  <view class="games">
   <view class="content" wx:for="{{categorys}}" wx:key="">
-    <view class=".item_title_size">
-      <text style="flex: 4;">{{item.name}}</text>
-      <text style="flex: 1;" bindtap="clickMore" data-id="{{index}}">更多</text>
+    <view class="item-title">
+      <view>{{item.name}}</view>
+      <view class="game-more" bindtap="clickMore" data-id="{{index}}">more</view>
     </view>
    <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
       <view class="item_content" wx:for="{{item.games}}"
@@ -22,10 +26,9 @@
         <text>{{game.playerNum}}人在玩</text>
       </view>
     </scroll-view>
-    <!-- activity -->
-    <view wx:if="{{item.hasActivity}}" style="display: flex; flex-direction: row; padding-top: 20rpx;">
-      <image class="ad_image" 
-        src="../../pages/index/pic/timg.jpg" bindtap="clickActivity"/>
-    </view>
+  </view>
+  </view>
+  <view class="ad">
+    <ad unit-id="adunit-a3868a599f8b3cfa"></ad>
   </view>
 </view>

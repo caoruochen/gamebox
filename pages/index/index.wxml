@@ -12,7 +12,12 @@
   <view class="games">
     <view class="content" wx:for="{{categorys}}" wx:key="">
       <view class="item-title">
-        <view class="game-category">{{item.name}}</view>
+        <view class="game-category">
+          <view>
+            <image src="{{item.icon ? item.icon : '../../images/hot-icon.png'}}"></image>
+          </view>
+          <view style="color: {{item.color ? item.color : '#0c0c0c;'}}">{{item.name}}</view>
+        </view>
         <view class="game-more" bindtap="clickMore" data-type="{{item.type}}" data-id="{{index}}">更多</view>
       </view>
     <scroll-view class="scroll-view_H" scroll-x>
@@ -23,17 +28,26 @@
 
           <image class="game-icon" src="{{game.logo}}" style="width: {{gameItemWidth}}px; height: {{gameItemWidth}}px;"/>
           <view style="width:{{gameItemWidth}}px;" class='game-title'>{{game.name}}</view>
-          <view style="width:{{gameItemWidth}}px;" class='game-desc'>{{game.playerNum}}人在玩</view>
+          <view wx:if="{{game.playerNum}}" style="width:{{gameItemWidth}}px;" class='game-desc'>{{game.playerNum}}人在玩</view>
         </view>
       </scroll-view>
     </view>
   </view>
 
-  <view class="ad">
+  <view class="ad" wx:if="{{adpos=='top'}}">
     <ad unit-id="adunit-a3868a599f8b3cfa"></ad>
   </view>
 
   <view class="gamebox-games">
+    <view class="item-title">
+      <view class="game-category">
+        <view>
+          <image src="../../images/more-icon.png"></image>
+        </view>
+        <view>游戏一览</view>
+      </view>
+      <view class="game-more" bindtap="clickMore" data-type="" data-id="">更多</view>
+    </view>
     <block wx:for="{{games}}" wx:key="*this">
       <view class="gamebox-item" bindtap="startGame" data-appid="{{item.appId}}" data-extra="{{item.extra}}" data-type="{{item.type}}" data-preview="{{item.bg}}">
       <view class="gamebox-item-logo">
@@ -41,7 +55,7 @@
       </view>
       <view class="gamebox-item-info">
         <view>{{item.name}}
-          <text class='gamebox-item-num'><text>100万</text>人在玩</text>
+          <text wx:if="{{item.playerNum}}" class='gamebox-item-num'><text>{{item.playerNum}}人在玩</text></text>
         </view>
         <view class="gamebox-item-info_desc">{{item.desc}}</view>
       </view>
@@ -50,4 +64,7 @@
     </block>
   </view>
 
+  <view class="ad" wx:if="{{adpos!='top'}}">
+    <ad unit-id="adunit-a3868a599f8b3cfa"></ad>
+  </view>
 </view>

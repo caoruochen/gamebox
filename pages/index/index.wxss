@@ -66,6 +66,22 @@ swiper {
 .item-title .game-category {
   color: #0c0c0c;
   font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.item-title .game-category>view:nth-child(1) {
+  min-height: 50rpx; 
+  padding-top: 6rpx;
+  box-sizing: border-box;
+}
+
+.item-title .game-category image {
+  width: 40rpx;
+  height: 40rpx;
+  padding-right: 15rpx;
 }
 
 .game-more {
@@ -99,13 +115,14 @@ swiper {
 .game-title {
   color: #353535;
   font-size: 14px;
-  overflow-x: hidden;
+  overflow-x: scroll;
   text-align: center;
 }
 
 .game-desc {
   color: #b2b2b2;
-  font-size: 11px;
+  font-size: 12px;
+  overflow-x: scroll;
   text-align: center;
 }
 

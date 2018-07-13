@@ -62,12 +62,12 @@ QKPage({
   clickMore: function(e) {
     var index = e.currentTarget.dataset.id
     
-    if (!index) {
+    if (index == '-1') {
       index = 0 // 暂时点击游戏一览，跳转到第一项
-    }
+    } 
+    var type = this.data.categorys[index].type
     wx.navigateTo({
-      url: '/pages/more-game/more-game?type='
-      +this.data.categorys[index].type +'&position='+index,
+      url: '/pages/more-game/more-game?type='+type +'&position='+index,
     })
   },
 
@@ -95,7 +95,8 @@ QKPage({
     http.get('/gamebox/recommends', function (data) {
       wx.hideLoading();
       me.setData({
-        categorys: data.gamelist
+        categorys: data.gamelist,
+        adpos: data.adpos
       })
     }, function () {
       wx.hideLoading();

@@ -64,6 +64,118 @@ var SaveRecentGame = function(options){
 	        "linkMode": 2,
 	        "icon": "https://snsgame.uimg.cn/video/game/dgymq/dgymq.png"
 	    },
+	    {
+        "gameId": 61,
+        "type": "xcx",
+        "appId": "wx5fbc3c48bb79327b",
+        "name": "西部神枪手",
+        "desc": "自从玩这款游戏，每晚都能吃鸡了",
+        "logo": "https://snsgame.uimg.cn/video/game/xbsqs/logo.jpg",
+        "poster": "https://snsgame.uimg.cn/video/game/xbsqs/poster.jpg",
+        "mode": "scaleToFill",
+        "vsrc": "",
+        "vshow": false,
+        "direction": 0,
+        "bg": "https://snsgame.uimg.cn/video/game/xbsqs/bg.jpg",
+        "path": "",
+        "extra": "",
+        "pics": [
+            "https://snsgame.uimg.cn/video/game/xbsqs/pic1.jpg",
+            "https://snsgame.uimg.cn/video/game/xbsqs/pic2.jpg",
+            "https://snsgame.uimg.cn/video/game/xbsqs/pic3.jpg"
+        ],
+        "playerNum": 42749,
+        "tags": [
+            "休闲",
+            "益智"
+        ],
+        "linkMode": 2,
+        "icon": "https://snsgame.uimg.cn/video/game/xbsqs/logo.jpg"
+    },
+    {
+        "gameId": 5,
+        "type": "xcx",
+        "appId": "wxdd722e153724f2a5",
+        "name": "球球一笔画",
+        "desc": "动脑又动手，请大家尽情享受“一笔画”",
+        "logo": "https://snsgame.uimg.cn/video/game/ybhc/icon.jpg",
+        "poster": "",
+        "mode": "scaleToFill",
+        "vsrc": "",
+        "vshow": false,
+        "direction": 0,
+        "bg": "https://snsgame.uimg.cn/video/game/ybhc/bg.jpg",
+        "path": "",
+        "extra": "",
+        "pics": [
+            "https://snsgame.uimg.cn/video/game/ybhc/pic1.jpg",
+            "https://snsgame.uimg.cn/video/game/ybhc/pic2.jpg",
+            "https://snsgame.uimg.cn/video/game/ybhc/pic3.jpg"
+        ],
+        "playerNum": 60919,
+        "tags": [
+            "休闲",
+            "益智"
+        ],
+        "linkMode": 2,
+        "icon": "https://snsgame.uimg.cn/video/game/ybhc/icon.jpg"
+    },
+    {
+        "gameId": 61,
+        "type": "xcx",
+        "appId": "wx5fbc3c48bb79327b",
+        "name": "西部神枪手",
+        "desc": "自从玩这款游戏，每晚都能吃鸡了",
+        "logo": "https://snsgame.uimg.cn/video/game/xbsqs/logo.jpg",
+        "poster": "https://snsgame.uimg.cn/video/game/xbsqs/poster.jpg",
+        "mode": "scaleToFill",
+        "vsrc": "",
+        "vshow": false,
+        "direction": 0,
+        "bg": "https://snsgame.uimg.cn/video/game/xbsqs/bg.jpg",
+        "path": "",
+        "extra": "",
+        "pics": [
+            "https://snsgame.uimg.cn/video/game/xbsqs/pic1.jpg",
+            "https://snsgame.uimg.cn/video/game/xbsqs/pic2.jpg",
+            "https://snsgame.uimg.cn/video/game/xbsqs/pic3.jpg"
+        ],
+        "playerNum": 42749,
+        "tags": [
+            "休闲",
+            "益智"
+        ],
+        "linkMode": 2,
+        "icon": "https://snsgame.uimg.cn/video/game/xbsqs/logo.jpg"
+    },
+    {
+        "gameId": 5,
+        "type": "xcx",
+        "appId": "wxdd722e153724f2a5",
+        "name": "球球一笔画",
+        "desc": "动脑又动手，请大家尽情享受“一笔画”",
+        "logo": "https://snsgame.uimg.cn/video/game/ybhc/icon.jpg",
+        "poster": "",
+        "mode": "scaleToFill",
+        "vsrc": "",
+        "vshow": false,
+        "direction": 0,
+        "bg": "https://snsgame.uimg.cn/video/game/ybhc/bg.jpg",
+        "path": "",
+        "extra": "",
+        "pics": [
+            "https://snsgame.uimg.cn/video/game/ybhc/pic1.jpg",
+            "https://snsgame.uimg.cn/video/game/ybhc/pic2.jpg",
+            "https://snsgame.uimg.cn/video/game/ybhc/pic3.jpg"
+        ],
+        "playerNum": 60919,
+        "tags": [
+            "休闲",
+            "益智"
+        ],
+        "linkMode": 2,
+        "icon": "https://snsgame.uimg.cn/video/game/ybhc/icon.jpg"
+    }
       ];
       wx.setStorageSync(this.key, recentGameList);
       this.recentGameList = recentGameList;

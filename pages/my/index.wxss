@@ -16,11 +16,11 @@ image{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 35px 17px 45px 30px;
+  padding: 30rpx 34rpx 50rpx 60rpx;
 }
 .my-info .avatar{
   display: block;
-  padding: 2px;
+  padding: 4rpx;
   border-radius: 50%;
   background-color: #fff;
 }
@@ -32,6 +32,7 @@ image{
 }
 .base-info{
   display: flex;
+  color: #0c0c0c;
 }
 .base-info > view{
   font-size: 19px;
@@ -234,7 +235,9 @@ image{
 }
 
 .games-box{
-  padding:0rpx 30rpx;
+  padding: 20px 30rpx;
+  height: 100%;
+  box-sizing: border-box;
 }
 .item_content {
   display: inline-flex;
@@ -255,13 +258,8 @@ image{
   padding-left: 20rpx;
   box-sizing: border-box;
 }
-.game-content .item_content:nth-child(1) {
+.game-content .item_content:nth-child(4n+1) {
   margin-left: 0;  
-}
-
-.scroll-view_H {
-  width: 100%;
-  /*white-space: nowrap;*/
 }
 
 .game-logo{

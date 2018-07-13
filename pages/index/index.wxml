@@ -46,7 +46,7 @@
         </view>
         <view>游戏一览</view>
       </view>
-      <view class="game-more" bindtap="clickMore" data-type="" data-id="">更多</view>
+      <view class="game-more" bindtap="clickMore" data-type="" data-id="-1">更多</view>
     </view>
     <block wx:for="{{games}}" wx:key="*this">
       <view class="gamebox-item" bindtap="startGame" data-appid="{{item.appId}}" data-extra="{{item.extra}}" data-type="{{item.type}}" data-preview="{{item.bg}}">

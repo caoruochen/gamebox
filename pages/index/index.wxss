@@ -121,7 +121,7 @@ swiper {
 
 .game-desc {
   color: #b2b2b2;
-  font-size: 12px;
+  font-size: 11px;
   overflow-x: scroll;
   text-align: center;
 }

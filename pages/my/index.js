@@ -10,7 +10,7 @@ var userInfo = app.globalData.userInfo || {name: '张三', avatar: '../../images
 QKPage({
   data: {
     isLogin: false,
-    userInfo: userInfo,
+    userInfo: app.globalData.userInfo,
     checkSwitch: false,
     games: [],
     tasks: [
@@ -112,7 +112,11 @@ QKPage({
     });
   },
   goLottery: function(e){
-    
+    wx.showModal({
+      title: '',
+      content: '抽奖活动暂未开启，敬请期待',
+      showCancel: false
+    })
   },
   signIn: function(e){
 

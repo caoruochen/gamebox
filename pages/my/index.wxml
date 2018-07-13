@@ -2,27 +2,24 @@
   <view class="my">
     <view class="my-info">
       <view class="avatar">
-        <image src="{{userInfo.avatar}}"></image>
+        <image src="{{userInfo ? userInfo.avatar : '../../images/defaultavatar.png'}}"></image>
       </view>
       <view class="user-info">
         <view class="base-info">
-          <view>{{userInfo.name}}</view>
-          <!-- <image mode="widthFix" src="{{userInfo.sex > 0 ? '../../images/pros.png' : '../../images/unpros.png'}}"></image> -->
+          <view>{{userInfo ? userInfo.name : '点击登陆'}}</view>
         </view>
-        <!-- <view class="level">
-          <image mode="widthFix" src="../../images/pros.png" class="level-icon"></image>
-          <text>{{userInfo.title}}</text>
-        </view> -->
         <view class="coins">
           <image mode="widthFix" src="../../images/coins-icon.png" class="coins-icon"></image>
-          <text>{{userInfo.coins}}</text>
-          <!-- <image mode="widthFix" src="../../images/pros.png" class="diamond-icon"></image>
-          <text>{{userInfo.points}}</text> -->
+          <text>{{userInfo ? userInfo.coins : '0'}}</text>
         </view>
       </view>
-      <navigator url="/pages/lottery/index" class="lottery" bindtap="goLottery">
+      
+      <!--navigator url="/pages/lottery/index" class="lottery" bindtap="goLottery">
         <image mode="widthFix" src="../../images/lottery-icon.png"></image>
-      </navigator>
+      </navigator-->
+      <view class="lottery" bindtap="goLottery">
+        <image mode="widthFix" src="../../images/lottery-icon.png"></image>
+      </view>
     </view>
   </view>
 
@@ -30,7 +27,6 @@
     <view class="daily-task">
       <scroll-view scroll-x class="task-head">
         <view class="title">日常任务<text>({{1}}/{{tasks.length}})</text></view>
-        <!-- <text>一键领取</text> -->
       </scroll-view>
       <view wx:for="{{tasks}}" wx:key="{{index}}}" class="task-item">
         <image mode="widthFix" src="{{item.icon}}" class="task-icon"></image>

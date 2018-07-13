@@ -7,7 +7,6 @@ swiper {
   margin: 0 30rpx;
 }
 
-
 .top-bar {
   position: fixed;
   z-index: 100;
@@ -53,7 +52,7 @@ swiper {
 .content {
   box-sizing: border-box;
   padding: 10rpx 0 10px 0; 
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1rpx solid #ededed;
 }
 
 .item-title {
@@ -143,7 +142,7 @@ swiper {
   justify-content: space-between;
   box-sizing: border-box;
   padding: 20rpx 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1rpx solid #eee;
 }
 
 .gamebox-item-logo {
@@ -184,7 +183,7 @@ swiper {
 }
 
 .gamebox-item-play {
-  border: 1px solid #3884d8;
+  border: 1rpx solid #3884d8;
   font-size: 13px;
   color: #3884d8;
   border-radius: 15px;

@@ -143,7 +143,7 @@ image{
   display: flex;
   justify-content: center;
   padding: 15px 0 12px 0;
-  border-bottom: 0.5px solid #e4e4e4;
+  border-bottom: 1rpx solid #e4e4e4;
 }
 .daily-task .task-head .top-bar{
   flex: 1;
@@ -189,7 +189,7 @@ image{
   padding-top: 15px;
   padding-bottom: 12px;
   padding-right: 10px;
-  border-bottom: 0.5px solid #e4e4e4;
+  border-bottom: 1rpx solid #e4e4e4;
   margin-left: 10px;
 }
 .task-item:last-of-type .right-block{
@@ -250,7 +250,7 @@ image{
   justify-content: space-between;
   box-sizing: border-box;
   padding: 20rpx 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1rpx solid #eee;
 }
 .gamebox-item:last-of-type{
   border-bottom-width: 0; 
@@ -294,7 +294,7 @@ image{
 }
 
 .gamebox-item-play {
-  border: 1px solid #3884d8;
+  border: 1rpx solid #3884d8;
   font-size: 13px;
   color: #3884d8;
   border-radius: 15px;

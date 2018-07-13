@@ -20,27 +20,9 @@
       </view>
       <navigator url="/pages/lottery/index" class="lottery" bindtap="goLottery">抽\n奖</navigator>
     </view>
-    <!-- <view class="banner">
-      <view class="notification">
-        <image mode="widthFix" src="../../images/pros.png" class="left-icon"></image>
-        <view class="center-block">
-          <view>通知</view>
-          <view>红包活动</view>
-        </view>
-        <image mode="widthFix" src="../../images/pros.png" class="right-arrow"></image>
-      </view>
-      <view class="shop">
-        <image mode="widthFix" src="../../images/pros.png" class="left-icon"></image>
-        <view class="center-block">
-          <view>通知</view>
-          <view>红包活动</view>
-        </view>
-        <image mode="widthFix" src="../../images/pros.png" class="right-arrow"></image>
-      </view>
-    </view> -->
   </view>
 
-  <view wx:if="{{!checkSwitch}}">
+  <view class="my-tasks" wx:if="{{!checkSwitch}}">
     <view class="daily-task">
       <view class="task-head">
         <view class="title">日常任务<text>({{1}}/{{tasks.length}})</text></view>
@@ -59,17 +41,14 @@
           </view>
       </view>
     </view>
-    <!-- <view class="all-tasks">
-      全部任务
-    </view> -->
   </view>
-  <view wx:else>
+  <view class="my-tasks" wx:else>
     <view class="item_content" wx:for="{{games}}"
        wx:key="" wx:for-index="idx" wx:for-item="game" 
        bindtap="goDetail" data-index="{{index}}" data-gameid="{{game.gameId}}">
       <image class="icon" src="{{game.logo}}"></image>
       <text class='game-title'>{{game.name}}</text>
-      <text class='game-desc'>{{game.playerNum}}人在玩IOS回访电话IOS</text>
+      <text class='game-desc'>{{game.playerNum}}人在玩</text>
     </view>
   </view>
 

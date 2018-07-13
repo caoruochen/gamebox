@@ -108,14 +108,14 @@ QKPage({
  * item 点击事件
  */
   itemClick: function(e) {
-    console.log(e.currentTarget.dataset.item)
-    var game = e.currentTarget.dataset.item
+    console.log(e.currentTarget.dataset.appid)
+    var appid = e.currentTarget.dataset.appid
     wx.showLoading({
       title: '',
       mask: true
     });
     wx.navigateToMiniProgram({
-      appId: game.appId,
+      appId: appid,
       complete: function (res) {
         wx.hideLoading()
       }

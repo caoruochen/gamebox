@@ -5,26 +5,63 @@ var util = require("../../util/util");
 var app = getApp();
 var ratio = app.globalData.wwidth / 750;
 
+var swiperHeight = 130;
+var defaultBanners = [{
+  pic: 'https://snsgame.uimg.cn/minigame/res/banner/default.png'
+},
+  {
+    pic: 'https://snsgame.uimg.cn/minigame/res/banner/default.png'
+  }];
+
 QKPage({
   /**
    * 页面的初始数据
    */
   data: {
-    userName: 'ysx',
-    userGrade: '土豪2000',
+    swiperHeight: swiperHeight,
+    banners: defaultBanners,
     hasActivity: false,
     categorys: [],
+    bannerImgWidth: (app.globalData.wwidth - 60 * ratio),
     wwidth: app.globalData.wwidth,
-    gameItemWidth: (app.globalData.wwidth-150*ratio) / 4 // 60 padding + 3*30 margin
+    gameItemWidth: (app.globalData.wwidth-180*ratio) / 4,// 60 padding + 3*30 margin
+    games: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData)
     this.loadGameData()
-    this.setPrefInfo()
+    this.loadGame(true);
+  },
+
+  onPullDownRefresh: function (e) {
+    this.loadGame(true, true);
+  },
+  loadGame: function (refresh, stopPullDown) {
+    var me = this;
+    http.get('/gamebox/games', function (data) {
+      wx.hideLoading();
+      if (stopPullDown) {
+        wx.stopPullDownRefresh();
+      }
+      if (data) {
+        me.setData({
+          games: data
+        });
+      }
+    }, function () {
+      wx.hideLoading();
+      if (stopPullDown) {
+        wx.stopPullDownRefresh();
+      }
+      wx.showToast({
+        title: msg || '数据加载失败',
+        icon: 'none'
+      });
+    });
+
   },
 
   /**
@@ -121,14 +158,4 @@ QKPage({
     });
   },
 
-  /**
-   * 设置配置信息
-   */
-  setPrefInfo: function(e) {
-    wx.getSystemInfo({
-      success: function(res) {
-        console.log("screenWidth="+res.screenWidth+", screenHeight="+ res.screenHeight)
-      },
-    })
-  },
 })

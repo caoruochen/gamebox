@@ -6,7 +6,6 @@ var saveRecentGame = require("../../util/saveRecentGame");
 var app = getApp();
 var sysInfo = app.globalData.sysInfo;
 var userInfo = app.globalData.userInfo || {name: '张三', avatar: '../../images/defaultavatar.png', sex: 1,coins: '1000', points: '20', title: '贫民',level: 2};
-// var userInfo = {name: '张三', avatar: '../../images/fenlei0.png',sex: 1,coins: '1000', diamond: '20', title: '贫民',level: 2};
 
 QKPage({
   data: {

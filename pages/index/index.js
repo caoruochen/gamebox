@@ -61,8 +61,9 @@ QKPage({
 
   clickMore: function(e) {
     var index = e.currentTarget.dataset.id
-    if (index) {
-
+    
+    if (!index) {
+      index = 0 // 暂时点击游戏一览，跳转到第一项
     }
     wx.navigateTo({
       url: '/pages/more-game/more-game?type='

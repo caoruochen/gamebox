@@ -1,3 +1,13 @@
+swiper {
+  width: 100%;
+}
+
+.slide-image {
+  border-radius: 30rpx;
+  margin: 0 30rpx;
+}
+
+
 .top-bar {
   position: fixed;
   z-index: 100;
@@ -13,12 +23,6 @@
   justify-content: space-between;
 }
 
-.top-bar image {
-  width: 30rpx;  
-  height: 30rpx;
-  margin-right: 10rpx;
-}
-
 .top-bar .wel {
   font-size: 12px;
 }
@@ -28,26 +32,56 @@
   font-size: 18px;
 }
 
+.top-bar-coin {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  white-space: nowrap;
+  justify-content: center;
+}
+
+.top-bar-coin image {
+  width: 30rpx;  
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+
 .games {
-  padding: 85rpx 30rpx 0 30rpx;
+  padding: 20rpx 30rpx 0 30rpx;
 }
 
 .content {
   box-sizing: border-box;
-  padding: 30rpx 0; 
+  padding: 10rpx 0 10px 0; 
   border-bottom: 1px solid #ededed;
 }
 
 .item-title {
   display: flex;
   flex-direction: row;
-  line-height: 90rpx;
+  line-height: 80rpx;
   justify-content: space-between;
 }
 
 .item-title .game-category {
   color: #0c0c0c;
   font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+}
+
+.item-title .game-category>view:nth-child(1) {
+  min-height: 50rpx; 
+  padding-top: 6rpx;
+  box-sizing: border-box;
+}
+
+.item-title .game-category image {
+  width: 40rpx;
+  height: 40rpx;
+  padding-right: 15rpx;
 }
 
 .game-more {
@@ -67,7 +101,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 30rpx;
+  margin-left: 40rpx;
 }
 
 .scroll-view_H .item_content:nth-child(1) {
@@ -81,13 +115,14 @@
 .game-title {
   color: #353535;
   font-size: 14px;
-  overflow-x: hidden;
+  overflow-x: scroll;
   text-align: center;
 }
 
 .game-desc {
   color: #b2b2b2;
-  font-size: 11px;
+  font-size: 12px;
+  overflow-x: scroll;
   text-align: center;
 }
 
@@ -95,4 +130,63 @@
   width: 0;
   height: 0;
   color: transparent;
+}
+
+.gamebox-games {
+  box-sizing: border-box;
+  padding: 10rpx 30rpx;
+}
+
+.gamebox-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #eee;
+}
+
+.gamebox-item-logo {
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.gamebox-item-logo image {
+  width:  50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.gamebox-item-info {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.gamebox-item-info .gamebox-item-info_desc {
+  font-size: 80%;
+  color: #999;
+  margin-top: 5px;
+}
+
+.gamebox-item-num {
+  font-size: 12px;
+  text-align: center;
+  margin-left: 30rpx;
+}
+
+.gamebox-item-num text {
+  color: #ff0621;
+}
+
+.gamebox-item-play {
+  border: 1px solid #3884d8;
+  font-size: 13px;
+  color: #3884d8;
+  border-radius: 15px;
+  padding: 4px 15px;
 }

@@ -1,5 +1,5 @@
 <!--pages/more-game/more-game.wxml-->
-
+<view style='width: 100%; height: 100%;'>
 <scroll-view scroll-x="true" class="weui-navbar" scroll-into-view="{{topView}}">
     <block wx:for-items="{{tabs}}" wx:key='key'>
         <view  class="{{activeIndex == index ?'item_on':''}} default-item" bindtap="tabClick" style="width:{{tabW}}px" data-item='{{item.name}}'>
@@ -8,21 +8,29 @@
     </block>
     <view class="weui-navbar-slider" style="transform:translateX({{slideOffset}}px);"></view>
 </scroll-view>
-<view class="rec" />
+ <view class="rec" /> 
 <swiper current="{{activeIndex}}" class="swiper-box" bindchange="bindChange">
   <block wx:for="{{tabs}}" wx:key='key'>
      <swiper-item>
-        <view class="item-content" wx:for="{{games[activeIndex]}}" wx:key="" bindtap='itemClick' data-item='{{item}}'>
-          <image src="{{item.logo}}" style="width: 180rpx; height: 180rpx; border-radius: 50%;"/>
-          <view style="flex: 1; display: flex; flex-direction: column; margin: 10rpx;">
-            <view style="flex: 1;">{{item.name}}</view>
-            <view>{{item.desc}}</view>
+      <view class="gamebox-games">
+        <block wx:for="{{games[activeIndex]}}" wx:key="*this">
+        <view class="gamebox-item" bindtap="itemClick" data-gameid="{{item.gameId}}" data-appid="{{item.appId}}" data-extra="{{item.extra}}" data-type="{{item.type}}" data-preview="{{item.bg}}">
+          <view class="gamebox-item-logo">
+            <image src="{{item.logo}}" />
           </view>
+          <view class="gamebox-item-info">
+            <view>{{item.name}}</view>
+            <view class="gamebox-item-info_desc">{{item.desc}}</view>
+          </view>
+          <view class="gamebox-item-play">开始</view>
         </view>
+        </block>
+      </view>
       </swiper-item>
   </block>
 </swiper>
 
 <view class="ad">
   <ad unit-id="adunit-aca0430fe657a9b6"></ad>
+</view>
 </view>

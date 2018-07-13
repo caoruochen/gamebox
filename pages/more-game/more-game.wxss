@@ -43,7 +43,6 @@ view , scroll-view{
 }
 .swiper-box{
   height: 100%;
-  border-bottom: 1px solid #d1d1d1;
 }
 .swiper-box .swiper-item{
    text-align: center;
@@ -60,4 +59,8 @@ view , scroll-view{
   width: 0;
   height: 0;
   color: transparent;
+}
+
+.ad {
+  margin-top: 40rpx;
 }

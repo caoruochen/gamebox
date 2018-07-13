@@ -33,8 +33,8 @@ QKPage({
   clickMore: function(e) {
     var index = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: '/pages/more-game/more-game?categoryId='
-      +this.data.categorys[index].categoryId,
+      url: '/pages/more-game/more-game?type='
+      +this.data.categorys[index].type +'&position='+index,
     })
   },
 

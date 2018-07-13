@@ -122,6 +122,10 @@ image{
   margin-top: 5px;
 }
 
+.my-tasks {
+  margin-bottom: 100px;
+}
+
 .daily-task{
   padding-bottom: 18px;
   background-color: #fff;
@@ -214,7 +218,9 @@ image{
 }
 
 .ad {
-  margin-top: 40rpx;
+  bottom: 10px;
+  padding-bottom: 0;
+  position: fixed;
 }
 
 .icon {

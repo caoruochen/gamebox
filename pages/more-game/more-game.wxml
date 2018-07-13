@@ -9,10 +9,10 @@
     <view class="weui-navbar-slider" style="transform:translateX({{slideOffset}}px);"></view>
 </scroll-view>
 <view class="rec" />
-<swiper current="{{activeIndex}}" class="swiper-box" duration="100" bindchange="bindChange">
+<swiper current="{{activeIndex}}" class="swiper-box" bindchange="bindChange">
   <block wx:for="{{tabs}}" wx:key='key'>
      <swiper-item>
-        <view class="item-content" wx:for="{{games[activeIndex]}}" wx:key="">
+        <view class="item-content" wx:for="{{games[activeIndex]}}" wx:key="" bindtap='itemClick' data-item='{{item}}'>
           <image src="{{item.logo}}" style="width: 180rpx; height: 180rpx; border-radius: 50%;"/>
           <view style="flex: 1; display: flex; flex-direction: column; margin: 10rpx;">
             <view style="flex: 1;">{{item.name}}</view>
@@ -22,3 +22,7 @@
       </swiper-item>
   </block>
 </swiper>
+
+<view class="ad">
+  <ad unit-id="adunit-aca0430fe657a9b6"></ad>
+</view>

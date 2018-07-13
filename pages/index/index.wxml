@@ -8,17 +8,6 @@
     </block>
   </swiper>
 
-  <!-- top -->
-  <!--view class="top-bar">
-    <view>
-      <text class="wel">你好 </text> 
-      <text class="nick">{{userName}}</text>
-    </view>
-    <view class="top-bar-coin">
-      <image src="../../images/coins-icon.png" />
-      <view>1000</view>
-    </view>
-  </view-->
   <!-- content -->
   <view class="games">
     <view class="content" wx:for="{{categorys}}" wx:key="">

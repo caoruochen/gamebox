@@ -9,7 +9,7 @@ view , scroll-view{
 .weui-navbar{
    width: 100%;
    position: fixed;
-   border-bottom: 1px solid #0000ff;
+   border-bottom: 1px solid #3884d8;
    box-sizing: border-box;
    white-space: nowrap; 
    z-index: 100;
@@ -29,14 +29,14 @@ view , scroll-view{
   padding-bottom: 20rpx;
 }
 .weui-navbar .item_on{
-   color: #0000ff;
+   color: #3884d8;
 }
 .weui-navbar-slider{
     position: absolute;
     width: 160rpx;
     height: 2px;
     content:"";
-    background: #0000ff;
+    background: #3884d8;
     bottom: 0px;
     left: 12.5rpx;
     transition: transform .3s;
@@ -60,7 +60,54 @@ view , scroll-view{
   height: 0;
   color: transparent;
 }
-
 .ad {
   margin-top: 40rpx;
+}
+.gamebox-games {
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+.gamebox-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.gamebox-item-logo {
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.gamebox-item-logo image {
+  width:  50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.gamebox-item-info {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.gamebox-item-info .gamebox-item-info_desc {
+  font-size: 80%;
+  color: #999;
+  margin-top: 5px;
+}
+
+.gamebox-item-play {
+  border: 1px solid #3884d8;
+  font-size: 13px;
+  color: #3884d8;
+  border-radius: 15px;
+  padding: 4px 15px;
 }

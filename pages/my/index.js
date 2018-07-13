@@ -5,15 +5,24 @@ var saveRecentGame = require("../../util/saveRecentGame");
 
 var app = getApp();
 var sysInfo = app.globalData.sysInfo;
+var ratio = app.globalData.wwidth / 750;
 var userInfo = app.globalData.userInfo || {name: '张三', avatar: '../../images/defaultavatar.png', sex: 1,coins: '1000', points: '20', title: '贫民',level: 2};
 // var userInfo = {name: '张三', avatar: '../../images/fenlei0.png',sex: 1,coins: '1000', diamond: '20', title: '贫民',level: 2};
+var taskItemHeight = 70;
+var oftenGameHeight = 45 + 109;
 
 QKPage({
   data: {
     isLogin: false,
     userInfo: userInfo,
     checkSwitch: false,
+    topBar: ["日常任务", "最近常玩"],
+    activeIndex: 0,
+    swiperHeight: 139,
+    hasRecentGame: false,
     games: [],
+    recentGames: [],
+    gameItemWidth: (app.globalData.wwidth-150*ratio) / 4, // 60 padding + 3*30 margin
     tasks: [
       {
         icon: '../../images/task-icon2.png',
@@ -42,6 +51,14 @@ QKPage({
       // this.loadTask();
     }else{
       this.loadGameData();
+      var obj = new saveRecentGame();
+      var recentGame = obj.get();
+      if(recentGame.length > 0){
+        this.setData({
+          recentGames: recentGame,
+          hasRecentGame: true
+        });
+      }
     }
   },
   onPullDownRefresh: function (e) {
@@ -56,7 +73,8 @@ QKPage({
       wx.hideLoading();
       if (data) {
         me.setData({
-          tasks: data
+          tasks: data,
+          swiperHeight: taskItemHeight*data.length - 1
         });
       }
     }, function () {
@@ -111,6 +129,51 @@ QKPage({
       });
       wx.hideLoading();
     });
+  },
+  changeTabbar: function(e){
+    var index = e.currentTarget.dataset.idx;
+    console.log(index)
+    this.setData({
+      activeIndex: index,
+      swiperHeight: oftenGameHeight
+    });
+  },
+  changeSwiper: function(e){
+    if(e.detail.source === 'touch'){
+      this.setData({
+        activeIndex: e.detail.current,
+        swiperHeight: oftenGameHeight
+      });
+    }
+  },
+  /**
+   * 点击更多
+   */
+  clickMore: function(e) {
+    var index = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/more-game/more-game?type='
+      +this.data.categorys[index].type +'&position='+index,
+    })
+  },
+
+  /**
+   * 点击游戏
+   */
+  clickGame: function(e) {
+    var index = e.currentTarget.dataset.index
+    var idx = e.currentTarget.dataset.id
+    
+    wx.showLoading({
+      title: '',
+      mask: true
+    });
+    wx.navigateToMiniProgram({
+      appId: this.data.categorys[index].games[idx].appId,
+      complete: function(res) {
+        wx.hideLoading()
+      }
+    })
   },
   goLottery: function(e){
     

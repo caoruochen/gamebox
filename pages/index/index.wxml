@@ -55,7 +55,7 @@
       </view>
       <view class="gamebox-item-info">
         <view>{{item.name}}
-          <text wx:if="{{item.playerNum}}" class='gamebox-item-num'><text>{{item.playerNum}}人在玩</text></text>
+          <text wx:if="{{item.playerNum}}" class='gamebox-item-num'><text>{{item.playerNum}}</text>人在玩</text>
         </view>
         <view class="gamebox-item-info_desc">{{item.desc}}</view>
       </view>

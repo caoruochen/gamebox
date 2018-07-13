@@ -19,7 +19,7 @@ QKPage({
     categorys: [],
     bannerImgWidth: (app.globalData.wwidth - 60 * ratio),
     wwidth: app.globalData.wwidth,
-    gameItemWidth: (app.globalData.wwidth-180*ratio) / 4,// 60 padding + 3*30 margin
+    gameItemWidth: (app.globalData.wwidth-150*ratio) / 4,// 60 padding + 3*30 margin
     games: []
   },
 

@@ -24,16 +24,16 @@
     </view>
   </view>
 
-    <view class="my-tasks" wx:if="{{!checkSwitch}}">
+  <view class="my-tasks">
     <view class="daily-task">
       <scroll-view scroll-x class="task-head">
         <view class="top-bar-container">
           <view wx:for="{{topBar}}" wx:key="*this" class="top-bar{{index === activeIndex ? ' active' : ''}}" data-idx="{{index}}" bindtap="changeTabbar">
             <view class="title">{{item}}<text wx:if="{{index === 0}}">({{1}}/{{tasks.length}})</text></view>
-            <!-- <text wx:if="{{index === 0}}">一键领取</text> -->
           </view>
         </view>
       </scroll-view>
+
       <swiper current="{{activeIndex}}" class="swiper-content" bindchange="changeSwiper" style="height: {{swiperHeight}}px">
         <swiper-item>
           <scroll-view scroll-y>
@@ -51,6 +51,7 @@
             </view>
           </scroll-view>
         </swiper-item>
+        
         <swiper-item>
           <scroll-view scroll-y wx:if="{{hasRecentGame}}" class="games-box">
             <block wx:for="{{recentGames}}" wx:key="*this">
@@ -60,7 +61,7 @@
               </view>
               <view class="gamebox-item-info">
                 <view>{{item.name}}
-                  <text wx:if="{{item.playerNum}}" class='gamebox-item-num'><text>{{item.playerNum}}人在玩</text></text>
+                  <text wx:if="{{item.playerNum}}" class='gamebox-item-num'><text>{{item.playerNum}}</text>人在玩</text>
                 </view>
                 <view class="gamebox-item-info_desc">{{item.desc}}</view>
               </view>
@@ -72,15 +73,6 @@
         </swiper-item>
       </swiper>
 
-    </view>
-  </view>
-  <view class="my-tasks" wx:else>
-    <view class="item_content" wx:for="{{games}}"
-       wx:key="" wx:for-index="idx" wx:for-item="game"
-       bindtap="goDetail" data-index="{{index}}" data-gameid="{{game.gameId}}">
-      <image class="game-logo" src="{{game.logo}}"></image>
-      <text class='game-title'>{{game.name}}</text>
-      <text class='game-desc'>{{game.playerNum}}人在玩</text>
     </view>
   </view>
 

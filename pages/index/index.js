@@ -61,10 +61,11 @@ QKPage({
 
   clickMore: function(e) {
     var index = e.currentTarget.dataset.id
-    var type = ''
-    if (index != '-1') {
-      type = this.data.categorys[index].type
-    }
+    
+    if (index == '-1') {
+      index = 0 // 暂时点击游戏一览，跳转到第一项
+    } 
+    var type = this.data.categorys[index].type
     wx.navigateTo({
       url: '/pages/more-game/more-game?type='+type +'&position='+index,
     })

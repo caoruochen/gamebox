@@ -44,7 +44,7 @@ view , scroll-view{
   margin-top: 40rpx;
 }
 .gamebox-games {
-  padding: 10px 0;
+  /* padding: 10px 0; */
   box-sizing: border-box;
 }
 
@@ -53,7 +53,7 @@ view , scroll-view{
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 15px;
+  padding: 10px;
   border-bottom: 1px solid #eee;
 }
 

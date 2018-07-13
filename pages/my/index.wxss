@@ -234,7 +234,9 @@ image{
 }
 
 .games-box{
-  padding:0rpx 30rpx;
+  padding: 20px 30rpx;
+  height: 100%;
+  box-sizing: border-box;
 }
 .item_content {
   display: inline-flex;
@@ -255,13 +257,8 @@ image{
   padding-left: 20rpx;
   box-sizing: border-box;
 }
-.game-content .item_content:nth-child(1) {
+.game-content .item_content:nth-child(4n+1) {
   margin-left: 0;  
-}
-
-.scroll-view_H {
-  width: 100%;
-  /*white-space: nowrap;*/
 }
 
 .game-logo{

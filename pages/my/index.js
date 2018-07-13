@@ -9,7 +9,8 @@ var ratio = app.globalData.wwidth / 750;
 var userInfo = app.globalData.userInfo || {name: '张三', avatar: '../../images/defaultavatar.png', sex: 1,coins: '1000', points: '20', title: '贫民',level: 2};
 // var userInfo = {name: '张三', avatar: '../../images/fenlei0.png',sex: 1,coins: '1000', diamond: '20', title: '贫民',level: 2};
 var taskItemHeight = 70;
-var oftenGameHeight = 45 + 109;
+var taskHeight = taskItemHeight * 2 - 1;
+var oftenGameHeight = 109 * 2;
 
 QKPage({
   data: {
@@ -18,7 +19,7 @@ QKPage({
     checkSwitch: false,
     topBar: ["日常任务", "最近常玩"],
     activeIndex: 0,
-    swiperHeight: 139,
+    swiperHeight: taskHeight,
     hasRecentGame: false,
     games: [],
     recentGames: [],
@@ -71,10 +72,11 @@ QKPage({
     var me = this;
     http.get('/gamebox/games', function (data) {
       wx.hideLoading();
+      taskHeight = taskItemHeight*data.length - 1;
       if (data) {
         me.setData({
           tasks: data,
-          swiperHeight: taskItemHeight*data.length - 1
+          swiperHeight: taskHeight
         });
       }
     }, function () {
@@ -132,29 +134,29 @@ QKPage({
   },
   changeTabbar: function(e){
     var index = e.currentTarget.dataset.idx;
-    console.log(index)
-    this.setData({
-      activeIndex: index,
-      swiperHeight: oftenGameHeight
-    });
+    this.switchSwiper(index);
   },
   changeSwiper: function(e){
     if(e.detail.source === 'touch'){
-      this.setData({
-        activeIndex: e.detail.current,
-        swiperHeight: oftenGameHeight
-      });
+      this.switchSwiper(e.detail.current);
     }
   },
-  /**
-   * 点击更多
-   */
-  clickMore: function(e) {
-    var index = e.currentTarget.dataset.id
-    wx.navigateTo({
-      url: '/pages/more-game/more-game?type='
-      +this.data.categorys[index].type +'&position='+index,
-    })
+  switchSwiper: function(index){
+    this.setData({
+        activeIndex: index
+    });
+    switch(index - 0){
+      case 0:
+        this.setData({
+          swiperHeight: taskHeight
+        });
+        break;
+      case 1:
+        this.setData({
+          swiperHeight: oftenGameHeight
+        });
+        break;
+    }
   },
 
   /**

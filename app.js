@@ -12,5 +12,8 @@ QKApp({
     this.globalData.wheight = sysInfo.windowHeight;
     this.globalData.pixelRatio = sysInfo.pixelRatio;
   },
+  savedOftenGame: function(obj, game){
+    obj.save(game);
+  },
   globalData: {}
 })

@@ -10,7 +10,7 @@ var userInfo = app.globalData.userInfo || {name: '张三', avatar: '../../images
 
 var taskItemHeight = 70;
 var taskHeight = taskItemHeight * 2 - 1;
-var oftenGameHeight = 109 * 2;
+var oftenGameHeight = 71 * 3;
 
 QKPage({
   data: {

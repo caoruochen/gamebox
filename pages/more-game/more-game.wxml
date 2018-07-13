@@ -3,7 +3,9 @@
 <scroll-view scroll-x="true" class="weui-navbar" scroll-into-view="{{topView}}">
     <block wx:for-items="{{tabs}}" wx:key='key'>
         <view  class="{{activeIndex == index ?'item_on':''}} default-item" bindtap="tabClick" style="width:{{tabW}}px" data-item='{{item.name}}'>
+          <view class="navbar-title">
             {{item.name}}
+          </view>
         </view>
     </block>
     <view class="weui-navbar-slider" style="transform:translateX({{slideOffset}}px);"></view>

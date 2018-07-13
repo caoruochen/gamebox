@@ -3,8 +3,5 @@
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark",
   "backgroundColor": "#eee",
-  "onReachBottomDistance": 20,
-  "usingComponents": {
-    "navigate-to-mini-program": "../../components/toMiniProgram/index"
-  }
+  "onReachBottomDistance": 20
 }

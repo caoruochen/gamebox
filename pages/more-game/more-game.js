@@ -2,6 +2,9 @@
 var QKPage = require("../../libs/page");
 var http = require("../../util/http");
 var util = require("../../util/util");
+var app = getApp();
+var ratio = app.globalData.wwidth / 750;
+var statusBarHeight = app.globalData.sysInfo.statusBarHeight;
 
 QKPage({
 
@@ -14,10 +17,13 @@ QKPage({
     tabW: 0,
     index: 0,
     topView: 'A',
-    currentTabId: 1
+    currentTabId: 1,
+    swiperHeight: app.globalData.wheight - (60 * ratio + statusBarHeight + 85 + 40 * ratio),// tab高度+状态栏高度+广告高度
+    scrollHeight: app.globalData.wheight - (60 * ratio + statusBarHeight + 85 + 40 * ratio)
   },
 
   onLoad: function (options) {
+    console.log(app.globalData.wheight + "...." + 60 * ratio)
     var that = this;
     wx.getSystemInfo({
       success: function (res) {

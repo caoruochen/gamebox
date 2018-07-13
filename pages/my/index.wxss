@@ -16,11 +16,11 @@ image{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 35px 17px 45px 30px;
+  padding: 30rpx 34rpx 50rpx 60rpx;
 }
 .my-info .avatar{
   display: block;
-  padding: 2px;
+  padding: 4rpx;
   border-radius: 50%;
   background-color: #fff;
 }
@@ -32,6 +32,7 @@ image{
 }
 .base-info{
   display: flex;
+  color: #0c0c0c;
 }
 .base-info > view{
   font-size: 19px;

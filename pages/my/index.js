@@ -7,7 +7,7 @@ var app = getApp();
 var sysInfo = app.globalData.sysInfo;
 var ratio = app.globalData.wwidth / 750;
 var userInfo = app.globalData.userInfo || {name: '张三', avatar: '../../images/defaultavatar.png', sex: 1,coins: '1000', points: '20', title: '贫民',level: 2};
-// var userInfo = {name: '张三', avatar: '../../images/fenlei0.png',sex: 1,coins: '1000', diamond: '20', title: '贫民',level: 2};
+
 var taskItemHeight = 70;
 var taskHeight = taskItemHeight * 2 - 1;
 var oftenGameHeight = 109 * 2;
@@ -15,7 +15,7 @@ var oftenGameHeight = 109 * 2;
 QKPage({
   data: {
     isLogin: false,
-    userInfo: userInfo,
+    userInfo: app.globalData.userInfo,
     checkSwitch: false,
     topBar: ["日常任务", "最近常玩"],
     activeIndex: 0,
@@ -178,7 +178,11 @@ QKPage({
     })
   },
   goLottery: function(e){
-    
+    wx.showModal({
+      title: '',
+      content: '抽奖活动暂未开启，敬请期待',
+      showCancel: false
+    })
   },
   signIn: function(e){
 

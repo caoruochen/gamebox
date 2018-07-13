@@ -8,11 +8,12 @@
     </block>
     <view class="weui-navbar-slider" style="transform:translateX({{slideOffset}}px);"></view>
 </scroll-view>
- <view class="rec" /> 
-<swiper current="{{activeIndex}}" class="swiper-box" bindchange="bindChange">
+
+<swiper current="{{activeIndex}}" class="swiper-box" bindchange="bindChange" style="height: {{swiperHeight}}px">
   <block wx:for="{{tabs}}" wx:key='key'>
      <swiper-item>
-      <view class="gamebox-games">
+    <view class="gamebox-games">
+      <scroll-view scroll-y style='height: {{scrollHeight}}px'>
         <block wx:for="{{games[activeIndex]}}" wx:key="*this">
         <view class="gamebox-item" bindtap="itemClick" data-gameid="{{item.gameId}}" data-appid="{{item.appId}}" data-extra="{{item.extra}}" data-type="{{item.type}}" data-preview="{{item.bg}}">
           <view class="gamebox-item-logo">
@@ -25,8 +26,9 @@
           <view class="gamebox-item-play">开始</view>
         </view>
         </block>
-      </view>
-      </swiper-item>
+      </scroll-view>
+    </view>
+    </swiper-item>
   </block>
 </swiper>
 

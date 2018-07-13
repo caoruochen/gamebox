@@ -61,12 +61,12 @@ QKPage({
 
   clickMore: function(e) {
     var index = e.currentTarget.dataset.id
-    if (index) {
-
+    var type = ''
+    if (index != '-1') {
+      type = this.data.categorys[index].type
     }
     wx.navigateTo({
-      url: '/pages/more-game/more-game?type='
-      +this.data.categorys[index].type +'&position='+index,
+      url: '/pages/more-game/more-game?type='+type +'&position='+index,
     })
   },
 
@@ -94,7 +94,8 @@ QKPage({
     http.get('/gamebox/recommends', function (data) {
       wx.hideLoading();
       me.setData({
-        categorys: data.gamelist
+        categorys: data.gamelist,
+        adpos: data.adpos
       })
     }, function () {
       wx.hideLoading();

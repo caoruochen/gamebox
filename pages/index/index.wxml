@@ -4,7 +4,7 @@
     <view>
       <text class="wel">你好 </text> <text class="nick">{{userName}}</text></view>
     <view>
-      <image src="../../images/coin.png" />
+      <image src="../../images/coins-icon.png" />
       <text>1000</text>
     </view>
   </view>

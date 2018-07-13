@@ -10,17 +10,24 @@ image{
 }
 
 .my{
-  background-image: linear-gradient(bottom, #f6c749, #f3b244);
+  background-image: linear-gradient(to bottom, #f6c749 0%, #f3b244 100%);
 }
 .my-info{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 20px 25px;
+  padding: 35px 17px 45px 30px;
 }
 .my-info .avatar{
-  width: 60px;
-  height: 60px;
+  display: block;
+  padding: 2px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.my-info .avatar image{
+  display: block;
+  width: 66px;
+  height: 66px;
   border-radius: 50%;
 }
 .base-info{
@@ -48,30 +55,23 @@ image{
 .my-info .level text{
   font-size: 10px;
 }
-.my-info .lottery{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  line-height: normal;
-  border: 1px solid #000;
-  border-radius: 50%;
-  font-size: 14px;
-  white-space: pre-line;
+.my-info .lottery image{
+  display: block;
+  width: 53px;
 }
 .user-info{
   flex: 1;
-  margin-left: 20px;
+  margin-left: 12px;
   font-size: 14px;
 }
 .user-info .coins{
   display: flex;
   align-items: center;
-  margin-top: 5px;
+  margin-top: 9px;
 }
 .user-info .coins text{
   font-size: 15px;
+  color: #fff;
 }
 .user-info .coins image{
   width: 20px;
@@ -123,6 +123,7 @@ image{
 }
 
 .daily-task{
+  padding-bottom: 18px;
   background-color: #fff;
 }
 .daily-task .task-head{
@@ -157,7 +158,6 @@ image{
   display: flex;
   align-items: center;
   padding-left: 20px;
-  padding-right: 10px;
 }
 .task-item .task-icon{
   width: 32px;
@@ -168,11 +168,11 @@ image{
   align-items: center;
   padding-top: 15px;
   padding-bottom: 12px;
+  padding-right: 10px;
   border-bottom: 1px solid #e4e4e4;
   margin-left: 10px;
 }
 .task-item:last-of-type .right-block{
-  padding-bottom: 30px;
   border-bottom-width: 0;
 }
 .daily-task .task-info{
@@ -192,16 +192,17 @@ image{
 }
 .daily-task .task-item .task-btn{
   line-height: normal;
-  padding: 2px 15px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 6px 20px;
   border-radius: 15px;
   font-size: 13px;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.1);
 }
+.daily-task .task-item .task-btn:after{
+  border-width: 0;
+}
 .daily-task .task-item .task-btn.active{
   background-color: #f6c344;
-  border: 1px solid #f6c344;
 }
 
 .all-tasks{

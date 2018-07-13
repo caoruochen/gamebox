@@ -7,7 +7,7 @@ var ratio = app.globalData.wwidth / 750;
 
 var swiperHeight = 130;
 var defaultBanners = [{
-  pic: 'https://snsgame.uimg.cn/minigame/res/banner/default.png'
+  pic: '../../images/default-banner.png'
 }];
 
 QKPage({

@@ -7,7 +7,6 @@ swiper {
   margin: 0 30rpx;
 }
 
-
 .top-bar {
   position: fixed;
   z-index: 100;

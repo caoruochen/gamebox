@@ -1,33 +1,37 @@
 <view class="container">
   <view class="my">
     <view class="my-info">
-      <image src="{{userInfo.avatar}}" class="avatar"></image>
+      <view class="avatar">
+        <image src="{{userInfo.avatar}}"></image>
+      </view>
       <view class="user-info">
         <view class="base-info">
           <view>{{userInfo.name}}</view>
-          <image mode="widthFix" src="{{userInfo.sex > 0 ? '../../images/pros.png' : '../../images/unpros.png'}}"></image>
+          <!-- <image mode="widthFix" src="{{userInfo.sex > 0 ? '../../images/pros.png' : '../../images/unpros.png'}}"></image> -->
         </view>
-        <view class="level">
+        <!-- <view class="level">
           <image mode="widthFix" src="../../images/pros.png" class="level-icon"></image>
           <text>{{userInfo.title}}</text>
-        </view>
+        </view> -->
         <view class="coins">
           <image mode="widthFix" src="../../images/coins-icon.png" class="coins-icon"></image>
           <text>{{userInfo.coins}}</text>
-          <image mode="widthFix" src="../../images/pros.png" class="diamond-icon"></image>
-          <text>{{userInfo.points}}</text>
+          <!-- <image mode="widthFix" src="../../images/pros.png" class="diamond-icon"></image>
+          <text>{{userInfo.points}}</text> -->
         </view>
       </view>
-      <navigator url="/pages/lottery/index" class="lottery" bindtap="goLottery">抽\n奖</navigator>
+      <navigator url="/pages/lottery/index" class="lottery" bindtap="goLottery">
+        <image mode="widthFix" src="../../images/lottery-icon.png"></image>
+      </navigator>
     </view>
   </view>
 
   <view class="my-tasks" wx:if="{{!checkSwitch}}">
     <view class="daily-task">
-      <view class="task-head">
+      <scroll-view scroll-x class="task-head">
         <view class="title">日常任务<text>({{1}}/{{tasks.length}})</text></view>
         <!-- <text>一键领取</text> -->
-      </view>
+      </scroll-view>
       <view wx:for="{{tasks}}" wx:key="{{index}}}" class="task-item">
         <image mode="widthFix" src="{{item.icon}}" class="task-icon"></image>
         <view class="right-block">
@@ -36,8 +40,8 @@
             <view class="task-award">{{item.desc}}</view>
           </view>
           <button wx:if="{{!isLogin}}" open-type="getUserInfo" class="task-btn" bindgetuserinfo="onGotUserInfo">{{item.type == 1 ? (item.status > 0 ? '已签到' : '签到') : (item.status > 1 ? '已完成' : '去完成')}}</button>
-          <button wx:elif="{{isLogin && item.type == 1}}" class="{{'task-btn ' + item.status > 0 ? 'active':''}}" bindtap="signIn">{{item.status > 0 ? '已领取' : '签到'}}</button>
-          <navigator wx:elif="{{isLogin && item.type > 1}}" url="" class="{{'task-btn ' + item.status > 1 ? 'active':''}}" bindtap="doTask">{{item.status > 1 ? '已完成' : '去完成'}}</navigator>
+          <button wx:elif="{{isLogin && item.type == 1}}" class="task-btn{{item.status > 0 ? ' active':''}}" bindtap="signIn">{{item.status > 0 ? '已领取' : '签到'}}</button>
+          <navigator wx:elif="{{isLogin && item.type > 1}}" url="" class="task-btn{{item.status > 1 ? ' active':''}}" bindtap="doTask">{{item.status > 1 ? '已完成' : '去完成'}}</navigator>
           </view>
       </view>
     </view>

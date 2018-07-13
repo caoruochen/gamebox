@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/games/index",
+    "pages/my/index",
     "pages/recommend/index",
     "pages/more-game/more-game",
     "pages/lottery/index",
@@ -26,7 +26,7 @@
         "color": "#8f8f8f"
       },
       {
-        "pagePath": "pages/games/index",
+        "pagePath": "pages/my/index",
         "text": "我的",
         "iconPath": "images/my0.png",
         "selectedIconPath": "images/my1.png",

@@ -23,6 +23,9 @@ QKPage({
     });
     var me = this;
     http.get('/gamebox/detail', param, function (data) {
+      wx.setNavigationBarTitle({
+        title: data.name
+      });
       me.setData({
         gameDetail: data
       });

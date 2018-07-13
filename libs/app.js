@@ -55,6 +55,7 @@ var QKApp = function (options) {
 
   options.$saveLoginUser = function (user, detail, cb) {
     var userInfo = this.globalData.userInfo;
+    console.log(userInfo)
     if (userInfo) {
       cb();
       return;

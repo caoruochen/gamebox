@@ -106,13 +106,12 @@ QKPage({
         icon: 'none'
       });
     });
-  }, 
+  },
   onGotUserInfo: function (e) {
     if (!e.detail || typeof e.detail.userInfo === 'undefined') {
       wx.showToast({
-        title: '获取头像需要授权',
+        title: '登陆需要授权',
         icon: 'none',
-        mask: true
       }); 
       return;
     }

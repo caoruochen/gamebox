@@ -3,7 +3,8 @@ var http = require("./util/http");
 
 QKApp({
   config: {
-    httpApi: 'https://snsapi.7k.cn'
+    httpApi: 'https://snsapi.7k.cn',
+    version: '0.0.0'
   },
   onLaunch: function (options) {
     var sysInfo = wx.getSystemInfoSync();

@@ -6,7 +6,8 @@
       </view>
       <view class="user-info">
         <view class="base-info">
-          <view>{{userInfo ? userInfo.name : '点击登陆'}}</view>
+          <view wx:if="{{!!userInfo}}">{{userInfo.name}}</view>
+          <button wx:else open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">点击登陆</button>
         </view>
         <view class="coins">
           <image mode="widthFix" src="../../images/coins-icon.png" class="coins-icon"></image>

@@ -106,30 +106,24 @@ QKPage({
         icon: 'none'
       });
     });
-  }, 
+  },
   onGotUserInfo: function (e) {
     if (!e.detail || typeof e.detail.userInfo === 'undefined') {
       wx.showToast({
-        title: '获取头像需要授权',
+        title: '登陆需要授权',
         icon: 'none',
-        mask: true
       }); 
       return;
     }
-    wx.showLoading({
-      title: '授权中...',
-      mask: true
-    })
     var me = this;
-    app.$saveLoginUser(e.detail.userInfo, e.detail, function (saveFailed) {
-      if (saveFailed) {
+    app.$saveLoginUser(e.detail.userInfo, e.detail, function (status) {
+      if (!status) {
         return;
       };
       me.setData({
         isLogin: true,
         userInfo: app.globalData.userInfo,
       });
-      wx.hideLoading();
     });
   },
   changeTabbar: function(e){

@@ -17,6 +17,7 @@ var QKApp = function (options) {
   if (config.httpApi) {
     http.config({
       api: config.httpApi,
+      version: config.version,
       platform: platform,
       target: target,
       channel: channel,
@@ -55,33 +56,60 @@ var QKApp = function (options) {
 
   options.$saveLoginUser = function (user, detail, cb) {
     var userInfo = this.globalData.userInfo;
+    console.log(userInfo)
     if (userInfo) {
       cb();
       return;
     }
 
-    var uid = -1;
-    if (globalLoginUser) {
-      uid = globalLoginUser.uid;
-    }
-    var param = user;
-    var me = this;
-    param.detail = JSON.stringify(detail);
-    http.get('/user/info', param, function (data) {
-      me.globalData.userInfo = data;
-      wx.setStorageSync('userInfo', data);
-      cb();
-    }, function () {
+    wx.showLoading({
+      title: '授权中',
+      mask: true
+    })
+
+    var loginFailed = function (msg) {
       wx.hideLoading();
+      cb && cb(false)
       setTimeout(function () {
         wx.showToast({
-          title: '授权失败，请重试',
-          icon: 'none',
-          mask: true
-        });
-        cb(true);
-      }, 1000)
-    });
+          title: msg || '授权失败',
+        })
+      }, 100)
+    }
+
+    var me = this;
+
+    wx.login({
+      success: function (res) {
+        var param = {
+          code: res.code,
+          scope: scope,
+          platform: platform,
+          channel: channel,
+          pname: pname,
+          rawData: detail.rawData
+        };
+        http.post('/auth2/' + target, param, function (data) {
+          var loginUser = {
+            uid: data.uid,
+            token: data.token,
+            expire: data.expire
+          };
+          wx.setStorageSync('loginUser', loginUser);
+          wx.setStorageSync('userInfo', data);
+          me.globalData.userInfo = data;
+          globalLoginUser = loginUser;
+          wx.hideLoading();
+          cb && cb(true);
+        }, function (err, msg) {
+          loginFailed(msg);
+        })
+      },
+      fail: function () {
+        loginFailed();
+      }
+    })
+    return
   };
 
   options.onLaunch = function (params) {

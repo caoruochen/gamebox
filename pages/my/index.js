@@ -162,20 +162,13 @@ QKPage({
   /**
    * 点击游戏
    */
-  clickGame: function(e) {
-    var index = e.currentTarget.dataset.index
-    var idx = e.currentTarget.dataset.id
-    
-    wx.showLoading({
-      title: '',
-      mask: true
-    });
-    wx.navigateToMiniProgram({
-      appId: this.data.categorys[index].games[idx].appId,
-      complete: function(res) {
-        wx.hideLoading()
-      }
-    })
+  startGame: function(e) {
+    var target = e.currentTarget
+    var type = target.dataset.type
+    var appId = target.dataset.appid
+    var gameId = target.dataset.gameid
+    var preview = target.dataset.preview
+    util.startGame(this, type, appId, preview, gameId);
   },
   goLottery: function(e){
     wx.showModal({

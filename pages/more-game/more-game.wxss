@@ -14,6 +14,7 @@ view , scroll-view{
    white-space: nowrap; 
    z-index: 100;
    background: white;
+   height: 30px;
 }
 .weui-navbar .default-item{
   /*width:25%;*/
@@ -21,7 +22,8 @@ view , scroll-view{
   text-align: center;
   font-size: 32rpx;
   box-sizing: border-box;
-  height: 60rpx;
+  padding-bottom: 2px;
+  /*height: 60rpx;*/
 }
 .weui-navbar .navbar-title{
   position: relative;

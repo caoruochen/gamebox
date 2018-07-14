@@ -38,14 +38,14 @@
         <swiper-item>
           <scroll-view scroll-y>
             <view wx:for="{{tasks}}" wx:key="{{index}}}" class="task-item">
-              <image mode="widthFix" src="{{item.icon}}" class="task-icon"></image>
+              <image mode="widthFix" src="{{item.icon ? item.icon : '../../images/coins-icon.png'}}" class="task-icon"></image>
               <view class="right-block">
                 <view class="task-info">
                   <view class="task-name">{{item.name}}</view>
                   <view class="task-award">{{item.desc}}</view>
                 </view>
-                <button wx:if="{{!isLogin}}" open-type="getUserInfo" class="task-btn" bindgetuserinfo="onGotUserInfo">{{item.type == 1 ? (item.status > 0 ? '已签到' : '签到') : (item.status > 1 ? '已完成' : '去完成')}}</button>
-                <button wx:elif="{{isLogin && item.type == 1}}" class="task-btn{{item.status > 0 ? ' active':''}}" bindtap="signIn">{{item.status > 0 ? '已领取' : '签到'}}</button>
+                <button wx:if="{{!isLogin}}" open-type="getUserInfo" class="task-btn" bindgetuserinfo="onGotUserInfo">{{item.type == 1 ? (item.status > 0 ? '已签到' : '去签到') : (item.status > 1 ? '已完成' : '去完成')}}</button>
+                <button wx:elif="{{isLogin && item.type == 1}}" class="task-btn{{item.status > 0 ? ' active':''}}" bindtap="signIn">{{item.status > 0 ? '已领取' : '去签到'}}</button>
                 <navigator wx:elif="{{isLogin && item.type > 1}}" url="" class="task-btn{{item.status > 1 ? ' active':''}}" bindtap="doTask">{{item.status > 1 ? '已完成' : '去完成'}}</navigator>
                 </view>
             </view>

@@ -30,7 +30,7 @@ QKPage({
     gameItemWidth: (app.globalData.wwidth-150*ratio) / 4, // 60 padding + 3*30 margin
     tasks: [
       {
-        icon: '../../images/task-icon2.png',
+        icon: '../../images/coins-icon.png',
         name: '签到',
         desc: '100金币',
         type: 1, // 任务类型：1签到，2玩游戏金币奖励，3红包奖励
@@ -40,7 +40,7 @@ QKPage({
         done: 2, // 已完成数 
       },
       {
-        icon: '../../images/task-icon2.png',
+        icon: '../../images/coins-icon.png',
         name: '玩游戏金币奖励',
         desc: '100金币',
         type: 2, // 任务类型：1签到，2玩游戏金币奖励，3红包奖励

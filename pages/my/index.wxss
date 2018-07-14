@@ -180,34 +180,30 @@ image{
   padding-left: 40rpx;
 }
 .task-item .task-icon{
-  width: 64rpx;
+  width: 50rpx;
 }
 .task-item .right-block{
   display: flex;
   flex: 1;
   align-items: center;
-  padding-top: 30rpx;
-  padding-bottom: 24rpx;
-  padding-right: 20rpx;
+  padding: 20rpx 30rpx 20rpx 0;
   border-bottom: 1rpx solid #e4e4e4;
-  margin-left: 20rpx;
+  margin-left: 30rpx;
 }
-.task-item:last-of-type .right-block{
-  border-bottom-width: 0;
-}
+
 .daily-task .task-info{
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding-bottom: 10rpx;
 }
 .daily-task .task-item .task-name{
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   color: #111;
+  margin-bottom: 4rpx;
 }
 .daily-task .task-item .task-award{
-  font-size: 12px;
+  font-size: 11px;
   color: #666;
 }
 .daily-task .task-item .task-btn{

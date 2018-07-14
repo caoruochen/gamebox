@@ -245,22 +245,19 @@ image{
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 20rpx 0;
+  padding: 16rpx 0;
   border-bottom: 1rpx solid #eee;
-}
-.gamebox-item:last-of-type{
-  border-bottom-width: 0; 
 }
 
 .gamebox-item-logo {
-  padding-right: 20rpx;
+  padding-right: 16rpx;
   display: flex;
   align-items: center;
 }
 
 .gamebox-item-logo image {
-  width:  100rpx;
-  height: 100rpx;
+  width:  80rpx;
+  height: 80rpx;
   border-radius: 10rpx;
 }
 
@@ -271,12 +268,13 @@ image{
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
+  font-size: 13px;
 }
 
 .gamebox-item-info .gamebox-item-info_desc {
-  font-size: 80%;
+  font-size: 11px;
   color: #999;
-  margin-top: 10rpx;
+  margin-top: 6rpx;
 }
 
 .gamebox-item-num {
@@ -294,5 +292,5 @@ image{
   font-size: 13px;
   color: #3884d8;
   border-radius: 30rpx;
-  padding: 8rpx 30rpx;
+  padding: 6rpx 25rpx;
 }

@@ -26,9 +26,6 @@ Component({
       value: ''
     }
   },
-  data: {
-    extra: null
-  },
   methods: {
     preview: function (e) {
       var app = getApp();
@@ -37,16 +34,11 @@ Component({
       if (currentPages.length > 0) {
         page = currentPages.slice(-1)[0].route
       }
-      var target = e.currentTarget,
-        mode = target.dataset.mode,
-        appId = target.dataset.appid,
-        gameId = target.dataset.gameid,
-        bg = target.dataset.bg;
 
       wx.previewImage({
-        urls: [bg]
+        urls: [this.data.bg]
       })
-      app.reportLog(page, 'jump', [2, gameId, appId])
+      app.reportLog(page, 'jump', [2, this.data.gameId, this.data.appId])
     },
     onNav: function (e) {
       var app = getApp();
@@ -55,12 +47,7 @@ Component({
       if (currentPages.length > 0) {
         page = currentPages.slice(-1)[0].route
       }
-      var target = e.currentTarget,
-        mode = target.dataset.mode,
-        appId = target.dataset.appid,
-        gameId = target.dataset.gameid,
-        bg = target.dataset.bg;
-      app.reportLog(page, 'jump', [1, gameId, appId])
+      app.reportLog(page, 'jump', [1, this.data.gameId, this.data.appId])
       wx.showLoading({
         title: '加载中',
         mask: true

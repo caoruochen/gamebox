@@ -1,8 +1,8 @@
-<view class="nav-class" wx:if="{{mode!=1 || !appId}}" data-appId="{{appId}}" data-bg="{{bg}}" data-mode="{{mode}}" data-gameId="{{gameId}}" bindtap="preview">
+<view class="nav-class" wx:if="{{mode!=1 || !appId}}" bindtap="preview">
   <slot></slot>
 </view>
 
-<navigator hover-stay-time="100" class="nav-class" wx:else target="miniProgram" open-type="navigate" app-id="{{appId}}" path="{{path}}" extra-data="{{extra}}" data-appId="{{appId}}" data-mode="{{mode}}" data-gameId="{{gameId}}" bindtap="onNav">
+<navigator hover-stay-time="100" class="nav-class" wx:else target="miniProgram" open-type="navigate" app-id="{{appId}}" path="{{path}}" extra-data="{{extra}}" bindtap="onNav">
   <slot></slot>
 </navigator>
 

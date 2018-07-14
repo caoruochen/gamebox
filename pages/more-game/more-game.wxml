@@ -17,7 +17,7 @@
     <view class="gamebox-games">
       <scroll-view scroll-y style='height: {{scrollHeight}}px'>
         <block wx:for="{{games[activeIndex]}}" wx:key="*this">
-        <view class="gamebox-item" bindtap="itemClick" data-gameid="{{item.gameId}}" data-appid="{{item.appId}}" data-extra="{{item.extra}}" data-type="{{item.type}}" data-preview="{{item.bg}}">
+        <xcx-navigator nav-class="gamebox-item" game-id="{{item.gameId}}" app-id="{{item.appId}}" mode="{{item.mode}}" bg="{{item.bg}}" path="{{item.path}}" extra="{{item.extra}}">
           <view class="gamebox-item-logo">
             <image src="{{item.logo}}" />
           </view>
@@ -26,7 +26,7 @@
             <view class="gamebox-item-info_desc">{{item.desc}}</view>
           </view>
           <view class="gamebox-item-play">开始</view>
-        </view>
+        </xcx-navigator>
         </block>
       </scroll-view>
     </view>

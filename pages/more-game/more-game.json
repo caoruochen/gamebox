@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "更多游戏"
+  "navigationBarTitleText": "更多游戏",
+  "usingComponents": {
+    "xcx-navigator": "../../components/xcx-navigator/index"
+  }
 }

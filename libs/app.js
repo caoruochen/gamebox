@@ -241,6 +241,8 @@ var QKApp = function (options) {
   };
 
   options.onHide = function () {
+    wx.hideLoading();
+    // TODO 处理preview 的日志上报
     onHide0 && onHide0.call(this);
     if (logts) {
       clearInterval(logts);
@@ -250,6 +252,7 @@ var QKApp = function (options) {
   };
 
   options.onShow = function (params) {
+    wx.hideLoading();
     onShow0 && onShow0.call(this, params);
     currentTS1 = (new Date()).getTime();
 
@@ -268,6 +271,9 @@ var QKApp = function (options) {
       return;
     }
     logs.push([page, event, log, (new Date()).getTime()]);
+  };
+
+  options.$reportPreviewNavgator = function () {
   };
 
   App(options);

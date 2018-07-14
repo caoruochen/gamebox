@@ -14,6 +14,7 @@ var QKPage = function (options) {
 
   options.onShow = function () {
     wx.showShareMenu();
+    // TODO 记录preview的时间
     onShow0 && onShow0.call(this)
     this.reportLog('onShow', '');
   };

@@ -156,14 +156,6 @@ QKPage({
     }
   },
 
-  startGame: function(e) {
-    var target = e.currentTarget
-    var type = target.dataset.type
-    var appId = target.dataset.appid
-    var gameId = target.dataset.gameid
-    var preview = target.dataset.preview
-    util.startGame(this, type, appId, preview, gameId);
-  },
   goLottery: function(e){
     wx.showModal({
       title: '',

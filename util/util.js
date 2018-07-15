@@ -26,6 +26,9 @@ var util = {
     return 0
   },
   updatePlayHistory: function (game) {
+    if (!game || !game.appId) {
+      return;
+    }
     var history = wx.getStorageSync('play_his');
     if (!history) {
       history = [];

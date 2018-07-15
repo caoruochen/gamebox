@@ -48,7 +48,7 @@
                 <view class="task-status">
                   <view class="task-process {{item.done==item.times ? 'task-process_done' : ''}}" style="width: {{item.process ? item.process : 0}}%;"></view>
                   <button wx:if="{{!userInfo}}" class="task-btn task-btn_login" open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">{{item.opName}}</button>
-                  <view wx:else class="task-btn" bindtap="doTask" data-taskId="{{item.taskId}}" data-times="{{item.times}}" data-done="{{item.done ? item.done : 0}}" data-type="{{item.type}}" data-op="{{item.op}}">{{item.opName}}</view>
+                  <view wx:else class="task-btn" bindtap="doTask" data-taskid="{{item.taskId}}" data-times="{{item.times}}" data-done="{{item.done ? item.done : 0}}" data-type="{{item.type}}" data-op="{{item.op}}">{{item.opName}}</view>
                 </view>
               </view>
             </view>

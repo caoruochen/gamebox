@@ -81,7 +81,7 @@ QKPage({
   },
   doTask: function (e) {
     var target = e.currentTarget,
-      taskId = target.dataset.taskId,
+      taskId = target.dataset.taskid,
       op = target.dataset.op - 0,
       type = target.dataset.type - 0,
       times = target.dataset.times - 0,
@@ -120,6 +120,7 @@ QKPage({
       op: op,
       type: type
     };
+    console.log(params)
 
     wx.showLoading({
       title: '请稍后',

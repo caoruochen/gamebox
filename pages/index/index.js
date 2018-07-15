@@ -46,7 +46,7 @@ QKPage({
           games: data
         });
       }
-    }, function () {
+    }, function (error, msg) {
       wx.hideLoading();
       if (stopPullDown) {
         wx.stopPullDownRefresh();
@@ -98,7 +98,7 @@ QKPage({
         categorys: data.gamelist,
         adpos: data.adpos
       })
-    }, function () {
+    }, function (error, msg) {
       wx.hideLoading();
       setTimeout(function () {
         wx.showToast({

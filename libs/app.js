@@ -56,7 +56,6 @@ var QKApp = function (options) {
 
   options.$saveLoginUser = function (user, detail, cb) {
     var userInfo = this.globalData.userInfo;
-    console.log(userInfo)
     if (userInfo) {
       cb();
       return;
@@ -110,6 +109,13 @@ var QKApp = function (options) {
       }
     })
     return
+  };
+
+  options.$updateUser = function (user) {
+    for (var k in user) {
+      this.globalData.userInfo[k] = user[k];
+    }
+    wx.setStorageSync('userInfo', this.globalData.userInfo);
   };
 
   options.onLaunch = function (params) {

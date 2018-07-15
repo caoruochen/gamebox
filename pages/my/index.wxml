@@ -29,7 +29,7 @@
       <scroll-view scroll-x class="task-head">
         <view class="top-bar-container">
           <view wx:for="{{topBar}}" wx:key="*this" class="top-bar{{index === activeIndex ? ' active' : ''}}" data-idx="{{index}}" bindtap="changeTabbar">
-            <view class="title">{{item}}<text wx:if="{{index === 0}}">({{1}}/{{tasks.length}})</text></view>
+            <view class="title">{{item}}<text wx:if="{{index === 0 && tasks.total > 0}}">({{tasks.done}}/{{tasks.total}})</text></view>
           </view>
         </view>
       </scroll-view>
@@ -37,24 +37,27 @@
       <swiper current="{{activeIndex}}" class="swiper-content" bindchange="changeSwiper" style="height: {{swiperHeight}}px">
         <swiper-item>
           <scroll-view scroll-y>
-            <view wx:for="{{tasks}}" wx:key="{{index}}}" class="task-item">
+            <view wx:if="{{tasks.list.length < 1}}" class="tips">暂无任务</view>
+            <view wx:for="{{tasks.list}}" wx:key="{{index}}}" class="task-item">
               <image mode="widthFix" src="{{item.icon ? item.icon : '../../images/coins-icon.png'}}" class="task-icon"></image>
               <view class="right-block">
                 <view class="task-info">
                   <view class="task-name">{{item.name}}</view>
                   <view class="task-award">{{item.desc}}</view>
                 </view>
-                <button wx:if="{{!isLogin}}" open-type="getUserInfo" class="task-btn" bindgetuserinfo="onGotUserInfo">{{item.type == 1 ? (item.status > 0 ? '已签到' : '去签到') : (item.status > 1 ? '已完成' : '去完成')}}</button>
-                <button wx:elif="{{isLogin && item.type == 1}}" class="task-btn{{item.status > 0 ? ' active':''}}" bindtap="signIn">{{item.status > 0 ? '已领取' : '去签到'}}</button>
-                <navigator wx:elif="{{isLogin && item.type > 1}}" url="" class="task-btn{{item.status > 1 ? ' active':''}}" bindtap="doTask">{{item.status > 1 ? '已完成' : '去完成'}}</navigator>
+                <view class="task-status">
+                  <view class="task-process {{item.done==item.times ? 'task-process_done' : ''}}" style="width: {{item.process ? item.process : 0}}%;"></view>
+                  <button wx:if="{{!userInfo}}" class="task-btn task-btn_login" open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">{{item.opName}}</button>
+                  <view wx:else class="task-btn" bindtap="doTask" data-taskId="{{item.taskId}}" data-type="{{item.type}}" data-op="{{item.op}}">{{item.opName}}</view>
                 </view>
+              </view>
             </view>
           </scroll-view>
         </swiper-item>
         
         <swiper-item>
-          <scroll-view scroll-y wx:if="{{hasRecentGame}}" class="games-box">
-            <block wx:for="{{recentGames}}" wx:key="*this">
+          <scroll-view scroll-y wx:if="{{games.length>0}}" class="games-box">
+            <block wx:for="{{games}}" wx:key="*this">
               <xcx-navigator nav-class="gamebox-item" game-id="{{item.gameId}}" app-id="{{item.appId}}" mode="{{item.mode}}" bg="{{item.bg}}" path="{{item.path}}" extra="{{item.extra}}">
               <view class="gamebox-item-logo">
                 <image src="{{item.logo}}" />

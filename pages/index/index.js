@@ -20,7 +20,8 @@ QKPage({
     bannerImgWidth: (app.globalData.wwidth - 60 * ratio),
     wwidth: app.globalData.wwidth,
     gameItemWidth: (app.globalData.wwidth-150*ratio) / 4,// 60 padding + 3*30 margin
-    games: []
+    games: [],
+    verifying: false
   },
 
   /**
@@ -41,11 +42,9 @@ QKPage({
       if (stopPullDown) {
         wx.stopPullDownRefresh();
       }
-      if (data) {
-        me.setData({
-          games: data
-        });
-      }
+      me.setData({
+        games: data
+      });
     }, function (error, msg) {
       wx.hideLoading();
       if (stopPullDown) {
@@ -96,7 +95,9 @@ QKPage({
       wx.hideLoading();
       me.setData({
         categorys: data.gamelist,
-        adpos: data.adpos
+        adpos: data.adpos,
+        banners: (data.banners && data.banners.length > 0) ? data.banners : defaultBanners,
+        verifying: data.verifying ? data.verifying : false
       })
     }, function (error, msg) {
       wx.hideLoading();

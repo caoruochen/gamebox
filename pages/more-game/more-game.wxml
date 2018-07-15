@@ -17,7 +17,7 @@
     <view class="gamebox-games">
       <scroll-view scroll-y style='height: {{scrollHeight}}px'>
         <block wx:for="{{games[activeIndex]}}" wx:key="*this">
-        <xcx-navigator nav-class="gamebox-item" game-id="{{item.gameId}}" app-id="{{item.appId}}" mode="{{item.mode}}" bg="{{item.bg}}" path="{{item.path}}" extra="{{item.extra}}">
+        <xcx-navigator nav-class="gamebox-item" game="{{item}}">
           <view class="gamebox-item-logo">
             <image src="{{item.logo}}" />
           </view>

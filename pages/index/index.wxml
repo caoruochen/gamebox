@@ -3,7 +3,7 @@
     autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" style="height:{{swiperHeight}}px !important;">
     <block wx:for="{{banners}}" wx:key="*this">
       <swiper-item>
-        <xcx-navigator game-id="{{item.gameId}}" app-id="{{item.appId}}" mode="{{item.mode}}" bg="{{item.bg}}" path="{{item.path}}" extra-data="{{item.extra}}">
+        <xcx-navigator game="{{item}}">
           <image mode="aspectFill" src="{{item.pic}}" class="slide-image" style="height:{{swiperHeight}}px; width:{{bannerImgWidth}}px" />
         </xcx-navigator>
       </swiper-item>
@@ -19,11 +19,11 @@
           </view>
           <view style="color: {{item.color ? item.color : '#0c0c0c;'}}">{{item.name}}</view>
         </view>
-        <view class="game-more" bindtap="clickMore" data-type="{{item.type}}" data-id="{{index}}">更多</view>
+        <view wx:if="{{!verifying}}" class="game-more" bindtap="clickMore" data-type="{{item.type}}" data-id="{{index}}">更多</view>
       </view>
       <scroll-view class="scroll-view_H" scroll-x>
         <block wx:for="{{item.games}}" wx:key="*this" wx:for-item="game">
-          <xcx-navigator class="item_content" game-id="{{game.gameId}}" app-id="{{game.appId}}" mode="{{game.mode}}" bg="{{game.bg}}" path="{{game.path}}" extra="{{game.extra}}">
+          <xcx-navigator class="item_content" game="{{game}}">
             <image class="game-icon" src="{{game.logo}}" style="width: {{gameItemWidth}}px; height: {{gameItemWidth}}px;"/>
             <view style="width:{{gameItemWidth}}px;" class='game-title'>{{game.name}}</view>
             <view wx:if="{{game.playerNum}}" style="width:{{gameItemWidth}}px;" class='game-desc'>{{game.playerNum}}人在玩</view>
@@ -37,7 +37,7 @@
     <ad unit-id="adunit-a3868a599f8b3cfa"></ad>
   </view>
 
-  <view class="gamebox-games">
+  <view class="gamebox-games" wx:if="{{games.length>0}}">
     <view class="item-title">
       <view class="game-category">
         <view>
@@ -45,10 +45,10 @@
         </view>
         <view>游戏一览</view>
       </view>
-      <view class="game-more" bindtap="clickMore" data-type="" data-id="-1">更多</view>
+      <view wx:if="{{!verifying}}" class="game-more" bindtap="clickMore" data-type="" data-id="-1">更多</view>
     </view>
     <block wx:for="{{games}}" wx:key="*this">
-      <xcx-navigator nav-class="gamebox-item" game-id="{{item.gameId}}" app-id="{{item.appId}}" mode="{{item.mode}}" bg="{{item.bg}}" path="{{item.path}}" extra="{{item.extra}}">
+      <xcx-navigator nav-class="gamebox-item" game="{{item}}">
       <!--view class="gamebox-item" bindtap="startGame" data-appid="{{item.appId}}" data-extra="{{item.extra}}" data-type="{{item.type}}" data-preview="{{item.bg}}"-->
         <view class="gamebox-item-logo">
           <image src="{{item.logo}}" />

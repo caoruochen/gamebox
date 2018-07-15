@@ -48,7 +48,7 @@
                 <view class="task-status">
                   <view class="task-process {{item.done==item.times ? 'task-process_done' : ''}}" style="width: {{item.process ? item.process : 0}}%;"></view>
                   <button wx:if="{{!userInfo}}" class="task-btn task-btn_login" open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">{{item.opName}}</button>
-                  <view wx:else class="task-btn" bindtap="doTask" data-taskId="{{item.taskId}}" data-type="{{item.type}}" data-op="{{item.op}}">{{item.opName}}</view>
+                  <view wx:else class="task-btn" bindtap="doTask" data-taskId="{{item.taskId}}" data-times="{{item.times}}" data-done="{{item.done ? item.done : 0}}" data-type="{{item.type}}" data-op="{{item.op}}">{{item.opName}}</view>
                 </view>
               </view>
             </view>
@@ -58,7 +58,7 @@
         <swiper-item>
           <scroll-view scroll-y wx:if="{{games.length>0}}" class="games-box">
             <block wx:for="{{games}}" wx:key="*this">
-              <xcx-navigator nav-class="gamebox-item" game-id="{{item.gameId}}" app-id="{{item.appId}}" mode="{{item.mode}}" bg="{{item.bg}}" path="{{item.path}}" extra="{{item.extra}}">
+              <xcx-navigator nav-class="gamebox-item" game="{{item}}">
               <view class="gamebox-item-logo">
                 <image src="{{item.logo}}" />
               </view>

@@ -1,3 +1,4 @@
+var playHistory = [];
 var util = {
   compareVersion: function (v1, v2) {
     v1 = v1.split('.')
@@ -24,31 +25,36 @@ var util = {
 
     return 0
   },
-  startGame: function (page, type, appId, preview, gameId) {
-    if (type == 1 && appId) {
-      wx.showLoading({
-        title: '',
-        mask: true
-      });
-      wx.navigateToMiniProgram({
-        appId: appId,
-        success: function (res) {
-          page.reportLog('jump', [1, gameId, appId]);
-        },
-        fail: function (err) {
-          page.reportLog('jump', [-1, gameId, appId]);
-        },
-        complete: function (res) {
-          wx.hideLoading();
-        }
-      })
+  updatePlayHistory: function (game) {
+    var history = wx.getStorageSync('play_his');
+    if (!history) {
+      history = [];
     }
-    if (type == 2 && preview) {
-      page.reportLog('jump', [10, gameId]);
-      wx.previewImage({
-        urls: [preview]
-      })
+    var existPos = -1;
+    for (var i=0; i<history.length; i++) {
+      if (history[i].appId == game.appId) {
+        existPos = i;
+        break;
+      }
     }
+    var history1 = [];
+    if (existPos >= 0) {
+      history1 = [game].concat(history.slice(0, existPos)).concat(history.slice(existPos+1));
+    } else {
+      history1 = [game].concat(history);
+    }
+    playHistory = history1.slice(0, 20);
+    wx.setStorageSync('play_his', playHistory);
+    return playHistory;
+  },
+  getPlayHistory: function () {
+    if (playHistory.length < 1) {
+      var history = wx.getStorageSync('play_his');
+      if (history) {
+        playHistory = history;
+      }
+    }
+    return playHistory;
   }
 };
 module.exports = util

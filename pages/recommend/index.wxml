@@ -10,7 +10,7 @@
     <view>{{item.timeDesc}}</view>
   </view>
 
-  <xcx-navigator nav-class="game-item" game-id="{{item.gameId}}" app-id="{{item.appId}}" mode="{{item.mode}}" bg="{{item.bg}}" path="{{item.path}}" extra="{{item.extra}}">
+  <xcx-navigator nav-class="game-item" game="{{item}}">
     <view class="game-item-body" style="width: 100%" data-ind="{{index}}" data-gameid="{{item.gameId}}" data-type="{{item.type}}" data-appid="{{item.appId}}" data-preview="{{item.bg}}">
       <image class="game-item-poster" mode="scaleToFill" style="width: 100%; height: {{imgWidth}}px;" src="{{item.poster}}" hidden="{{item.vshow}}" ></image>
       <view class="game-item-mask" style="width: 100%; height: {{imgWidth}}px;">

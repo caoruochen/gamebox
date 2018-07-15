@@ -32,6 +32,11 @@ QKPage({
   onLoad: function () {
     this.getProfile();
   },
+  onShow: function () {
+    this.setData({
+      games: util.getPlayHistory()
+    });
+  },
   onPullDownRefresh: function (e) {
     this.getProfile();
   },
@@ -75,35 +80,76 @@ QKPage({
     });
   },
   doTask: function (e) {
-    var target = e.currentTarget;
+    var target = e.currentTarget,
+      taskId = target.dataset.taskId,
+      op = target.dataset.op - 0,
+      type = target.dataset.type - 0,
+      times = target.dataset.times - 0,
+      done = target.dataset.done - 0;
+
+    switch (op) {
+      case 1: // invitw
+        // TODO
+        return;
+      case 2: // 游戏次数
+        wx.switchTab({
+          url: '/pages/index/index',
+          fail: function () {
+            wx.showToast({
+              title: '操作失败',
+              icon: 'none'
+            });
+          }
+        });
+        return;
+      case 3: // 看视频
+        // TODO
+        return;
+      case 4: //领金币
+        break;
+      default:
+        wx.showToast({
+          title: '任务已完成',
+          icon: 'none'
+        });
+        return;
+    }
     
     var params = {
-      taskId: target.dataset.taskId,
-      op: target.dataset.op,
-      type: target.dataset.type
+      taskId: taskId,
+      op: op,
+      type: type
     };
 
     wx.showLoading({
       title: '请稍后',
       mask: true
     });
+    var me = this;
     http.post('/gamebox/user/dotask', params, function (data) {
-      var data0 = {}
-      var user = me.data.userInfo;
-      if (user) {
-        user.coins = data.coins;
-        data0.userInfo = user;
-        app.$updateUser({
-          coins: data.coins
+      wx.hideLoading();
+      setTimeout(function () {
+        wx.showToast({
+          title: data.msg || '任务完成',
+          icon: 'none'
         });
-      }
+        var data0 = {}
+        var user = me.data.userInfo;
+        if (user) {
+          user.coins = data.coins;
+          data0.userInfo = user;
+          app.$updateUser({
+            coins: data.coins
+          });
+        }
 
-      if (data.tasks) {
-        data0.tasks = data.tasks; 
-      }
-      if (Object.keys(data0).length>0) {
-        me.setData(data0);
-      }
+        if (data.tasks) {
+          data0.tasks = data.tasks; 
+        }
+        if (Object.keys(data0).length>0) {
+          me.setData(data0);
+        }
+      }, 100);
     }, function (error, msg) {
       wx.hideLoading();
       setTimeout(function () {

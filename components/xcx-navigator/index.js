@@ -6,6 +6,10 @@ Component({
     game: {
       type: Object,
       value: null
+    },
+    fromHistory: { // 从玩过的记录打开
+      type: Number,
+      value: 0
     }
   },
   methods: {
@@ -19,13 +23,22 @@ Component({
 
       wx.previewImage({
         urls: [this.data.game.bg]
-      })
-      app.reportLog(page, 'jump', [2, this.data.game.gameId, this.data.game.appId])
+      });
       util.updatePlayHistory(this.data.game);
-      http.post('/gamebox/playlog', {gameId: this.data.game.gameId, appId: this.data.game.appId});
+      app.reportLog(page, 'jump', [2, this.data.game.gameId, this.data.game.appId, 1]);
+      app.$reportPreviewNavgator(1, this.data.game, page, this.data.fromHistory);
     },
     onNav: function (e) {
       var app = getApp();
+      var r = util.compareVersion(app.globalData.sysInfo.SDKVersion, '2.0.7');
+      if (r < 0) {
+        wx.navigateToMiniProgram({
+          appId: this.data.game.appId,
+          path: this.data.game.path,
+          extraData: this.data.game.extra
+        });
+      }
+
       var currentPages = getCurrentPages();
       var page = '';
       if (currentPages.length > 0) {

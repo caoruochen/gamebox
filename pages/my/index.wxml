@@ -58,7 +58,7 @@
         <swiper-item>
           <scroll-view scroll-y wx:if="{{games.length>0}}" class="games-box">
             <block wx:for="{{games}}" wx:key="*this">
-              <xcx-navigator nav-class="gamebox-item" game="{{item}}">
+              <xcx-navigator nav-class="gamebox-item" game="{{item}}" from-history="1">
               <view class="gamebox-item-logo">
                 <image src="{{item.logo}}" />
               </view>

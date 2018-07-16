@@ -29,6 +29,21 @@ QKPage({
         case 1:
           console.log("1等奖");
           break;
+        case 2:
+          console.log("2等奖");
+          break;
+        case 3:
+          console.log("3等奖");
+          break;
+        case 4:
+          console.log("4等奖");
+          break;
+        case 5:
+          console.log("5等奖");
+          break;
+        case 6:
+          console.log("6等奖");
+          break;
         default:
           console.log("幸运奖");
       }

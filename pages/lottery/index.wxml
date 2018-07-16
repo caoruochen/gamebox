@@ -3,7 +3,7 @@
     <view class="pointer" bindtap="rotateAward">
       <image mode="widthFix" src="../../images/pointer.png" alt="pointer"></image>
     </view>
-    <view animation="{{animationData}}" class="rotate">
+    <view animation="{{animationData}}" style="{{rotateAngle}}" class="rotate">
       <image src="../../images/turntable2.png" alt="turntable"></image>
     </view>
     <image mode="widthFix" class="turntable-bg" src="../../images/turntable-bg2.png"></image>

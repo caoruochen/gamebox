@@ -17,40 +17,40 @@ RotateAward.prototype.rotate = function(cb){
   this.totalAngle = this.initAngle;
   this.rand = rnd(this.copies);
   console.log(this.rand);
+  var section = [3, 5, 7, 9.5];
+  this.boundary = section.map(x => x * 360);
+  var ratio = this.rand/this.copies;
+  var totalTurn = this.turn + ratio;
+  this.lastAng = totalTurn * 360;
   requestAnimationFrame(this.step.bind(this));
 };
 
 RotateAward.prototype.step = function(timestamp){
-  var section = [3, 5, 7, 9.5];
-  var boundary = section.map(x => x * 360);
-  var ratio = this.rand/this.copies;
-  var totalTurn = this.turn + ratio;
-  var lastAng = totalTurn * 360;
-  if(this.totalAngle <= boundary[0]){
+  if(this.totalAngle <= this.boundary[0]){
     this.page.setData({
       rotateAngle: "transform: rotate(" + this.totalAngle + "deg)"
     });
     this.totalAngle = this.totalAngle + this.progress * 5;
     requestAnimationFrame(this.step.bind(this));
-  }else if(this.totalAngle <= boundary[1]){
+  }else if(this.totalAngle <= this.boundary[1]){
     this.page.setData({
       rotateAngle: "transform: rotate(" + this.totalAngle + "deg)"
     });
     this.totalAngle = this.totalAngle + this.progress * 3;
     requestAnimationFrame(this.step.bind(this));
-  }else if(this.totalAngle <= boundary[2]){
+  }else if(this.totalAngle <= this.boundary[2]){
     this.page.setData({
       rotateAngle: "transform: rotate(" + this.totalAngle + "deg)"
     });
     this.totalAngle = this.totalAngle + this.progress * 2;
     requestAnimationFrame(this.step.bind(this));
-  }else if(this.totalAngle <= boundary[3]){
+  }else if(this.totalAngle <= this.boundary[3]){
     this.page.setData({
       rotateAngle: "transform: rotate(" + this.totalAngle + "deg)"
     });
     this.totalAngle = this.totalAngle + this.progress;
     requestAnimationFrame(this.step.bind(this));
-  }else if(this.totalAngle < lastAng){
+  }else if(this.totalAngle < this.lastAng){
     this.page.setData({
       rotateAngle: "transform: rotate(" + this.totalAngle + "deg)"
     });
@@ -58,9 +58,9 @@ RotateAward.prototype.step = function(timestamp){
     requestAnimationFrame(this.step.bind(this));
   }else{
     this.page.setData({
-      rotateAngle: "transform: rotate(" + lastAng + "deg)"
+      rotateAngle: "transform: rotate(" + this.lastAng + "deg)"
     });
-    this.totalAngle = lastAng;
+    this.totalAngle = this.lastAng;
     this.isRotating = false;
     this.cb && this.cb(this.rand);
   }

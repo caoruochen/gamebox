@@ -4,9 +4,6 @@ Component({
     SDKVersion: {
       type: Number,
       value: 'default value',
-    },
-    more: {
-
     }
   },
   data: {

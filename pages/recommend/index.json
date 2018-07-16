@@ -3,5 +3,8 @@
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark",
   "backgroundColor": "#eee",
-  "onReachBottomDistance": 20
+  "onReachBottomDistance": 20,
+  "usingComponents": {
+    "xcx-navigator": "../../components/xcx-navigator/index"
+  }
 }

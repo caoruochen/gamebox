@@ -24,63 +24,58 @@
     </view>
   </view>
 
-    <view class="my-tasks" wx:if="{{!checkSwitch}}">
+  <view class="my-tasks">
     <view class="daily-task">
       <scroll-view scroll-x class="task-head">
         <view class="top-bar-container">
           <view wx:for="{{topBar}}" wx:key="*this" class="top-bar{{index === activeIndex ? ' active' : ''}}" data-idx="{{index}}" bindtap="changeTabbar">
-            <view class="title">{{item}}<text wx:if="{{index === 0}}">({{1}}/{{tasks.length}})</text></view>
-            <!-- <text wx:if="{{index === 0}}">一键领取</text> -->
+            <view class="title">{{item}}<text wx:if="{{index === 0 && tasks.total > 0}}">({{tasks.done}}/{{tasks.total}})</text></view>
           </view>
         </view>
       </scroll-view>
+
       <swiper current="{{activeIndex}}" class="swiper-content" bindchange="changeSwiper" style="height: {{swiperHeight}}px">
         <swiper-item>
           <scroll-view scroll-y>
-            <view wx:for="{{tasks}}" wx:key="{{index}}}" class="task-item">
-              <image mode="widthFix" src="{{item.icon}}" class="task-icon"></image>
+            <view wx:if="{{tasks.list.length < 1}}" class="tips">暂无任务</view>
+            <view wx:for="{{tasks.list}}" wx:key="{{index}}}" class="task-item">
+              <image mode="widthFix" src="{{item.icon ? item.icon : '../../images/coins-icon.png'}}" class="task-icon"></image>
               <view class="right-block">
                 <view class="task-info">
                   <view class="task-name">{{item.name}}</view>
                   <view class="task-award">{{item.desc}}</view>
                 </view>
-                <button wx:if="{{!isLogin}}" open-type="getUserInfo" class="task-btn" bindgetuserinfo="onGotUserInfo">{{item.type == 1 ? (item.status > 0 ? '已签到' : '签到') : (item.status > 1 ? '已完成' : '去完成')}}</button>
-                <button wx:elif="{{isLogin && item.type == 1}}" class="task-btn{{item.status > 0 ? ' active':''}}" bindtap="signIn">{{item.status > 0 ? '已领取' : '签到'}}</button>
-                <navigator wx:elif="{{isLogin && item.type > 1}}" url="" class="task-btn{{item.status > 1 ? ' active':''}}" bindtap="doTask">{{item.status > 1 ? '已完成' : '去完成'}}</navigator>
+                <view class="task-status">
+                  <view class="task-process {{item.done==item.times ? 'task-process_done' : ''}}" style="width: {{item.process ? item.process : 0}}%;"></view>
+                  <button wx:if="{{!userInfo}}" class="task-btn task-btn_login" open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">{{item.opName}}</button>
+                  <view wx:else class="task-btn" bindtap="doTask" data-taskid="{{item.taskId}}" data-times="{{item.times}}" data-done="{{item.done ? item.done : 0}}" data-type="{{item.type}}" data-op="{{item.op}}">{{item.opName}}</view>
                 </view>
+              </view>
             </view>
           </scroll-view>
         </swiper-item>
+        
         <swiper-item>
-          <scroll-view scroll-y wx:if="{{hasRecentGame}}" class="games-box">
-            <block wx:for="{{recentGames}}" wx:key="*this">
-              <view class="gamebox-item" bindtap="startGame" data-appid="{{item.appId}}" data-extra="{{item.extra}}" data-type="{{item.type}}" data-preview="{{item.bg}}">
+          <scroll-view scroll-y wx:if="{{games.length>0}}" class="games-box">
+            <block wx:for="{{games}}" wx:key="*this">
+              <xcx-navigator nav-class="gamebox-item" game="{{item}}">
               <view class="gamebox-item-logo">
                 <image src="{{item.logo}}" />
               </view>
               <view class="gamebox-item-info">
                 <view>{{item.name}}
-                  <text wx:if="{{item.playerNum}}" class='gamebox-item-num'><text>{{item.playerNum}}人在玩</text></text>
+                  <!--text wx:if="{{item.playerNum}}" class='gamebox-item-num'><text>{{item.playerNum}}</text>人在玩</text-->
                 </view>
                 <view class="gamebox-item-info_desc">{{item.desc}}</view>
               </view>
               <view class="gamebox-item-play">开始</view>
-            </view>
+            </xcx-navigator>
             </block>
           </scroll-view>
           <view wx:else class="tips">你最近还没有玩游戏哦，赶紧去玩吧</view>
         </swiper-item>
       </swiper>
 
-    </view>
-  </view>
-  <view class="my-tasks" wx:else>
-    <view class="item_content" wx:for="{{games}}"
-       wx:key="" wx:for-index="idx" wx:for-item="game"
-       bindtap="goDetail" data-index="{{index}}" data-gameid="{{game.gameId}}">
-      <image class="game-logo" src="{{game.logo}}"></image>
-      <text class='game-title'>{{game.name}}</text>
-      <text class='game-desc'>{{game.playerNum}}人在玩</text>
     </view>
   </view>
 

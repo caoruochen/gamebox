@@ -10,16 +10,15 @@
     <view>{{item.timeDesc}}</view>
   </view>
 
-  <view class="game-item">
-    <view class="game-item-body" style="width: 100%" data-ind="{{index}}" bindtap="changeVideo" data-gameid="{{item.gameId}}" data-type="{{item.type}}" data-appid="{{item.appId}}" data-preview="{{item.bg}}">
-      <image class="game-item-poster" mode="{{item.mode || 'scaleToFill'}}" style="width: 100%; height: {{imgWidth}}px;" src="{{item.poster}}" hidden="{{item.vshow}}" ></image>
+  <xcx-navigator nav-class="game-item" game="{{item}}">
+    <view class="game-item-body" style="width: 100%" data-ind="{{index}}" data-gameid="{{item.gameId}}" data-type="{{item.type}}" data-appid="{{item.appId}}" data-preview="{{item.bg}}">
+      <image class="game-item-poster" mode="scaleToFill" style="width: 100%; height: {{imgWidth}}px;" src="{{item.poster}}" hidden="{{item.vshow}}" ></image>
       <view class="game-item-mask" style="width: 100%; height: {{imgWidth}}px;">
         <image wx:if="{{item.vsrc && item.vsrc.length>0}}" class="game-item-play" hidden="{{item.vshow}}" src="../../images/play.png"></image>
       </view>
-      <!--video wx:if="{{item.vsrc && item.vsrc.length>0}}" hidden="{{!item.vshow}}" style="width: 100%; height: {{imgWidth}}px;" id="gvideo_{{index}}" src="{{item.vsrc}}" controls objectFit="{{fit}}" direction="{{item.direction}}" loop show-center-play-btn="{{false}}" binderror="videoError" bindplay="changeVideo" bindfullscreenchange="changeVideo"></video-->
     </view>
 
-    <view class="game-item-info" data-ind="{{index}}" bindtap="playGame" data-type="{{item.type}}" data-gameid="{{item.gameId}}" data-appid="{{item.appId}}" data-preview="{{item.bg}}">
+    <view class="game-item-info" data-ind="{{index}}" data-type="{{item.type}}" data-gameid="{{item.gameId}}" data-appid="{{item.appId}}" data-preview="{{item.bg}}">
       <image class="game-item-info-logo" src="{{item.logo}}"></image>
       <view class="game-item-info-desc">
         <view>{{item.name}}</view>
@@ -28,7 +27,7 @@
       <view class="game-item-info-play">开始</view>
     </view>
 
-  </view>
+  </xcx-navigator>
 </block>
 
 </view>

@@ -24,10 +24,11 @@ image{
   border-radius: 50%;
   background-color: #fff;
 }
+
 .my-info .avatar image{
   display: block;
-  width: 66px;
-  height: 66px;
+  width: 132rpx;
+  height: 132rpx;
   border-radius: 50%;
 }
 .base-info{
@@ -35,12 +36,12 @@ image{
   color: #0c0c0c;
 }
 .base-info > view{
-  font-size: 19px;
+  font-size: 40rpx;
   font-weight: bold;
 } 
 .base-info image{
-  width: 16px;
-  margin-left: 10px;
+  width: 32rpx;
+  margin-left: 20rpx;
 }
 
 .base-info button {
@@ -49,69 +50,68 @@ image{
 
 .my-info .level{
   display: inline-block;
-  padding: 2px 8px;
-  border-radius: 15px;
-  margin-top: 10px;
+  padding: 4rpx 16rpx;
+  border-radius: 30rpx;
+  margin-top: 20rpx;
   background-color: #fff;
 }
 .my-info .level image{
-  width: 10px;
-  margin-right: 5px;
+  width: 20rpx;
+  margin-right: 10rpx;
 }
 .my-info .level text{
-  font-size: 10px;
+  font-size: 20rpx;
 }
 .my-info .lottery image{
   display: block;
-  width: 53px;
+  width: 106rpx;
 }
 .user-info{
   flex: 1;
-  margin-left: 12px;
+  margin-left: 24rpx;
   font-size: 14px;
 }
 .user-info .coins{
   display: flex;
   align-items: center;
-  margin-top: 9px;
+  margin-top: 18rpx;
 }
 .user-info .coins text{
-  font-size: 15px;
+  font-size: 14px;
   color: #fff;
 }
 .user-info .coins image{
-  width: 20px;
+  width: 40rpx;
 }
 .user-info .coins .coins-icon{
-  margin-right: 4px;
+  margin-right: 8rpx;
 }
 .user-info .coins .diamond-icon{
-  margin-left: 6px;
-  margin-right: 2px;
+  margin: 0 4rpx 0 12rpx;
 }
 .my .banner{
   display: flex;
   width: 90%;
-  padding-bottom: 30px;
+  padding-bottom: 60rpx;
   margin: 0 auto;
 }
 .my .banner > view{
   display: flex;
   justify-content: space-between;
   flex: 1;
-  padding: 11px 5px 25px 11px;
-  border-radius: 5px;
+  padding: 22rpx 10rpx 50rpx 22rpx;
+  border-radius: 10rpx;
   background-color: #fff;
 }
 .my .banner > view:last-child{
   margin-left: 3%;
 }
 .my .banner > view .left-icon{
-  width: 20px;
+  width: 40rpx;
 }
 .my .banner > view .center-block{
   flex: 1;
-  margin-left: 8px;
+  margin-left: 16rpx;
 }
 .my .banner > view .center-block view:first-child{
   font-size: 14px;
@@ -121,11 +121,11 @@ image{
 .my .banner > view .center-block view:last-child{
   font-size: 12px;
   color: #666;
-  margin-top: 5px;
+  margin-top: 10rpx;
 }
 .my .banner > view .right-arrow{
-  width: 10px;
-  margin-top: 5px;
+  width: 20rpx;
+  margin-top: 10rpx;
 }
 
 .my-tasks {
@@ -133,7 +133,7 @@ image{
 }
 
 .daily-task{
-  padding-bottom: 18px;
+  padding-bottom: 36rpx;
   background-color: #fff;
 }
 .daily-task .task-head{
@@ -142,7 +142,7 @@ image{
 .daily-task .top-bar-container{
   display: flex;
   justify-content: center;
-  padding: 15px 0 12px 0;
+  padding: 30rpx 0 24rpx 0;
   border-bottom: 1rpx solid #e4e4e4;
 }
 .daily-task .task-head .top-bar{
@@ -152,7 +152,7 @@ image{
 .daily-task .title{
   display: inline-block;
   position: relative;
-  font-size: 15px;
+  font-size: 30rpx;
   color: #666;
   text-align: center;
 }
@@ -177,70 +177,101 @@ image{
 .task-item{
   display: flex;
   align-items: center;
-  padding-left: 20px;
+  padding-left: 40rpx;
 }
 .task-item .task-icon{
-  width: 32px;
+  width: 50rpx;
 }
 .task-item .right-block{
   display: flex;
   flex: 1;
   align-items: center;
-  padding-top: 15px;
-  padding-bottom: 12px;
-  padding-right: 10px;
+  padding: 20rpx 30rpx 20rpx 0;
   border-bottom: 1rpx solid #e4e4e4;
-  margin-left: 10px;
+  margin-left: 30rpx;
 }
-.task-item:last-of-type .right-block{
-  border-bottom-width: 0;
-}
+
 .daily-task .task-info{
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding-bottom: 5px;
 }
 .daily-task .task-item .task-name{
-  font-size: 15px;
+  font-size: 13px;
   font-weight: bold;
   color: #111;
+  margin-bottom: 4rpx;
 }
 .daily-task .task-item .task-award{
-  font-size: 13px;
+  font-size: 11px;
   color: #666;
 }
-.daily-task .task-item .task-btn{
-  line-height: normal;
-  padding: 6px 20px;
-  border-radius: 15px;
-  font-size: 13px;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-.daily-task .task-item .task-btn:after{
-  border-width: 0;
-}
-.daily-task .task-item .task-btn.active{
-  background-color: #f6c344;
+
+.daily-task .task-item .task-status {
+  position: relative;
+  background-color: #f6c749;
+  border-radius: 30rpx;
+  width: 180rpx;
+  height: 60rpx;
 }
 
+.daily-task .task-item .task-process {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-top-left-radius: 30rpx;
+  border-bottom-left-radius: 30rpx;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background-color: #ccc;
+}
+
+.daily-task .task-item .task-process_done {
+  border-top-right-radius: 30rpx !important;
+  border-bottom-right-radius: 30rpx !important;
+}
+
+.daily-task .task-item .task-btn {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: transparent;
+}
+
+.daily-task .task-item .task-btn_login {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  line-height: normal !important;
+  border-radius: 0 !important;
+  background-color: #f6c749 !important;
+}
 .all-tasks{
-  padding-top: 12px;
-  margin-bottom: 20px;
-  font-size: 15px;
+  padding-top: 24rpx;
+  margin-bottom: 40rpx;
+  font-size: 14px;
   color: #666;
   text-align: center;
 }
 
 .ad {
-  bottom: 10px;
+  bottom: 20rpx;
   padding-bottom: 0;
   position: fixed;
 }
 
 .games-box{
-  padding:10rpx 30rpx;
+  padding: 10rpx 30rpx;
   height: 100%;
   box-sizing: border-box;
 }
@@ -249,23 +280,20 @@ image{
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 20rpx 0;
+  padding: 16rpx 0;
   border-bottom: 1rpx solid #eee;
-}
-.gamebox-item:last-of-type{
-  border-bottom-width: 0; 
 }
 
 .gamebox-item-logo {
-  padding-right: 10px;
+  padding-right: 16rpx;
   display: flex;
   align-items: center;
 }
 
 .gamebox-item-logo image {
-  width:  50px;
-  height: 50px;
-  border-radius: 5px;
+  width:  80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
 }
 
 .gamebox-item-info {
@@ -275,12 +303,13 @@ image{
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
+  font-size: 13px;
 }
 
 .gamebox-item-info .gamebox-item-info_desc {
-  font-size: 80%;
+  font-size: 11px;
   color: #999;
-  margin-top: 5px;
+  margin-top: 6rpx;
 }
 
 .gamebox-item-num {
@@ -294,9 +323,16 @@ image{
 }
 
 .gamebox-item-play {
-  border: 1rpx solid #3884d8;
+  border: 1rpx solid #f6c749;
   font-size: 13px;
-  color: #3884d8;
-  border-radius: 15px;
-  padding: 4px 15px;
+  color: #f6c749;
+  border-radius: 30rpx;
+  padding: 6rpx 25rpx;
+}
+
+.tips {
+  text-align: center;
+  color: #ccc;
+  font-size: 14px;
+  margin-top: 30rpx;
 }

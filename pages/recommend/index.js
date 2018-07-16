@@ -18,7 +18,6 @@ QKPage({
     this.loadGame(true, true);
   },
   loadGame: function (refresh, stopPullDown) {
-    this.currentPlayVideo = -1;
     wx.showLoading({
       title: '数据加载中'
     });
@@ -45,47 +44,5 @@ QKPage({
   onReachBottom: function (e) {
   },
   onPageScroll: function (e) {
-  },
-  changeVideo: function (e) {
-    var target = e.currentTarget;
-    var ind = target.dataset.ind;
-    if (typeof ind === 'undefined') {
-      ind = target.id.substr(7)
-    }
-    var vsrc = this.data.games[ind].vsrc;
-    if (!vsrc || vsrc.length<1) {
-      var type = target.dataset.type;
-      var appId = target.dataset.appid;
-      var gameId = target.dataset.gameid;
-      var preview = target.dataset.preview;
-      util.startGame(this, type, appId, preview, gameId);
-      return;
-    }
-    if (typeof this.currentPlayVideo !== 'undefined' && this.currentPlayVideo != ind) {
-      var currentVideoCtx = wx.createVideoContext('gvideo_'+this.currentPlayVideo, this);
-      currentVideoCtx.pause();
-    }
-    var videoCtx = wx.createVideoContext('gvideo_'+ind, this);
-    if (this.currentPlayVideo != ind) {
-      this.currentPlayVideo = ind;
-      videoCtx.play();
-    }
-    if (this.data.games[ind].vshow) {
-      return;
-    }
-    var string = "games["+ind+"].vshow";
-    this.setData({
-      [string]: true
-    })
-  },
-  videoError: function (e) {
-  },
-  playGame: function (e) {
-    var target = e.currentTarget;
-    var type = target.dataset.type;
-    var appId = target.dataset.appid;
-    var gameId = target.dataset.gameid;
-    var preview = target.dataset.preview;
-    util.startGame(this, type, appId, preview, gameId);
   }
 });

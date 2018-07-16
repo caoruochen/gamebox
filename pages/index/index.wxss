@@ -86,7 +86,7 @@ swiper {
 .game-more {
   font-size: 12px;
   color: #353535;
-  padding-left: 20rpx;
+  padding-left: 40rpx;
   box-sizing: border-box;
 }
 
@@ -100,7 +100,7 @@ swiper {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 40rpx;
+  margin-left: 30rpx;
 }
 
 .scroll-view_H .item_content:nth-child(1) {
@@ -113,9 +113,10 @@ swiper {
 
 .game-title {
   color: #353535;
-  font-size: 14px;
+  font-size: 13px;
   overflow-x: scroll;
   text-align: center;
+  padding: 4rpx 0;
 }
 
 .game-desc {
@@ -189,3 +190,4 @@ swiper {
   border-radius: 15px;
   padding: 4px 15px;
 }
+

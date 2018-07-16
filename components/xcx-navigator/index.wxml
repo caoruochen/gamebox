@@ -1,0 +1,8 @@
+<view class="nav-class" wx:if="{{!game || game.mode!=1 || !game.appId}}" bindtap="preview">
+  <slot></slot>
+</view>
+
+<navigator hover-stay-time="100" class="nav-class" wx:else target="miniProgram" open-type="navigate" app-id="{{game.appId}}" path="{{game.path}}" extra-data="{{game.extra}}" bindtap="onNav">
+  <slot></slot>
+</navigator>
+

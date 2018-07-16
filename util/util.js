@@ -25,10 +25,11 @@ var util = {
 
     return 0
   },
-  updatePlayHistory: function (game) {
+  updatePlayHistory: function (game, remove) {
     if (!game || !game.appId) {
       return;
     }
+    game.__times = 0;
     var history = wx.getStorageSync('play_his');
     if (!history) {
       history = [];
@@ -40,11 +41,22 @@ var util = {
         break;
       }
     }
-    var history1 = [];
     if (existPos >= 0) {
-      history1 = [game].concat(history.slice(0, existPos)).concat(history.slice(existPos+1));
+      game = history[existPos];
+    }
+    var history1 = [];
+    if (!remove) {
+      history1 = [game]
     } else {
-      history1 = [game].concat(history);
+      if (game.__times > 0) {
+        existPos = -1
+      }
+    }
+    game.__times++; 
+    if (existPos >= 0) {
+      history1 = history1.concat(history.slice(0, existPos)).concat(history.slice(existPos+1));
+    } else {
+      history1 = history1.concat(history);
     }
     playHistory = history1.slice(0, 20);
     wx.setStorageSync('play_his', playHistory);

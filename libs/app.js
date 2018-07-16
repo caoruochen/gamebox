@@ -1,4 +1,5 @@
 var http = require("../util/http");
+var util = require("../util/util");
 
 var QKApp = function (options) {
 
@@ -248,7 +249,6 @@ var QKApp = function (options) {
 
   options.onHide = function () {
     wx.hideLoading();
-    // TODO 处理preview 的日志上报
     onHide0 && onHide0.call(this);
     if (logts) {
       clearInterval(logts);
@@ -279,7 +279,27 @@ var QKApp = function (options) {
     logs.push([page, event, log, (new Date()).getTime()]);
   };
 
-  options.$reportPreviewNavgator = function () {
+  var currentPreviewNavgatorGame = null;
+  options.$reportPreviewNavgator = function (step, game, page, fromHistory) {
+    // step: 1 on preview image, 2 page.onShow
+    var ts = parseInt((new Date()).getTime()/1000);
+    var delta = 3; // page.onShow 间隔小于delta秒后被调用，判定没有打开目标小程序
+    if (step == 1) {
+      currentPreviewNavgatorGame = [game, ts, page, fromHistory];
+    } else {
+      if (!currentPreviewNavgatorGame) {
+        return;
+      }
+      var game = currentPreviewNavgatorGame[0];
+      if (ts - currentPreviewNavgatorGame[1] < delta) {
+        this.reportLog(currentPreviewNavgatorGame[2], 'jump', [2, game.gameId, game.appId, 0]);
+        http.post('/gamebox/playlog', {gameId: game.gameId, appId: game.appId, remove: 1});
+        if (currentPreviewNavgatorGame[3] != 1) {
+          util.updatePlayHistory(game, true);
+        }
+      }
+      currentPreviewNavgatorGame = null;
+    }
   };
 
   App(options);

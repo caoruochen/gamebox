@@ -4,7 +4,7 @@
     <block wx:for="{{banners}}" wx:key="*this">
       <swiper-item>
         <xcx-navigator game="{{item}}">
-          <image mode="aspectFill" src="{{item.pic}}" class="slide-image" style="height:{{swiperHeight}}px; width:{{bannerImgWidth}}px" />
+          <image lazy-load="{{true}}" mode="aspectFill" src="{{item.pic}}" class="slide-image" style="height:{{swiperHeight}}px; width:{{bannerImgWidth}}px" />
         </xcx-navigator>
       </swiper-item>
     </block>
@@ -16,7 +16,7 @@
       <view class="item-title">
         <view class="game-category">
           <view>
-            <image src="{{item.icon ? item.icon : '../../images/hot-icon.png'}}"></image>
+            <image lazy-load="{{true}}" src="{{item.icon ? item.icon : '../../images/hot-icon.png'}}"></image>
           </view>
           <view style="color: {{item.color ? item.color : '#0c0c0c;'}}">{{item.name}}</view>
         </view>
@@ -25,7 +25,7 @@
       <scroll-view class="scroll-view_H" scroll-x>
         <block wx:for="{{item.games}}" wx:key="*this" wx:for-item="game">
           <xcx-navigator class="item_content" game="{{game}}">
-            <image class="game-icon" src="{{game.logo}}" style="width: {{gameItemWidth}}px; height: {{gameItemWidth}}px;"/>
+            <image lazy-load="{{true}}" class="game-icon" src="{{game.logo}}" style="width: {{gameItemWidth}}px; height: {{gameItemWidth}}px;"/>
             <view style="width:{{gameItemWidth}}px;" class='game-title'>{{game.name}}</view>
             <view wx:if="{{game.playerNum}}" style="width:{{gameItemWidth}}px;" class='game-desc'>{{game.playerNum}}人在玩</view>
           </xcx-navigator>
@@ -51,7 +51,7 @@
     <block wx:for="{{games}}" wx:key="*this">
       <xcx-navigator nav-class="gamebox-item" game="{{item}}">
         <view class="gamebox-item-logo">
-          <image src="{{item.logo}}" />
+          <image lazy-load="{{true}}" src="{{item.logo}}" />
         </view>
         <view class="gamebox-item-info">
           <view>{{item.name}}

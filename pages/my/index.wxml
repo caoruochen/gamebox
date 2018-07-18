@@ -15,9 +15,9 @@
         </view>
       </view>
       
-      <!--navigator url="/pages/lottery/index" class="lottery" bindtap="goLottery">
+      <!-- <navigator url="/pages/lottery/index" class="lottery">
         <image mode="widthFix" src="../../images/lottery-icon.png"></image>
-      </navigator-->
+      </navigator> -->
       <view class="lottery" bindtap="goLottery">
         <image mode="widthFix" src="../../images/lottery-icon.png"></image>
       </view>

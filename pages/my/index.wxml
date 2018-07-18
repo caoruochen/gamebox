@@ -64,7 +64,7 @@
             <block wx:for="{{games}}" wx:key="*this">
               <xcx-navigator nav-class="gamebox-item" game="{{item}}" from-history="1">
               <view class="gamebox-item-logo">
-                <image src="{{item.logo}}" />
+                <image lazy-load="{{true}}" src="{{item.logo}}" />
               </view>
               <view class="gamebox-item-info">
                 <view>{{item.name}}

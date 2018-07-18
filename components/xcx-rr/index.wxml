@@ -1,0 +1,4 @@
+<view class="rr-class">
+  <view>评论区</view>
+  <slot></slot>
+</view>

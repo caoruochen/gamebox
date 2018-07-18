@@ -1,8 +1,7 @@
 {
-  "navigationBarTitleText": "我的",
+  "navigationBarTitleText": "打榜",
   "enablePullDownRefresh": true,
   "onReachBottomDistance": 20,
-  "navigationBarBackgroundColor": "#f6c649",
   "navigationBarTextStyle": "white",
   "usingComponents": {
     "xcx-navigator": "../../components/xcx-navigator/index"

@@ -71,10 +71,19 @@ image{
   margin-left: 24rpx;
   font-size: 14px;
 }
-.user-info .coins{
+.user-info .bottom-block{
   display: flex;
   align-items: center;
   margin-top: 18rpx;
+}
+.user-info .bottom-block .more{
+  margin-left: 25px;
+  font-size: 14px;
+  color: red;
+}
+.user-info .coins{
+  display: flex;
+  align-items: center;
 }
 .user-info .coins text{
   font-size: 14px;

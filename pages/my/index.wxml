@@ -9,18 +9,22 @@
           <view wx:if="{{!!userInfo}}">{{userInfo.name}}</view>
           <button wx:else open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">点击登陆</button>
         </view>
-        <view class="coins">
-          <image mode="widthFix" src="../../images/coins-icon.png" class="coins-icon"></image>
-          <text>{{userInfo ? userInfo.coins : '0'}}</text>
+        <view class="bottom-block">
+          <view class="coins">
+            <image mode="widthFix" src="../../images/coins-icon.png" class="coins-icon"></image>
+            <text>{{userInfo ? userInfo.coins : '0'}}</text>
+          </view>
+          <view class="more">更多</view>
         </view>
+        
       </view>
       
-      <!-- <navigator url="/pages/lottery/index" class="lottery">
+      <navigator url="/pages/lottery/index" class="lottery">
         <image mode="widthFix" src="../../images/lottery-icon.png"></image>
-      </navigator> -->
-      <view class="lottery" bindtap="goLottery">
+      </navigator>
+      <!-- <view class="lottery" bindtap="goLottery">
         <image mode="widthFix" src="../../images/lottery-icon.png"></image>
-      </view>
+      </view> -->
     </view>
   </view>
 
@@ -78,7 +82,20 @@
 
     </view>
   </view>
-
+  
+  <!-- <view class="hit-record">
+    <view class="hit-head">
+      <view class="hit-title">
+        打榜记录
+      </view>
+      <view class="contact-qf">
+        联系客服
+      </view>
+    </view>
+    <view class="hit-record-content">
+      
+    </view>
+  </view> -->
   <view class="ad">
     <ad unit-id="adunit-45cb07bb615f7ee9"></ad>
   </view>

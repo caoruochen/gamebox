@@ -1,6 +1,6 @@
 <view class="container">
   <view class="turntable">
-    <view class="pointer" bindtap="rotateAward">
+    <view class="pointer" bindtap="doAward">
       <image mode="widthFix" src="../../images/pointer.png" alt="pointer"></image>
     </view>
     <view animation="{{animationData}}" style="{{rotateAngle}}" class="rotate">

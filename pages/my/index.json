@@ -5,7 +5,6 @@
   "navigationBarBackgroundColor": "#f6c649",
   "navigationBarTextStyle": "white",
   "usingComponents": {
-    "navigate-to-mini-program": "/components/to-mini-program/index",
     "xcx-navigator": "../../components/xcx-navigator/index"
   }
 }

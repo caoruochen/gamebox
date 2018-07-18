@@ -1,3 +1,8 @@
 <view>
 一起来打榜吧
+
+
+<view>
+  <xcx-rr />
+</view>
 </view>

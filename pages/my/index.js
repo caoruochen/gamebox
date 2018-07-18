@@ -10,7 +10,15 @@ var ratio = app.globalData.wwidth / 750;
 var headerRHeight = 220;
 var tabbarRHeight = 110;
 var adRHeight = 300;
-var tabbodyHeight = app.globalData.wheight - (headerRHeight + tabbarRHeight + adRHeight) * ratio
+var tabbodyHeight = app.globalData.wheight - (headerRHeight + tabbarRHeight + adRHeight) * ratio;
+var hitRecord = [
+                  {logo: "../../images/task-icon1.png", rank: 4, score: 3000, award: "3Q币", got: 0},
+                  {logo: "../../images/task-icon2.png", rank: 2, score: 6000, award: "6Q币", got: 1}
+                ];
+var helpFriends = [
+                  {name: "张三", score: 100, helpScore: 100},
+                  {name: "李四", score: 200, helpScore: 200}
+                ];
 
 QKPage({
   data: {
@@ -19,7 +27,7 @@ QKPage({
     checkSwitch: false,
     topBar: ["日常任务", "最近常玩"],
     activeIndex: 0,
-    swiperHeight: tabbodyHeight,
+    // swiperHeight: tabbodyHeight,
     games: [],
     gameItemWidth: (app.globalData.wwidth-150*ratio) / 4, // 60 padding + 3*30 margin
     tasks: {
@@ -28,9 +36,13 @@ QKPage({
       total: 0,
       list: []
     },
+    hitRecord: hitRecord,
+    helpIndex: '',
+    helpFriends: helpFriends
   },
   onLoad: function () {
     this.getProfile();
+    this.loadHitRecord();
   },
   onShow: function () {
     this.setData({
@@ -161,6 +173,25 @@ QKPage({
       });
     });
       
+  },
+  loadHitRecord: function(){
+    this.setData({
+      helpIndex: hitRecord.length
+    });
+  },
+  showHelpInfo: function(e){
+    var index = e.currentTarget.dataset.index - 0;
+    var len = this.data.hitRecord.length;
+    var helpIndex = this.data.helpIndex;
+    if(helpIndex === index){
+      this.setData({
+        helpIndex: len
+      });
+    }else{
+      this.setData({
+        helpIndex: index
+      });
+    }
   },
   onGotUserInfo: function (e) {
     if (!e.detail || typeof e.detail.userInfo === 'undefined') {

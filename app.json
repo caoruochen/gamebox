@@ -6,7 +6,8 @@
     "pages/rank/index",
     "pages/more-game/more-game",
     "pages/lottery/index",
-    "pages/detail/index"
+    "pages/detail/index",
+    "pages/more-record/index"
   ],
   "tabBar": {
     "list": [

@@ -1,6 +1,0 @@
-<view wx:if="{{SDKVersion < 0}}" class="item_content" bindtap="jump" data-gameid="{{more.gameId}}" data-appid="{{more.appId}}" data-extra="{{more.extra}}" data-preview="{{more.bg}}" data-type="{{more.type}}" >
-  <slot></slot>
-</view>
-<navigator wx:else class="item_content" bindtap="jump" target="miniProgram" open-type="navigate" app-id="{{more.appId}}" extra-data="{{more.extra}}" data-appid="{{more.appId}}" data-extra="{{more.extra}}" data-preview="{{more.bg}}" data-type="{{more.type}}" data-gameid="{{more.gameId}}">
-  <slot></slot>
-</navigator>

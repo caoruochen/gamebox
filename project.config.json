@@ -33,13 +33,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "优先显示推荐页",
 					"pathName": "pages/recommend/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "打榜",
+					"pathName": "pages/rank/index"
 				}
 			]
 		}

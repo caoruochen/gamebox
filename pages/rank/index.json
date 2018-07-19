@@ -1,10 +1,12 @@
 {
-  "navigationBarTitleText": "打榜",
-  "enablePullDownRefresh": true,
-  "onReachBottomDistance": 20,
-  "navigationBarTextStyle": "white",
-  "usingComponents": {
-    "xcx-navigator": "../../components/xcx-navigator/index",
-    "xcx-rr": "../../components/xcx-rr/index"
-  }
+	"navigationBarTitleText": "打榜",
+	"backgroundColor": "#eee",
+	"backgroundTextStyle": "dark",
+	"enablePullDownRefresh": true,
+	"onReachBottomDistance": 20,
+	"usingComponents": {
+		"xcx-navigator": "../../components/xcx-navigator/index",
+		"xcx-rr": "../../components/xcx-rr/index",
+		"xcx-danmu": "../../components/xcx-danmu/index"
+	}
 }

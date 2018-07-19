@@ -1,10 +1,10 @@
 <view>
   <swiper indicator-dots="{{false}}"
-    autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" style="height:{{swiperHeight}}px !important;">
+    autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" bindchange="changeSwiper" style="height:{{bannerImgHeights[currentSwiper]}}px !important;">
     <block wx:for="{{banners}}" wx:key="*this">
       <swiper-item>
         <xcx-navigator game="{{item}}">
-          <image lazy-load="{{true}}" mode="aspectFill" src="{{item.pic}}" class="slide-image" style="height:{{swiperHeight}}px; width:{{bannerImgWidth}}px" />
+          <image lazy-load="{{true}}" mode="widthFix" data-index="{{index}}" src="{{item.pic}}" class="slide-image" bindload='imgHeight' style="width:{{bannerImgWidth}}px" />
         </xcx-navigator>
       </swiper-item>
     </block>

@@ -81,7 +81,7 @@ Component({
       ],
       /* 点赞的图片 */
       ratingImage: "../../images/ratingNormal.png",
-      keyHeight: 0,
+    //   keyboardStyle: 
   },
   methods: 
   {
@@ -89,7 +89,7 @@ Component({
     sendReview:function(e) {
         // var app = getApp();
         var app = wx.getStorageSync('loginUser');
-        console.log(app.globalData.loginUser);
+        // console.log(app.globalData.loginUser);
         var params = {//token: app.token,
                         // uid: app.uid,
                         type:"1",
@@ -102,10 +102,11 @@ Component({
             console.log(error)
         })
     },
-    keymmm: function() {
-        this.setData({
-            keyHeight: "position: fixed"
-        })
+    keyboardAction: function(event) {
+        console.log(event.detail.value)
+        // this.setData({
+
+        // })
     }
   }
 })

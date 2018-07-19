@@ -49,7 +49,11 @@
             </button>
         </view>
         <view>
-            <input placeholder='留下自己的记号!' bindfocus='keymmm' style='keyHeight'/> 
+            <form bindsubmit="bindFormSubmit">
+                <textarea placeholder='留下自己的记号!' cursor-spacing='10' confirm-type="send">
+                </textarea>
+                <button form-type="submit"> 发送 </button>
+            </form>
         </view>
     </view>
     <slot></slot>

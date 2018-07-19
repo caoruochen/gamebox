@@ -1,0 +1,16 @@
+.records .tabbar-box{
+  display: flex;
+  justify-content: center;
+  padding: 30rpx 0 24rpx 0;
+  border-bottom: 1rpx solid #e4e4e4;
+}
+.records .tabbar-box .tabbar{
+  flex: 1;
+  position: relative;
+  font-size: 30rpx;
+  color: #666;
+  text-align: center;
+}
+.records .tabbar.active{
+  color: #f3b244;
+}

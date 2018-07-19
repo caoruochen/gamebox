@@ -14,7 +14,7 @@
             <image mode="widthFix" src="../../images/coins-icon.png" class="coins-icon"></image>
             <text>{{userInfo ? userInfo.coins : '0'}}</text>
           </view>
-          <view class="more">更多</view>
+          <navigator url="/pages/more-record/index" class="more">更多</navigator>
         </view>
         
       </view>

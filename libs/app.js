@@ -2,7 +2,6 @@ var http = require("../util/http");
 var util = require("../util/util");
 
 var QKApp = function (options) {
-
   var config = options.config || {}
   var scope = config.scope || 'base'
   var platform = 'wxxcx';

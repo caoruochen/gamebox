@@ -48,13 +48,17 @@
                 点击查看更多评论
             </button>
         </view>
+        <!--  评论输入 入口  -->
         <view>
             <form bindsubmit="bindFormSubmit">
-                <textarea placeholder='留下自己的记号!' cursor-spacing='10' confirm-type="send">
-                </textarea>
+                <textarea name="comment" focus='{{textarea_focus}}' placeholder='{{textarea_placeholder}}' value='{{textarea_value}}' cursor-spacing='10' confirm-type="send" show-confirm-bar="">
+                 </textarea> 
                 <button form-type="submit"> 发送 </button>
             </form>
         </view>
+    </view>
+    <view class='review'>
+        view
     </view>
     <slot></slot>
 </view>

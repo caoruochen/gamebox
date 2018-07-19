@@ -44,7 +44,8 @@
 				{
 					"id": -1,
 					"name": "打榜",
-					"pathName": "pages/rank/index"
+					"pathName": "pages/rank/index",
+					"query": ""
 				}
 			]
 		}

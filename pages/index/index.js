@@ -29,7 +29,8 @@ QKPage({
     tabPageData: {},
     activeIndex: 0,
     tabW: app.globalData.wwidth / 4,
-    contentHeight: app.globalData.wheight,
+    contentHeight: 10 * gameItemHeight * ratio + 160 * ratio, // 最多显示10条
+    
   },
 
   /**
@@ -162,14 +163,14 @@ QKPage({
   loadCategoryData: function (key, param) {
     console.log("type=" + param)
     console.log("test="+this.data.tabPageData[key])
-    // if (this.data.tabPageData[key] != undefined) {
-    //   console.log("array size="+this.data.tabPageData[key].length)
-    //   console.log(this.data.itemHeights[key])
-    //   this.setData({
-    //     contentHeight: this.data.itemHeights[key]
-    //   })
-    //   return
-    // }
+     if (this.data.tabPageData[key] != undefined) {
+       console.log("array size="+this.data.tabPageData[key].length)
+     
+      //  this.setData({
+      //    tabPageData: this.data.tabPageData[key],
+      //  })
+       return
+     }
     wx.showLoading({
       title: '数据加载中'
     });
@@ -179,14 +180,11 @@ QKPage({
       console.log(data)
       var tabPageData = me.data.tabPageData;
       tabPageData[key] = data.games;
-      me.data.contentHeight = data.games.length * gameItemHeight * ratio + 160 * ratio // 内容高度+ padding
-      console.log('content total height='+me.data.contentHeight)
-     
+    
       // 设置tab数据
       me.setData({
         tabs: data.categorys,
         tabPageData: tabPageData,
-        contentHeight: me.data.contentHeight,
       })
       
     }, function () {

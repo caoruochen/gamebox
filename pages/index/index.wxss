@@ -97,7 +97,8 @@ swiper {
 .gamebox-games {
   box-sizing: border-box;
   padding: 10rpx 30rpx;
-  overflow: scroll;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .gamebox-item {

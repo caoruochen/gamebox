@@ -1,0 +1,124 @@
+.rank{
+	font-size:34rpx;
+	/*box-sizing: border-box;*/
+}
+.flex{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.rank-head{
+	width:100%;
+	height:260rpx;
+	position: relative;
+}
+.head-img{
+	width: 100%;
+	height:100%;
+}
+.head-mask{
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height:100%;
+	background-color: rgba(0,0,0,0.1);
+}
+.mask-bottom{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height:110rpx;
+	padding:0 40rpx;
+	box-sizing: border-box;
+}
+.mask-text{
+	font-size:30rpx;
+	font-weight: 700;
+}
+.peopleNum{
+	margin-left:20rpx;
+	font-size:24rpx;
+}
+.rule-btn{
+	display:inline-block;
+	margin:0;
+}
+
+.rank-pub{
+	height:80rpx;
+	background-color: #eee;
+}
+
+.list-tab{
+	justify-content: space-around;
+	padding:20rpx 80rpx;
+	font-weight: 700;
+	border-bottom: 1px solid #eee;
+}
+.list-content{
+	border-bottom: 1px solid #eee;
+	height: 450rpx; 
+}
+.activeList{
+	color:#ff8130;
+}
+.list-item{
+	width:100%;
+	height:110rpx;
+	padding:0 40rpx;
+	box-sizing: border-box;
+}
+.ranking{
+	font-style:italic;
+	font-size:700;
+	font-size:36rpx;
+}
+.avatar{
+	width: 60rpx;
+	height: 60rpx;
+	border-radius: 8rpx;
+	margin-left:50rpx;
+}
+.gender{
+	width: 30rpx;
+	height: 30rpx;
+	margin-left:10rpx;
+}
+.score{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+}
+.score-text{
+	font-weight: 700;
+	font-style: italic;
+	font-size: 36rpx;
+}
+.pinglun{
+	color:#cdcdcd;
+	font-size: 30rpx;
+}
+.smallicon{
+	width: 30rpx;
+	height:30rpx;
+	margin-left:20rpx;
+}
+
+.myrank{
+	border-bottom: 1px solid #eee;
+}
+.mybtn{
+	font-size:28rpx;
+	margin-left:16rpx;
+	display: inline-block;
+	width: 80rpx;
+	height:46rpx;
+	line-height: 46rpx;
+	border: 1px solid #ff8130;
+	border-radius: 50rpx;
+	text-align: center;
+	color:#ff8130;
+}

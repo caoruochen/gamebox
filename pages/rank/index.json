@@ -2,7 +2,6 @@
   "navigationBarTitleText": "打榜",
   "enablePullDownRefresh": true,
   "onReachBottomDistance": 20,
-  "navigationBarTextStyle": "white",
   "usingComponents": {
     "xcx-navigator": "../../components/xcx-navigator/index",
     "xcx-rr": "../../components/xcx-rr/index"

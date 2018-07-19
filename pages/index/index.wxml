@@ -112,7 +112,7 @@
   <swiper current="{{activeIndex}}" class="content-layout" bindchange="bindChange" style="height: {{contentHeight}}px">
     <block wx:for="{{tabs}}" wx:key="*this">
       <swiper-item>
-      <view class="gamebox-games" style="height: {{contentHeight}}px">
+      <view class="gamebox-games">
           <block wx:for="{{tabPageData[activeIndex]}}" wx:key="*this">
           <xcx-navigator nav-class="gamebox-item" game="{{item}}">
             <view class="gamebox-item-logo">

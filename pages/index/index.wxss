@@ -97,12 +97,12 @@ swiper {
 .gamebox-games {
   box-sizing: border-box;
   padding: 10rpx 30rpx;
-  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
 .gamebox-item {
   display: flex;
+  min-height: 160rpx;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;

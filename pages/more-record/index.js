@@ -1,13 +1,17 @@
 var QKPage = require("../../libs/page");
 var http = require("../../util/http");
 var util = require("../../util/util");
+var app = getApp();
 
 QKPage({
   data: {
-    isLogin: false
+    isLogin: false,
+    tabbar: ['抽奖记录', '打榜记录', 'PK记录'],
+    activeIndex: 0
   },
   onLoad: function () {
     this.getProfile();
+    console.log(app.globalData)
   },
   onShow: function () {
     
@@ -49,6 +53,21 @@ QKPage({
           icon: 'none'
         });
       }, 100)
+    });
+  },
+  changeTabbar: function(e){
+    var index = e.currentTarget.dataset.idx;
+    console.log(app.globalData)
+    this.switchSwiper(index);
+  },
+  changeSwiper: function(e){
+    if(e.detail.source === 'touch'){
+      this.switchSwiper(e.detail.current);
+    }
+  },
+  switchSwiper: function(index){
+    this.setData({
+        activeIndex: index
     });
   }
   

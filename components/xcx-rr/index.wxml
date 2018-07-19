@@ -44,9 +44,16 @@
         </view>
         <!--  加载更多按钮  -->
         <view class='moreView'>
-            <button class='moreButton'>
+            <button class='moreButton' bindtap='sendReview'>
                 点击查看更多评论
             </button>
+        </view>
+        <view>
+            <form bindsubmit="bindFormSubmit">
+                <textarea placeholder='留下自己的记号!' cursor-spacing='10' confirm-type="send">
+                </textarea>
+                <button form-type="submit"> 发送 </button>
+            </form>
         </view>
     </view>
     <slot></slot>

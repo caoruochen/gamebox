@@ -92,3 +92,9 @@
     /*  */
     background: #6cf;
 }
+
+.review {
+    background: #f00;
+    bottom: 10px;
+    position: fixed;
+}

@@ -81,12 +81,17 @@ Component({
       ],
       /* 点赞的图片 */
       ratingImage: "../../images/ratingNormal.png",
-    //   keyboardStyle: 
+        /* textarea-placeholder */
+      textarea_placeholder: "留下你的记号",
+      /* textarea-value */
+      textarea_value: "",
+        /* textarea-focus */
+      textarea_focus: false,
   },
   methods: 
   {
     /* 发送评论 */ 
-    sendReview:function(e) {
+    sendReview:function(content) {
         // var app = getApp();
         var app = wx.getStorageSync('loginUser');
         // console.log(app.globalData.loginUser);
@@ -102,11 +107,24 @@ Component({
             console.log(error)
         })
     },
-    keyboardAction: function(event) {
-        console.log(event.detail.value)
-        // this.setData({
-
-        // })
+    bindFormSubmit: function(e) {
+        console.log(e.detail.value.comment)
+        // // this.sendReview(e.detail.value.comment)
+        // console.log(e.detail.value.comment)
+        // console.log(e.detail.value)
+        // console.log(this.data.textarea_value)
+        if (e.detail.value.comment == "") {
+            // e.detail.value.comment = "您没有输入任何内容哦!"
+            this.setData({
+                textarea_placeholder: "您没有输入任何内容哦!"
+            })
+        } else {
+            this.setData({
+                textarea_placeholder: "留下你的记号",
+                textarea_focus: false,
+                textarea_value: "",
+            })
+        }
     }
   }
 })

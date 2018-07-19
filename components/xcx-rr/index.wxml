@@ -5,7 +5,7 @@
         <view wx:for="{{reviews}}" wx:for-index="index" wx:for-item="review">
             <view class='tableVIewCell'>
                 <!--  头像  -->
-                <image class='userIcon' src='{{review.icon}}'>
+                <image class='userIcon' src='{{review.avatar}}'>
 
                 </image>
                 <!--  内容  -->
@@ -44,9 +44,12 @@
         </view>
         <!--  加载更多按钮  -->
         <view class='moreView'>
-            <button class='moreButton'>
+            <button class='moreButton' bindtap='sendReview'>
                 点击查看更多评论
             </button>
+        </view>
+        <view>
+            <input placeholder='留下自己的记号!' bindfocus='keymmm' style='keyHeight'/> 
         </view>
     </view>
     <slot></slot>

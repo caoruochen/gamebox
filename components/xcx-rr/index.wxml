@@ -5,7 +5,7 @@
         <view wx:for="{{reviews}}" wx:for-index="index" wx:for-item="review">
             <view class='tableVIewCell'>
                 <!--  头像  -->
-                <image class='userIcon' src='{{review.icon}}'>
+                <image class='userIcon' src='{{review.avatar}}'>
 
                 </image>
                 <!--  内容  -->

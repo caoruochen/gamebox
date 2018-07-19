@@ -6,6 +6,7 @@ var app = getApp();
 var ratio = app.globalData.wwidth / 750;
 
 var swiperHeight = 130;
+var gameItemHeight = 160;
 var defaultBanners = [{
   pic: '../../images/default-banner.png'
 }];
@@ -18,10 +19,18 @@ QKPage({
     hasActivity: false,
     categorys: [],
     bannerImgWidth: (app.globalData.wwidth - 60 * ratio),
+    bannerImgHeights: [],
+    currentSwiper: 0,
     wwidth: app.globalData.wwidth,
     gameItemWidth: (app.globalData.wwidth-150*ratio) / 4,// 60 padding + 3*30 margin
     games: [],
-    verifying: false
+    verifying: false,
+    tabs: [],
+    tabPageData: {},
+    activeIndex: 0,
+    tabW: app.globalData.wwidth / 4,
+    contentHeight: 10 * gameItemHeight * ratio + 160 * ratio, // 最多显示10条
+    
   },
 
   /**
@@ -30,6 +39,7 @@ QKPage({
   onLoad: function (options) {
     this.loadGameData()
     this.loadGame(true);
+    this.loadCategoryData(0, "hots")
   },
 
   onPullDownRefresh: function (e) {
@@ -56,6 +66,22 @@ QKPage({
       });
     });
 
+  },
+  imgHeight:function(e){
+    var bannerImgWidth = this.data.bannerImgWidth; //获取当前图片的宽度
+    var bannerImgHeights = this.data.bannerImgHeights;
+    var imgh = e.detail.height;//图片实际高度
+    var imgw = e.detail.width;//图片实际宽度
+    var bannerImgHeight = bannerImgWidth * imgh / imgw;//等比设置swiper的高度
+    bannerImgHeights[e.currentTarget.dataset.index] = bannerImgHeight
+    this.setData({
+      bannerImgHeights: bannerImgHeights //设置高度
+    });
+  },
+  changeSwiper: function(e){
+    this.setData({
+      currentSwiper: e.detail.current
+    });
   },
 
   clickMore: function(e) {
@@ -110,4 +136,64 @@ QKPage({
     });
   }, 
 
+  tabClick: function (e) {
+    console.log(e)
+    var tabIndex = e.currentTarget.id
+    var tabType = e.currentTarget.dataset.type;
+    //this.loadCategoryData(tabIndex, tabType)
+    this.setData({
+      activeIndex: tabIndex,
+      navScrollLeft: (tabIndex - 1) * this.data.tabW
+    });
+  },
+
+  bindChange: function (e) {
+    var current = e.detail.current;
+    this.setData({
+      activeIndex: current,
+      navScrollLeft: (current - 1) * this.data.tabW
+    })
+
+    this.loadCategoryData(current, this.data.tabs[current].type)
+  },
+
+  /**
+ * 加载分类数据
+ */
+  loadCategoryData: function (key, param) {
+    console.log("type=" + param)
+    console.log("test="+this.data.tabPageData[key])
+     if (this.data.tabPageData[key] != undefined) {
+       console.log("array size="+this.data.tabPageData[key].length)
+     
+      //  this.setData({
+      //    tabPageData: this.data.tabPageData[key],
+      //  })
+       return
+     }
+    wx.showLoading({
+      title: '数据加载中'
+    });
+    var me = this;
+    http.get('/gamebox/list', { type: param }, function (data) {
+      wx.hideLoading();
+      console.log(data)
+      var tabPageData = me.data.tabPageData;
+      tabPageData[key] = data.games;
+    
+      // 设置tab数据
+      me.setData({
+        tabs: data.categorys,
+        tabPageData: tabPageData,
+      })
+      
+    }, function () {
+      wx.hideLoading();
+
+      wx.showToast({
+        title: msg || '数据加载失败',
+        icon: 'none'
+      });
+    });
+  },
 })

@@ -1,3 +1,17 @@
-<view class="container">
+<view class="records">
+	<scroll-view scroll-x class="record-head">
+		<view class="tabbar-box">
+			<view wx:for="{{tabbar}}" wx:key="*this" class="tabbar{{index === activeIndex ? ' active' : ''}}" data-idx="{{index}}" bindtap="changeTabbar">
+            	{{item}}
+          	</view>
+		</view>
+	</scroll-view>
 
+	<swiper current="{{activeIndex}}" class="swiper-content" bindchange="changeSwiper">
+        <swiper-item wx:for="{{tabbar}}" wx:key="*this">
+          <scroll-view scroll-y>
+            <view>{{item}}</view>            
+          </scroll-view>
+        </swiper-item>
+    </swiper>
 </view>

@@ -1,0 +1,100 @@
+
+/*  一条评论  */
+.tableVIewCell {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 5px 5px 5px;
+}
+/*  头像  */
+.userIcon {
+    background: #f00;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+/*  整体内容  */
+.content {
+    /* background: #768; */
+    flex: 1;
+    margin-left: 10px;
+}
+/*  昵称  */
+.nickname {
+    font-size: 14px;
+    color: #666;
+}
+/*  评论内容  */
+.commentContent {
+    font-size: 16px;
+}
+/*  显示 总共有多少人评论的 view  */
+.replyView {
+    background: #ccc;
+    margin-top: 3px; 
+    font-size: 14px;
+    color: #3333ff;
+    padding-left: 10px;
+}
+/*  时间 + 点赞  */
+.cellBottomView {
+    display: flex;
+    flex-direction: row;
+}
+/*  时间  */
+.timeView {
+    font-size: 13px;
+    color: #ccc;
+    flex: 1;
+}
+/*  点赞 View  */
+.ratingView {
+    display: flex;
+    flex-direction: row;
+}
+/*  点赞数  */
+.ratingCount {
+    font-size: 13px;
+    color: #ccc;
+    margin-right: 15px; 
+}
+/*  点赞 图片  */
+.ratingImage {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px; 
+}
+/*  line  */
+.line {
+    width: 100%;
+    height: 1px;
+    margin-top: 3px;
+    background: #ccc;
+}
+
+/*  更多 view  */
+.moreView {
+    height: 80px;
+    width: 100%;
+    /* 居中解决方案 */
+    display: flex;
+    align-items: center; 
+    /* 居中解决方案 */
+    background: #ccc;
+}
+/*  更多 button  */
+.moreButton {
+    height: 60px;
+    width: 70%;
+    /*  */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*  */
+    background: #6cf;
+}
+
+.review {
+    background: #f00;
+    bottom: 10px;
+    position: fixed;
+}

@@ -1,4 +1,64 @@
 <view class="rr-class">
-  <view>评论区</view>
-  <slot></slot>
+    <view>评论区</view>
+    <view>
+        <!--  评论列表  -->
+        <view wx:for="{{reviews}}" wx:for-index="index" wx:for-item="review">
+            <view class='tableVIewCell'>
+                <!--  头像  -->
+                <image class='userIcon' src='{{review.avatar}}'>
+
+                </image>
+                <!--  内容  -->
+                <view class='content'>
+                    <!--  昵称  -->
+                    <view class='nickname'>
+                        {{review.nickname}}
+                    </view>
+                    <!-- 评论内容  -->
+                    <view class='commentContent'>
+                        {{review.content}}
+                    </view>
+                    <!--  是否有回复  -->
+                    <view wx:if="{{beReply}}" class='replyView'>
+                        共{{review.replyCount}}条回复
+                    </view>
+                    <!--  时间 + 点赞  -->
+                    <view class='cellBottomView'>
+                        <!--  时间  -->
+                        <view class='timeView'>
+                            {{review.ctime}}
+                        </view>
+                        <!--  点赞  -->
+                        <view class='ratingView'>
+                            <image class='ratingImage' src='{{ratingImage}}'>
+                            </image>
+                            <view class='ratingCount'>
+                                {{review.ratingCount}}
+                            </view>
+                        </view>
+                    </view>
+                    <view class='line'>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!--  加载更多按钮  -->
+        <view class='moreView'>
+            <button class='moreButton' bindtap='sendReview'>
+                点击查看更多评论
+            </button>
+        </view>
+        <!--  评论输入 入口  -->
+        <view>
+            <form bindsubmit="bindFormSubmit">
+                <textarea name="comment" focus='{{textarea_focus}}' placeholder='{{textarea_placeholder}}' value='{{textarea_value}}' cursor-spacing='10' confirm-type="send" show-confirm-bar="">
+                 </textarea> 
+                <button form-type="submit"> 发送 </button>
+            </form>
+        </view>
+    </view>
+    <view class='review'>
+        view
+    </view>
+    <slot></slot>
 </view>

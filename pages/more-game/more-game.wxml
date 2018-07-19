@@ -1,21 +1,18 @@
 <!--pages/more-game/more-game.wxml-->
-<view style='width: 100%; height: 100%;'>
-<scroll-view scroll-x="true" class="weui-navbar" scroll-into-view="{{topView}}">
-    <block wx:for-items="{{tabs}}" wx:key='key'>
-        <view  class="{{activeIndex == index ?'item_on':''}} default-item" bindtap="tabClick" style="width:{{tabW}}px" data-item='{{item.name}}'>
-          <view class="navbar-title">
+<view class="main">
+<scroll-view scroll-x="true" class="tab-layout" scroll-left="{{navScrollLeft}}" scroll-with-animation="true">
+    <block wx:for="{{tabs}}" wx:key='*this'>
+        <view  class="{{activeIndex == index ?'tab-item-on':''}} tab-item" bindtap="tabClick" style="width:{{tabW}}px" data-item='{{item.name}}'>
             {{item.name}}
-          </view>
         </view>
     </block>
-    <view class="weui-navbar-slider" style="transform:translateX({{slideOffset}}px);"></view>
 </scroll-view>
 
-<swiper current="{{activeIndex}}" class="swiper-box" bindchange="bindChange" style="height: {{swiperHeight}}px">
-  <block wx:for="{{tabs}}" wx:key='key'>
+<swiper current="{{activeIndex}}" class="content-layout" bindchange="bindChange" style="height: {{contentHeight}}px">
+  <block wx:for="{{tabs}}" wx:key="*this">
      <swiper-item>
     <view class="gamebox-games">
-      <scroll-view scroll-y style='height: {{scrollHeight}}px'>
+      <scroll-view scroll-y style="height: {{contentHeight}}px">
         <block wx:for="{{games[activeIndex]}}" wx:key="*this">
         <xcx-navigator nav-class="gamebox-item" game="{{item}}">
           <view class="gamebox-item-logo">

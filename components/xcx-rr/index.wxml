@@ -19,8 +19,12 @@
                         {{review.content}}
                     </view>
                     <!--  是否有回复  -->
-                    <view wx:if="{{beReply}}" class='replyView'>
-                        共{{review.replyCount}}条回复
+                    <view wx:if="{{review.lastReplys.length > 0}}" class='replyView'>
+                        <view wx:for="{{review.lastReplys}}" wx:for-item="reply">
+                            <text class='replyUName'>{{reply.uname}}</text>
+                            : {{reply.content}}
+                        </view>
+                        <text wx:if="{{review.replyCount > review.lastReplys.length}}" class='replyUName'>共{{review.replyCount}}条回复 ></text>
                     </view>
                     <!--  时间 + 点赞  -->
                     <view class='cellBottomView'>

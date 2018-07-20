@@ -46,6 +46,12 @@
 					"name": "打榜",
 					"pathName": "pages/rank/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "挑战",
+					"pathName": "pages/challenge/index",
+					"query": ""
 				}
 			]
 		}

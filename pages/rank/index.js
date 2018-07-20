@@ -24,13 +24,13 @@ QKPage({
 			name: "舒克",
 			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
 			gender: '1',
-			score: '3000',
+			score: '300',
 		}, {
 			ranking: '3',
 			name: "贝塔",
 			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
 			gender: '1',
-			score: '3000',
+			score: '30',
 		}, {
 			ranking: '4',
 			name: "李雷",
@@ -39,6 +39,36 @@ QKPage({
 			score: '3000',
 		}, {
 			ranking: '5',
+			name: "李雷理",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			gender: '1',
+			score: '3000',
+		}, {
+			ranking: '6',
+			name: "李雷理",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			gender: '1',
+			score: '3000',
+		}, {
+			ranking: '7',
+			name: "李雷",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			gender: '1',
+			score: '3000',
+		}, {
+			ranking: '8',
+			name: "李雷理",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			gender: '1',
+			score: '3000',
+		}, {
+			ranking: '9',
+			name: "李雷理",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			gender: '1',
+			score: '3000',
+		}, {
+			ranking: '10',
 			name: "李雷理",
 			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
 			gender: '1',
@@ -99,11 +129,11 @@ QKPage({
 			activeIndex: e.currentTarget.dataset.index,
 		});
 	},
-	changeSwiper: function(e) {
-		this.setData({
-			activeIndex: e.detail.current
-		})
-	},
+	// changeSwiper: function(e) {
+	// 	this.setData({
+	// 		activeIndex: e.detail.current
+	// 	})
+	// },
 	// clickOne: function(e) {
 	// 	var id = e.currentTarget.dataset.id
 	// 	console.log(id)
@@ -127,6 +157,12 @@ QKPage({
 			}
 		})
 	},
+	onChallenge: function() {
+		wx.navigateTo({
+			url: '/pages/challenge/index',
+		})
+	},
+
 	onLoad: function(options) {
 		// console.log(options)
 		// console.log(app.globalData)

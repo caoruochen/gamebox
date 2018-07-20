@@ -16,7 +16,7 @@ Component({
           sex: "1",
           avatar: "https://upload-images.jianshu.io/upload_images/654237-835e699b6e6fbca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700",
           topicId: "1",
-          replyCount: "12",
+          replyCount: "1",
           ratingCount: "999",
           ctime: "2018-01-08 09:00:00",
           content: "光明源于黑暗,黑暗涌现光明.",

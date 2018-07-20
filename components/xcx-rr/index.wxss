@@ -29,12 +29,17 @@
 }
 /*  显示 总共有多少人评论的 view  */
 .replyView {
-    background: #ccc;
+    background: #eee;
     margin-top: 3px; 
     font-size: 14px;
-    color: #3333ff;
     padding-left: 10px;
 }
+
+/*  回复的昵称  */
+.replyUName {
+    color: #06c;
+}
+
 /*  时间 + 点赞  */
 .cellBottomView {
     display: flex;

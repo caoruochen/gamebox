@@ -80,7 +80,7 @@ Component({
       }
       ],
       /* 点赞的图片 */
-      ratingImage: "../../images/ratingNormal.png",
+      ratingImage: "../../images/",
         /* textarea-placeholder */
       textarea_placeholder: "留下你的记号",
       /* textarea-value */

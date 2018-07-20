@@ -34,7 +34,7 @@
                         </view>
                         <!--  点赞  -->
                         <view class='ratingView'>
-                            <image class='ratingImage' src='{{review.is_rating=="0" ? ratingImage + "ratingNormal.png" : ratingImage + "ratingSelected.png"}}'>
+                            <image class='ratingImage' data-index='{{index}}' bindtap='bindRating' src='{{review.is_rating=="0" ? ratingImage + "ratingNormal.png" : ratingImage + "ratingSelected.png"}}'>
                             </image>
                             <view class='ratingCount'>
                                 {{review.ratingCount}}

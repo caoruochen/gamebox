@@ -48,24 +48,51 @@
       <view class="flex myrank">
         <view class="flex">
           <text class="ranking" style="color:#fca237">26</text> 
-          <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132"></image>
+          <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132" />
           <view class="myname">
             <text style="font-weight: 700">曹若晨</text>
             <view style="color:#fca237"><text style="font-weight: 700">200</text> 分</view>
           </view>
         </view>
         <view>
-          <view class="mybtn zl-btn">助力</view>
+          <view class="mybtn zl-btn" bindtap="onHelp">助力</view>
           <view class="mybtn tz-btn" bindtap="onChallenge">挑战</view>
         </view>
       </view>
     </view>
     <view style="display:{{activeIndex == 1? 'block':'none'}}">
-      <view>
-        <xcx-rr />
-      </view>
+      <xcx-rr />
     </view>
 	</view>
+
+  <view class="help" style="display: {{helpShow ? 'block' : 'none'}}" bind:tap="hideHelp">
+    <view class="help-box" catch:tap="catch">
+      <view class="help-head">邀请好友助力</view>
+      <view class="help-content">
+        <view class="help-tab flex">
+          <view>好友</view>
+          <view>得分</view>
+          <view>助力</view>
+        </view>
+        <view class="help-item flex" wx:for="{{helpList}}" wx:key="{{index}}">
+          <view class="flex">
+            <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{item.avatar}}" />
+            <text class="name">{{item.name}}</text>
+          </view>
+          <view class="score-text">{{item.score}}  分</view>
+          <view class="score-text">{{item.help}}  分</view>
+        </view>
+        <view class="help-item flex" wx:for="{{nohelpList}}" wx:key="{{index}}">
+          <view class="flex">
+            <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="../../images/touxiang.png" />
+            <text class="name">  ？  </text>
+          </view>
+          <view class="score-text">  -  </view>
+          <view class="score-text">  -  </view>
+        </view>
+      </view>
+    </view>
+  </view>
 
   <!-- <xcx-danmu danmuList="{{danmuList}}" width="100%" height="160rpx" /> -->
 </view>

@@ -6,7 +6,7 @@ var app = getApp();
 var ratio = app.globalData.wwidth / 750;
 
 var swiperHeight = 130;
-var gameItemHeight = 160;
+var gameItemHeight = 150;
 var defaultBanners = [{
   pic: '../../images/default-banner.png'
 }];
@@ -29,7 +29,8 @@ QKPage({
     tabPageData: {},
     activeIndex: 0,
     tabW: app.globalData.wwidth / 4,
-    contentHeight: 10 * gameItemHeight * ratio + 160 * ratio, // 最多显示10条
+    contentHeight: 7 * gameItemHeight * ratio, // 默认显示7条
+    itemTextWidth: app.globalData.wwidth - (50 + 60 + 60 * ratio), // 图片宽度 + 按钮 + 左右padding
     
   },
 

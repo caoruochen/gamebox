@@ -96,13 +96,13 @@ swiper {
 
 .gamebox-games {
   box-sizing: border-box;
-  padding: 10rpx 30rpx;
+  padding: 0rpx 30rpx;
   -webkit-overflow-scrolling: touch;
 }
 
 .gamebox-item {
   display: flex;
-  min-height: 160rpx;
+  height: 150rpx;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
@@ -123,7 +123,6 @@ swiper {
 }
 
 .gamebox-item-info {
-  flex: 1;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -131,9 +130,15 @@ swiper {
   justify-content: space-between;
 }
 
+.gamebox-item-info .gamebox-item-info-title {
+  color: #353535;
+  font-size: 13px;
+  text-align: center;
+}
+
 .gamebox-item-info .gamebox-item-info_desc {
-  font-size: 80%;
-  color: #999;
+  color: #b2b2b2;
+  font-size: 11px;
   margin-top: 5px;
 }
 
@@ -149,10 +154,13 @@ swiper {
 
 .gamebox-item-play {
   border: 1rpx solid #3884d8;
-  font-size: 13px;
+  font-size: 13.5px;
   color: #3884d8;
   border-radius: 15px;
-  padding: 4px 15px;
+  padding: 4px 0;
+  width: 60px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .tab-layout {

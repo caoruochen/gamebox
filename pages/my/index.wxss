@@ -330,7 +330,7 @@ image{
 
 .gamebox-item-play {
   border: 1rpx solid #f6c749;
-  font-size: 13px;
+  font-size: 13.5px;
   color: #f6c749;
   border-radius: 30rpx;
   padding: 6rpx 25rpx;

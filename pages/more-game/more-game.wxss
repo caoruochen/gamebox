@@ -88,7 +88,7 @@ view , scroll-view {
 
 .gamebox-item-play {
   border: 1rpx solid #3884d8;
-  font-size: 13px;
+  font-size: 13.5px;
   color: #3884d8;
   border-radius: 15px;
   padding: 4px 15px;

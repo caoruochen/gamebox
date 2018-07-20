@@ -27,7 +27,7 @@
 }
 .mask-bottom{
 	position: absolute;
-	bottom: 42rpx;
+	bottom: 30rpx;
 	width: 100%;
 	height:56rpx;
 	padding:0 25rpx;

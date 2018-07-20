@@ -30,7 +30,7 @@
                         </view>
                         <!--  点赞  -->
                         <view class='ratingView'>
-                            <image class='ratingImage' src='{{ratingImage}}'>
+                            <image class='ratingImage' src='{{review.is_rating=="0" ? ratingImage + "ratingNormal.png" : ratingImage + "ratingSelected.png"}}'>
                             </image>
                             <view class='ratingCount'>
                                 {{review.ratingCount}}
@@ -44,21 +44,35 @@
         </view>
         <!--  加载更多按钮  -->
         <view class='moreView'>
-            <button class='moreButton' bindtap='sendReview'>
+            <!-- <button class='moreButton' bindtap='sendReview'>
                 点击查看更多评论
-            </button>
+            </button> -->
         </view>
         <!--  评论输入 入口  -->
-        <view>
+        <!-- <view>
             <form bindsubmit="bindFormSubmit">
                 <textarea name="comment" focus='{{textarea_focus}}' placeholder='{{textarea_placeholder}}' value='{{textarea_value}}' cursor-spacing='10' confirm-type="send" show-confirm-bar="">
                  </textarea> 
                 <button form-type="submit"> 发送 </button>
             </form>
-        </view>
+        </view> -->
     </view>
-    <view class='review'>
-        view
+    <view class='floatView'>
+        <!--  分享  -->
+        <view class='tipView'>
+            <image class='tipImage' src='../../images/share01.png'></image>
+            <view class='tipLabel'>分享</view>
+        </view>
+        <!--  评论  -->
+        <view class='tipView'>
+            <image class='tipImage' src='../../images/comment.png'></image>
+            <view class='tipLabel'>评论</view>
+        </view>
+        <!--  👍  -->
+        <view class='tipView'>
+            <image class='tipImage' src='../../images/ratingNormal.png'></image>
+            <view class='tipLabel'>赞</view>
+        </view>
     </view>
     <slot></slot>
 </view>

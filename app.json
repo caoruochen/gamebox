@@ -8,6 +8,7 @@
     "pages/lottery/index",
     "pages/detail/index",
     "pages/more-record/index",
+    "pages/hit/index",
     "pages/challenge/index"
   ],
   "tabBar": {
@@ -26,7 +27,7 @@
       "selectedColor": "#000000",
       "color": "#8f8f8f"
     }, {
-      "pagePath": "pages/rank/index",
+      "pagePath": "pages/hit/index",
       "text": "打榜",
       "iconPath": "images/jingxuan0.png",
       "selectedIconPath": "images/jingxuan1.png",

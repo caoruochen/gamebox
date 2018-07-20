@@ -1,7 +1,6 @@
 // pages/more-game/more-game.js
 var QKPage = require("../../libs/page");
 var http = require("../../util/http");
-var util = require("../../util/util");
 var app = getApp();
 var ratio = app.globalData.wwidth / 750;
 var statusBarHeight = app.globalData.sysInfo.statusBarHeight;

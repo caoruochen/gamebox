@@ -133,7 +133,6 @@ swiper {
 .gamebox-item-info .gamebox-item-info-title {
   color: #353535;
   font-size: 13px;
-  overflow-x: scroll;
   text-align: center;
 }
 
@@ -141,7 +140,6 @@ swiper {
   color: #b2b2b2;
   font-size: 11px;
   margin-top: 5px;
-  overflow-x: scroll;
 }
 
 .gamebox-item-num {
@@ -159,9 +157,10 @@ swiper {
   font-size: 13px;
   color: #3884d8;
   border-radius: 15px;
-  padding: 4px 15px;
+  padding: 4px 0;
   width: 60px;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .tab-layout {

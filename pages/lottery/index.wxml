@@ -3,10 +3,13 @@
     <view class="pointer" bindtap="doAward">
       <image mode="widthFix" src="../../images/pointer.png" alt="pointer"></image>
     </view>
-    <view animation="{{animationData}}" style="{{rotateAngle}}" class="rotate">
-      <image src="../../images/turntable2.png" alt="turntable"></image>
+    <view style="{{rotateAngle}}" class="rotate">
+      <image src="{{turnImg}}" alt="turntable"></image>
     </view>
-    <image mode="widthFix" class="turntable-bg" src="../../images/turntable-bg2.png"></image>
+    <image mode="widthFix" class="turntable-bg" src="../../images/turntable-bg.png"></image>
   </view>
+
+  <view class="left-coin">剩余金币<text>{{leftCoin}}</text></view>
+  <view class="tips">每次抽奖耗费{{expend}}金币<text>如何获得金币？</text></view>
 </view>
 

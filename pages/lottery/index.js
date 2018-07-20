@@ -1,4 +1,5 @@
 var QKPage = require("../../libs/page");
+var http = require("../../util/http");
 var rotateAward = require("../../util/rotateAward");
 
 var app = getApp();
@@ -7,44 +8,42 @@ var sysInfo = app.globalData.sysInfo;
 QKPage({
   data: {
     rotateAngle: 'transform: rotate(0)',
-    animationData: {}
+    turnImg: "",
+    expend: 0,
+    leftCoin: 0
   },
-  onLoad: function () {
-    this.lottery = new rotateAward({page: this, copies: 6});
-    // setTimeout(function(){
-    //   console.log("time")
-    // }, 1000);
-    // function step(timestamp) {
-    //   console.log(timestamp)
-    // }
-
-    // requestAnimationFrame(step);
+  onLoad: function(){
+    var me = this;
+    http.get('/gamebox/user/prize', function (data){
+      me.setData({
+        turnImg: data.pic,
+        expend: data.expend,
+        leftCoin: data.coins
+      });
+    });
+    this.lottery = new rotateAward({page: this});
   },
   doAward: function(e){
-    this.lottery.rotate(function(item){
-      switch(item){
-        case 0: 
-          console.log("iPhone");
-          break;
-        case 1:
-          console.log("再来一次");
-          break;
-        case 2:
-          console.log("20元 无门槛券");
-          break;
-        case 3:
-          console.log("10元 无门槛券");
-          break;
-        case 4:
-          console.log("再来一次");
-          break;
-        case 5:
-          console.log("50元 无门槛券");
-          break;
-        default:
-          console.log("幸运奖");
-      }
-    });
+    var me = this;
+    var expend = this.data.expend - 0;
+    var leftCoin = this.data.leftCoin - 0;
+    if(leftCoin < expend){
+      wx.showToast({
+        title: '金币不足',
+        icon: 'none',
+      });
+    }else{
+      http.post('/gamebox/user/drawprize', function (data){
+        var lastAng = data.angle;
+        console.log(lastAng)
+        me.setData({
+          leftCoin: data.coins
+        });
+        me.lottery.rotate(lastAng, function(){
+          console.log(data.prize);
+        });
+      });
+    }
   }
 
 });

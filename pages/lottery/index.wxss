@@ -1,5 +1,7 @@
 .container{
+  height: 100%;
   overflow: hidden;
+  background-color: #fff8b9;
 }
 .turntable{
   position: relative;
@@ -34,4 +36,27 @@
 .turntable-bg{
   width: 100%;
   height: auto;
+}
+.left-coin{
+  margin-top: 70rpx;
+  font-size: 13px;
+  color: #71675b;
+  text-align: center;
+}
+.left-coin text{
+  padding-left: 20rpx;
+  color: #f3bc0a;
+}
+.tips{
+  width: 100%;
+  position: absolute;
+  bottom: 30rpx;
+  font-size: 12px;
+  color: #71675b;
+  text-align: center;
+}
+.tips text{
+  padding-left: 20rpx;
+  font-size: 11px;
+  color: #3283b0;
 }

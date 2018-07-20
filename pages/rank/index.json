@@ -1,9 +1,10 @@
 {
-  "navigationBarTitleText": "打榜",
-  "enablePullDownRefresh": true,
-  "onReachBottomDistance": 20,
-  "usingComponents": {
-    "xcx-navigator": "../../components/xcx-navigator/index",
-    "xcx-rr": "../../components/xcx-rr/index"
-  }
+	"navigationBarTitleText": "打榜",
+	"enablePullDownRefresh": true,
+	"onReachBottomDistance": 20,
+	"usingComponents": {
+		"xcx-navigator": "../../components/xcx-navigator/index",
+		"xcx-rr": "../../components/xcx-rr/index",
+		"xcx-danmu": "../../components/xcx-danmu/index"
+	}
 }

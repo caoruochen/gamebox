@@ -30,7 +30,7 @@
                         </view>
                         <!--  点赞  -->
                         <view class='ratingView'>
-                            <image class='ratingImage' src='{{ratingImage}}'>
+                            <image class='ratingImage' src='{{review.is_rating=="0" ? ratingImage + "ratingNormal.png" : ratingImage + "ratingSelected.png"}}'>
                             </image>
                             <view class='ratingCount'>
                                 {{review.ratingCount}}
@@ -49,16 +49,17 @@
             </button>
         </view>
         <!--  评论输入 入口  -->
-        <view>
+        <!-- <view>
             <form bindsubmit="bindFormSubmit">
                 <textarea name="comment" focus='{{textarea_focus}}' placeholder='{{textarea_placeholder}}' value='{{textarea_value}}' cursor-spacing='10' confirm-type="send" show-confirm-bar="">
                  </textarea> 
                 <button form-type="submit"> 发送 </button>
             </form>
-        </view>
+        </view> -->
     </view>
-    <view class='review'>
-        view
+    <view class='floatView'>
+        <image class='commentImage' src='../../images/comment.png'>
+        </image>
     </view>
     <slot></slot>
 </view>

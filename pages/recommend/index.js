@@ -11,18 +11,18 @@ QKPage({
     games: [],
     fit: "cover",
   },
-  onLoad: function () {
+  onLoad: function() {
     this.loadGame(true);
   },
-  onPullDownRefresh: function (e) {
+  onPullDownRefresh: function(e) {
     this.loadGame(true, true);
   },
-  loadGame: function (refresh, stopPullDown) {
+  loadGame: function(refresh, stopPullDown) {
     wx.showLoading({
       title: '数据加载中'
     });
     var me = this;
-    http.get('/gamebox/recommend', null, function (data) {
+    http.get('/gamebox/recommend', null, function(data) {
       wx.hideLoading();
       if (stopPullDown) {
         wx.stopPullDownRefresh();
@@ -30,7 +30,7 @@ QKPage({
       me.setData({
         games: data
       });
-    }, function (code, msg) {
+    }, function(code, msg) {
       wx.hideLoading();
       if (stopPullDown) {
         wx.stopPullDownRefresh();
@@ -41,8 +41,6 @@ QKPage({
       });
     })
   },
-  onReachBottom: function (e) {
-  },
-  onPageScroll: function (e) {
-  }
+  onReachBottom: function(e) {},
+  onPageScroll: function(e) {}
 });

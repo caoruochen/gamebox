@@ -3,15 +3,28 @@
 		<image class="head-img" lazy-load="{{true}}" mode="aspectFill" src="../../images/default-banner.png"/>
 		<view class="head-mask">
 			<view class="mask-bottom flex">
-				<navigator url="../../pages/index/index" class="mask-text">进入游戏
+				<xcx-navigator class="mask-text" game="{{game_wuxianlou}}">
+					进入游戏
 					<text class="peopleNum">已参赛100万人</text>
-				</navigator>
-				<button class="rule-btn" type="default" size="mini">规则</button>
+				</xcx-navigator>
+				<view class="rule-btn" bindtap="clickRule">规则</view>
 			</view>
 		</view>
 	</view>
 	<view class="rank-pub">
-		公告跑马灯
+		<view style="width:70rpx;text-align:center;">
+        	<image src="../../images/public.png" style="width:30rpx;height:30rpx;margin-top:24rpx"></image>
+      	</view> 
+      	<view  style="height:60rpx;flex-grow:1;"> 
+        	<swiper autoplay="{{true}}" interval="3000" duration="1000" circular="{{true}}" vertical="{{true}}" style="height:60rpx">
+        		<block wx:for="{{lists}}" wx:key="{{index}}">
+        		  	<swiper-item>
+        		    	<text>{{item.index+'. '+item.content}}</text>
+        		  	</swiper-item>
+        		</block>
+        	</swiper>
+      	</view> 
+        <text style="width:70rpx;font-size:700;text-align:center;"> > </text>  
 	</view>
 	<view>
 		<view class="list-tab flex">
@@ -19,12 +32,11 @@
 			<view class="{{activeIndex == 1? 'activeList':''}}" data-index="1" bindtap="clickTab">周榜</view>
 			<view class="{{activeIndex == 2? 'activeList':''}}" data-index="2" bindtap="clickTab">月榜</view>
 		</view>
-		<swiper current="{{activeIndex}}" class="list-content" bindchange="changeSwiper">
+		<swiper current="{{activeIndex}}" class="list-content" bindchange="changeSwiper" style="height:450rpx">
   			<block wx:for="{{[1,2,3]}}"  wx:key="{{index}}">
   			<swiper-item>
-  				<!-- <scroll-view scroll-y style='height: 1500rpx'> -->
+  				<scroll-view scroll-y  style="height: 450rpx;">
   				<block wx:for="{{rankList}}" wx:key="{{index}}">
-				<navigator url="../../pages/index/index">
 					<view class="list-item flex">
   						<view class="flex">
   							<text class="ranking" style="color:{{item.ranking=='1'?'#e16531':(item.ranking=='2'?'#efb336':(item.ranking=='3'?'#f6ef37':'#8a8a8a'))}}">{{item.ranking}}</text>	
@@ -42,41 +54,37 @@
   							</view>
   						</view>
   					</view>
-				</navigator>
   				</block>
-  				<!-- </scroll-view> -->
+  				</scroll-view>
   			</swiper-item>
   			</block>
 		</swiper>
 	</view>
-	<view>
-		<navigator url="../../pages/index/index">
-			<view class="list-item flex myrank">
-  				<view class="flex">
-  					<text class="ranking" style="color:#8a8a8a">-</text>	
-  					<image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132"></image>
-  					<text style="margin-left: 16rpx">曹若晨</text>
-  					<image class="gender" lazy-load="{{true}}" mode="aspectFill" src="{{item.gender==1 ? '../../images/man.png' : '../../images/woman.png'}}"></image>
-  				</view>
-  				<view class="score">
-  					<text class="score-text">200</text>
-  					<view class="pinglun">
-  						<image class="smallicon" src="../../images/zan.png"></image>
-  						<text>10</text>
-  						<image class="smallicon" src="../../images/pinglun.png"></image>
-  						<text>5</text>
-  					</view>
-  				</view>
-  				<view class="mybtnBox">
-  					<view class="mybtn">助力</view>
-  					<view class="mybtn">炫耀</view>
-  				</view>
+	<view class="list-item flex myrank">
+  		<view class="flex">
+  			<text class="ranking" style="color:#8a8a8a">-</text>	
+  			<image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132"></image>
+  			<text style="margin-left: 16rpx">曹若晨</text>
+  			<image class="gender" lazy-load="{{true}}" mode="aspectFill" src="{{item.gender==1 ? '../../images/man.png' : '../../images/woman.png'}}"></image>
+  		</view>
+  		<view class="score">
+  			<text class="score-text">200</text>
+  			<view class="pinglun">
+  				<image class="smallicon" src="../../images/zan.png"></image>
+  				<text>10</text>
+  				<image class="smallicon" src="../../images/pinglun.png"></image>
+  				<text>5</text>
   			</view>
-		</navigator>
-	</view>
-	
+  		</view>
+  		<view class="mybtnBox">
+  			<view class="mybtn">助力</view>
+  			<view class="mybtn">炫耀</view>
+  		</view>
+  	</view>
 
 	<view>
 	  <xcx-rr />
 	</view>
+
+  <xcx-danmu danmuList="{{danmuList}}" width="100%" height="160rpx" />
 </view>

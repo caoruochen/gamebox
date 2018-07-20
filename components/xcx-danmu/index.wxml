@@ -1,0 +1,7 @@
+<view class="danmu" style="width:{{width}};height:{{height}}">
+  	<block wx:for="{{danmuList}}" wx:key="{{index}}">
+	  	<view class="danmu-text" style="animation:slip {{item.duration?item.duration+'s':10+'s'}} linear forwards;color:{{item.color ? item.color:'#fff'}};top:{{tops[index]}}">
+	  		{{item.text}}
+	  	</view>
+	</block>
+</view>

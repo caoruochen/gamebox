@@ -6,6 +6,7 @@ var app = getApp();
 var ratio = app.globalData.wwidth / 750;
 
 var swiperHeight = 130;
+var gameItemHeight = 150;
 var defaultBanners = [{
   pic: '../../images/default-banner.png'
 }];
@@ -28,7 +29,9 @@ QKPage({
     tabPageData: {},
     activeIndex: 0,
     tabW: app.globalData.wwidth / 4,
-    contentHeight: app.globalData.wheight,
+    contentHeight: 7 * gameItemHeight * ratio, // 默认显示7条
+    itemTextWidth: app.globalData.wwidth - (50 + 60 + 60 * ratio), // 图片宽度 + 按钮 + 左右padding
+    
   },
 
   /**
@@ -161,10 +164,14 @@ QKPage({
   loadCategoryData: function (key, param) {
     console.log("type=" + param)
     console.log("test="+this.data.tabPageData[key])
-    if (this.data.tabPageData[key] != undefined) {
-
-      return
-    }
+     if (this.data.tabPageData[key] != undefined) {
+       console.log("array size="+this.data.tabPageData[key].length)
+     
+      //  this.setData({
+      //    tabPageData: this.data.tabPageData[key],
+      //  })
+       return
+     }
     wx.showLoading({
       title: '数据加载中'
     });
@@ -174,11 +181,13 @@ QKPage({
       console.log(data)
       var tabPageData = me.data.tabPageData;
       tabPageData[key] = data.games;
+    
       // 设置tab数据
       me.setData({
         tabs: data.categorys,
-        tabPageData: tabPageData
+        tabPageData: tabPageData,
       })
+      
     }, function () {
       wx.hideLoading();
 

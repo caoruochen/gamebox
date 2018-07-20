@@ -81,7 +81,7 @@ QKPage({
 			help: '20',
 		}],
 		nohelpList: [],
-		helpShow: true,
+		helpShow: false,
 		activeIndex: 0,
 		lists: [{
 			index: '1',

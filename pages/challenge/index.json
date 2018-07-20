@@ -1,0 +1,9 @@
+{
+	"navigationBarTitleText": "挑战",
+	"backgroundColor": "#eee",
+	"enablePullDownRefresh": true,
+	"backgroundTextStyle": "dark",
+	"usingComponents": {
+		"xcx-navigator": "../../components/xcx-navigator/index"
+	}
+}

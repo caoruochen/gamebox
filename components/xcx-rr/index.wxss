@@ -3,7 +3,7 @@
 .tableVIewCell {
     display: flex;
     flex-direction: row;
-    margin: 15px 5px 5px 5px;
+    margin: 15px 5px 0px 5px;
 }
 /*  头像  */
 .userIcon {
@@ -29,14 +29,20 @@
 }
 /*  显示 总共有多少人评论的 view  */
 .replyView {
-    background: #ccc;
+    background: #eee;
     margin-top: 3px; 
     font-size: 14px;
-    color: #3333ff;
     padding-left: 10px;
 }
+
+/*  回复的昵称  */
+.replyUName {
+    color: #06c;
+}
+
 /*  时间 + 点赞  */
 .cellBottomView {
+    margin-top: 3px;
     display: flex;
     flex-direction: row;
 }
@@ -59,8 +65,8 @@
 }
 /*  点赞 图片  */
 .ratingImage {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     margin-right: 5px; 
 }
 /*  line  */
@@ -73,34 +79,45 @@
 
 /*  更多 view  */
 .moreView {
-    height: 80px;
+    height: 40px;
     width: 100%;
     /* 居中解决方案 */
     display: flex;
-    align-items: center; 
+    align-items: center;  
     /* 居中解决方案 */
     background: #ccc;
 }
-/*  更多 button  */
-.moreButton {
-    height: 60px;
-    width: 70%;
-    /*  */
+/*  更多 button  居中显示*/
+    /*  
     display: flex;
     align-items: center;
     justify-content: center;
-    /*  */
-    background: #6cf;
-}
-
+    */
+/*  分享 - 评论 - 赞  */
 .floatView {
-    /* background: #fff;  */
-    right: 30px;
-    bottom: 50px;
+    background: #eee;  
+    width: 100%;
+    height: 40px;
+    bottom: 0px;
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
-.commentImage {
-    width: 40px;
-    height: 35px;
+/*  单个 图片+文字  */
+.tipView {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*  图片  */
+.tipImage {
+    width: 20px;
+    height: 20px;
+}
+/*  文字  */
+.tipLabel {
+    font-size: 17px;
+    margin-left: 3px;
 }

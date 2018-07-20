@@ -16,7 +16,7 @@ Component({
           sex: "1",
           avatar: "https://upload-images.jianshu.io/upload_images/654237-835e699b6e6fbca8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700",
           topicId: "1",
-          replyCount: "12",
+          replyCount: "1",
           ratingCount: "999",
           ctime: "2018-01-08 09:00:00",
           content: "光明源于黑暗,黑暗涌现光明.",
@@ -107,6 +107,7 @@ Component({
             console.log(error)
         })
     },
+    /* 点击发送按钮 */
     bindFormSubmit: function(e) {
         console.log(e.detail.value.comment)
         // // this.sendReview(e.detail.value.comment)
@@ -125,6 +126,34 @@ Component({
                 textarea_value: "",
             })
         }
+    },
+    bindRating: function(e) {
+        // let index = e.currentTarget.dataset.index
+        // var reviews = this.data.reviews
+        // let is_rating = reviews[index].is_rating
+        // if (is_rating == "0") {
+        //     is_rating = "1"
+        // } else {
+        //     is_rating = "0"
+        // }
+        // reviews[index].is_rating = is_rating
+        // this.setData({
+        //     reviews: reviews
+        // })
+        let index = e.currentTarget.dataset.index
+        var param = {}
+        var string = "reviews[" + index + "].is_rating"
+        var reviews = this.data.reviews
+        var is_rating = reviews[index].is_rating
+        // let param.is_rating = review.is_rating
+        if (is_rating == "0") {
+            is_rating = "1"
+        } else {
+            is_rating = "0"
+        }
+        param[string] = is_rating
+        // review.is_rating = is_rating
+        this.setData(param)
     }
   }
 })

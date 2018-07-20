@@ -24,13 +24,13 @@ QKPage({
 			name: "舒克",
 			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
 			gender: '1',
-			score: '3000',
+			score: '300',
 		}, {
 			ranking: '3',
 			name: "贝塔",
 			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
 			gender: '1',
-			score: '3000',
+			score: '30',
 		}, {
 			ranking: '4',
 			name: "李雷",
@@ -43,7 +43,45 @@ QKPage({
 			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
 			gender: '1',
 			score: '3000',
+		}, {
+			ranking: '6',
+			name: "李雷理",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			gender: '1',
+			score: '3000',
+		}, {
+			ranking: '7',
+			name: "李雷",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			gender: '1',
+			score: '3000',
+		}, {
+			ranking: '8',
+			name: "李雷理",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			gender: '1',
+			score: '3000',
+		}, {
+			ranking: '9',
+			name: "李雷理",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			gender: '1',
+			score: '3000',
+		}, {
+			ranking: '10',
+			name: "李雷理",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			gender: '1',
+			score: '3000',
 		}],
+		helpList: [{
+			name: "韩梅梅",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			score: '300',
+			help: '20',
+		}],
+		nohelpList: [],
+		helpShow: false,
 		activeIndex: 0,
 		lists: [{
 			index: '1',
@@ -99,21 +137,6 @@ QKPage({
 			activeIndex: e.currentTarget.dataset.index,
 		});
 	},
-	changeSwiper: function(e) {
-		this.setData({
-			activeIndex: e.detail.current
-		})
-	},
-	// clickOne: function(e) {
-	// 	var id = e.currentTarget.dataset.id
-	// 	console.log(id)
-	// 	// wx.navigateTo({
-	// 	// 	url: '',
-	// 	// })
-	// 	wx.switchTab({
-	// 		url: '/pages/index/index',
-	// 	})
-	// },
 	clickRule: function() {
 		wx.showModal({
 			title: '活动规则',
@@ -127,8 +150,40 @@ QKPage({
 			}
 		})
 	},
+	onChallenge: function() {
+		wx.navigateTo({
+			url: '/pages/challenge/index',
+		})
+	},
+	onHelp: function() {
+		console.log("onhelp")
+		this.setData({
+			helpShow: true
+		})
+	},
+	hideHelp: function() {
+		console.log("hideHelp")
+		this.setData({
+			helpShow: false
+		})
+	},
+	catch: function() {
+		// console.log("阻止时间冒泡")
+	},
+
 	onLoad: function(options) {
 		// console.log(options)
 		// console.log(app.globalData)
+		//没有帮助的人数
+		if (this.data.helpList.length < 5) {
+			var len = this.data.helpList.length
+			var list = this.data.nohelpList.concat() //拷贝数组
+			for (var i = 0; i < 5 - len; i++) {
+				list.push(1)
+			}
+			this.setData({
+				nohelpList: list
+			})
+		}
 	}
 })

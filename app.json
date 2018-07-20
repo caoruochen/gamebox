@@ -7,43 +7,40 @@
     "pages/more-game/more-game",
     "pages/lottery/index",
     "pages/detail/index",
-    "pages/more-record/index"
+    "pages/more-record/index",
+    "pages/hit/index",
+    "pages/challenge/index"
   ],
   "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "游戏",
-        "iconPath": "images/game0.png",
-        "selectedIconPath": "images/game1.png",
-        "selectedColor": "#000000",
-        "color": "#8f8f8f"
-      },
-      {
-        "pagePath": "pages/recommend/index",
-        "text": "精选",
-        "iconPath": "images/jingxuan0.png",
-        "selectedIconPath": "images/jingxuan1.png",
-        "selectedColor": "#000000",
-        "color": "#8f8f8f"
-      },
-      {
-        "pagePath": "pages/rank/index",
-        "text": "打榜",
-        "iconPath": "images/jingxuan0.png",
-        "selectedIconPath": "images/jingxuan1.png",
-        "selectedColor": "#000000",
-        "color": "#8f8f8f"
-      },
-      {
-        "pagePath": "pages/my/index",
-        "text": "我的",
-        "iconPath": "images/my0.png",
-        "selectedIconPath": "images/my1.png",
-        "selectedColor": "#000000",
-        "color": "#8f8f8f"
-      }
-    ]
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "游戏",
+      "iconPath": "images/game0.png",
+      "selectedIconPath": "images/game1.png",
+      "selectedColor": "#000000",
+      "color": "#8f8f8f"
+    }, {
+      "pagePath": "pages/recommend/index",
+      "text": "精选",
+      "iconPath": "images/jingxuan0.png",
+      "selectedIconPath": "images/jingxuan1.png",
+      "selectedColor": "#000000",
+      "color": "#8f8f8f"
+    }, {
+      "pagePath": "pages/hit/index",
+      "text": "打榜",
+      "iconPath": "images/jingxuan0.png",
+      "selectedIconPath": "images/jingxuan1.png",
+      "selectedColor": "#000000",
+      "color": "#8f8f8f"
+    }, {
+      "pagePath": "pages/my/index",
+      "text": "我的",
+      "iconPath": "images/my0.png",
+      "selectedIconPath": "images/my1.png",
+      "selectedColor": "#000000",
+      "color": "#8f8f8f"
+    }]
   },
   "window": {
     "backgroundTextStyle": "light",

@@ -37,37 +37,8 @@
   <view class="ad" wx:if="{{adpos=='top'}}">
     <ad unit-id="adunit-a3868a599f8b3cfa"></ad>
   </view>
-  <!-- tab -->
-  <!-- <view>
-    <scroll-view scroll-x="true" class="tab-layout" scroll-left="{{navScrollLeft}}" scroll-with-animation="true">
-      <block wx:for="{{tabs}}" wx:key='*this'>
-          <view id="{{index}}" class="{{activeIndex == index ?'tab-item-on':''}} tab-item" 
-            bindtap="tabClick" style="width:{{tabW}}px"
-            data-item='{{item.name}}' data-type="{{item.type}}">
-              {{item.name}}
-          </view>
-      </block>
-    </scroll-view>
-
-    <view class="gamebox-games">
-      <block wx:for="{{tabPageData[activeIndex]}}" wx:key="*this">
-        <xcx-navigator nav-class="gamebox-item" game="{{item}}">
-          <view class="gamebox-item-logo">
-            <image lazy-load="{{true}}" src="{{item.logo}}" />
-          </view>
-          <view class="gamebox-item-info">
-            <view>{{item.name}}</view>
-            <view class="gamebox-item-info_desc">{{item.desc}}</view>
-          </view>
-          <view class="gamebox-item-play">开始</view>
-        </xcx-navigator>
-      </block> 
-      </view>
-  </view> -->
  
- 
-
-  <!-- <view class="gamebox-games" wx:if="{{games.length>0}}">
+  <view class="gamebox-games" wx:if="{{games.length>0}}">
     <view class="item-title">
       <view class="game-category">
         <view>
@@ -77,7 +48,7 @@
       </view>
       <view wx:if="{{!verifying}}" class="game-more" bindtap="clickMore" data-type="" data-id="-1">更多</view>
     </view>
-    <block wx:for="{{games}}" wx:key="*this">
+    <!-- <block wx:for="{{games}}" wx:key="*this">
       <xcx-navigator nav-class="gamebox-item" game="{{item}}">
         <view class="gamebox-item-logo">
           <image lazy-load="{{true}}" src="{{item.logo}}" />
@@ -90,16 +61,12 @@
         </view>
         <view class="gamebox-item-play">开始</view>
       </xcx-navigator>
-    </block>
-  </view> -->
-
-  <view class="ad" wx:if="{{adpos!='top'}}">
-    <ad unit-id="adunit-a3868a599f8b3cfa"></ad>
+    </block> -->
   </view>
-</view>
-<!--tab+swiper-->
-<view>
-  <scroll-view scroll-x="true" class="tab-layout" scroll-left="{{navScrollLeft}}" scroll-with-animation="true">
+
+  <view>
+  <scroll-view scroll-x="true" class="tab-layout" scroll-left="{{navScrollLeft}}" 
+    scroll-with-animation="true" wx:if="{{tabs.length>0}}">
       <block wx:for="{{tabs}}" wx:key='*this'>
            <view id="{{index}}" class="{{activeIndex == index ?'tab-item-on':''}} tab-item" 
             bindtap="tabClick" style="width:{{tabW}}px"
@@ -109,7 +76,7 @@
       </block>
   </scroll-view>
 
-  <swiper current="{{activeIndex}}" class="content-layout" bindchange="bindChange" style="height: {{contentHeight}}px">
+  <swiper current="{{activeIndex}}" bindchange="bindChange" style="height: {{contentHeight}}px">
     <block wx:for="{{tabs}}" wx:key="*this">
       <swiper-item>
       <view class="gamebox-games">
@@ -119,8 +86,10 @@
               <image lazy-load="{{true}}" src="{{item.logo}}" />
             </view>
             <view class="gamebox-item-info" style="width: {{itemTextWidth}}px">
-              <view class="gamebox-item-info-title">{{item.name}}</view>
-              <view class="gamebox-item-info_desc">{{item.desc}}</view>
+              <view class="gamebox-item-info-title">{{item.name}}
+              <text wx:if="{{item.playerNum}}" class='gamebox-item-num'><text>{{item.playerNum}}</text>人在玩</text>
+              </view>
+              <view class="gamebox-item-info_desc" style="width: {{itemTextWidth}}px">{{item.desc}}</view>
             </view>
             <view class="gamebox-item-play">开始</view>
           </xcx-navigator>
@@ -130,3 +99,9 @@
     </block>
   </swiper>
 </view>
+
+  <view class="ad" wx:if="{{adpos!='top'}}">
+    <ad unit-id="adunit-a3868a599f8b3cfa"></ad>
+  </view>
+</view>
+<!--tab+swiper-->

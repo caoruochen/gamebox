@@ -19,8 +19,12 @@
                         {{review.content}}
                     </view>
                     <!--  是否有回复  -->
-                    <view wx:if="{{beReply}}" class='replyView'>
-                        共{{review.replyCount}}条回复
+                    <view wx:if="{{review.lastReplys.length > 0}}" class='replyView'>
+                        <view wx:for="{{review.lastReplys}}" wx:for-item="reply">
+                            <text class='replyUName'>{{reply.uname}}</text>
+                            : {{reply.content}}
+                        </view>
+                        <text wx:if="{{review.replyCount > review.lastReplys.length}}" class='replyUName'>共{{review.replyCount}}条回复 ></text>
                     </view>
                     <!--  时间 + 点赞  -->
                     <view class='cellBottomView'>
@@ -30,7 +34,7 @@
                         </view>
                         <!--  点赞  -->
                         <view class='ratingView'>
-                            <image class='ratingImage' src='{{review.is_rating=="0" ? ratingImage + "ratingNormal.png" : ratingImage + "ratingSelected.png"}}'>
+                            <image class='ratingImage' data-index='{{index}}' bindtap='bindRating' src='{{review.is_rating=="0" ? ratingImage + "ratingNormal.png" : ratingImage + "ratingSelected.png"}}'>
                             </image>
                             <view class='ratingCount'>
                                 {{review.ratingCount}}
@@ -44,9 +48,9 @@
         </view>
         <!--  加载更多按钮  -->
         <view class='moreView'>
-            <button class='moreButton' bindtap='sendReview'>
+            <!-- <button class='moreButton' bindtap='sendReview'>
                 点击查看更多评论
-            </button>
+            </button> -->
         </view>
         <!--  评论输入 入口  -->
         <!-- <view>
@@ -58,8 +62,21 @@
         </view> -->
     </view>
     <view class='floatView'>
-        <image class='commentImage' src='../../images/comment.png'>
-        </image>
+        <!--  分享  -->
+        <view class='tipView'>
+            <image class='tipImage' src='../../images/share01.png'></image>
+            <view class='tipLabel'>分享</view>
+        </view>
+        <!--  评论  -->
+        <view class='tipView'>
+            <image class='tipImage' src='../../images/comment.png'></image>
+            <view class='tipLabel'>评论</view>
+        </view>
+        <!--  👍  -->
+        <view class='tipView'>
+            <image class='tipImage' src='../../images/ratingNormal.png'></image>
+            <view class='tipLabel'>赞</view>
+        </view>
     </view>
     <slot></slot>
 </view>

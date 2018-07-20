@@ -1,6 +1,5 @@
 .rank{
-	font-size:34rpx;
-	/*box-sizing: border-box;*/
+	font-size:30rpx;
 }
 .flex{
 	display: flex;
@@ -8,9 +7,10 @@
 	justify-content: space-between;
 	align-items: center;
 }
+
 .rank-head{
 	width:100%;
-	height:260rpx;
+	height:380rpx;
 	position: relative;
 }
 .head-img{
@@ -27,115 +27,124 @@
 }
 .mask-bottom{
 	position: absolute;
-	bottom: 0;
+	bottom: 30rpx;
 	width: 100%;
-	height:110rpx;
-	padding:0 40rpx;
+	height:56rpx;
+	padding:0 25rpx;
 	box-sizing: border-box;
+	align-items: flex-end;
 }
 .mask-text{
-	font-size:30rpx;
+	color:#fff;
+	font-size:24rpx;
 	font-weight: 700;
+	margin-left: 25rpx;
 }
 .peopleNum{
 	margin-left:20rpx;
 	font-size:24rpx;
 }
 .rule-btn{
-	color:#ff8130;
-	font-size:26rpx;
-	font-weight: 700;
-	width:100rpx;
-	height:50rpx;
-	line-height: 50rpx;
+	display: inline-block;
+	color:#666666;
+	width:80rpx;
+	height:36rpx;
+	line-height: 36rpx;
 	background-color: #fff;
 	border-radius: 8rpx;
 	text-align: center;
+	margin-left: 24rpx;
 }
-
-.rank-pub{
-	height:60rpx;
-  	line-height: 60rpx;
-	width:100%;
-	background-color: #fbf9d5;
-	font-size:28rpx;
-	color:#f56629;
-	border-top: 1px solid #eee;
-	border-bottom: 1px solid #eee;
-	
-  	display:flex;
-  	flex-direction:row;
-  	justify-content:space-between;
-  	align-items: center; 
+.into-btn{
+	width:140rpx;
+	height:56rpx;
+	line-height: 56rpx;
+	background-color: #f4e322;
+	border-radius: 14rpx;
+	/*font-size: 28rpx;*/
+	font-weight: 700;
+	text-align: center;
 }
 
 .list-tab{
-	justify-content: space-around;
-	padding:20rpx 80rpx;
-	font-weight: 700;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1rpx solid #f4f3f3;
+	color: #888888;
 }
-.list-content{
-	border-bottom: 1px solid #eee;
+.onetab{
+	display: inline-block;
+	width: 49%;
+	height: 75rpx;
+	line-height: 75rpx;
+	text-align: center;
 }
 .activeList{
-	color:#ff8130;
+	color:#000;
+	font-weight: 700;
+}
+
+.ranks{
+	box-sizing: border-box;
+	width: 100%;
+	padding:20rpx 20rpx 132rpx 20rpx ;
+	background-color: #f4f3f3;
+}
+.ranksCont{
+	border-radius: 16rpx;
+	background-color: #fff;
+	padding:0 32rpx;
 }
 .list-item{
 	width:100%;
 	height:110rpx;
-	padding:0 40rpx;
 	box-sizing: border-box;
+	border-bottom: 1px solid #eee;
 }
 .ranking{
-	font-style:italic;
-	font-size:700;
+	min-width: 60rpx;
+	padding: 0 10rpx;
 	font-size:36rpx;
 }
 .avatar{
-	width: 60rpx;
-	height: 60rpx;
-	border-radius: 8rpx;
-	margin-left:50rpx;
+	width: 70rpx;
+	height: 70rpx;
+	border-radius: 70rpx;
 }
-.gender{
-	width: 30rpx;
-	height: 30rpx;
-	margin-left:10rpx;
-}
-.score{
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	align-items: flex-end;
+.name{
+	margin-left: 20rpx;
 }
 .score-text{
-	font-weight: 700;
-	font-style: italic;
-	font-size: 36rpx;
+	color:#666666;
 }
-.pinglun{
-	color:#cdcdcd;
-	font-size: 30rpx;
+.myrank{
+	position: fixed;
+	bottom: 0;
+	background-color: #fff;
+	box-shadow: 0 -4rpx 20rpx #ddd;
+	width:100%;
+	height: 134rpx;
+	box-sizing: border-box;
+	padding:0 32rpx;
 }
-.smallicon{
-	width: 30rpx;
-	height:30rpx;
-	margin-left:20rpx;
+.myname{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-left: 20rpx;
 }
 
-.myrank{
-	border-bottom: 1px solid #eee;
-}
 .mybtn{
-	font-size:28rpx;
-	margin-left:16rpx;
+	margin-left:38rpx;
 	display: inline-block;
-	width: 80rpx;
-	height:46rpx;
-	line-height: 46rpx;
-	border: 1px solid #ff8130;
-	border-radius: 50rpx;
+	width: 130rpx;
+	height:56rpx;
+	line-height: 56rpx;
+	border-radius: 16rpx;
 	text-align: center;
-	color:#ff8130;
+	font-weight: 700;
+}
+.zl-btn{
+	background-color: #9fcefa;
+}
+.tz-btn{
+	background-color: #f4e322;
 }

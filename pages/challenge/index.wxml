@@ -1,0 +1,24 @@
+<view class="challenge">
+	<view class="ranks">
+        <view class="list-item flex" wx:for="{{rankList}}" wx:key="{{index}}">
+        	<view class="flex">
+          		<text class="ranking" style="color:{{item.ranking=='1'?'#ff6d34':(item.ranking=='2'?'#1fc3a2':(item.ranking=='3'?'#fca237':'#303030'))}}">{{item.ranking}}</text> 
+          		<image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{item.avatar}}" />
+        	  	<view class="name">
+        	    	<text>{{item.name}}</text>
+        	    	<text class="score">{{item.score}} 分</text>
+        	  	</view>
+        	</view>
+        	<view class="tz-btn" bindtap="onChallenge">挑战</view>
+        </view>
+    </view>
+
+	<view class="flex myrank">
+        <view class="flex">
+            <text class="ranking" style="color:#ff9b22">26</text> 
+            <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132" />
+            <text class="myname">曹若晨</text>
+        </view>
+        <view class="myscore"><text style="font-weight: 700;font-size: 34rpx">356</text>  分</view>
+    </view>
+</view>

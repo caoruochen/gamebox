@@ -1,5 +1,6 @@
 {
 	"navigationBarTitleText": "打榜",
+	"backgroundColor": "#eee",
 	"enablePullDownRefresh": true,
 	"onReachBottomDistance": 20,
 	"usingComponents": {

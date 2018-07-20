@@ -44,9 +44,9 @@
         </view>
         <!--  加载更多按钮  -->
         <view class='moreView'>
-            <button class='moreButton' bindtap='sendReview'>
+            <!-- <button class='moreButton' bindtap='sendReview'>
                 点击查看更多评论
-            </button>
+            </button> -->
         </view>
         <!--  评论输入 入口  -->
         <!-- <view>
@@ -58,8 +58,21 @@
         </view> -->
     </view>
     <view class='floatView'>
-        <image class='commentImage' src='../../images/comment.png'>
-        </image>
+        <!--  分享  -->
+        <view class='tipView'>
+            <image class='tipImage' src='../../images/share01.png'></image>
+            <view class='tipLabel'>分享</view>
+        </view>
+        <!--  评论  -->
+        <view class='tipView'>
+            <image class='tipImage' src='../../images/comment.png'></image>
+            <view class='tipLabel'>评论</view>
+        </view>
+        <!--  👍  -->
+        <view class='tipView'>
+            <image class='tipImage' src='../../images/ratingNormal.png'></image>
+            <view class='tipLabel'>赞</view>
+        </view>
     </view>
     <slot></slot>
 </view>

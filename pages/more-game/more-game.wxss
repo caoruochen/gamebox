@@ -26,7 +26,7 @@ view , scroll-view {
 .tab-item {
   display: inline-block;
   text-align: center;
-  font-size: 32rpx;
+  font-size: 13.5px;
   line-height: 80rpx;
 }
 
@@ -80,8 +80,14 @@ view , scroll-view {
   justify-content: space-between;
 }
 
+.gamebox-item-info .gamebox-item-info-title {
+  color: #353535;
+  font-size: 13px;
+  text-align: center;
+}
+
 .gamebox-item-info .gamebox-item-info_desc {
-  font-size: 80%;
+  font-size: 11px;
   color: #999;
   margin-top: 5px;
 }
@@ -92,4 +98,14 @@ view , scroll-view {
   color: #3884d8;
   border-radius: 15px;
   padding: 4px 15px;
+}
+
+.gamebox-item-num {
+  font-size: 12px;
+  text-align: center;
+  margin-left: 30rpx;
+}
+
+.gamebox-item-num text {
+  color: #ff0621;
 }

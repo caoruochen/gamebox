@@ -67,4 +67,15 @@
     background: #eee;
     bottom: 0px;
     position: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input {
+    background: #fff;
+    width: 95%;
+    border-radius: 5px;
+    padding-left: 8px;
 }

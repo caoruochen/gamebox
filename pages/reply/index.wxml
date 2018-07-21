@@ -27,5 +27,5 @@
     </view>
 </view>
 <view class='replyFooter'>
-    底部悬浮
+    <input class='input' bindtap='bindInputTap' placeholder='回复评论' focus='{{focus}}'></input>
 </view>

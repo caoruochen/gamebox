@@ -3,20 +3,15 @@ var RotateAward = function(options){
   this.page = options.page;
 	this.initAngle = options.initAngle - 0 || 0;
 	this.turn = options.turn ? Math.max(options.turn - 0, 10) : 10;
-	this.isRotating = false;
   this.progress = 15;
 };
 
 RotateAward.prototype.rotate = function(lastAng, cb){
-  if(this.isRotating){
-    return;
-  }
   cb && (this.cb = cb);
-  this.isRotating = true;
   this.totalAngle = this.initAngle;
-  var section = [3, 5, 7, 9.5];
+  var section = [3, 6, 8, 9.4, 9.7, 9.9];
   this.boundary = section.map(x => x * 360);
-  this.lastAng = lastAng;
+  this.lastAng = this.turn * 360 + lastAng;
   this.step();
 };
 
@@ -45,18 +40,29 @@ RotateAward.prototype.step = function(){
     });
     this.totalAngle = this.totalAngle + this.progress;
     setTimeout(this.step.bind(this), 16.66667);
-  }else if(this.totalAngle < this.lastAng){
+  }else if(this.totalAngle <= this.boundary[4]){
     this.page.setData({
       rotateAngle: "transform: rotate(" + this.totalAngle + "deg)"
     });
     this.totalAngle = this.totalAngle + this.progress / 2;
+    setTimeout(this.step.bind(this), 16.66667);
+  }else if(this.totalAngle <= this.boundary[5]){
+    this.page.setData({
+      rotateAngle: "transform: rotate(" + this.totalAngle + "deg)"
+    });
+    this.totalAngle = this.totalAngle + this.progress / 3;
+    setTimeout(this.step.bind(this), 16.66667);
+  }else if(this.totalAngle < this.lastAng){
+    this.page.setData({
+      rotateAngle: "transform: rotate(" + this.totalAngle + "deg)"
+    });
+    this.totalAngle = this.totalAngle + this.progress / 4;
     setTimeout(this.step.bind(this), 16.66667);
   }else{
     this.page.setData({
       rotateAngle: "transform: rotate(" + this.lastAng + "deg)"
     });
     this.totalAngle = this.lastAng;
-    this.isRotating = false;
     this.cb && this.cb();
   }
 };

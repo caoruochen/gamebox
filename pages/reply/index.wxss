@@ -1,0 +1,27 @@
+
+/*  Cell  */
+.replyTableViewCell {
+    display: flex;
+    flex: row;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/*  头像  */
+.icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+/*  回复整体内容*/
+.content {
+    flex: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+/*  点赞图片  */
+.rating {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}

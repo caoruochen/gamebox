@@ -127,33 +127,21 @@ Component({
             })
         }
     },
+    /* 点赞 */ 
     bindRating: function(e) {
-        // let index = e.currentTarget.dataset.index
-        // var reviews = this.data.reviews
-        // let is_rating = reviews[index].is_rating
-        // if (is_rating == "0") {
-        //     is_rating = "1"
-        // } else {
-        //     is_rating = "0"
-        // }
-        // reviews[index].is_rating = is_rating
-        // this.setData({
-        //     reviews: reviews
-        // })
         let index = e.currentTarget.dataset.index
         var param = {}
         var string = "reviews[" + index + "].is_rating"
         var reviews = this.data.reviews
         var is_rating = reviews[index].is_rating
-        // let param.is_rating = review.is_rating
         if (is_rating == "0") {
             is_rating = "1"
         } else {
             is_rating = "0"
         }
         param[string] = is_rating
-        // review.is_rating = is_rating
         this.setData(param)
+        /* 网络请求还没写 */ 
     }
   }
 })

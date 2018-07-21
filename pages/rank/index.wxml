@@ -1,31 +1,16 @@
 <view class="rank">
 	<view class="rank-head">
-		<image class="head-img" lazy-load="{{true}}" mode="aspectFill" src="../../images/default-banner.png"/>
+		<image class="head-img" lazy-load="{{true}}" mode="aspectFill" src="{{banner}}"/>
 		<view class="head-mask">
 			<view class="mask-bottom flex">
         <view  class="mask-text">
-          <text class="peopleNum">13445  人参加</text>
+          <text class="peopleNum">{{playerNum}}  人参加</text>
           <view class="rule-btn" bindtap="clickRule">规则</view>
         </view>
-        <xcx-navigator class="into-btn" game="{{game_wuxianlou}}">进入游戏</xcx-navigator>
+        <xcx-navigator class="into-btn" game="{{intoGame}}">进入游戏</xcx-navigator>
 			</view>
 		</view>
 	</view>
-<!-- 	<view class="rank-pub">
-		<view style="width:70rpx;text-align:center;">
-        	<image src="../../images/public.png" style="width:30rpx;height:30rpx;margin-top:24rpx" />
-      	</view> 
-      	<view  style="height:60rpx;flex-grow:1;"> 
-        	<swiper autoplay="{{true}}" interval="3000" duration="1000" circular="{{true}}" vertical="{{true}}" style="height:60rpx">
-        		<block wx:for="{{lists}}" wx:key="{{index}}">
-        		  	<swiper-item>
-        		    	<text>{{item.index+'. '+item.content}}</text>
-        		  	</swiper-item>
-        		</block>
-        	</swiper>
-      	</view> 
-        <text style="width:70rpx;font-size:700;text-align:center;"> > </text>  
-	</view> -->
 
 	<view>
 		<view class="list-tab">
@@ -35,10 +20,10 @@
     <view style="display:{{activeIndex == 0? 'block':'none'}}">
       <view class="ranks">
         <view class="ranksCont">
-          <view class="list-item flex" wx:for="{{rankList}}" wx:key="{{index}}">
+          <view class="list-item flex" wx:for="{{ranks}}" wx:key="{{index}}">
               <view class="flex">
-                <text class="ranking" style="color:{{item.ranking=='1'?'#ff6d34':(item.ranking=='2'?'#1fc3a2':(item.ranking=='3'?'#fca237':'#303030'))}}">{{item.ranking}}</text> 
-                <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{item.avatar}}"/>
+                <text class="ranking" style="color:{{item.rank=='1'?'#ff6d34':(item.rank=='2'?'#1fc3a2':(item.rank=='3'?'#fca237':'#303030'))}}">{{item.rank}}</text> 
+                <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{item.avatar || '../../images/defaultavatar.png'}}"/>
                 <text class="name">{{item.name}}</text>
               </view>
               <view class="score-text">{{item.score}}  分</view>
@@ -47,21 +32,23 @@
       </view>
       <view class="flex myrank">
         <view class="flex">
-          <text class="ranking" style="color:#fca237">26</text> 
-          <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132" />
+          <text class="ranking" style="color:#fca237">{{personal.rank || '-'}}</text> 
+          <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{personal.avatar || '../../images/defaultavatar.png'}}"/>
           <view class="myname">
-            <text style="font-weight: 700">曹若晨</text>
-            <view style="color:#fca237"><text style="font-weight: 700">200</text> 分</view>
+            <text style="font-weight: 700">{{personal.name || '用户名'}}</text>
+            <view style="color:#fca237"><text style="font-weight: 700">{{personal.score || '-'}}</text> 分</view>
           </view>
         </view>
         <view>
           <view class="mybtn zl-btn" bindtap="onHelp">助力</view>
           <view class="mybtn tz-btn" bindtap="onChallenge">挑战</view>
+          <!-- <view class="mybtn zl-btn" bindtap="">炫耀</view> -->
+          <!-- <view class="mybtn tz-btn" bindtap="">进入游戏</view> -->
         </view>
       </view>
     </view>
     <view style="display:{{activeIndex == 1? 'block':'none'}}">
-      <xcx-rr />
+      <!-- <xcx-rr /> -->
     </view>
 	</view>
 

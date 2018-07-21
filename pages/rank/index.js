@@ -119,19 +119,21 @@ QKPage({
 		},
 		//弹幕列表
 		danmuList: [{
-			text: '第 1s 出现的弹幕',
+			text: '第 1s 出现的弹幕第 1s 出现的弹幕',
 			// color: '#ff0000',
-			duration: 30, //多少秒完成
+			// time: 1, 
 		}, {
 			text: '第 3s 出现的弹幕',
 			color: '#ff00ff',
-			duration: 5
+			// time: 3
 		}, {
-			text: '第 1s 出现的弹幕',
+			text: '第 5s 出现的弹幕',
 			color: '#ff0000',
-			duration: 10,
+			// time: 5,
 		}]
 	},
+
+
 	clickTab: function(e) {
 		this.setData({
 			activeIndex: e.currentTarget.dataset.index,
@@ -156,13 +158,11 @@ QKPage({
 		})
 	},
 	onHelp: function() {
-		console.log("onhelp")
 		this.setData({
 			helpShow: true
 		})
 	},
 	hideHelp: function() {
-		console.log("hideHelp")
 		this.setData({
 			helpShow: false
 		})
@@ -170,11 +170,8 @@ QKPage({
 	catch: function() {
 		// console.log("阻止时间冒泡")
 	},
-
-	onLoad: function(options) {
-		// console.log(options)
-		// console.log(app.globalData)
-		//没有帮助的人数
+	changeHelpNum: function() {
+		//还差助力人数
 		if (this.data.helpList.length < 5) {
 			var len = this.data.helpList.length
 			var list = this.data.nohelpList.concat() //拷贝数组
@@ -185,5 +182,15 @@ QKPage({
 				nohelpList: list
 			})
 		}
+	},
+	//弹幕点击事件
+	clickDanmu: function(e) {
+		console.log(e.detail.text)
+	},
+
+	onLoad: function(options) {
+		// console.log(options)
+		// console.log(app.globalData)
+		this.changeHelpNum();
 	}
 })

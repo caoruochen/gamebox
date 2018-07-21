@@ -8,39 +8,43 @@ Component({
 			value: null
 		},
 		width: {
-			type: String,
-			value: '100%'
+			type: Number,
+			value: null
 		},
 		height: {
-			type: String,
-			value: '100%'
-		}
+			type: Number,
+			value: null
+		},
 	},
 	// 私有数据，可用于模版渲染
 	data: {
-		tops: []
+		// // [{top:'',playState:''},{top:'',playState:''}]
+		textProps: []
 	},
 	attached: function() {
-		var topsTemp = [];
-		for (var i = this.data.danmuList.length - 1; i >= 0; i--) {
-			var top = Math.floor(Math.random() * 70) + '%'
-			topsTemp.push(top);
+		var textProps = [];
+		for (var i = 0; i < this.data.danmuList.length; i++) {
+			//随机位置
+			var top = Math.floor(Math.random() * (this.data.height - 20)) + 'px'
+			textProps.push({
+				top: top,
+				playState: true
+			});
 		}
 		this.setData({
-			tops: topsTemp
+			textProps: textProps
 		})
+		//循环播放，播放暂停
+
 	},
 	methods: {
-		// getRandomColor: function() {
-		// 	var rgb = []
-		// 	for (var i = 0; i < 3; ++i) {
-		// 		var color = Math.floor(Math.random() * 256).toString(16)
-		// 		color = color.length == 1 ? '0' + color : color
-		// 		rgb.push(color)
-		// 	}
-		// 	console.log('#' + rgb.join(''))
-		// 	return '#' + rgb.join('')
-		// },
-
+		onTap: function(e) {
+			var text = e.currentTarget.dataset.text;
+			// var myEventDetail = {} // detail对象，提供给事件监听函数
+			// var myEventOption = {} // 触发事件的选项
+			this.triggerEvent('clickText', {
+				text: text
+			})
+		}
 	}
 })

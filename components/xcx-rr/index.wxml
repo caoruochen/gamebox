@@ -24,7 +24,7 @@
                             <text class='replyUName'>{{reply.uname}}</text>
                             : {{reply.content}}
                         </view>
-                        <text wx:if="{{review.replyCount > review.lastReplys.length}}" class='replyUName'>共{{review.replyCount}}条回复 ></text>
+                        <text bindtap='bindPushReply' wx:if="{{review.replyCount > review.lastReplys.length}}" class='replyUName'>共{{review.replyCount}}条回复 ></text>
                     </view>
                     <!--  时间 + 点赞  -->
                     <view class='cellBottomView'>

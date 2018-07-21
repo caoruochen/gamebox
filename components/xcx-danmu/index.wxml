@@ -1,6 +1,6 @@
-<view class="danmu" style="width:{{width}};height:{{height}}">
+<view class="danmu" style="width:{{width?width+'px':'100%'}};height:{{height+'px'}}">
   	<block wx:for="{{danmuList}}" wx:key="{{index}}">
-	  	<view class="danmu-text" style="animation:slip {{item.duration?item.duration+'s':10+'s'}} linear forwards;color:{{item.color ? item.color:'#fff'}};top:{{tops[index]}}">
+	  	<view class="danmu-text" style="animation:danmu {{item.duration?item.duration+'s':10+'s'}} linear {{index*5+'s'}} infinite normal both {{textProps[index].playState ? 'running' :'paused'}};color:{{item.color ? item.color:'#fff'}};top:{{textProps[index].top}}" data-text="{{item.text}}" bindtap="onTap">
 	  		{{item.text}}
 	  	</view>
 	</block>

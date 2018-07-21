@@ -1,0 +1,81 @@
+
+/*  header  */
+.replyHeader {
+    width: 100%;
+    height: 40px;
+    background: #eee;
+    top: 0px;
+    position: fixed;
+}
+
+/*  Cell  */
+.replyTableViewCell {
+    display: flex;
+    flex: row;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+/*  头像  */
+.icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+.contentTip {
+    display: flex;
+    flex: row;
+} 
+.tip {
+    flex: 1;
+}
+/*  回复整体内容*/
+.content {
+    flex: 1; 
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+} 
+
+/*  时间  */
+.timeView {
+    font-size: 13px;
+    color: #666;
+}
+/*  回复内容  */
+.replyContent {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+/*  cell 分割线  */
+.line {
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+}
+/*  点赞图片  */
+.rating {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/*  底部悬浮  */
+.replyFooter {
+    width: 100%;
+    height: 40px;
+    background: #eee;
+    bottom: 0px;
+    position: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input {
+    background: #fff;
+    width: 95%;
+    border-radius: 5px;
+    padding-left: 8px;
+}

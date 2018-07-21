@@ -1,2 +1,31 @@
 <view>
+    <view class='replyHeader'>
+        头部悬浮
+    </view>
+    <view class='replyTableView'>
+        <view class='replyTableViewCell'>
+            <!--  头像  -->
+            <image class='icon' src='../../images/coins-icon.png'></image>
+            <view class='content'>
+                <view class='contentTip'>
+                    <view class='tip'>
+                        <view>
+                            谁在前世约了你
+                        </view>
+                        <view class='timeView'>
+                            2018-01-08 09:00:00
+                        </view>
+                        <view class='replyContent'>
+                            出乎意料
+                        </view>
+                    </view>
+                    <image class='rating' src='../../images/ratingNormal.png'></image>
+                </view>
+                <view class='line'> </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class='replyFooter'>
+    <input class='input' bindtap='bindInputTap' placeholder='回复评论' focus='{{focus}}'></input>
 </view>

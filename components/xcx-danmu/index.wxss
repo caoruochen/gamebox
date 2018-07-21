@@ -1,5 +1,5 @@
 /**定义从右边向左边的移动的动画**/
-@keyframes slip{
+@keyframes danmu{
   from{left: 100%;}
   to{left: -100%;}
 }
@@ -9,10 +9,9 @@
 	top:0px;
 	z-index:3;
 	/*background-color: rgba(0,0,0,0.5);*/
-	/*overflow: hidden;*/
+	overflow: hidden;
 }
 .danmu-text{
-	position: relative;
+	position: absolute;
 	white-space:nowrap;
-	display: inline-block;
 }

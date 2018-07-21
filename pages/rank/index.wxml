@@ -13,7 +13,7 @@
 	</view>
 <!-- 	<view class="rank-pub">
 		<view style="width:70rpx;text-align:center;">
-        	<image src="../../images/public.png" style="width:30rpx;height:30rpx;margin-top:24rpx"></image>
+        	<image src="../../images/public.png" style="width:30rpx;height:30rpx;margin-top:24rpx" />
       	</view> 
       	<view  style="height:60rpx;flex-grow:1;"> 
         	<swiper autoplay="{{true}}" interval="3000" duration="1000" circular="{{true}}" vertical="{{true}}" style="height:60rpx">
@@ -38,7 +38,7 @@
           <view class="list-item flex" wx:for="{{rankList}}" wx:key="{{index}}">
               <view class="flex">
                 <text class="ranking" style="color:{{item.ranking=='1'?'#ff6d34':(item.ranking=='2'?'#1fc3a2':(item.ranking=='3'?'#fca237':'#303030'))}}">{{item.ranking}}</text> 
-                <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{item.avatar}}"></image>
+                <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{item.avatar}}"/>
                 <text class="name">{{item.name}}</text>
               </view>
               <view class="score-text">{{item.score}}  分</view>
@@ -76,11 +76,11 @@
         </view>
         <view class="help-item flex" wx:for="{{helpList}}" wx:key="{{index}}">
           <view class="flex">
-            <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{item.avatar}}" />
+            <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{item.avatar}}"/>
             <text class="name">{{item.name}}</text>
           </view>
-          <view class="score-text">{{item.score}}  分</view>
-          <view class="score-text">{{item.help}}  分</view>
+          <view class="score-text">{{item.score}}</view>
+          <view class="score-text">{{item.help}}</view>
         </view>
         <view class="help-item flex" wx:for="{{nohelpList}}" wx:key="{{index}}">
           <view class="flex">
@@ -94,5 +94,5 @@
     </view>
   </view>
 
-  <!-- <xcx-danmu danmuList="{{danmuList}}" width="100%" height="160rpx" /> -->
+  <xcx-danmu danmuList="{{danmuList}}" height="120" bind:clickText="clickDanmu"/>
 </view>

@@ -45,7 +45,9 @@
           <block wx:for="{{personal.options}}" wx:key="{{index}}">
             <view wx:if="{{item=='助力'}}" class="mybtn zl-btn" bindtap="onHelp">助力</view>
             <view wx:elif="{{item=='挑战'}}" class="mybtn tz-btn" bindtap="onChallenge">挑战</view>
-            <xcx-navigator wx:else="{{item=='进入游戏'}}" class="mybtn tz-btn" game="{{intoGame}}">进入游戏</xcx-navigator>
+            <view wx:elif="{{item=='进入游戏'}}" class="mybtn tz-btn">
+              <xcx-navigator game="{{intoGame}}">进入游戏</xcx-navigator>
+            </view>
           </block>
         </view>
       </view>
@@ -54,7 +56,7 @@
       <xcx-rr />
     </view> -->
 	</view>
-  
+
   <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" />
 
   <xcx-danmu danmuList="{{danmuList}}" height="120" bind:clickText="clickDanmu"/>

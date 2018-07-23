@@ -58,6 +58,12 @@
 					"name": "打榜首页",
 					"pathName": "pages/hit/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/my/index",
+					"query": ""
 				}
 			]
 		}

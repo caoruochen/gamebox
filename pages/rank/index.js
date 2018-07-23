@@ -5,98 +5,10 @@ var app = getApp();
 
 QKPage({
 	data: {
-		tabs: [
-
-		],
-		imgUrls: [
-			'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-			'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-			'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
-		],
-		rankList: [{
-			ranking: '1',
-			name: "韩梅梅",
-			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
-			gender: '2',
-			score: '3000',
-		}, {
-			ranking: '2',
-			name: "舒克",
-			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
-			gender: '1',
-			score: '300',
-		}, {
-			ranking: '3',
-			name: "贝塔",
-			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
-			gender: '1',
-			score: '30',
-		}, {
-			ranking: '4',
-			name: "李雷",
-			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
-			gender: '1',
-			score: '3000',
-		}, {
-			ranking: '5',
-			name: "李雷理",
-			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
-			gender: '1',
-			score: '3000',
-		}, {
-			ranking: '6',
-			name: "李雷理",
-			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
-			gender: '1',
-			score: '3000',
-		}, {
-			ranking: '7',
-			name: "李雷",
-			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
-			gender: '1',
-			score: '3000',
-		}, {
-			ranking: '8',
-			name: "李雷理",
-			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
-			gender: '1',
-			score: '3000',
-		}, {
-			ranking: '9',
-			name: "李雷理",
-			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
-			gender: '1',
-			score: '3000',
-		}, {
-			ranking: '10',
-			name: "李雷理",
-			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
-			gender: '1',
-			score: '3000',
-		}],
-		helpList: [{
-			name: "韩梅梅",
-			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
-			score: '300',
-			help: '20',
-		}],
-		nohelpList: [],
-		helpShow: false,
-		activeIndex: 0,
-		lists: [{
-			index: '1',
-			content: "现在发布公告一则"
-		}, {
-			index: '2',
-			content: "事件处理函数事件处理函数"
-		}, {
-			index: '3',
-			content: "获取应用实例获取应用实例获取应用实例获取应用实例"
-		}, {
-			index: '4',
-			content: "事件处理函数事件处理函数"
-		}, ],
-		game_wuxianlou: {
+		banner: '../../images/default-banner.png',
+		playerNum: '0',
+		rules: '',
+		intoGame: {
 			appId: "wx5b6b8f9a7aad9945",
 			bg: "https://snsgame.uimg.cn/video/game/wxl/WechatIMG29.jpeg",
 			desc: "攀登无限楼，收获白富美",
@@ -117,21 +29,128 @@ QKPage({
 			vshow: false,
 			vsrc: ""
 		},
+		personal: {
+			// 'uid': 0,
+			'score': 0,
+			'rank': 0,
+			'options': [] //控制按钮的显示
+		},
+		ranks: [{
+			name: "韩梅梅",
+			rank: '1',
+			score: '3000',
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+		}, {
+			rank: '2',
+			name: "舒克",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			score: '300',
+		}, {
+			rank: '3',
+			name: "贝塔",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			score: '30',
+		}, {
+			rank: '4',
+			name: "李雷",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			score: '3000',
+		}, {
+			rank: '5',
+			name: "李雷理",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			score: '3000',
+		}, {
+			rank: '6',
+			name: "李雷理",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			score: '3000',
+		}, {
+			rank: '7',
+			name: "李雷",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			score: '3000',
+		}, {
+			rank: '8',
+			name: "李雷理",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			score: '3000',
+		}, {
+			rank: '9',
+			name: "李雷理",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			score: '3000',
+		}, {
+			rank: '10',
+			name: "李雷理",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			score: '3000',
+		}],
+
+		activeIndex: 0,
+		helpShow: false,
+		helpList: [{
+			name: "韩梅梅",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			score: '300',
+			help: '20',
+		}],
+		nohelpList: [],
+
 		//弹幕列表
 		danmuList: [{
 			text: '第 1s 出现的弹幕第 1s 出现的弹幕',
 			// color: '#ff0000',
 			// time: 1, 
 		}, {
-			text: '第 3s 出现的弹幕',
-			color: '#ff00ff',
-			// time: 3
-		}, {
 			text: '第 5s 出现的弹幕',
+			color: '#ff00ff',
+		}, {
+			text: '第 10s 出现的弹幕',
 			color: '#ff0000',
-			// time: 5,
 		}]
 	},
+
+
+	onLoad: function(options) {
+		// console.log(options)
+		// console.log(app.globalData)
+		this.changeHelpNum();
+
+		var aid = options.aid;
+		this.loadRankData(aid);
+	},
+	loadRankData: function(aid) {
+		// console.log(aid)
+		wx.showLoading({
+			title: '数据加载中'
+		});
+		var me = this;
+		http.get('/gamebox/activity/rank', {
+			aid: aid || '1'
+		}, function(data) {
+			wx.hideLoading();
+			wx.stopPullDownRefresh();
+			console.log(data)
+			me.setData({
+				//处理数据
+				banner: data.activity.banner,
+				// playerNum: data.playerNum,
+				playerNum: data.activity.playerNum,
+				rules: data.activity.rules,
+				personal: data.personal,
+				ranks: data.ranks,
+			});
+		}, function(code, msg) {
+			wx.hideLoading();
+			wx.stopPullDownRefresh();
+			wx.showToast({
+				title: msg || '数据加载失败',
+				icon: 'none'
+			});
+		})
+	},
+
 
 
 	clickTab: function(e) {
@@ -142,12 +161,12 @@ QKPage({
 	clickRule: function() {
 		wx.showModal({
 			title: '活动规则',
-			content: '活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则',
+			content: this.data.rules,
 			showCancel: false,
 			confirmColor: '#ff8130',
 			success: function(res) {
 				if (res.confirm) {
-					console.log('用户点击确定')
+					// console.log('用户点击确定')
 				}
 			}
 		})
@@ -168,7 +187,7 @@ QKPage({
 		})
 	},
 	catch: function() {
-		// console.log("阻止时间冒泡")
+		// console.log("阻止事件冒泡")
 	},
 	changeHelpNum: function() {
 		//还差助力人数
@@ -188,9 +207,4 @@ QKPage({
 		console.log(e.detail.text)
 	},
 
-	onLoad: function(options) {
-		// console.log(options)
-		// console.log(app.globalData)
-		this.changeHelpNum();
-	}
 })

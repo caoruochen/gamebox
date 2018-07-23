@@ -28,6 +28,17 @@
     </view>
   </view>
   
+  <view class="banners">
+    <navigator class="credits">
+      <view class="title">积分商城</view>
+      <view class="detail">查看详情</view>
+    </navigator>
+    <navigator class="welfare">
+      <view class="title">积分福利</view>
+      <view class="detail">查看详情</view>
+    </navigator>
+  </view>
+
   <view class="games">
     <view class="item-head">
       <view class="title">最近常玩</view>
@@ -53,7 +64,7 @@
     </view>
     <view class="task-content">
       <view wx:if="{{tasks.list.length < 1}}" class="tips">暂无任务</view>
-      <view wx:for="{{tasks.list}}" wx:key="{{index}}}" wx:if="{{index === 0}}" class="task-item">
+      <view wx:for="{{tasks.list}}" wx:key="{{index}}}" class="task-item">
         <image mode="widthFix" src="{{item.icon ? item.icon : '../../images/coins-icon.png'}}" class="task-icon"></image>
         <view class="right-block">
           <view class="task-info">
@@ -68,10 +79,9 @@
         </view>
       </view>
     </view>
-    <view wx:if="{{!verifying}}" class="look-all" bindtap="clickMore" data-type="task">全部任务</view>
   </view>
 
-  <view class="welfare">
+  <!-- <view class="welfare">
     <view class="item-head">
       <view class="title">福利</view>
     </view>
@@ -87,7 +97,7 @@
       </view>
     </view>
     <navigator url="/pages/records/index" wx:if="{{!verifying}}" class="look-all" bindtap="clickMore" data-type="welfare">全部福利</navigator>
-  </view>
+  </view> -->
 
   <view class="ad">
     <ad unit-id="adunit-45cb07bb615f7ee9"></ad>

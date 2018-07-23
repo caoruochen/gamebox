@@ -3,12 +3,12 @@
   
   <view style="width: 100%; height: 30rpx; background-color: #eee"/>
 
-  <view class="item-layout" wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:key="*this" bindtap="itemClick">
-    <image class="item-image" src="../../images/default-banner.png" lazy-load="true"/>
+  <view class="item-layout" wx:for="{{activityDatas}}" wx:key="*this" bindtap="itemClick" data-item="{{item}}">
+    <image class="item-image" src="{{item.banner}}" lazy-load="true"/>
     <view class="item-sub-layout">
       <view class="item-text-layout">
-        <view class="text-title">我是标题</view>
-        <view class="text-desc">我是内容描述</view>
+        <view class="text-title">{{item.name}}</view>
+        <view class="text-desc">{{item.descs}}</view>
       </view>
       <view class="item-btn">进入</view>
     </view>

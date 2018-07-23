@@ -10,7 +10,8 @@
     "pages/more-record/index",
     "pages/hit/index",
     "pages/challenge/index",
-    "pages/reply/index"
+    "pages/reply/index",
+    "pages/records/index"
   ],
   "tabBar": {
     "list": [{

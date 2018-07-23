@@ -1,6 +1,15 @@
 <view>
     <view class='replyHeader'>
-        头部悬浮
+        <view>
+            <image class='headerIcon' src='../../images/my0.png'></image>
+        </view>
+        <view class='headerBaseContent'>
+            中间内容
+        </view>
+        <!-- <view class='headerRating'>
+            右边内容
+        </view> -->
+        <image class='headerRating' src='../../images/ratingNormal.png'></image>
     </view>
     <view class='replyTableView'>
         <view class='replyTableViewCell'>

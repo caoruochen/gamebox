@@ -9,7 +9,7 @@ QKPage({
 		playerNum: '0',
 		rules: '',
 		intoGame: {
-			appId: "wx5b6b8f9a7aad9945",
+			appId: "wx530202348351e73c",
 			bg: "https://snsgame.uimg.cn/video/game/wxl/WechatIMG29.jpeg",
 			desc: "攀登无限楼，收获白富美",
 			direction: 0,
@@ -19,8 +19,8 @@ QKPage({
 			linkMode: 1,
 			logo: "https://snsgame.uimg.cn/video/game/wxl/logo.jpg",
 			mode: 1,
-			name: "无限楼",
-			path: "",
+			name: "世界杯预言+",
+			path: "pages/index/index?__qk_rank_ticket=u"+app.globalData.userInfo.uid,
 			pics: ["https://snsgame.uimg.cn/video/game/wxl/pic1.jpg", "https://snsgame.uimg.cn/video/game/wxl/pic2.jpg", "https://snsgame.uimg.cn/video/game/wxl/pic3.jpg"],
 			playerNum: "10万",
 			poster: "https://snsgame.uimg.cn/video/game/wxl/wxl.jpg",
@@ -119,6 +119,7 @@ QKPage({
 
 		var aid = options.aid;
 		this.loadRankData(aid);
+    console.log(this.data.intoGame)
 	},
 	loadRankData: function(aid) {
 		// console.log(aid)

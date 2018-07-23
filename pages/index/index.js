@@ -23,7 +23,7 @@ QKPage({
     categorys: [],
     bannerImgWidth: bannerImgWidth,
     wwidth: app.globalData.wwidth,
-    gameItemWidth: (app.globalData.wwidth-150*ratio) / 4,// 60 padding + 3*30 margin
+    gameItemWidth: (app.globalData.wwidth-150*ratio) / 4.5,// 60 padding + 3*30 margin
     games: [],
     verifying: false,
     tabs: [],
@@ -173,7 +173,7 @@ QKPage({
         tabPageData: tabPageData,
       })
       
-    }, function () {
+    }, function (error, msg) {
       wx.hideLoading();
 
       wx.showToast({

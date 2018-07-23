@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    btns: ["红包","打榜","抽奖"],
+    btnType: 0,
   },
 
   /**
@@ -19,7 +20,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
@@ -62,5 +63,13 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+    /*
+        红包,打榜,抽奖 tap
+    */
+  btnTypeTap: function(e) {
+      this.setData({
+          btnType: e.currentTarget.dataset.btntype
+      });
   }
 })

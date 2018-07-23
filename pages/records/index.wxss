@@ -1,1 +1,28 @@
 /* pages/records/index.wxss */
+
+/*  三个火枪手  */
+
+.btns {
+    display: flex;
+    flex: row;
+    border-bottom: 1rpx solid #e4e4e4;
+}
+
+/*  红包,打榜,抽奖  */
+/*  未选中  */
+.btn {
+    flex: 1;
+    text-align: center;
+}
+/*  选中  */
+.selectedBtn {
+    background: #26ac29;
+    flex: 1; 
+    text-align: center;
+}
+
+.scrollView {
+    background: #f00;
+    width: 100%;
+    height: 100%;
+}

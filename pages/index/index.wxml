@@ -1,5 +1,21 @@
 <view>
-  <swiper indicator-dots="{{false}}"
+  <view class="top-bar">
+    <view wx:if="{{!!userName}}">
+      <text class="wel">欢迎 </text> <text class="nick">{{userName}}</text>
+    </view>
+    <button wx:else open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">点击登陆</button>
+    <view class="top-bar-info">
+      <image src="../../images/coins-icon.png" />
+      <text>{{coins}}</text>
+      <image wx:if="{{showMoney}}" src="../../images/coins-icon.png" />
+      <text wx:if="{{showMoney}}">{{money}}</text>
+      <text>签到</text>
+    </view>
+  </view>
+
+  <view class="game-body">
+
+  <swiper indicator-dots="{{false}}" 
     autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" style="height:{{swiperHeight}}px !important;">
     <block wx:for="{{banners}}" wx:key="*this">
       <swiper-item>
@@ -103,5 +119,7 @@
   <view class="ad" wx:if="{{adpos!='top'}}">
     <ad unit-id="adunit-a3868a599f8b3cfa"></ad>
   </view>
+</view>
+
 </view>
 <!--tab+swiper-->

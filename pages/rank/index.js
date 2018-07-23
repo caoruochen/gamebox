@@ -20,7 +20,7 @@ QKPage({
 			logo: "https://snsgame.uimg.cn/video/game/wxl/logo.jpg",
 			mode: 1,
 			name: "世界杯预言+",
-			path: "__qk_rank_ticket=u"+app.globalData.userInfo.uid,
+			path: "pages/index/index?__qk_rank_ticket=u"+app.globalData.userInfo.uid,
 			pics: ["https://snsgame.uimg.cn/video/game/wxl/pic1.jpg", "https://snsgame.uimg.cn/video/game/wxl/pic2.jpg", "https://snsgame.uimg.cn/video/game/wxl/pic3.jpg"],
 			playerNum: "10万",
 			poster: "https://snsgame.uimg.cn/video/game/wxl/wxl.jpg",

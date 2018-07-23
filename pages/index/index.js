@@ -5,7 +5,10 @@ var util = require("../../util/util");
 var app = getApp();
 var ratio = app.globalData.wwidth / 750;
 
-var swiperHeight = 130;
+var bannerImgWidth = app.globalData.wwidth - 60 * ratio;
+var imageWidth = 345;
+var imageHeight = 130;
+var swiperHeight = bannerImgWidth / imageWidth * imageHeight;
 var gameItemHeight = 150;
 var defaultBanners = [{
   pic: '../../images/default-banner.png'
@@ -18,9 +21,7 @@ QKPage({
     banners: defaultBanners,
     hasActivity: false,
     categorys: [],
-    bannerImgWidth: (app.globalData.wwidth - 60 * ratio),
-    bannerImgHeights: [],
-    currentSwiper: 0,
+    bannerImgWidth: bannerImgWidth,
     wwidth: app.globalData.wwidth,
     gameItemWidth: (app.globalData.wwidth-150*ratio) / 4,// 60 padding + 3*30 margin
     games: [],
@@ -67,22 +68,6 @@ QKPage({
       });
     });
 
-  },
-  imgHeight:function(e){
-    var bannerImgWidth = this.data.bannerImgWidth; //获取当前图片的宽度
-    var bannerImgHeights = this.data.bannerImgHeights;
-    var imgh = e.detail.height;//图片实际高度
-    var imgw = e.detail.width;//图片实际宽度
-    var bannerImgHeight = bannerImgWidth * imgh / imgw;//等比设置swiper的高度
-    bannerImgHeights[e.currentTarget.dataset.index] = bannerImgHeight
-    this.setData({
-      bannerImgHeights: bannerImgHeights //设置高度
-    });
-  },
-  changeSwiper: function(e){
-    this.setData({
-      currentSwiper: e.detail.current
-    });
   },
 
   clickMore: function(e) {

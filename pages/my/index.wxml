@@ -33,7 +33,7 @@
       <view class="title">积分商城</view>
       <view class="detail">查看详情</view>
     </navigator>
-    <navigator class="welfare">
+    <navigator url="/pages/records/index" class="welfare">
       <view class="title">积分福利</view>
       <view class="detail">查看详情</view>
     </navigator>

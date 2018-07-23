@@ -31,7 +31,7 @@ QKPage({
     activeIndex: 0,
     // swiperHeight: tabbodyHeight,
     games: [],
-    gameItemWidth: (app.globalData.wwidth-150*ratio) / 4.5, // 60 padding + 3*30 margin
+    gameItemWidth: (app.globalData.wwidth-150*ratio) / 4.8, // 60 padding + 3*30 margin
     tasks: {
       doing: 0,
       done: 0,

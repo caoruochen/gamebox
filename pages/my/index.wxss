@@ -16,7 +16,7 @@ image{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30rpx 34rpx 50rpx 60rpx;
+  padding: 20rpx 34rpx 40rpx 60rpx;
 }
 .my-info .avatar{
   display: block;
@@ -69,7 +69,7 @@ image{
 .user-info{
   flex: 1;
   margin-left: 24rpx;
-  font-size: 14px;
+  font-size: 28rpx;
 }
 .user-info .bottom-block{
   display: flex;
@@ -78,7 +78,7 @@ image{
 }
 .user-info .bottom-block .more{
   margin-left: 25px;
-  font-size: 14px;
+  font-size: 28rpx;
   color: red;
 }
 .user-info .coins{
@@ -86,7 +86,7 @@ image{
   align-items: center;
 }
 .user-info .coins text{
-  font-size: 14px;
+  font-size: 28rpx;
   color: #fff;
 }
 .user-info .coins image{
@@ -141,7 +141,7 @@ image{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30rpx 30rpx 24rpx 22rpx;
+  padding: 20rpx 30rpx 20rpx 22rpx;
   border-bottom: 1rpx solid #e4e4e4;
 }
 .item-head .title{
@@ -162,7 +162,7 @@ image{
 }
 
 .daily-task{
-  padding-bottom: 20rpx;
+  margin-bottom: 15rpx;
   background-color: #fff;
 }
 .task-item{
@@ -177,7 +177,7 @@ image{
   display: flex;
   flex: 1;
   align-items: center;
-  padding: 20rpx 30rpx 20rpx 0;
+  padding: 15rpx 30rpx 15rpx 0;
   border-bottom: 1rpx solid #e4e4e4;
   margin-left: 30rpx;
 }
@@ -247,10 +247,10 @@ image{
   border-radius: 0 !important;
   background-color: #f6c749 !important;
 }
-.all-tasks{
-  padding-top: 24rpx;
-  margin-bottom: 40rpx;
-  font-size: 14px;
+.look-all{
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  font-size: 24rpx;
   color: #666;
   text-align: center;
 }
@@ -258,15 +258,10 @@ image{
 .games{
   background-color: #fff;
 }
-.game-more {
-  font-size: 12px;
-  color: #353535;
-  padding-left: 40rpx;
-  box-sizing: border-box;
-}
 
 .games-box{
-  padding:20rpx 30rpx 20rpx 30rpx;
+  padding:20rpx 30rpx 0 30rpx;
+  margin-bottom: 15rpx;
 }
 .scroll-view_H {
   width: 100%;
@@ -291,7 +286,7 @@ image{
 
 .game-title {
   color: #353535;
-  font-size: 13px;
+  font-size: 24rpx;
   overflow-x: scroll;
   text-align: center;
   padding: 4rpx 0;
@@ -311,15 +306,16 @@ image{
 }
 .welfare{
   background-color: #fff;
+  margin-bottom: 15rpx;
 }
 .welfare-item{
   display: flex;
   align-items: center;
-  padding: 20rpx 0;
+  padding: 15rpx 0;
   border-bottom: 1rpx solid #e4e4e4;
 }
 .welfare-time{
-  padding-left: 20rpx;
+  padding-left: 30rpx;
   padding-right: 20rpx;
   font-size: 26rpx;
   color: #111;
@@ -327,7 +323,8 @@ image{
 }
 .welfare-name{
   flex: 1;
-  font-size: 32rpx;
+  font-size: 28rpx;
+  color: #f3b244;
   text-align: center;
 }
 .welfare-status{

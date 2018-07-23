@@ -39,7 +39,7 @@
           <xcx-navigator class="item_content" game="{{game}}">
             <image lazy-load="{{true}}" class="game-icon" src="{{game.logo}}" style="width: {{gameItemWidth}}px; height: {{gameItemWidth}}px;"/>
             <view style="width:{{gameItemWidth}}px;" class='game-title'>{{game.name}}</view>
-            <view wx:if="{{game.playerNum}}" style="width:{{gameItemWidth}}px;" class='game-desc'>{{game.playerNum}}人在玩</view>
+            <!-- <view wx:if="{{game.playerNum}}" style="width:{{gameItemWidth}}px;" class='game-desc'>{{game.playerNum}}人在玩</view> -->
           </xcx-navigator>
         </block>
       </scroll-view>
@@ -50,11 +50,10 @@
   <view class="daily-task">
     <view class="item-head">
       <view class="title">日常任务<text wx:if="{{tasks.total > 0}}">({{tasks.done}}/{{tasks.total}})</text></view>
-      <view wx:if="{{!verifying}}" class="game-more" bindtap="clickMore" data-type="task">更多</view>
     </view>
     <view class="task-content">
       <view wx:if="{{tasks.list.length < 1}}" class="tips">暂无任务</view>
-      <view wx:for="{{tasks.list}}" wx:key="{{index}}}" class="task-item">
+      <view wx:for="{{tasks.list}}" wx:key="{{index}}}" wx:if="{{index === 0}}" class="task-item">
         <image mode="widthFix" src="{{item.icon ? item.icon : '../../images/coins-icon.png'}}" class="task-icon"></image>
         <view class="right-block">
           <view class="task-info">
@@ -69,12 +68,12 @@
         </view>
       </view>
     </view>
+    <view wx:if="{{!verifying}}" class="look-all" bindtap="clickMore" data-type="task">全部任务</view>
   </view>
 
   <view class="welfare">
     <view class="item-head">
       <view class="title">福利</view>
-      <view wx:if="{{!verifying}}" class="game-more" bindtap="clickMore" data-type="welfare">更多</view>
     </view>
     <view class="welfare-content">
       <view wx:if="{{welfares.length < 1}}" class="tips">暂无福利</view>
@@ -87,6 +86,7 @@
         </view>
       </view>
     </view>
+    <navigator url="/pages/records/index" wx:if="{{!verifying}}" class="look-all" bindtap="clickMore" data-type="welfare">全部福利</navigator>
   </view>
 
   <view class="ad">

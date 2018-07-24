@@ -61,22 +61,6 @@ QKPage({
     })
   },
 
-  clickGame: function(e) {
-    var index = e.currentTarget.dataset.index
-    var idx = e.currentTarget.dataset.id
-    
-    wx.showLoading({
-      title: '加载中',
-      mask: true
-    });
-    wx.navigateToMiniProgram({
-      appId: this.data.categorys[index].games[idx].appId,
-      complete: function(res) {
-        wx.hideLoading()
-      }
-    })
-  },
-
   loadGameData: function () {
     wx.showLoading({
       title: '数据加载中'

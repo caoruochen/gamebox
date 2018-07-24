@@ -8,6 +8,62 @@ page {
   box-sizing: border-box;
 }
 
+.activity-head {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 80rpx;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: white;
+  padding: 10rpx 30rpx;
+  box-shadow: 0px 2px 15px #ededed;
+}
+
+.activity-head-notice {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.activity-head-notice0 {
+  color: #bbb;
+  overflow: hidden;
+  height: 40rpx;
+}
+
+.activity-head-notice image {
+  width: 40rpx;
+  height: 32rpx;
+  margin-right: 5rpx;
+}
+
+.activity-head-money {
+  display: flex;
+  align-items: center;
+}
+
+.activity-head-money image {
+  width: 29rpx;
+  height: 36rpx;
+  margin-right: 10rpx;
+}
+
+.activity-head-money-btn {
+  background: #f95353;
+  padding: 5rpx 20rpx;
+  color: #fff;
+  border-radius: 50rpx;
+  margin-left: 20rpx;
+  font-size: 12px;
+}
+
 .activity-layout {
   display: flex;
   flex-direction: column;
@@ -58,7 +114,7 @@ page {
   position: relative;
   border-radius: 15px;
   background: white;
-  margin: 0rpx 30rpx 30rpx 30rpx;
+  margin: 110rpx 30rpx 30rpx 30rpx;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

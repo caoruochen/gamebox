@@ -14,6 +14,7 @@ QKPage({
   data: {
     bannerImgWidth: bannerImgWidth,
     bannerImgHeight: bannerImgHeight,
+    noticeWidth: app.globalData.wwidth/2.6,
     activitys: [],
   },
 
@@ -47,7 +48,6 @@ QKPage({
       })
     }, function () {
       wx.hideLoading();
-
       wx.showToast({
         title: msg || '数据加载失败',
         icon: 'none'

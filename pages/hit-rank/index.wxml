@@ -1,12 +1,19 @@
 <view class="container">
+  <view class="activity-head">
+    <view class="activity-head-notice">
+      <image src="../../images/voice.png" />
+      <view class="activity-head-notice0" style="width: {{noticeWidth}}px">我是测试文字移动的</view>
+      <view class="" />
+    </view>
+    <view class="activity-head-money">
+      <image src="../../images/icon-money.png" />
+      <text style="font-size: 12px; color: #517BF7; font-weight: 800;">0</text>
+      <text>元</text>
+      <text class="activity-head-money-btn">领取</text>
+    </view>
+  </view>
   <!-- 活动图片 -->
-  <view class="activity-layout">
-      <image lazy-load="{{true}}" 
-        mode="aspectFill" 
-        src="../../images/default-banner.png" 
-        class="activity-image" 
-        style="width:{{bannerImgWidth}}px; height:{{bannerImgHeight}}px;"/>
-      <!-- 个人信息 -->
+  <!--view class="activity-layout">
       <view class="personal-layout">
         <image src="../../images/voice.png" style="width: 20px; height: 16px;"/>
         <text class="marquee">我是测试文字移动的</text>
@@ -19,7 +26,7 @@
           <text class="blue-soild-btn">领取</text>
         </view>
       </view>
-  </view>
+  </view-->
   <!-- 活动内容 -->
   <view class="item-layout" wx:for="{{activitys}}" wx:key="aid}">
 

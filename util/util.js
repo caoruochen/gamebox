@@ -72,7 +72,7 @@ var util = {
     }
     return playHistory;
   },
-  storeGames: function(game, remove){
+  setSavedGames: function(game, remove){
     if(!game){
       return
     }

@@ -28,7 +28,6 @@ QKPage({
     bannerImgWidth: bannerImgWidth,
     wwidth: app.globalData.wwidth,
     gameItemWidth: (app.globalData.wwidth-150*ratio) / 4.5,// 60 padding + 3*30 margin
-    games: [],
     verifying: false,
     tabs: [],
     tabPageData: {},
@@ -46,39 +45,12 @@ QKPage({
     var cacheGames = util.getSavedGames();
     if(Object.keys(cacheGames).length > 0){
       this.setData(cacheGames);
-    }else{
-      this.loadGameData();
     }
-    this.loadGame(true);
-    this.loadCategoryData(0, "hots")
+    this.loadGameData();
+    this.loadCategoryData(0, "hots");
   },
   onShow: function (options) {
     this.updateProfile();
-  },
-  onPullDownRefresh: function (e) {
-    this.loadGame(true, true);
-  },
-  loadGame: function (refresh, stopPullDown) {
-    var me = this;
-    http.get('/gamebox/games', function (data) {
-      // wx.hideLoading();
-      if (stopPullDown) {
-        wx.stopPullDownRefresh();
-      }
-      me.setData({
-        games: data
-      });
-    }, function (error, msg) {
-      // wx.hideLoading();
-      if (stopPullDown) {
-        wx.stopPullDownRefresh();
-      }
-      wx.showToast({
-        title: msg || '数据加载失败',
-        icon: 'none'
-      });
-    });
-
   },
 
   clickMore: function(e) {
@@ -90,22 +62,6 @@ QKPage({
     var type = this.data.categorys[index].type
     wx.navigateTo({
       url: '/pages/more-game/more-game?type='+type +'&position='+index,
-    })
-  },
-
-  clickGame: function(e) {
-    var index = e.currentTarget.dataset.index
-    var idx = e.currentTarget.dataset.id
-    
-    wx.showLoading({
-      title: '加载中',
-      mask: true
-    });
-    wx.navigateToMiniProgram({
-      appId: this.data.categorys[index].games[idx].appId,
-      complete: function(res) {
-        wx.hideLoading()
-      }
     })
   },
 
@@ -123,7 +79,7 @@ QKPage({
         verifying: data.verifying ? data.verifying : false
       };
       me.setData(obj);
-      util.storeGames(obj);
+      util.setSavedGames(obj);
     }, function (error, msg) {
       // wx.hideLoading();
       setTimeout(function () {

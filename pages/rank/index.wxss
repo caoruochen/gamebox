@@ -56,15 +56,7 @@
 	text-align: center;
 	margin-left: 24rpx;
 }
-.into-btn{
-	width:140rpx;
-	height:56rpx;
-	line-height: 56rpx;
-	background-color: #f4e322;
-	border-radius: 14rpx;
-	font-weight: 700;
-	text-align: center;
-}
+
 
 .list-tab{
 	border-bottom: 1rpx solid #ededed;
@@ -139,16 +131,16 @@
 .mybtn{
 	margin-left:38rpx;
 	display: inline-block;
-	width: 130rpx;
+	width: 140rpx;
 	height:56rpx;
 	line-height: 56rpx;
-	border-radius: 12rpx;
 	text-align: center;
+	border-radius: 12rpx;
 	font-weight: 700;
+	background-color: #f4e322; 
 }
 .zl-btn{
+	width:130rpx;
 	background-color: #9fcefa;
 }
-.tz-btn{
-	background-color: #f4e322;
-}
+

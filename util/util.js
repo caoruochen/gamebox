@@ -1,4 +1,5 @@
 var playHistory = [];
+var savedGames = {};
 var util = {
   compareVersion: function (v1, v2) {
     v1 = v1.split('.')
@@ -72,7 +73,28 @@ var util = {
     return playHistory;
   },
   storeGames: function(game, remove){
-
+    if(!game){
+      return
+    }
+    savedGames = wx.getStorageSync('game_cache');
+    if(remove && savedGames){
+      wx.removeStorageSync('game_cache');
+      return savedGames;
+    }
+    if(!savedGames){
+      savedGames = game;
+      wx.setStorageSync('game_cache', savedGames);
+    }
+    return savedGames;
+  },
+  getSavedGames: function(){
+    if(Object.keys(savedGames).length < 1){
+      var games = wx.getStorageSync('game_cache');
+      if(games){
+        savedGames = games
+      }
+    }
+    return savedGames;
   }
 };
 module.exports = util

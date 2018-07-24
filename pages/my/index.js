@@ -41,9 +41,9 @@ QKPage({
   },
   onShow: function () {
     this.updateProfile();
-    this.setData({
-      games: util.getPlayHistory()
-    });
+    // this.setData({
+    //   games: util.getPlayHistory()
+    // });
   },
   onPullDownRefresh: function (e) {
     this.getProfile();

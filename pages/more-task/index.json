@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "更多任务",
+  "usingComponents": {
+    "xcx-navigator": "../../components/xcx-navigator/index"
+  }
+}

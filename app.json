@@ -12,7 +12,8 @@
     "pages/challenge/index",
     "pages/reply/index",
     "pages/records/index",
-    "pages/hit-rank/index"
+    "pages/hit-rank/index",
+    "pages/mall/index"
   ],
   "tabBar": {
     "list": [

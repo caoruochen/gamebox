@@ -9,26 +9,27 @@ QKPage({
 		playerNum: '0',
 		rules: '',
 		intoGame: {
-			appId: "wx5b6b8f9a7aad9945",
-			bg: "https://snsgame.uimg.cn/video/game/wxl/WechatIMG29.jpeg",
-			desc: "攀登无限楼，收获白富美",
-			direction: 0,
-			extra: "",
-			gameId: 1,
-			icon: "https://snsgame.uimg.cn/video/game/wxl/logo.jpg",
-			linkMode: 1,
-			logo: "https://snsgame.uimg.cn/video/game/wxl/logo.jpg",
-			mode: 1,
-			name: "无限楼",
-			path: "",
-			pics: ["https://snsgame.uimg.cn/video/game/wxl/pic1.jpg", "https://snsgame.uimg.cn/video/game/wxl/pic2.jpg", "https://snsgame.uimg.cn/video/game/wxl/pic3.jpg"],
-			playerNum: "10万",
-			poster: "https://snsgame.uimg.cn/video/game/wxl/wxl.jpg",
-			tags: ["休闲"],
-			type: 1,
-			vshow: false,
-			vsrc: ""
+			// appId: "wx530202348351e73c",
+			// bg: "https://snsgame.uimg.cn/video/game/wxl/WechatIMG29.jpeg",
+			// desc: "攀登无限楼，收获白富美",
+			// direction: 0,
+			// extra: "",
+			// gameId: 1,
+			// icon: "https://snsgame.uimg.cn/video/game/wxl/logo.jpg",
+			// linkMode: 1,
+			// logo: "https://snsgame.uimg.cn/video/game/wxl/logo.jpg",
+			// mode: 1,
+			// name: "世界杯预言+",
+			// path: "pages/index/index?__qk_rank_ticket=u" + app.globalData.userInfo.uid,
+			// pics: ["https://snsgame.uimg.cn/video/game/wxl/pic1.jpg", "https://snsgame.uimg.cn/video/game/wxl/pic2.jpg", "https://snsgame.uimg.cn/video/game/wxl/pic3.jpg"],
+			// playerNum: "10万",
+			// poster: "https://snsgame.uimg.cn/video/game/wxl/wxl.jpg",
+			// tags: ["休闲"],
+			// type: 1,
+			// vshow: false,
+			// vsrc: ""
 		},
+		// activity: {},
 		personal: {
 			// 'uid': 0,
 			'score': 0,
@@ -90,13 +91,18 @@ QKPage({
 		activeIndex: 0,
 		helpShow: false,
 		helpList: [{
+			uid: '38',
 			name: "韩梅梅",
 			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
-			score: '300',
-			help: '20',
+			score: '3000',
+			help: '50',
+		}, {
+			uid: '39',
+			name: "韩梅梅",
+			avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
+			score: '3000',
+			help: '50',
 		}],
-		nohelpList: [],
-
 		//弹幕列表
 		danmuList: [{
 			text: '第 1s 出现的弹幕第 1s 出现的弹幕',
@@ -113,21 +119,18 @@ QKPage({
 
 
 	onLoad: function(options) {
-		// console.log(options)
+		console.log(options)
 		// console.log(app.globalData)
-		this.changeHelpNum();
-
 		var aid = options.aid;
 		this.loadRankData(aid);
 	},
 	loadRankData: function(aid) {
-		// console.log(aid)
 		wx.showLoading({
 			title: '数据加载中'
 		});
 		var me = this;
 		http.get('/gamebox/activity/rank', {
-			aid: aid || '1'
+			aid: (aid && aid != 'undefined') || '1'
 		}, function(data) {
 			wx.hideLoading();
 			wx.stopPullDownRefresh();
@@ -150,14 +153,11 @@ QKPage({
 			});
 		})
 	},
-
-
-
-	clickTab: function(e) {
-		this.setData({
-			activeIndex: e.currentTarget.dataset.index,
-		});
-	},
+	// clickTab: function(e) {
+	// 	this.setData({
+	// 		activeIndex: e.currentTarget.dataset.index,
+	// 	});
+	// },
 	clickRule: function() {
 		wx.showModal({
 			title: '活动规则',
@@ -176,35 +176,15 @@ QKPage({
 			url: '/pages/challenge/index',
 		})
 	},
-	onHelp: function() {
-		this.setData({
-			helpShow: true
-		})
-	},
-	hideHelp: function() {
-		this.setData({
-			helpShow: false
-		})
-	},
-	catch: function() {
-		// console.log("阻止事件冒泡")
-	},
-	changeHelpNum: function() {
-		//还差助力人数
-		if (this.data.helpList.length < 5) {
-			var len = this.data.helpList.length
-			var list = this.data.nohelpList.concat() //拷贝数组
-			for (var i = 0; i < 5 - len; i++) {
-				list.push(1)
-			}
-			this.setData({
-				nohelpList: list
-			})
-		}
-	},
+
 	//弹幕点击事件
 	clickDanmu: function(e) {
 		console.log(e.detail.text)
 	},
 
+	onHelp: function() {
+		this.setData({
+			helpShow: true
+		})
+	},
 })

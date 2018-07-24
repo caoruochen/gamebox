@@ -1,6 +1,8 @@
 var http = require("../util/http");
 var util = require("../util/util");
 
+var accountApi = '', logApi = '';
+
 var QKApp = function (options) {
   var config = options.config || {}
   var scope = config.scope || 'base'
@@ -14,9 +16,17 @@ var QKApp = function (options) {
     url: '../../images/share.jpg'
   }
 
-  if (config.httpApi) {
+  if (config.acct) {
+    accountApi = config.acct;
+  }
+
+  if (config.log) {
+    logApi = config.log;
+  }
+
+  if (config.api) {
     http.config({
-      api: config.httpApi,
+      api: config.api,
       version: config.version,
       platform: platform,
       target: target,
@@ -88,7 +98,7 @@ var QKApp = function (options) {
           pname: pname,
           rawData: detail.rawData
         };
-        http.post('/auth2/' + target, param, function (data) {
+        http.post(accountApi + '/auth2/' + target, param, function (data) {
           var loginUser = {
             uid: data.uid,
             token: data.token,
@@ -168,7 +178,7 @@ var QKApp = function (options) {
             channel: channel,
             pname: pname
           };
-          http.post('/auth2/'+target, param, function (data) {
+          http.post(accountApi + '/auth2/'+target, param, function (data) {
             uid = data.uid;
             token = data.token;
             expire = data.expire;
@@ -239,7 +249,7 @@ var QKApp = function (options) {
       m: JSON.stringify(logs0)
     };
     try {
-      http.get('/r.gif', param, null, null, true);
+      http.get(logApi + '/r.gif', param, null, null, true);
       logs = logs1;
     } catch (e) {
     }

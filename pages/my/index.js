@@ -11,46 +11,47 @@ var headerRHeight = 220;
 var tabbarRHeight = 110;
 var adRHeight = 300;
 var tabbodyHeight = app.globalData.wheight - (headerRHeight + tabbarRHeight + adRHeight) * ratio;
-var hitRecord = [
-                  {logo: "../../images/task-icon1.png", rank: 4, score: 3000, award: "3Q币", got: 0},
-                  {logo: "../../images/task-icon2.png", rank: 2, score: 6000, award: "6Q币", got: 1}
-                ];
-var helpFriends = [
-                  {name: "张三", score: 100, helpScore: 100},
-                  {name: "李四", score: 200, helpScore: 200}
-                ];
+var welfares = [{
+  time: "2018-07-23",
+  name: "100元红包",
+  status: 0
+},
+{
+  time: "2018-07-22",
+  name: "50金币",
+  status: 1
+}
+]
 
 QKPage({
   data: {
-    isLogin: false,
     userInfo: app.globalData.userInfo,
-    checkSwitch: false,
-    topBar: ["日常任务", "最近常玩"],
-    activeIndex: 0,
-    // swiperHeight: tabbodyHeight,
     games: [],
-    gameItemWidth: (app.globalData.wwidth-150*ratio) / 4, // 60 padding + 3*30 margin
+    gameItemWidth: (app.globalData.wwidth-150*ratio) / 4.8, // 60 padding + 3*30 margin
     tasks: {
       doing: 0,
       done: 0,
       total: 0,
       list: []
     },
-    hitRecord: hitRecord,
-    helpIndex: '',
-    helpFriends: helpFriends
+    welfares: welfares
   },
   onLoad: function () {
     this.getProfile();
-    this.loadHitRecord();
   },
   onShow: function () {
+    this.updateProfile();
     this.setData({
       games: util.getPlayHistory()
     });
   },
   onPullDownRefresh: function (e) {
     this.getProfile();
+  },
+  updateProfile: function () {
+    this.setData({
+      userInfo: app.globalData.userInfo ? app.globalData.userInfo : null,
+    })
   },
   getProfile: function () {
     wx.showLoading({
@@ -174,25 +175,6 @@ QKPage({
     });
       
   },
-  loadHitRecord: function(){
-    this.setData({
-      helpIndex: hitRecord.length
-    });
-  },
-  showHelpInfo: function(e){
-    var index = e.currentTarget.dataset.index - 0;
-    var len = this.data.hitRecord.length;
-    var helpIndex = this.data.helpIndex;
-    if(helpIndex === index){
-      this.setData({
-        helpIndex: len
-      });
-    }else{
-      this.setData({
-        helpIndex: index
-      });
-    }
-  },
   onGotUserInfo: function (e) {
     if (!e.detail || typeof e.detail.userInfo === 'undefined') {
       wx.showToast({
@@ -206,24 +188,7 @@ QKPage({
       if (!status) {
         return;
       };
-      me.setData({
-        isLogin: true,
-        userInfo: app.globalData.userInfo,
-      });
-    });
-  },
-  changeTabbar: function(e){
-    var index = e.currentTarget.dataset.idx;
-    this.switchSwiper(index);
-  },
-  changeSwiper: function(e){
-    if(e.detail.source === 'touch'){
-      this.switchSwiper(e.detail.current);
-    }
-  },
-  switchSwiper: function(index){
-    this.setData({
-        activeIndex: index
+      me.updateProfile();
     });
   },
 

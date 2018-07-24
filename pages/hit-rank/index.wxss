@@ -1,0 +1,142 @@
+page {
+  height: 100%;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #eee;
+  box-sizing: border-box;
+}
+
+.activity-layout {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: white;
+}
+
+.personal-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 30rpx 30rpx;
+
+}
+
+.marquee {
+  flex: 5;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  animation: marquee 35s linear infinite;
+  -webkit-animation: marquee 35s linear infinite;
+  }
+@keyframes marquee {
+    0% { text-indent: 27.5em }
+    100% { text-indent: -103em } 
+   
+}
+
+.activity-image {
+  border-radius: 30rpx;
+  margin: 0 30rpx;
+}
+
+.blue-soild-btn {
+  background: #517BF7;
+  border-radius: 15px;
+  color: white;
+  box-sizing: border-box;
+  padding: 5rpx 20rpx;
+  margin-left: 30rpx;
+  font-size: 14px;
+}
+
+.item-layout {
+  position: relative;
+  border-radius: 15px;
+  background: white;
+  margin: 0rpx 30rpx 30rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.game-info-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 40px;
+  top: 160px;
+  z-index: 1;
+}
+
+.avatar-image {
+  border-radius: 50%;
+  border: 2px solid white;
+  width: 40px;
+  height: 40px;
+}
+
+.btn-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 0rpx 40rpx;
+  padding: 30rpx 0;
+  border-bottom: 1px solid #eee;
+}
+
+.btn-white-hollow {
+  background: white;
+  border-radius: 15px;
+  border: 1px solid #517BF7;
+  color: #517BF7;
+  box-sizing: border-box;
+  padding: 10rpx 30rpx;
+  font-size: 14px;
+  margin-right: 20rpx;
+}
+
+.btn-blue-soild {
+  background: #517BF7;
+  border-radius: 15px;
+  color: white;
+  box-sizing: border-box;
+  padding: 10rpx 30rpx;
+  font-size: 14px;
+}
+
+.activity-desc-layout {
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx 40rpx;
+}
+
+.activity-desc-text {
+  flex: 8;
+}
+
+.activity-desc-collapse-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  flex: 8;
+}
+
+.fold {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}

@@ -16,6 +16,10 @@ var defaultBanners = [{
 
 QKPage({
   data: {
+    userName: app.globalData.userInfo ? app.globalData.userInfo.name : '',
+    coins: 0,
+    money: 0,
+    showMoney: true,
     adpos: 'bottom',
     swiperHeight: swiperHeight,
     banners: defaultBanners,
@@ -24,7 +28,6 @@ QKPage({
     bannerImgWidth: bannerImgWidth,
     wwidth: app.globalData.wwidth,
     gameItemWidth: (app.globalData.wwidth-150*ratio) / 4.5,// 60 padding + 3*30 margin
-    games: [],
     verifying: false,
     tabs: [],
     tabPageData: {},
@@ -40,34 +43,10 @@ QKPage({
    */
   onLoad: function (options) {
     this.loadGameData()
-    this.loadGame(true);
     this.loadCategoryData(0, "hots")
   },
-
-  onPullDownRefresh: function (e) {
-    this.loadGame(true, true);
-  },
-  loadGame: function (refresh, stopPullDown) {
-    var me = this;
-    http.get('/gamebox/games', function (data) {
-      wx.hideLoading();
-      if (stopPullDown) {
-        wx.stopPullDownRefresh();
-      }
-      me.setData({
-        games: data
-      });
-    }, function (error, msg) {
-      wx.hideLoading();
-      if (stopPullDown) {
-        wx.stopPullDownRefresh();
-      }
-      wx.showToast({
-        title: msg || '数据加载失败',
-        icon: 'none'
-      });
-    });
-
+  onShow: function (options) {
+    this.updateProfile();
   },
 
   clickMore: function(e) {
@@ -79,22 +58,6 @@ QKPage({
     var type = this.data.categorys[index].type
     wx.navigateTo({
       url: '/pages/more-game/more-game?type='+type +'&position='+index,
-    })
-  },
-
-  clickGame: function(e) {
-    var index = e.currentTarget.dataset.index
-    var idx = e.currentTarget.dataset.id
-    
-    wx.showLoading({
-      title: '加载中',
-      mask: true
-    });
-    wx.navigateToMiniProgram({
-      appId: this.data.categorys[index].games[idx].appId,
-      complete: function(res) {
-        wx.hideLoading()
-      }
     })
   },
 
@@ -151,10 +114,6 @@ QKPage({
     console.log("test="+this.data.tabPageData[key])
      if (this.data.tabPageData[key] != undefined) {
        console.log("array size="+this.data.tabPageData[key].length)
-     
-      //  this.setData({
-      //    tabPageData: this.data.tabPageData[key],
-      //  })
        return
      }
     wx.showLoading({
@@ -182,4 +141,37 @@ QKPage({
       });
     });
   },
+  onGotUserInfo: function (e) {
+    if (!e.detail || typeof e.detail.userInfo === 'undefined') {
+      wx.showToast({
+        title: '登陆需要授权',
+        icon: 'none',
+      });
+      return;
+    }
+    var me = this;
+    app.$saveLoginUser(e.detail.userInfo, e.detail, function (status) {
+      if (!status) {
+        return;
+      };
+      me.updateProfile();
+    });
+  },
+  updateProfile: function () {
+    var name = '', coins = 0, money = 0;
+    if (app.globalData.userInfo) {
+      name = app.globalData.userInfo.name;
+      if (app.globalData.userInfo.coins) {
+        coins = app.globalData.userInfo.coins;
+      }
+      if (app.globalData.userInfo.money) {
+        coins = app.globalData.userInfo.money;
+      }
+    }
+    this.setData({
+      userName: name,
+      coins: coins,
+      money: money,
+    });
+  }
 })

@@ -25,11 +25,7 @@ var welfares = [{
 
 QKPage({
   data: {
-    isLogin: false,
     userInfo: app.globalData.userInfo,
-    checkSwitch: false,
-    activeIndex: 0,
-    // swiperHeight: tabbodyHeight,
     games: [],
     gameItemWidth: (app.globalData.wwidth-150*ratio) / 4.8, // 60 padding + 3*30 margin
     tasks: {
@@ -44,12 +40,18 @@ QKPage({
     this.getProfile();
   },
   onShow: function () {
+    this.updateProfile();
     this.setData({
       games: util.getPlayHistory()
     });
   },
   onPullDownRefresh: function (e) {
     this.getProfile();
+  },
+  updateProfile: function () {
+    this.setData({
+      userInfo: app.globalData.userInfo ? app.globalData.userInfo : null,
+    })
   },
   getProfile: function () {
     wx.showLoading({
@@ -186,10 +188,7 @@ QKPage({
       if (!status) {
         return;
       };
-      me.setData({
-        isLogin: true,
-        userInfo: app.globalData.userInfo,
-      });
+      me.updateProfile();
     });
   },
 

@@ -70,6 +70,9 @@ var util = {
       }
     }
     return playHistory;
+  },
+  storeGames: function(game, remove){
+
   }
 };
 module.exports = util

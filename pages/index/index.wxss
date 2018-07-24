@@ -1,3 +1,56 @@
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  font-size: 14px;
+  background-color: #fff;
+  line-height: 60rpx;
+  height: 60rpx;
+  width: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0px 2px 15px #ededed;
+  justify-content: space-between;
+}
+
+.top-bar button {
+  margin-left: 0;
+  margin-right: 0;
+  line-height: 60rpx;
+  height: 60rpx;
+  box-sizing: border-box;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.top-bar-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-bar image {
+  width: 30rpx;  
+  height: 30rpx;
+  margin: 0 8rpx 0 15rpx;
+}
+
+.top-bar .wel {
+  font-size: 12px;
+}
+
+.top-bar .nick {
+  font-weight: bold;  
+  font-size: 16px;
+}
+
+.game-body {
+  margin-top: 70rpx; 
+}
+
 swiper {
   width: 100%;
 }

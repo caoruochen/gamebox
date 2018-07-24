@@ -137,26 +137,61 @@ image{
   margin-top: 10rpx;
 }
 
+.banners{
+  display: flex;
+  padding: 44rpx 46rpx 36rpx;
+}
+.banners > navigator{
+  flex: 1;
+  padding-left: 30rpx;
+  padding-right: 40rpx;
+  border-radius: 22rpx;
+  color: #fff;
+}
+.banners .credits{
+  display: flex;
+  justify-content: space-between;
+  background-color: #f53c66;
+}
+.banners .welfare{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 24rpx;
+  background-color: #ffcc00;
+}
+.banners > navigator .title{
+  font-size: 32rpx;
+  padding: 36rpx 0 20rpx 0;
+}
+.banners > navigator .detail{
+  font-size: 28rpx;
+  padding-bottom: 20rpx;
+}
+.banners .right-block{
+  width: 60rpx;
+  padding-top: 60rpx;
+}
+
 .item-head{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20rpx 30rpx 20rpx 22rpx;
+  padding: 20rpx 30rpx 20rpx 16rpx;
   border-bottom: 1rpx solid #e4e4e4;
 }
 .item-head .title{
   position: relative;
-  padding-left: 22rpx;
+  padding-left: 16rpx;
   font-size: 30rpx;
   color: #666;
 }
 .item-head .title:before{
   content: "";
   position: absolute;
-  top: 0;
+  top: 8%;
   left: 0;
-  width: 6px;
-  height: 100%;
+  width: 4px;
+  height: 84%;
   transform: translateX(-50%);
   background-color: #f3b244;
 }
@@ -247,13 +282,6 @@ image{
   border-radius: 0 !important;
   background-color: #f6c749 !important;
 }
-.look-all{
-  padding-top: 20rpx;
-  padding-bottom: 20rpx;
-  font-size: 24rpx;
-  color: #666;
-  text-align: center;
-}
 
 .games{
   background-color: #fff;
@@ -304,7 +332,7 @@ image{
   height: 0;
   color: transparent;
 }
-.welfare{
+/*.welfare{
   background-color: #fff;
   margin-bottom: 15rpx;
 }
@@ -359,7 +387,7 @@ image{
   line-height: normal !important;
   border-radius: 0 !important;
   background-color: #f6c749 !important;
-}
+}*/
 
 .tips {
   text-align: center;

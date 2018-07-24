@@ -144,14 +144,18 @@ image{
 .banners > navigator{
   flex: 1;
   padding-left: 30rpx;
-  padding-right: 50rpx;
+  padding-right: 40rpx;
   border-radius: 22rpx;
   color: #fff;
 }
 .banners .credits{
+  display: flex;
+  justify-content: space-between;
   background-color: #f53c66;
 }
 .banners .welfare{
+  display: flex;
+  justify-content: space-between;
   margin-left: 24rpx;
   background-color: #ffcc00;
 }
@@ -162,6 +166,10 @@ image{
 .banners > navigator .detail{
   font-size: 28rpx;
   padding-bottom: 20rpx;
+}
+.banners .right-block{
+  width: 60rpx;
+  padding-top: 60rpx;
 }
 
 .item-head{

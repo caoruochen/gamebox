@@ -29,13 +29,19 @@
   </view>
   
   <view class="banners">
-    <navigator class="credits">
-      <view class="title">积分商城</view>
-      <view class="detail">查看详情</view>
+    <navigator hover-class="none" class="credits">
+      <view class="left-block">
+        <view class="title">积分商城</view>
+        <view class="detail">查看详情</view>
+      </view>
+      <image mode="widthFix" src="../../images/credit.png" class="right-block"></image>
     </navigator>
-    <navigator url="/pages/records/index" class="welfare">
-      <view class="title">积分福利</view>
-      <view class="detail">查看详情</view>
+    <navigator hover-class="none" url="/pages/records/index" class="welfare">
+      <view class="left-block">
+        <view class="title">积分福利</view>
+        <view class="detail">查看详情</view>
+      </view>
+      <image mode="widthFix" src="../../images/welfare.png" class="right-block"></image>
     </navigator>
   </view>
 

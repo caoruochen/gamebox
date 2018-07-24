@@ -32,10 +32,15 @@
   justify-content: center;
 }
 
-.top-bar image {
+.top-bar-info image {
   width: 30rpx;  
   height: 30rpx;
   margin: 0 8rpx 0 15rpx;
+}
+
+.top-bar-info .money {
+  width: 23rpx;
+  height: 30rpx;
 }
 
 .top-bar .wel {

@@ -12,7 +12,8 @@ page {
   position: fixed;
   top: 0;
   left: 0;
-  height: 80rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -21,7 +22,7 @@ page {
   box-sizing: border-box;
   width: 100%;
   background-color: white;
-  padding: 10rpx 30rpx;
+  padding: 0 30rpx;
   box-shadow: 0px 2px 15px #ededed;
 }
 
@@ -35,7 +36,7 @@ page {
 .activity-head-notice0 {
   color: #888;
   overflow: hidden;
-  height: 40rpx;
+  height: 60rpx;
 }
 
 .activity-head-notice image {
@@ -50,18 +51,20 @@ page {
 }
 
 .activity-head-money image {
-  width: 29rpx;
-  height: 36rpx;
+  width: 23rpx;
+  height: 30rpx;
   margin-right: 10rpx;
 }
 
 .activity-head-money-btn {
   background: #f95353;
-  padding: 5rpx 20rpx;
+  padding: 0 18rpx;
+  height: 40rpx;
+  line-height: 40rpx;
   color: #fff;
-  border-radius: 50rpx;
-  margin-left: 20rpx;
-  font-size: 12px;
+  border-radius: 40rpx;
+  margin-left: 16rpx;
+  font-size: 11px;
 }
 
 .activity-layout {
@@ -111,7 +114,7 @@ page {
 }
 
 .activitys {
-  margin: 80rpx 0;
+  margin: 60rpx 0;
 }
 
 .item-layout {

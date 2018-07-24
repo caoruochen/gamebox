@@ -5,7 +5,7 @@ var app = getApp();
 
 QKPage({
   data: {
-    mallUrl: 'https://minigame.7k.cn/'
+    mallUrl: 'https://game.7k.cn'
   },
   onLoad: function (options) {
   },

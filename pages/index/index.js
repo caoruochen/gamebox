@@ -18,8 +18,6 @@ QKPage({
   data: {
     userName: app.globalData.userInfo ? app.globalData.userInfo.name : '',
     coins: 0,
-    money: 0,
-    showMoney: true,
     adpos: 'bottom',
     swiperHeight: swiperHeight,
     banners: defaultBanners,
@@ -157,20 +155,16 @@ QKPage({
     });
   },
   updateProfile: function () {
-    var name = '', coins = 0, money = 0;
+    var name = '', coins = 0;
     if (app.globalData.userInfo) {
       name = app.globalData.userInfo.name;
       if (app.globalData.userInfo.coins) {
         coins = app.globalData.userInfo.coins;
       }
-      if (app.globalData.userInfo.money) {
-        coins = app.globalData.userInfo.money;
-      }
     }
     this.setData({
       userName: name,
-      coins: coins,
-      money: money,
+      coins: coins
     });
   }
 })

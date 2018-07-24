@@ -11,12 +11,12 @@
         </view>
         <view class="bottom-block">
           <view class="my-fund coins">
-            <image mode="widthFix" src="../../images/coins-icon.png" class="coins-icon"></image>
+            <image src="../../images/coins-icon.png" class="coins-icon" />
             <text>{{userInfo ? userInfo.coins : '0'}}</text>
           </view>
           <view class="my-fund packet">
-            <image mode="widthFix" src="../../images/packet-icon.png" class="packet-icon"></image>
-            <text>{{'5元'}}</text>
+            <image src="../../images/icon-money.png" />
+            <text>{{userInfo && userInfo.money ? userInfo.money : '0'}}元</text>
           </view>
           <view class="withdraw">提现</view>
         </view>
@@ -70,12 +70,12 @@
 
   <navigator hover-class="none" url="/pages/mall/index" class="card-box credits">
     <view class="title">积分商城</view>
-    <image mode="widthFix" src="../../images/right-arrow.png" class="right-arrow"></image>
+    <view class="right-arrow"></view>
   </navigator>
 
   <navigator hover-class="none" url="/pages/records/index" class="card-box hit-record">
     <view class="title">打榜记录</view>
-    <image mode="widthFix" src="../../images/right-arrow.png" class="right-arrow"></image>
+    <view class="right-arrow"></view>
   </navigator>
 
   <view class="daily-task">
@@ -102,10 +102,10 @@
     </view>
   </view>
 
-  <navigator hover-class="none" url="/pages/records/index" class="card-box welfare">
+  <!-- <navigator hover-class="none" url="/pages/records/index" class="card-box welfare">
     <view class="title">积分福利</view>
-    <image mode="widthFix" src="../../images/right-arrow.png" class="right-arrow"></image>
-  </navigator>
+    <view class="right-arrow"></view>
+  </navigator> -->
 
   <!-- <view class="welfare">
     <view class="item-head">

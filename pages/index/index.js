@@ -28,7 +28,6 @@ QKPage({
     bannerImgWidth: bannerImgWidth,
     wwidth: app.globalData.wwidth,
     gameItemWidth: (app.globalData.wwidth-150*ratio) / 4.5,// 60 padding + 3*30 margin
-    games: [],
     verifying: false,
     tabs: [],
     tabPageData: {},
@@ -43,37 +42,15 @@ QKPage({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.loadGameData()
-    this.loadGame(true);
-    this.loadCategoryData(0, "hots")
+    var cacheGames = util.getSavedGames();
+    if(Object.keys(cacheGames).length > 0){
+      this.setData(cacheGames);
+    }
+    this.loadGameData();
+    this.loadCategoryData(0, "hots");
   },
   onShow: function (options) {
     this.updateProfile();
-  },
-  onPullDownRefresh: function (e) {
-    this.loadGame(true, true);
-  },
-  loadGame: function (refresh, stopPullDown) {
-    var me = this;
-    http.get('/gamebox/games', function (data) {
-      wx.hideLoading();
-      if (stopPullDown) {
-        wx.stopPullDownRefresh();
-      }
-      me.setData({
-        games: data
-      });
-    }, function (error, msg) {
-      wx.hideLoading();
-      if (stopPullDown) {
-        wx.stopPullDownRefresh();
-      }
-      wx.showToast({
-        title: msg || '数据加载失败',
-        icon: 'none'
-      });
-    });
-
   },
 
   clickMore: function(e) {
@@ -88,37 +65,23 @@ QKPage({
     })
   },
 
-  clickGame: function(e) {
-    var index = e.currentTarget.dataset.index
-    var idx = e.currentTarget.dataset.id
-    
-    wx.showLoading({
-      title: '加载中',
-      mask: true
-    });
-    wx.navigateToMiniProgram({
-      appId: this.data.categorys[index].games[idx].appId,
-      complete: function(res) {
-        wx.hideLoading()
-      }
-    })
-  },
-
   loadGameData: function () {
-    wx.showLoading({
-      title: '数据加载中'
-    });
+    // wx.showLoading({
+    //   title: '数据加载中'
+    // });
     var me = this;
     http.get('/gamebox/recommends', function (data) {
-      wx.hideLoading();
-      me.setData({
+      // wx.hideLoading();
+      var obj = {
         categorys: data.gamelist,
         adpos: data.adpos,
         banners: (data.banners && data.banners.length > 0) ? data.banners : defaultBanners,
         verifying: data.verifying ? data.verifying : false
-      })
+      };
+      me.setData(obj);
+      util.setSavedGames(obj);
     }, function (error, msg) {
-      wx.hideLoading();
+      // wx.hideLoading();
       setTimeout(function () {
         wx.showToast({
           title: msg || '数据加载失败',
@@ -159,12 +122,12 @@ QKPage({
        console.log("array size="+this.data.tabPageData[key].length)
        return
      }
-    wx.showLoading({
-      title: '数据加载中'
-    });
+    // wx.showLoading({
+    //   title: '数据加载中'
+    // });
     var me = this;
     http.get('/gamebox/list', { type: param }, function (data) {
-      wx.hideLoading();
+      // wx.hideLoading();
       console.log(data)
       var tabPageData = me.data.tabPageData;
       tabPageData[key] = data.games;
@@ -176,7 +139,7 @@ QKPage({
       })
       
     }, function (error, msg) {
-      wx.hideLoading();
+      // wx.hideLoading();
 
       wx.showToast({
         title: msg || '数据加载失败',

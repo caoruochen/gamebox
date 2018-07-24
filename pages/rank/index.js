@@ -13,6 +13,57 @@ QKPage({
 		score: 0,
 		options: [], //控制按钮的显示
 		ranks: [],
+		// ranks: [{
+		// 	avatar: "http://thirdqq.qlogo.cn/qqapp/101472344/6CEAF834088619211BAAC1CE802FC40E/100",
+		// 	name: "xx",
+		// 	rank: 1,
+		// 	score: 3000,
+		// }, {
+		// 	avatar: "http://thirdqq.qlogo.cn/qqapp/101472344/6CEAF834088619211BAAC1CE802FC40E/100",
+		// 	name: "xx",
+		// 	rank: 1,
+		// 	score: 3000,
+		// }, {
+		// 	avatar: "http://thirdqq.qlogo.cn/qqapp/101472344/6CEAF834088619211BAAC1CE802FC40E/100",
+		// 	name: "xx",
+		// 	rank: 1,
+		// 	score: 3000,
+		// }, {
+		// 	avatar: "http://thirdqq.qlogo.cn/qqapp/101472344/6CEAF834088619211BAAC1CE802FC40E/100",
+		// 	name: "xx",
+		// 	rank: 1,
+		// 	score: 3000,
+		// }, {
+		// 	avatar: "http://thirdqq.qlogo.cn/qqapp/101472344/6CEAF834088619211BAAC1CE802FC40E/100",
+		// 	name: "xx",
+		// 	rank: 1,
+		// 	score: 3000,
+		// }, {
+		// 	avatar: "http://thirdqq.qlogo.cn/qqapp/101472344/6CEAF834088619211BAAC1CE802FC40E/100",
+		// 	name: "xx",
+		// 	rank: 1,
+		// 	score: 3000,
+		// }, {
+		// 	avatar: "http://thirdqq.qlogo.cn/qqapp/101472344/6CEAF834088619211BAAC1CE802FC40E/100",
+		// 	name: "xx",
+		// 	rank: 1,
+		// 	score: 3000,
+		// }, {
+		// 	avatar: "http://thirdqq.qlogo.cn/qqapp/101472344/6CEAF834088619211BAAC1CE802FC40E/100",
+		// 	name: "xx",
+		// 	rank: 1,
+		// 	score: 3000,
+		// }, {
+		// 	avatar: "http://thirdqq.qlogo.cn/qqapp/101472344/6CEAF834088619211BAAC1CE802FC40E/100",
+		// 	name: "xx",
+		// 	rank: 1,
+		// 	score: 3000,
+		// }, {
+		// 	avatar: "http://thirdqq.qlogo.cn/qqapp/101472344/6CEAF834088619211BAAC1CE802FC40E/100",
+		// 	name: "xx",
+		// 	rank: 1,
+		// 	score: 3000,
+		// }],
 		intoGame: {
 			// bg: "https://snsgame.uimg.cn/video/game/wxl/WechatIMG29.jpeg",
 			appId: "wx530202348351e73c",
@@ -49,19 +100,16 @@ QKPage({
 			color: '#ff0000',
 		}],
 		aid: '',
+		status: false, //状态标识,onshow是否调用更新排名接口
 	},
 
 
 	onLoad: function(options) {
-		console.log(options)
-		// console.log(app.globalData)
-		// var aid = (options.aid && options.aid != 'undefined') || '1';
-		var aid = options.aid;
+		var aid = options.aid || '1';
 		this.setData({
 			aid: aid
 		});
 		this.loadRankData(aid);
-		// console.log(aid)
 	},
 	loadRankData: function(aid) {
 		wx.showLoading({
@@ -71,7 +119,6 @@ QKPage({
 		http.get('/gamebox/activity/rank', {
 			aid: aid
 		}, function(data) {
-			console.log(data)
 			wx.hideLoading();
 			wx.stopPullDownRefresh();
 			var game = {}
@@ -138,15 +185,56 @@ QKPage({
 	onPullDownRefresh: function() {
 		this.loadRankData(this.data.aid);
 	},
-	onReachBottom: function() {
+	onReachBottom: function(e) {
 		console.log('onReachBottom')
 	},
-	onShow: function() {
-		// var timestamp = new Date().getTime();
-		console.log('page:rank onShow')
-		//TODO:延迟 结果查询，显示结果
+
+	getMyRank: function() {
+		console.log('getMyRank')
+		wx.showLoading({
+			title: '数据更新中'
+		});
+		var me = this;
+		http.get('/gamebox/activity/rankinfo', {
+			aid: me.data.aid
+		}, function(data) {
+			console.log(data)
+			wx.hideLoading();
+			// wx.showToast({
+			// 	title: '本次游戏得分：' + data.rank + '，排名：' + data.score,
+			// 	duration: 2000
+			// })
+			if (data.length != 0) {
+				me.setData({
+					rank: data.rank,
+					score: data.score,
+				});
+			}
+		}, function(code, msg) {
+			wx.hideLoading();
+			wx.showToast({
+				title: msg || '数据加载失败',
+				icon: 'none'
+			});
+		})
 	},
+	onShow: function() {
+		console.log('onShow')
+		if (this.data.status) {
+			//延迟 结果查询，显示结果
+			setTimeout(this.getMyRank, 1000)
+		}
+		this.setData({
+			status: false
+		})
+	},
+	changeStatus: function() {
+		this.setData({
+			status: true
+		})
+	},
+
 	onHide: function() {
-		console.log('page:rank onHide')
+		console.log('rank onHide')
 	},
 })

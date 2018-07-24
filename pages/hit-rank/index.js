@@ -8,6 +8,7 @@ var bannerImgWidth = app.globalData.wwidth - 60 * ratio;
 var imageWidth = 345;
 var imageHeight = 110;
 var bannerImgHeight = bannerImgWidth / imageWidth * imageHeight;
+var activityId = -1;
 
 QKPage({
 
@@ -17,6 +18,8 @@ QKPage({
     noticeWidth: app.globalData.wwidth/2,
     activityNotice: "",
     activitys: [],
+    helpShow: false,
+    score: 0,
   },
 
   onLoad: function (options) {
@@ -24,7 +27,9 @@ QKPage({
   },
 
   onShow: function() {
-
+    if(activityId != -1) {
+      this.refreshActivityInfo()
+    } 
   },
 
   /**
@@ -46,7 +51,8 @@ QKPage({
       }
       that.setData({
         activityNotice: data.notice,
-        activitys: act
+        activitys: act,
+
       })
     }, function () {
       wx.hideLoading();
@@ -57,8 +63,29 @@ QKPage({
     });
   },
 
-  playMatch: function(e) {
+  /**
+   * 刷新活动信息
+   */
+  refreshActivityInfo: function() {
+    var that = this;
+    http.get('/gamebox/activity/rankinfo', {aid: activityId},function (data) {
+      
+      that.setData({
+        score: data.info[0].score
+      })
+    }, function () {
+    });
+  },
 
+  onHelp: function(e) {
+    this.setData({
+      helpShow: true
+    })
+  },
+
+  playMatch: function(e) {
+    var aid = e.currentTarget.dataset.aid;
+    activityId = aid;
   },
 
   foldToggle: function(e) {

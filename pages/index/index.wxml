@@ -7,8 +7,8 @@
     <view class="top-bar-info">
       <image src="../../images/coins-icon.png" />
       <text>{{coins}}</text>
-      <image wx:if="{{showMoney}}" src="../../images/coins-icon.png" />
-      <text wx:if="{{showMoney}}">{{money}}</text>
+      <!-- <image class="money" wx:if="{{showMoney}}" src="../../images/icon-money.png" />
+      <text wx:if="{{showMoney}}">{{money}}</text> -->
       <text>签到</text>
     </view>
   </view>

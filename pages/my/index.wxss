@@ -4,7 +4,7 @@ image{
 }
 .container {
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   box-sizing: border-box;
   background-color: #eff2f6;
 }
@@ -81,16 +81,25 @@ image{
   font-size: 28rpx;
   color: red;
 }
-.user-info .coins{
+.user-info .my-fund{
   display: flex;
   align-items: center;
 }
-.user-info .coins text{
+.user-info .my-fund text{
   font-size: 28rpx;
   color: #fff;
 }
-.user-info .coins image{
+.user-info .my-fund image{
   width: 40rpx;
+}
+.user-info .packet{
+  margin-left: 10rpx;
+}
+.user-info .withdraw{
+  padding-top: 4rpx;
+  margin-left: 10rpx;
+  font-size: 30rpx;
+  color: #f53c66;
 }
 .user-info .coins .coins-icon{
   margin-right: 8rpx;
@@ -137,7 +146,7 @@ image{
   margin-top: 10rpx;
 }
 
-.banners{
+/*.banners{
   display: flex;
   padding: 44rpx 46rpx 36rpx;
   margin-bottom: 20rpx;
@@ -172,13 +181,13 @@ image{
 .banners .right-block{
   width: 60rpx;
   padding-top: 60rpx;
-}
+}*/
 
 .item-head{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20rpx 0 20rpx 0;
+  padding: 15rpx 0;
   border-bottom: 1rpx solid #e4e4e4;
   margin: 0 30rpx 0 16rpx;
 }
@@ -198,6 +207,41 @@ image{
   transform: translateX(-50%);
   background-color: #f3b244;
 }*/
+
+
+.card-box{
+  display: flex;
+  justify-content: space-between;
+  width: 45%;
+  padding-left: 30rpx;
+  padding-right: 40rpx;
+  margin-left: 46rpx;
+  margin-bottom: 20rpx;
+  border-radius: 22rpx;
+  color: #fff;
+}
+.credits{
+  background-color: #f53c66;
+}
+.hit-record{
+  background-color: #3399ff;
+}
+.welfare{
+  margin-bottom: 0;
+  background-color: #ffcc00;
+}
+.card-box .title{
+  font-size: 32rpx;
+  padding: 36rpx 0 20rpx 0;
+}
+.card-box .detail{
+  font-size: 28rpx;
+  padding-bottom: 20rpx;
+}
+.card-box .right-block{
+  width: 60rpx;
+  padding-top: 60rpx;
+}
 
 .daily-task{
   margin-bottom: 20rpx;
@@ -293,6 +337,7 @@ image{
 .games{
   background-color: #fff;
   margin-bottom: 20rpx;
+  padding-bottom: 15rpx;
 }
 
 .games-box{

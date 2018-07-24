@@ -4,7 +4,7 @@ page {
 .container {
   display: flex;
   flex-direction: column;
-  background-color: #eee;
+  background-color: #fcfcfc;
   box-sizing: border-box;
 }
 
@@ -12,7 +12,8 @@ page {
   position: fixed;
   top: 0;
   left: 0;
-  height: 80rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -21,7 +22,7 @@ page {
   box-sizing: border-box;
   width: 100%;
   background-color: white;
-  padding: 10rpx 30rpx;
+  padding: 0 30rpx;
   box-shadow: 0px 2px 15px #ededed;
 }
 
@@ -33,9 +34,9 @@ page {
 }
 
 .activity-head-notice0 {
-  color: #bbb;
+  color: #888;
   overflow: hidden;
-  height: 40rpx;
+  height: 60rpx;
 }
 
 .activity-head-notice image {
@@ -50,18 +51,20 @@ page {
 }
 
 .activity-head-money image {
-  width: 29rpx;
-  height: 36rpx;
+  width: 23rpx;
+  height: 30rpx;
   margin-right: 10rpx;
 }
 
 .activity-head-money-btn {
   background: #f95353;
-  padding: 5rpx 20rpx;
+  padding: 0 18rpx;
+  height: 40rpx;
+  line-height: 40rpx;
   color: #fff;
-  border-radius: 50rpx;
-  margin-left: 20rpx;
-  font-size: 12px;
+  border-radius: 40rpx;
+  margin-left: 16rpx;
+  font-size: 11px;
 }
 
 .activity-layout {
@@ -110,14 +113,19 @@ page {
   font-size: 14px;
 }
 
+.activitys {
+  margin: 60rpx 0;
+}
+
 .item-layout {
   position: relative;
   border-radius: 15px;
   background: white;
-  margin: 110rpx 30rpx 30rpx 30rpx;
+  margin: 40rpx 30rpx 0 30rpx;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  box-shadow: 0px 5px 15px #ededed;
 }
 
 .match-info-layout {
@@ -147,6 +155,15 @@ page {
 .match-info-text {
   font-size: 13px;
   color: white;
+}
+
+.match-status-text {
+  margin-left: 10px; 
+  font-size: 11px; 
+  background: #4DE260;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 1px 3px;
 }
 
 .match-info-top-layout {
@@ -189,17 +206,18 @@ page {
   color: #517BF7;
   box-sizing: border-box;
   padding: 10rpx 30rpx;
-  font-size: 14px;
+  font-size: 12px;
   margin-right: 20rpx;
 }
 
 .btn-blue-soild {
   background: #517BF7;
   border-radius: 15px;
+  border: 1px solid #517BF7;
   color: white;
   box-sizing: border-box;
   padding: 10rpx 30rpx;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .activity-desc-layout {
@@ -210,6 +228,8 @@ page {
 
 .activity-desc-text {
   flex: 8;
+  font-size: 11px;
+  color: #b2b2b2;
 }
 
 .activity-desc-collapse-text {
@@ -218,6 +238,13 @@ page {
   -webkit-line-clamp: 2;
   overflow: hidden;
   flex: 8;
+  font-size: 11px;
+  color: #b2b2b2;
+}
+
+.game-title-text {
+  font-size: 13px;
+  color: #353535;
 }
 
 .fold {

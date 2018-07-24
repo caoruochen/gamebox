@@ -10,11 +10,15 @@
           <button wx:else open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">点击登陆</button>
         </view>
         <view class="bottom-block">
-          <view class="coins">
+          <view class="my-fund coins">
             <image mode="widthFix" src="../../images/coins-icon.png" class="coins-icon"></image>
             <text>{{userInfo ? userInfo.coins : '0'}}</text>
           </view>
-          <!-- <navigator url="/pages/more-record/index" class="more">更多</navigator> -->
+          <view class="my-fund packet">
+            <image mode="widthFix" src="../../images/packet-icon.png" class="packet-icon"></image>
+            <text>{{'5元'}}</text>
+          </view>
+          <view class="withdraw">提现</view>
         </view>
         
       </view>
@@ -28,7 +32,7 @@
     </view>
   </view>
   
-  <view class="banners">
+  <!-- <view class="banners">
     <navigator hover-class="none" url="/pages/mall/index" class="credits">
       <view class="left-block">
         <view class="title">积分商城</view>
@@ -43,9 +47,9 @@
       </view>
       <image mode="widthFix" src="../../images/welfare.png" class="right-block"></image>
     </navigator>
-  </view>
+  </view> -->
 
-  <!-- <view class="games">
+  <view class="games">
     <view class="item-head">
       <view class="title">最近常玩</view>
     </view>
@@ -56,16 +60,34 @@
           <xcx-navigator class="item_content" game="{{game}}">
             <image lazy-load="{{true}}" class="game-icon" src="{{game.logo}}" style="width: {{gameItemWidth}}px; height: {{gameItemWidth}}px;"/>
             <view style="width:{{gameItemWidth}}px;" class='game-title'>{{game.name}}</view>
+            <!-- <view wx:if="{{game.playerNum}}" style="width:{{gameItemWidth}}px;" class='game-desc'>{{game.playerNum}}人在玩</view> -->
           </xcx-navigator>
         </block>
       </scroll-view>
     </view>
     <view wx:else class="tips">你最近还没有玩游戏哦，赶紧去玩吧</view>
-  </view> -->
+  </view>
+
+  <navigator hover-class="none" url="/pages/mall/index" class="card-box credits">
+    <view class="left-block">
+      <view class="title">积分商城</view>
+      <view class="detail">查看详情</view>
+    </view>
+    <image mode="widthFix" src="../../images/credit.png" class="right-block"></image>
+  </navigator>
+
+  <navigator hover-class="none" url="/pages/records/index" class="card-box hit-record">
+    <view class="left-block">
+      <view class="title">打榜记录</view>
+      <view class="detail">查看详情</view>
+    </view>
+    <image mode="widthFix" src="../../images/hit-record.png" class="right-block"></image>
+  </navigator>
 
   <view class="daily-task">
     <view class="item-head">
       <view class="title">日常任务<text wx:if="{{tasks.total > 0}}">({{tasks.done}}/{{tasks.total}})</text></view>
+      <view wx:if="{{tasks.list.length>3}}" class="title"  bindtap="goMoreTask">更多</view>
     </view>
     <view class="task-content">
       <view wx:if="{{tasks.list.length < 1}}" class="tips">暂无任务</view>
@@ -85,6 +107,14 @@
       </view>
     </view>
   </view>
+
+  <navigator hover-class="none" url="/pages/records/index" class="card-box welfare">
+    <view class="left-block">
+      <view class="title">积分福利</view>
+      <view class="detail">查看详情</view>
+    </view>
+    <image mode="widthFix" src="../../images/welfare.png" class="right-block"></image>
+  </navigator>
 
   <!-- <view class="welfare">
     <view class="item-head">

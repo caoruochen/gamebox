@@ -1,0 +1,19 @@
+
+.cell {
+    display: flex;
+    flex: row;
+    margin: 10px 10px 10px 10px;
+}
+
+.icon {
+
+}
+
+.content {
+    flex: 1;
+    margin-left: 15px;
+}
+
+.sum {
+
+}

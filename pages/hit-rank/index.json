@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "xcx-navigator": "../../components/xcx-navigator/index"
+    "xcx-navigator": "../../components/xcx-navigator/index",
+    "xcx-zhuli": "../../components/xcx-zhuli/index"
   }
 }

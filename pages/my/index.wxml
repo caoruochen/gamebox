@@ -87,6 +87,7 @@
   <view class="daily-task">
     <view class="item-head">
       <view class="title">日常任务<text wx:if="{{tasks.total > 0}}">({{tasks.done}}/{{tasks.total}})</text></view>
+      <view wx:if="{{tasks.list.length>3}}" class="title"  bindtap="goMoreTask">更多</view>
     </view>
     <view class="task-content">
       <view wx:if="{{tasks.list.length < 1}}" class="tips">暂无任务</view>

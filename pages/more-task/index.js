@@ -1,58 +1,40 @@
+// pages/more-task/index.js
 var QKPage = require("../../libs/page");
 var http = require("../../util/http");
 var util = require("../../util/util");
-var saveRecentGame = require("../../util/saveRecentGame");
-
 var app = getApp();
-var sysInfo = app.globalData.sysInfo;
-var ratio = app.globalData.wwidth / 750;
-
-var headerRHeight = 220;
-var tabbarRHeight = 110;
-var adRHeight = 300;
-var tabbodyHeight = app.globalData.wheight - (headerRHeight + tabbarRHeight + adRHeight) * ratio;
-var welfares = [{
-  time: "2018-07-23",
-  name: "100元红包",
-  status: 0
-},
-{
-  time: "2018-07-22",
-  name: "50金币",
-  status: 1
-}
-]
-
 QKPage({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
     userInfo: app.globalData.userInfo,
-    games: [],
-    gameItemWidth: (app.globalData.wwidth-150*ratio) / 6,
     tasks: {
       doing: 0,
       done: 0,
       total: 0,
       list: []
     },
-    welfares: welfares
   },
-  onLoad: function () {
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
     this.getProfile();
   },
-  onShow: function () {
+
+  onShow:function(){
     this.updateProfile();
-    this.setData({
-      games: util.getPlayHistory()
-    });
   },
-  onPullDownRefresh: function (e) {
-    this.getProfile();
-  },
+
   updateProfile: function () {
     this.setData({
       userInfo: app.globalData.userInfo ? app.globalData.userInfo : null,
     })
   },
+
   getProfile: function () {
     wx.showLoading({
       title: '数据加载中',
@@ -73,12 +55,12 @@ QKPage({
       }
 
       if (data.tasks) {
-        data0.tasks = data.tasks; 
+        data0.tasks = data.tasks;
       }
       if (data.games) {
         data0.games = data.games;
       }
-      if (Object.keys(data0).length>0) {
+      if (Object.keys(data0).length > 0) {
         me.setData(data0)
       }
     }, function (errCode, msg) {
@@ -92,6 +74,24 @@ QKPage({
       }, 100)
     });
   },
+
+  onGotUserInfo: function (e) {
+    if (!e.detail || typeof e.detail.userInfo === 'undefined') {
+      wx.showToast({
+        title: '登陆需要授权',
+        icon: 'none',
+      });
+      return;
+    }
+    var me = this;
+    app.$saveLoginUser(e.detail.userInfo, e.detail, function (status) {
+      if (!status) {
+        return;
+      };
+      me.updateProfile();
+    });
+  },
+
   doTask: function (e) {
     var target = e.currentTarget,
       taskId = target.dataset.taskid,
@@ -127,7 +127,7 @@ QKPage({
         });
         return;
     }
-    
+
     var params = {
       taskId: taskId,
       op: op,
@@ -158,9 +158,9 @@ QKPage({
         }
 
         if (data.tasks) {
-          data0.tasks = data.tasks; 
+          data0.tasks = data.tasks;
         }
-        if (Object.keys(data0).length>0) {
+        if (Object.keys(data0).length > 0) {
           me.setData(data0);
         }
       }, 100);
@@ -173,48 +173,30 @@ QKPage({
         });
       });
     });
-      
+
   },
-  onGotUserInfo: function (e) {
-    if (!e.detail || typeof e.detail.userInfo === 'undefined') {
-      wx.showToast({
-        title: '登陆需要授权',
-        icon: 'none',
-      }); 
-      return;
-    }
-    var me = this;
-    app.$saveLoginUser(e.detail.userInfo, e.detail, function (status) {
-      if (!status) {
-        return;
-      };
-      me.updateProfile();
-    });
+ 
+
+ 
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    this.getProfile();
   },
 
-  goLottery: function(e){
-    wx.showModal({
-      title: '',
-      content: '抽奖活动暂未开启，敬请期待',
-      showCancel: false
-    })
-  },
-  goDetail: function(e) {
-    var gameId = e.currentTarget.dataset.gameid;
-    // wx.showToast({
-    //   title: this.data.categorys[index].category,
-    //   icon: 'none'
-    // })
-    wx.navigateTo({
-      url: '/pages/detail/index?gameId='
-      +gameId,
-    })
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+  
   },
 
-goMoreTask:function(e){
-  wx.navigateTo({
-    url: '/pages/more-task/index'
-  })
-}
-
-});
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+  
+  }
+})

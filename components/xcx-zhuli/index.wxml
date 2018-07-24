@@ -1,0 +1,23 @@
+  <view class="help" style="display: {{show ? 'block' : 'none'}}" bind:tap="hideHelp">
+    <view class="help-box" catch:tap="catch">
+      <view class="help-head">邀请好友助力({{helpNum}}/5)</view>
+      <text class="help-rule">说明：助力分=好友得分*30%，上限不超过50分；可删除已有助力分，重新邀请好友助力得分</text>
+      <view class="help-content">
+        <view class="help-tab flex">
+          <view class="help1">好友</view>
+          <view class="help2">得分</view>
+          <view class="help3">助力分</view>
+          <view class="help4"></view>
+        </view>
+        <view class="help-item flex" wx:for="{{helpList}}" wx:key="{{index}}">
+          <view class="help1 flex">
+            <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{item.avatar || '../../images/touxiang.png'}}"/>
+            <text class="name">{{item.name || '  ？'}}</text>
+          </view>
+          <view class="help2">{{item.score || '-'}}</view>
+          <view class="help3">{{item.help || '-'}}</view>
+          <image class="help4" mode="aspectFit" src="{{item.uid?'../../images/del.png':'../../images/add.png'}}" data-id="{{item.uid}}" bindtap="{{item.uid?'handleDel':'handleAdd'}}"/>
+        </view>
+      </view>
+    </view>
+  </view> 

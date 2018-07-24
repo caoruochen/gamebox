@@ -14,7 +14,7 @@
             <image mode="widthFix" src="../../images/coins-icon.png" class="coins-icon"></image>
             <text>{{userInfo ? userInfo.coins : '0'}}</text>
           </view>
-          <navigator url="/pages/more-record/index" class="more">更多</navigator>
+          <!-- <navigator url="/pages/more-record/index" class="more">更多</navigator> -->
         </view>
         
       </view>
@@ -27,99 +27,84 @@
       </view> -->
     </view>
   </view>
+  
+  <view class="banners">
+    <navigator hover-class="none" url="/pages/mall/index" class="credits">
+      <view class="left-block">
+        <view class="title">积分商城</view>
+        <view class="detail">查看详情</view>
+      </view>
+      <image mode="widthFix" src="../../images/credit.png" class="right-block"></image>
+    </navigator>
+    <navigator hover-class="none" url="/pages/records/index" class="welfare">
+      <view class="left-block">
+        <view class="title">积分福利</view>
+        <view class="detail">查看详情</view>
+      </view>
+      <image mode="widthFix" src="../../images/welfare.png" class="right-block"></image>
+    </navigator>
+  </view>
 
-  <view class="my-tasks">
-    <view class="daily-task">
-      <scroll-view scroll-x class="task-head">
-        <view class="top-bar-container">
-          <view wx:for="{{topBar}}" wx:key="*this" class="top-bar{{index === activeIndex ? ' active' : ''}}" data-idx="{{index}}" bindtap="changeTabbar">
-            <view class="title">{{item}}<text wx:if="{{index === 0 && tasks.total > 0}}">({{tasks.done}}/{{tasks.total}})</text></view>
+  <view class="games">
+    <view class="item-head">
+      <view class="title">最近常玩</view>
+    </view>
+    
+    <view wx:if="{{games.length>0}}" class="games-box">
+      <scroll-view class="scroll-view_H" scroll-x>
+        <block wx:for="{{games}}" wx:key="{{index}}" wx:for-item="game">
+          <xcx-navigator class="item_content" game="{{game}}">
+            <image lazy-load="{{true}}" class="game-icon" src="{{game.logo}}" style="width: {{gameItemWidth}}px; height: {{gameItemWidth}}px;"/>
+            <view style="width:{{gameItemWidth}}px;" class='game-title'>{{game.name}}</view>
+            <!-- <view wx:if="{{game.playerNum}}" style="width:{{gameItemWidth}}px;" class='game-desc'>{{game.playerNum}}人在玩</view> -->
+          </xcx-navigator>
+        </block>
+      </scroll-view>
+    </view>
+    <view wx:else class="tips">你最近还没有玩游戏哦，赶紧去玩吧</view>
+  </view>
+
+  <view class="daily-task">
+    <view class="item-head">
+      <view class="title">日常任务<text wx:if="{{tasks.total > 0}}">({{tasks.done}}/{{tasks.total}})</text></view>
+    </view>
+    <view class="task-content">
+      <view wx:if="{{tasks.list.length < 1}}" class="tips">暂无任务</view>
+      <view wx:for="{{tasks.list}}" wx:key="{{index}}}" class="task-item">
+        <image mode="widthFix" src="{{item.icon ? item.icon : '../../images/coins-icon.png'}}" class="task-icon"></image>
+        <view class="right-block">
+          <view class="task-info">
+            <view class="task-name">{{item.name}}</view>
+            <view class="task-award">{{item.desc}}</view>
+          </view>
+          <view class="task-status">
+            <view class="task-process {{item.done==item.times ? 'task-process_done' : ''}}" style="width: {{item.process ? item.process : 0}}%;"></view>
+            <button wx:if="{{!userInfo}}" class="task-btn task-btn_login" open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">{{item.opName}}</button>
+            <view wx:else class="task-btn" bindtap="doTask" data-taskid="{{item.taskId}}" data-times="{{item.times}}" data-done="{{item.done ? item.done : 0}}" data-type="{{item.type}}" data-op="{{item.op}}">{{item.opName}}</view>
           </view>
         </view>
-      </scroll-view>
-
-      <swiper current="{{activeIndex}}" class="swiper-content" bindchange="changeSwiper">
-        <swiper-item>
-          <scroll-view scroll-y>
-            <view wx:if="{{tasks.list.length < 1}}" class="tips">暂无任务</view>
-            <view wx:for="{{tasks.list}}" wx:key="{{index}}}" class="task-item">
-              <image mode="widthFix" src="{{item.icon ? item.icon : '../../images/coins-icon.png'}}" class="task-icon"></image>
-              <view class="right-block">
-                <view class="task-info">
-                  <view class="task-name">{{item.name}}</view>
-                  <view class="task-award">{{item.desc}}</view>
-                </view>
-                <view class="task-status">
-                  <view class="task-process {{item.done==item.times ? 'task-process_done' : ''}}" style="width: {{item.process ? item.process : 0}}%;"></view>
-                  <button wx:if="{{!userInfo}}" class="task-btn task-btn_login" open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">{{item.opName}}</button>
-                  <view wx:else class="task-btn" bindtap="doTask" data-taskid="{{item.taskId}}" data-times="{{item.times}}" data-done="{{item.done ? item.done : 0}}" data-type="{{item.type}}" data-op="{{item.op}}">{{item.opName}}</view>
-                </view>
-              </view>
-            </view>
-          </scroll-view>
-        </swiper-item>
-        
-        <swiper-item>
-          <scroll-view scroll-y wx:if="{{games.length>0}}" class="games-box">
-            <block wx:for="{{games}}" wx:key="*this">
-              <xcx-navigator nav-class="gamebox-item" game="{{item}}" from-history="1">
-              <view class="gamebox-item-logo">
-                <image lazy-load="{{true}}" src="{{item.logo}}" />
-              </view>
-              <view class="gamebox-item-info">
-                <view>{{item.name}}
-                  <!--text wx:if="{{item.playerNum}}" class='gamebox-item-num'><text>{{item.playerNum}}</text>人在玩</text-->
-                </view>
-                <view class="gamebox-item-info_desc">{{item.desc}}</view>
-              </view>
-              <view class="gamebox-item-play">开始</view>
-            </xcx-navigator>
-            </block>
-          </scroll-view>
-          <view wx:else class="tips">你最近还没有玩游戏哦，赶紧去玩吧</view>
-        </swiper-item>
-      </swiper>
-
-    </view>
-  </view>
-  
-  <view class="hit-record">
-    <view class="hit-head">
-      <view class="hit-title">
-        打榜记录
-      </view>
-      <button open-type="contact" class="contact-qf">
-        联系客服
-      </button>
-    </view>
-    <view class="hit-record-box">
-      <view wx:for="{{hitRecord}}" wx:key="*this" class="hit-record-item">
-        <image src="{{item.logo}}" mode="widthFix"></image>
-        <view class="rank">第{{item.rank}}名</view>
-        <view>{{item.score}}</view>
-        <view>{{item.award}}</view>
-        <view>{{item.got > 0 ? '已领取' : '未领取'}}</view>
-        <view data-index="{{index}}" bindtap="showHelpInfo">助力信息</view>
       </view>
     </view>
   </view>
-  
-  <block wx:for="{{helpFriends}}" wx:key="*this">
-    <view hidden='{{!(index === helpIndex)}}' class="friends-help-info">
-      <view class="friends-help-head">
-        <view class="hit-title">姓名</view>
-        <view>得分</view>
-        <view>助力分</view>
-      </view>
-      <view class="friends-help-box">
-        <view class="friends-help-item">
-          <view>{{item.name}}</view>
-          <view>{{item.score}}</view>
-          <view>{{item.helpScore}}</view>
+
+  <!-- <view class="welfare">
+    <view class="item-head">
+      <view class="title">福利</view>
+    </view>
+    <view class="welfare-content">
+      <view wx:if="{{welfares.length < 1}}" class="tips">暂无福利</view>
+      <view wx:for="{{welfares}}" wx:key="{{index}}}" class="welfare-item">
+        <view class="welfare-time">{{item.time}}</view>
+        <view class="welfare-name">{{item.name}}</view>
+        <view class="welfare-status{{item.status > 0 ? ' active' : ''}}">
+          <button wx:if="{{!userInfo}}" class="welfare-btn welfare-btn_login" open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">{{item.status > 0 ? "已领取" : "未领取"}}</button>
+          <view wx:else class="welfare-btn" bindtap="doWelfare">{{item.status > 0 ? "已领取" : "未领取"}}</view>
         </view>
       </view>
     </view>
-  </block>
+    <navigator url="/pages/records/index" wx:if="{{!verifying}}" class="look-all" bindtap="clickMore" data-type="welfare">全部福利</navigator>
+  </view> -->
+
   <view class="ad">
     <ad unit-id="adunit-45cb07bb615f7ee9"></ad>
   </view>

@@ -56,15 +56,7 @@
 	text-align: center;
 	margin-left: 24rpx;
 }
-.into-btn{
-	width:140rpx;
-	height:56rpx;
-	line-height: 56rpx;
-	background-color: #f4e322;
-	border-radius: 14rpx;
-	font-weight: 700;
-	text-align: center;
-}
+
 
 .list-tab{
 	border-bottom: 1rpx solid #ededed;
@@ -72,7 +64,8 @@
 }
 .onetab{
 	display: inline-block;
-	width: 49%;
+	/*width: 49%;*/
+	width: 100%;
 	height: 75rpx;
 	line-height: 75rpx;
 	text-align: center;
@@ -85,7 +78,8 @@
 .ranks{
 	box-sizing: border-box;
 	width: 100%;
-	padding:20rpx 20rpx 132rpx 20rpx ;
+	padding:20rpx;
+	margin-bottom: 130rpx;
 	background-color: #f4f3f3;
 }
 .ranksCont{
@@ -108,11 +102,12 @@
 	width: 70rpx;
 	height: 70rpx;
 	border-radius: 70rpx;
+	overflow: hidden;
 }
 .name{
 	margin-left: 20rpx;
 }
-.score-text{
+.score{
 	color:#666666;
 }
 .myrank{
@@ -130,59 +125,22 @@
 	flex-direction: column;
 	justify-content: space-between;
 	margin-left: 20rpx;
+	font-weight: 700;
 }
 
 .mybtn{
 	margin-left:38rpx;
 	display: inline-block;
-	width: 130rpx;
+	width: 140rpx;
 	height:56rpx;
 	line-height: 56rpx;
-	border-radius: 12rpx;
 	text-align: center;
+	border-radius: 12rpx;
 	font-weight: 700;
+	background-color: #f4e322; 
 }
 .zl-btn{
+	width:130rpx;
 	background-color: #9fcefa;
 }
-.tz-btn{
-	background-color: #f4e322;
-}
 
-.help{
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0,0,0,0.5);
-	box-sizing: border-box;
-	padding:0 40rpx;
-}
-.help-box{
-	width: 100%;
-	margin-top: 120rpx;
-	background-color: #f4e322;
-	border-radius: 10rpx;
-	text-align: center;
-	padding: 30rpx;
-	box-sizing: border-box;
-}
-.help-head{
-	font-weight: 700;
-}
-.help-tab{
-	justify-content: space-around;
-}
-.help-content{
-	width: 100%;
-	margin-top: 30rpx;
-	padding: 20rpx;
-	box-sizing: border-box;
-	background-color: #fff;
-}
-.help-item{
-	width: 100%;
-	height: 100rpx;
-	border-bottom: 1px solid #eee;
-}

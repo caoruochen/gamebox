@@ -7,79 +7,57 @@
           <text class="peopleNum">{{playerNum}}  人参加</text>
           <view class="rule-btn" bindtap="clickRule">规则</view>
         </view>
-        <xcx-navigator class="into-btn" game="{{intoGame}}">进入游戏</xcx-navigator>
+        <xcx-navigator class="mybtn" game="{{intoGame}}">进入游戏</xcx-navigator>
 			</view>
 		</view>
 	</view>
 
 	<view>
 		<view class="list-tab">
-			<view class="onetab {{activeIndex == 0? 'activeList':''}}" data-index="0" bindtap="clickTab" style="border-right: 1px solid #ededed">榜单</view>
-			<view class="onetab {{activeIndex == 1? 'activeList':''}}" data-index="1" bindtap="clickTab">评论</view>
+			<view class="onetab {{activeIndex == 0? 'activeList':''}}" data-index="0" bindtap="clickTab">榜单</view>
+			<!-- <view class="onetab {{activeIndex == 1? 'activeList':''}}" data-index="1" bindtap="clickTab">评论</view> -->
 		</view>
-    <view style="display:{{activeIndex == 0? 'block':'none'}}">
+    <!-- <view style="display:{{activeIndex == 0? 'block':'none'}}"> -->
       <view class="ranks">
         <view class="ranksCont">
           <view class="list-item flex" wx:for="{{ranks}}" wx:key="{{index}}">
               <view class="flex">
                 <text class="ranking" style="color:{{item.rank=='1'?'#ff6d34':(item.rank=='2'?'#1fc3a2':(item.rank=='3'?'#fca237':'#303030'))}}">{{item.rank}}</text> 
                 <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{item.avatar || '../../images/defaultavatar.png'}}"/>
-                <text class="name">{{item.name}}</text>
+                <text class="name">{{item.name || '-'}}</text>
               </view>
-              <view class="score-text">{{item.score}}  分</view>
+              <view class="score">{{item.score}}  分</view>
           </view>
         </view>
       </view>
       <view class="flex myrank">
         <view class="flex">
-          <text class="ranking" style="color:#fca237">{{personal.rank || '-'}}</text> 
-          <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{personal.avatar || '../../images/defaultavatar.png'}}"/>
+          <text class="ranking" style="color:#fca237">{{rank || '-'}}</text> 
+          <!-- <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{personal.avatar || '../../images/defaultavatar.png'}}"/> -->
+            <view class="avatar"><open-data type="userAvatarUrl"></open-data></view>
           <view class="myname">
-            <text style="font-weight: 700">{{personal.name || '用户名'}}</text>
-            <view style="color:#fca237"><text style="font-weight: 700">{{personal.score || '-'}}</text> 分</view>
+            <!-- <text>{{personal.name || '用户名'}}</text> -->
+            <open-data type="userNickName" lang="zh_CN"></open-data>
+            <view style="color:#fca237">{{score || '-'}}<text style="font-weight: 500"> 分</text></view>
           </view>
         </view>
         <view>
-          <view class="mybtn zl-btn" bindtap="onHelp">助力</view>
-          <view class="mybtn tz-btn" bindtap="onChallenge">挑战</view>
-          <!-- <view class="mybtn zl-btn" bindtap="">炫耀</view> -->
-          <!-- <view class="mybtn tz-btn" bindtap="">进入游戏</view> -->
+          <block wx:for="{{options}}" wx:key="{{index}}">
+            <view wx:if="{{item=='助力'}}" class="mybtn zl-btn" bindtap="onHelp">助力</view>
+            <!-- <view wx:elif="{{item=='挑战'}}" class="mybtn" bindtap="onChallenge">挑战</view> -->
+            <view wx:elif="{{item=='挑战'}}" class="mybtn">
+              <xcx-navigator game="{{intoGame}}">进入游戏</xcx-navigator>
+            </view>
+          </block>
         </view>
       </view>
-    </view>
-    <view style="display:{{activeIndex == 1? 'block':'none'}}">
-      <!-- <xcx-rr /> -->
-    </view>
+    <!-- </view> -->
+    <!-- <view style="display:{{activeIndex == 1? 'block':'none'}}">
+      <xcx-rr />
+    </view> -->
 	</view>
 
-  <view class="help" style="display: {{helpShow ? 'block' : 'none'}}" bind:tap="hideHelp">
-    <view class="help-box" catch:tap="catch">
-      <view class="help-head">邀请好友助力</view>
-      <view class="help-content">
-        <view class="help-tab flex">
-          <view>好友</view>
-          <view>得分</view>
-          <view>助力</view>
-        </view>
-        <view class="help-item flex" wx:for="{{helpList}}" wx:key="{{index}}">
-          <view class="flex">
-            <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{item.avatar}}"/>
-            <text class="name">{{item.name}}</text>
-          </view>
-          <view class="score-text">{{item.score}}</view>
-          <view class="score-text">{{item.help}}</view>
-        </view>
-        <view class="help-item flex" wx:for="{{nohelpList}}" wx:key="{{index}}">
-          <view class="flex">
-            <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="../../images/touxiang.png" />
-            <text class="name">  ？  </text>
-          </view>
-          <view class="score-text">  -  </view>
-          <view class="score-text">  -  </view>
-        </view>
-      </view>
-    </view>
-  </view>
+  <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" />
 
   <xcx-danmu danmuList="{{danmuList}}" height="120" bind:clickText="clickDanmu"/>
 </view>

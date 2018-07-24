@@ -3,7 +3,9 @@ var http = require("./util/http");
 
 QKApp({
   config: {
-    httpApi: 'https://snsapi.7k.cn',
+    api: 'https://api-game.7k.cn',
+    acct: 'https://acct-game.7k.cn',
+    log: 'https://log-game.7k.cn',
     version: '1.0.1'
   },
   onLaunch: function (options) {

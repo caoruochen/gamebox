@@ -16,7 +16,10 @@
           </view>
           <view class="help2">{{item.score || '-'}}</view>
           <view class="help3">{{item.help || '-'}}</view>
-          <image class="help4" mode="aspectFit" src="{{item.uid?'../../images/del.png':'../../images/add.png'}}" data-id="{{item.uid}}" bindtap="{{item.uid?'handleDel':'handleAdd'}}"/>
+          <view class="help4">
+            <image class="help-img" mode="aspectFit" src="{{item.uid?'../../images/del.png':'../../images/add.png'}}" data-id="{{item.uid}}" bindtap="{{item.uid?'handleDel':''}}"/>
+            <button wx-if="{{!item.uid}}" class="help-img-btn" open-type="share"></button>
+          </view>
         </view>
       </view>
     </view>

@@ -55,12 +55,13 @@ QKPage({
 	onLoad: function(options) {
 		console.log(options)
 		// console.log(app.globalData)
-		var aid = (options.aid && options.aid != 'undefined') || '1';
+		// var aid = (options.aid && options.aid != 'undefined') || '1';
+		var aid = options.aid;
 		this.setData({
 			aid: aid
 		});
 		this.loadRankData(aid);
-		console.log(aid)
+		// console.log(aid)
 	},
 	loadRankData: function(aid) {
 		wx.showLoading({
@@ -141,8 +142,7 @@ QKPage({
 		console.log('onReachBottom')
 	},
 	onShow: function() {
-		var timestamp = new Date().getTime();
-
+		// var timestamp = new Date().getTime();
 		console.log('page:rank onShow')
 		//TODO:延迟 结果查询，显示结果
 	},

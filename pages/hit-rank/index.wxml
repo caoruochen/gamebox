@@ -27,13 +27,29 @@
        <image lazy-load="{{true}}" 
         mode="aspectFill" 
         src="{{item.banner}}"
-        style="width: 100%; height: 180px; border-top-left-radius: 15px;      border-top-right-radius: 15px;"/>
+        bindtap="clickJumpPage"
+        data-aid="{{item.aid}}"
+        style="width: 100%; height: 180px; border-top-left-radius: 15px; border-top-right-radius: 15px;"/>
+
+        <view class="match-info-mask"/>
+         <!--参赛信息-->
+        <view class="match-info-layout match-info-text" bindtap="clickJumpPage" data-aid = "{{item.aid}}">
+          <view class="match-info-top-layout ">
+            <view>钢琴红包赛</view>
+            <view style="margin-left: 10px; font-size: 11px; background: #4DE260">进行中</view>
+          </view>
+
+          <view>未参赛</view>
+          <view>名次</view>
+          <view>已有xx人参赛</view>
+        </view>
 
         <view class="game-info-layout">
           <image src="{{item.logo}}"
           class="avatar-image"/>
           <view>{{item.name}}</view>
         </view>
+       
          
         <view class="btn-layout">
           <view class="btn-white-hollow">邀请好友</view>
@@ -44,8 +60,11 @@
 
         <!-- 活动简介 -->
         <view class="activity-desc-layout">
-          <view class="{{activitys[index].isFold ? 'activity-desc-collapse-text' : 'activity-desc-text'}}">我是文本我是文本我是文本我是文本我是文本我是文本我是文本我是文本我是文本我是文本我是文本我是文本我是文本我是文本我是文本我是文本</view>
-          <view class="fold" bindtap="foldToggle" data-id="{{index}}">按钮</view>
+          <view class="{{activitys[index].isFold ? 'activity-desc-collapse-text' : 'activity-desc-text'}}">我是文本</view>
+          <view class="fold" bindtap="foldToggle" data-id="{{index}}">
+             <image class="{{activitys[index].isFold ? 'arrow-down' : 'arrow-up'}}" src="../../images/arrow.png"/>
+          </view>
+         
         </view>
   </view>
 </view>

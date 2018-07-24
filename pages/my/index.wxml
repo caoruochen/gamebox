@@ -29,7 +29,7 @@
   </view>
   
   <view class="banners">
-    <navigator hover-class="none" class="credits">
+    <navigator hover-class="none" url="/pages/mall/index" class="credits">
       <view class="left-block">
         <view class="title">积分商城</view>
         <view class="detail">查看详情</view>

@@ -16,6 +16,10 @@ var defaultBanners = [{
 
 QKPage({
   data: {
+    userName: app.globalData.userInfo ? app.globalData.userInfo.name : '',
+    coins: 0,
+    money: 0,
+    showMoney: true,
     adpos: 'bottom',
     swiperHeight: swiperHeight,
     banners: defaultBanners,
@@ -43,7 +47,9 @@ QKPage({
     this.loadGame(true);
     this.loadCategoryData(0, "hots")
   },
-
+  onShow: function (options) {
+    this.updateProfile();
+  },
   onPullDownRefresh: function (e) {
     this.loadGame(true, true);
   },
@@ -151,10 +157,6 @@ QKPage({
     console.log("test="+this.data.tabPageData[key])
      if (this.data.tabPageData[key] != undefined) {
        console.log("array size="+this.data.tabPageData[key].length)
-     
-      //  this.setData({
-      //    tabPageData: this.data.tabPageData[key],
-      //  })
        return
      }
     wx.showLoading({
@@ -182,4 +184,37 @@ QKPage({
       });
     });
   },
+  onGotUserInfo: function (e) {
+    if (!e.detail || typeof e.detail.userInfo === 'undefined') {
+      wx.showToast({
+        title: '登陆需要授权',
+        icon: 'none',
+      });
+      return;
+    }
+    var me = this;
+    app.$saveLoginUser(e.detail.userInfo, e.detail, function (status) {
+      if (!status) {
+        return;
+      };
+      me.updateProfile();
+    });
+  },
+  updateProfile: function () {
+    var name = '', coins = 0, money = 0;
+    if (app.globalData.userInfo) {
+      name = app.globalData.userInfo.name;
+      if (app.globalData.userInfo.coins) {
+        coins = app.globalData.userInfo.coins;
+      }
+      if (app.globalData.userInfo.money) {
+        coins = app.globalData.userInfo.money;
+      }
+    }
+    this.setData({
+      userName: name,
+      coins: coins,
+      money: money,
+    });
+  }
 })

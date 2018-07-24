@@ -3,7 +3,7 @@ Component({
     properties: {
         celltype: {
             type:String,
-            value: "红包",
+            value: "打榜",
             observer: function(newValue,oldValue,changedPath) {
                 console.log("newValue -->" + newValue)
                 console.log("oldValue -->" + oldValue)
@@ -16,5 +16,10 @@ Component({
     },
     methods: {
         
+    },
+    attached: function () {
+        wx.setNavigationBarTitle({
+            title: '打榜详情',
+        })
     }
 })

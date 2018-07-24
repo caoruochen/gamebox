@@ -1,6 +1,8 @@
 {
     "navigationBarTitleText": "福利详情",
     "usingComponents": {
-        "recordCell": "../recordsComponents/index"
+        "redEnvelopesCell": "../recordsComponents/redEnvelopes/index",
+        "hitRankCell": "../recordsComponents/hitRank/index",
+        "lotteryCell": "../recordsComponents/lottery/index"
     }
 }

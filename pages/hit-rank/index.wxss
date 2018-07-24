@@ -33,7 +33,7 @@ page {
 }
 
 .activity-head-notice0 {
-  color: #bbb;
+  color: #888;
   overflow: hidden;
   height: 40rpx;
 }
@@ -110,11 +110,15 @@ page {
   font-size: 14px;
 }
 
+.activitys {
+  margin-top: 80rpx;
+}
+
 .item-layout {
   position: relative;
   border-radius: 15px;
   background: white;
-  margin: 110rpx 30rpx 30rpx 30rpx;
+  margin: 40rpx 30rpx 0 30rpx;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

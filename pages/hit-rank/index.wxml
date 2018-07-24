@@ -28,6 +28,8 @@
       </view>
   </view-->
   <!-- 活动内容 -->
+
+  <view class="activitys">
   <view class="item-layout" wx:for="{{activitys}}" wx:key="aid}">
 
       <!-- <view style="z-index: 10;">名字</view> -->
@@ -73,5 +75,6 @@
           </view>
          
         </view>
+  </view>
   </view>
 </view>

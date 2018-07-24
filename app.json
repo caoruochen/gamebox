@@ -13,7 +13,8 @@
     "pages/reply/index",
     "pages/records/index",
     "pages/hit-rank/index",
-    "pages/mall/index"
+    "pages/mall/index",
+    "pages/more-task/index"
   ],
   "tabBar": {
     "list": [

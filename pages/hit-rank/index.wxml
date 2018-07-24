@@ -2,7 +2,7 @@
   <view class="activity-head">
     <view class="activity-head-notice">
       <image src="../../images/voice.png" />
-      <view class="activity-head-notice0" style="width: {{noticeWidth}}px">我是测试文字移动的</view>
+      <view class="activity-head-notice0" style="width: {{noticeWidth}}px">{{activityNotice}}</view>
       <view class="" />
     </view>
     <view class="activity-head-money">
@@ -44,19 +44,19 @@
          <!--参赛信息-->
         <view class="match-info-layout match-info-text" bindtap="clickJumpPage" data-aid = "{{item.aid}}">
           <view class="match-info-top-layout ">
-            <view>钢琴红包赛</view>
-            <view style="margin-left: 10px; font-size: 11px; background: #4DE260">进行中</view>
+            <view>{{item.name}}</view>
+            <view class="match-status-text">进行中</view>
           </view>
 
           <view>未参赛</view>
-          <view>名次</view>
-          <view>已有xx人参赛</view>
+          <view>{{item.rank}}</view>
+          <view>已有{{item.playerNum}}人参赛</view>
         </view>
 
         <view class="game-info-layout">
           <image src="{{item.logo}}"
           class="avatar-image"/>
-          <view>{{item.name}}</view>
+          <view class="game-title-text">{{item.gname}}</view>
         </view>
        
          
@@ -69,7 +69,7 @@
 
         <!-- 活动简介 -->
         <view class="activity-desc-layout">
-          <view class="{{activitys[index].isFold ? 'activity-desc-collapse-text' : 'activity-desc-text'}}">我是文本</view>
+          <view class="{{activitys[index].isFold ? 'activity-desc-collapse-text' : 'activity-desc-text'}}">{{item.desc}}</view>
           <view class="fold" bindtap="foldToggle" data-id="{{index}}">
              <image class="{{activitys[index].isFold ? 'arrow-down' : 'arrow-up'}}" src="../../images/arrow.png"/>
           </view>

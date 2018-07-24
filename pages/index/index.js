@@ -66,12 +66,12 @@ QKPage({
   },
 
   loadGameData: function () {
-    // wx.showLoading({
-    //   title: '数据加载中'
-    // });
+    wx.showLoading({
+      title: '数据加载中'
+    });
     var me = this;
     http.get('/gamebox/recommends', function (data) {
-      // wx.hideLoading();
+      wx.hideLoading();
       var obj = {
         categorys: data.gamelist,
         adpos: data.adpos,
@@ -81,7 +81,7 @@ QKPage({
       me.setData(obj);
       util.setSavedGames(obj);
     }, function (error, msg) {
-      // wx.hideLoading();
+      wx.hideLoading();
       setTimeout(function () {
         wx.showToast({
           title: msg || '数据加载失败',
@@ -92,10 +92,8 @@ QKPage({
   }, 
 
   tabClick: function (e) {
-    console.log(e)
     var tabIndex = e.currentTarget.id
     var tabType = e.currentTarget.dataset.type;
-    //this.loadCategoryData(tabIndex, tabType)
     this.setData({
       activeIndex: tabIndex,
       navScrollLeft: (tabIndex - 1) * this.data.tabW
@@ -116,19 +114,15 @@ QKPage({
  * 加载分类数据
  */
   loadCategoryData: function (key, param) {
-    console.log("type=" + param)
-    console.log("test="+this.data.tabPageData[key])
-     if (this.data.tabPageData[key] != undefined) {
-       console.log("array size="+this.data.tabPageData[key].length)
-       return
-     }
+    if (this.data.tabPageData[key] != undefined) {
+      console.log("array size="+this.data.tabPageData[key].length)
+      return
+    }
     wx.showLoading({
       title: '数据加载中'
     });
     var me = this;
     http.get('/gamebox/list', { type: param }, function (data) {
-      wx.hideLoading();
-      console.log(data)
       var tabPageData = me.data.tabPageData;
       tabPageData[key] = data.games;
     
@@ -137,10 +131,9 @@ QKPage({
         tabs: data.categorys,
         tabPageData: tabPageData,
       })
-      
+      wx.hideLoading();
     }, function (error, msg) {
       wx.hideLoading();
-
       wx.showToast({
         title: msg || '数据加载失败',
         icon: 'none'

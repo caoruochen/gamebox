@@ -28,7 +28,6 @@ QKPage({
     bannerImgWidth: bannerImgWidth,
     wwidth: app.globalData.wwidth,
     gameItemWidth: (app.globalData.wwidth-150*ratio) / 4.5,// 60 padding + 3*30 margin
-    games: [],
     verifying: false,
     tabs: [],
     tabPageData: {},
@@ -44,36 +43,10 @@ QKPage({
    */
   onLoad: function (options) {
     this.loadGameData()
-    this.loadGame(true);
     this.loadCategoryData(0, "hots")
   },
   onShow: function (options) {
     this.updateProfile();
-  },
-  onPullDownRefresh: function (e) {
-    this.loadGame(true, true);
-  },
-  loadGame: function (refresh, stopPullDown) {
-    var me = this;
-    http.get('/gamebox/games', function (data) {
-      wx.hideLoading();
-      if (stopPullDown) {
-        wx.stopPullDownRefresh();
-      }
-      me.setData({
-        games: data
-      });
-    }, function (error, msg) {
-      wx.hideLoading();
-      if (stopPullDown) {
-        wx.stopPullDownRefresh();
-      }
-      wx.showToast({
-        title: msg || '数据加载失败',
-        icon: 'none'
-      });
-    });
-
   },
 
   clickMore: function(e) {

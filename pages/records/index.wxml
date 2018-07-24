@@ -6,6 +6,6 @@
 
     </view>
     <scroll-view class='scrollView'>
-        {{btns[btnType]}}
+        <recordCell celltype="{{btns[btnType]}}"/>
     </scroll-view>
 </view>

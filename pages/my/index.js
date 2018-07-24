@@ -27,7 +27,7 @@ QKPage({
   data: {
     userInfo: app.globalData.userInfo,
     games: [],
-    gameItemWidth: (app.globalData.wwidth-150*ratio) / 6,
+    gameItemWidth: (app.globalData.wwidth-150*ratio) / 5,
     tasks: {
       doing: 0,
       done: 0,

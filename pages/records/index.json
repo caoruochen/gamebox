@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "福利详情"
+    "navigationBarTitleText": "福利详情",
+    "usingComponents": {
+        "recordCell": "../recordsComponents/index"
+    }
 }

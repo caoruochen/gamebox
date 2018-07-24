@@ -2,10 +2,23 @@
     <!--  3个火枪手  -->
     <view class='btns'>
 
-        <view wx:for="{{btns}}" wx:for-index="index" wx:for-item="item" bindtap='btnTypeTap' class='{{btnType == index ? "selectedBtn" : "btn"}}' data-btnType="{{index}}">{{item}}</view>
+        <view wx:for="{{btns}}" wx:for-index="index" wx:for-item="item" wx:key="key" bindtap='btnTypeTap' class='{{btnType == index ? "selectedBtn" : "btn"}}' data-btnType="{{index}}">{{item}}</view>
 
     </view>
-    <scroll-view class='scrollView'>
-        {{btns[btnType]}}
+    <!--  红包  -->
+    <scroll-view class='scrollView' wx:if="{{btns[btnType] == '红包'}}">
+        <!-- <redEnvelopesCell celltype="{{btns[btnType]}}"/> -->
+        <redEnvelopesCell />
+    </scroll-view>
+    <!--  打榜  -->
+    <scroll-view class='scrollView' wx:elif="{{btns[btnType] == '打榜'}}">
+        <hitRankCell />
+    </scroll-view>
+    <!--  抽奖  -->
+    <scroll-view class='scrollView' wx:elif="{{btns[btnType] == '抽奖'}}">
+        <lotteryCell />
+    </scroll-view>
+    <scroll-view class='scrollView' wx:else>
+        出现了未知类型!喵喵
     </scroll-view>
 </view>

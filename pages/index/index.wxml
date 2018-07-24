@@ -7,8 +7,8 @@
     <view class="top-bar-info">
       <image src="../../images/coins-icon.png" />
       <text>{{coins}}</text>
-      <image wx:if="{{showMoney}}" src="../../images/coins-icon.png" />
-      <text wx:if="{{showMoney}}">{{money}}</text>
+      <!-- <image class="money" wx:if="{{showMoney}}" src="../../images/icon-money.png" />
+      <text wx:if="{{showMoney}}">{{money}}</text> -->
       <text>签到</text>
     </view>
   </view>
@@ -54,7 +54,7 @@
     <ad unit-id="adunit-a3868a599f8b3cfa"></ad>
   </view>
  
-  <view class="gamebox-games" wx:if="{{games.length>0}}">
+  <view class="gamebox-games">
     <view class="item-title">
       <view class="game-category">
         <view>
@@ -64,20 +64,6 @@
       </view>
       <view wx:if="{{!verifying}}" class="game-more" bindtap="clickMore" data-type="" data-id="-1">更多</view>
     </view>
-    <!-- <block wx:for="{{games}}" wx:key="*this">
-      <xcx-navigator nav-class="gamebox-item" game="{{item}}">
-        <view class="gamebox-item-logo">
-          <image lazy-load="{{true}}" src="{{item.logo}}" />
-        </view>
-        <view class="gamebox-item-info">
-          <view>{{item.name}}
-            <text wx:if="{{item.playerNum}}" class='gamebox-item-num'><text>{{item.playerNum}}</text>人在玩</text>
-          </view>
-          <view class="gamebox-item-info_desc">{{item.desc}}</view>
-        </view>
-        <view class="gamebox-item-play">开始</view>
-      </xcx-navigator>
-    </block> -->
   </view>
 
   <view>

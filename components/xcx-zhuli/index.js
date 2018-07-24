@@ -61,8 +61,9 @@ Component({
 				}
 			})
 		},
-		handleAdd: function(e) {
-			//TODO:邀请好友助力
-		},
+		// handleAdd: function(e) {
+		// 	//TODO:邀请好友助力
+		// 	console.log("handleAdd")
+		// },
 	}
 })

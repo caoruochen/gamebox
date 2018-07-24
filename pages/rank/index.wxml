@@ -7,7 +7,7 @@
           <text class="peopleNum">{{playerNum}}  人参加</text>
           <view class="rule-btn" bindtap="clickRule">规则</view>
         </view>
-        <xcx-navigator class="into-btn" game="{{intoGame}}">进入游戏</xcx-navigator>
+        <xcx-navigator class="mybtn" game="{{intoGame}}">进入游戏</xcx-navigator>
 			</view>
 		</view>
 	</view>
@@ -32,20 +32,20 @@
       </view>
       <view class="flex myrank">
         <view class="flex">
-          <text class="ranking" style="color:#fca237">{{personal.rank || '-'}}</text> 
+          <text class="ranking" style="color:#fca237">{{rank || '-'}}</text> 
           <!-- <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{personal.avatar || '../../images/defaultavatar.png'}}"/> -->
             <view class="avatar"><open-data type="userAvatarUrl"></open-data></view>
           <view class="myname">
             <!-- <text>{{personal.name || '用户名'}}</text> -->
             <open-data type="userNickName" lang="zh_CN"></open-data>
-            <view style="color:#fca237">{{personal.score || '-'}}<text style="font-weight: 500"> 分</text></view>
+            <view style="color:#fca237">{{score || '-'}}<text style="font-weight: 500"> 分</text></view>
           </view>
         </view>
         <view>
-          <block wx:for="{{personal.options}}" wx:key="{{index}}">
+          <block wx:for="{{options}}" wx:key="{{index}}">
             <view wx:if="{{item=='助力'}}" class="mybtn zl-btn" bindtap="onHelp">助力</view>
-            <view wx:elif="{{item=='挑战'}}" class="mybtn tz-btn" bindtap="onChallenge">挑战</view>
-            <view wx:elif="{{item=='进入游戏'}}" class="mybtn tz-btn">
+            <!-- <view wx:elif="{{item=='挑战'}}" class="mybtn" bindtap="onChallenge">挑战</view> -->
+            <view wx:elif="{{item=='挑战'}}" class="mybtn">
               <xcx-navigator game="{{intoGame}}">进入游戏</xcx-navigator>
             </view>
           </block>

@@ -12,6 +12,7 @@
     "pages/challenge/index",
     "pages/reply/index",
     "pages/records/index",
+    "pages/hit-rank/index",
     "pages/mall/index",
     "pages/more-task/index"
   ],
@@ -34,7 +35,7 @@
         "color": "#8f8f8f"
       },
       {
-        "pagePath": "pages/hit/index",
+        "pagePath": "pages/hit-rank/index",
         "text": "打榜",
         "iconPath": "images/jingxuan0.png",
         "selectedIconPath": "images/jingxuan1.png",

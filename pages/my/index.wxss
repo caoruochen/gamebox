@@ -4,7 +4,7 @@ image{
 }
 .container {
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   box-sizing: border-box;
   background-color: #eff2f6;
 }
@@ -140,18 +140,24 @@ image{
 .banners{
   display: flex;
   padding: 44rpx 46rpx 36rpx;
+  margin-bottom: 20rpx;
+  background-color: #fff;
 }
 .banners > navigator{
   flex: 1;
   padding-left: 30rpx;
-  padding-right: 50rpx;
+  padding-right: 40rpx;
   border-radius: 22rpx;
   color: #fff;
 }
 .banners .credits{
+  display: flex;
+  justify-content: space-between;
   background-color: #f53c66;
 }
 .banners .welfare{
+  display: flex;
+  justify-content: space-between;
   margin-left: 24rpx;
   background-color: #ffcc00;
 }
@@ -163,21 +169,26 @@ image{
   font-size: 28rpx;
   padding-bottom: 20rpx;
 }
+.banners .right-block{
+  width: 60rpx;
+  padding-top: 60rpx;
+}
 
 .item-head{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20rpx 30rpx 20rpx 16rpx;
+  padding: 15rpx 0;
   border-bottom: 1rpx solid #e4e4e4;
+  margin: 0 30rpx 0 16rpx;
 }
 .item-head .title{
   position: relative;
-  padding-left: 16rpx;
+  padding-left: 10rpx;
   font-size: 30rpx;
   color: #666;
 }
-.item-head .title:before{
+/*.item-head .title:before{
   content: "";
   position: absolute;
   top: 8%;
@@ -186,10 +197,10 @@ image{
   height: 84%;
   transform: translateX(-50%);
   background-color: #f3b244;
-}
+}*/
 
 .daily-task{
-  margin-bottom: 15rpx;
+  /*margin-bottom: 20rpx;*/
   background-color: #fff;
 }
 .task-item{
@@ -204,9 +215,13 @@ image{
   display: flex;
   flex: 1;
   align-items: center;
-  padding: 15rpx 30rpx 15rpx 0;
+  padding: 15rpx 0;
   border-bottom: 1rpx solid #e4e4e4;
   margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+.task-item:last-child .right-block{
+  border-bottom: none;
 }
 
 .daily-task .task-info{
@@ -277,11 +292,12 @@ image{
 
 .games{
   background-color: #fff;
+  margin-bottom: 20rpx;
+  padding-bottom: 15rpx;
 }
 
 .games-box{
   padding:20rpx 30rpx 0 30rpx;
-  margin-bottom: 15rpx;
 }
 .scroll-view_H {
   width: 100%;
@@ -324,67 +340,12 @@ image{
   height: 0;
   color: transparent;
 }
-/*.welfare{
-  background-color: #fff;
-  margin-bottom: 15rpx;
-}
-.welfare-item{
-  display: flex;
-  align-items: center;
-  padding: 15rpx 0;
-  border-bottom: 1rpx solid #e4e4e4;
-}
-.welfare-time{
-  padding-left: 30rpx;
-  padding-right: 20rpx;
-  font-size: 26rpx;
-  color: #111;
-  text-align: center;
-}
-.welfare-name{
-  flex: 1;
-  font-size: 28rpx;
-  color: #f3b244;
-  text-align: center;
-}
-.welfare-status{
-  position:relative;
-  background-color:#f6c749;
-  border-radius:30rpx;
-  width:180rpx;
-  height:60rpx;
-  margin-right: 30rpx;
-}
-.welfare-status .welfare-btn{
-  position:absolute;
-  z-index:100;
-  top:0;
-  width:100%;
-  height:100%;
-  font-size:12px;
-  text-align:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  background:transparent;
-}
-.welfare-status.active{
-  background-color: #ccc;
-}
-.welfare-item .welfare-btn_login {
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  line-height: normal !important;
-  border-radius: 0 !important;
-  background-color: #f6c749 !important;
-}*/
 
 .tips {
   text-align: center;
   color: #e4e4e4;
   font-size: 28rpx;
-  margin-top: 30rpx;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx
 }
 

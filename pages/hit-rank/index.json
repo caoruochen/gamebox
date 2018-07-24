@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "xcx-navigator": "../../components/xcx-navigator/index"
+  }
+}

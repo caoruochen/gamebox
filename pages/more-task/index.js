@@ -27,9 +27,6 @@ QKPage({
 
   onShow:function(){
     this.updateProfile();
-    this.setData({
-      games: util.getPlayHistory()
-    });
   },
 
   updateProfile: function () {
@@ -64,7 +61,7 @@ QKPage({
         data0.games = data.games;
       }
       if (Object.keys(data0).length > 0) {
-        // me.setData(data0)
+        me.setData(data0)
       }
     }, function (errCode, msg) {
       wx.hideLoading();

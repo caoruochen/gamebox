@@ -32,7 +32,7 @@
 
 /*  Cell  */
 .replyTableViewCell {
-    background: #eee;
+    background: #fcfcfc;
     display: flex;
     flex: row;
     margin-top: 50px;

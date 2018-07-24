@@ -178,7 +178,7 @@ image{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20rpx 0 20rpx 0;
+  padding: 15rpx 0;
   border-bottom: 1rpx solid #e4e4e4;
   margin: 0 30rpx 0 16rpx;
 }
@@ -293,6 +293,7 @@ image{
 .games{
   background-color: #fff;
   margin-bottom: 20rpx;
+  padding-bottom: 15rpx;
 }
 
 .games-box{

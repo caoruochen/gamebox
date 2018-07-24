@@ -157,6 +157,15 @@ page {
   color: white;
 }
 
+.match-status-text {
+  margin-left: 10px; 
+  font-size: 11px; 
+  background: #4DE260;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 1px 3px;
+}
+
 .match-info-top-layout {
   display: flex;
   flex-direction: row;
@@ -197,17 +206,18 @@ page {
   color: #517BF7;
   box-sizing: border-box;
   padding: 10rpx 30rpx;
-  font-size: 14px;
+  font-size: 12px;
   margin-right: 20rpx;
 }
 
 .btn-blue-soild {
   background: #517BF7;
   border-radius: 15px;
+  border: 1px solid #517BF7;
   color: white;
   box-sizing: border-box;
   padding: 10rpx 30rpx;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .activity-desc-layout {
@@ -218,6 +228,8 @@ page {
 
 .activity-desc-text {
   flex: 8;
+  font-size: 11px;
+  color: #b2b2b2;
 }
 
 .activity-desc-collapse-text {
@@ -226,6 +238,13 @@ page {
   -webkit-line-clamp: 2;
   overflow: hidden;
   flex: 8;
+  font-size: 11px;
+  color: #b2b2b2;
+}
+
+.game-title-text {
+  font-size: 13px;
+  color: #353535;
 }
 
 .fold {

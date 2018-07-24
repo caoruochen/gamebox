@@ -69,19 +69,13 @@
   </view>
 
   <navigator hover-class="none" url="/pages/mall/index" class="card-box credits">
-    <view class="left-block">
-      <view class="title">积分商城</view>
-      <view class="detail">查看详情</view>
-    </view>
-    <image mode="widthFix" src="../../images/credit.png" class="right-block"></image>
+    <view class="title">积分商城</view>
+    <image mode="widthFix" src="../../images/right-arrow.png" class="right-arrow"></image>
   </navigator>
 
   <navigator hover-class="none" url="/pages/records/index" class="card-box hit-record">
-    <view class="left-block">
-      <view class="title">打榜记录</view>
-      <view class="detail">查看详情</view>
-    </view>
-    <image mode="widthFix" src="../../images/hit-record.png" class="right-block"></image>
+    <view class="title">打榜记录</view>
+    <image mode="widthFix" src="../../images/right-arrow.png" class="right-arrow"></image>
   </navigator>
 
   <view class="daily-task">
@@ -109,11 +103,8 @@
   </view>
 
   <navigator hover-class="none" url="/pages/records/index" class="card-box welfare">
-    <view class="left-block">
-      <view class="title">积分福利</view>
-      <view class="detail">查看详情</view>
-    </view>
-    <image mode="widthFix" src="../../images/welfare.png" class="right-block"></image>
+    <view class="title">积分福利</view>
+    <image mode="widthFix" src="../../images/right-arrow.png" class="right-arrow"></image>
   </navigator>
 
   <!-- <view class="welfare">

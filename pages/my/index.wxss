@@ -212,35 +212,23 @@ image{
 .card-box{
   display: flex;
   justify-content: space-between;
-  width: 45%;
+  align-items: center;
   padding-left: 30rpx;
   padding-right: 40rpx;
-  margin-left: 46rpx;
   margin-bottom: 20rpx;
-  border-radius: 22rpx;
-  color: #fff;
-}
-.credits{
-  background-color: #f53c66;
-}
-.hit-record{
-  background-color: #3399ff;
+  background-color: #fff;
+  color: #111;
 }
 .welfare{
   margin-bottom: 0;
-  background-color: #ffcc00;
 }
 .card-box .title{
+  padding: 36rpx 0;
   font-size: 32rpx;
-  padding: 36rpx 0 20rpx 0;
+  font-weight: bolder;
 }
-.card-box .detail{
-  font-size: 28rpx;
-  padding-bottom: 20rpx;
-}
-.card-box .right-block{
+.card-box .right-arrow{
   width: 60rpx;
-  padding-top: 60rpx;
 }
 
 .daily-task{

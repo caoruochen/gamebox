@@ -122,12 +122,12 @@ QKPage({
        console.log("array size="+this.data.tabPageData[key].length)
        return
      }
-    // wx.showLoading({
-    //   title: '数据加载中'
-    // });
+    wx.showLoading({
+      title: '数据加载中'
+    });
     var me = this;
     http.get('/gamebox/list', { type: param }, function (data) {
-      // wx.hideLoading();
+      wx.hideLoading();
       console.log(data)
       var tabPageData = me.data.tabPageData;
       tabPageData[key] = data.games;
@@ -139,7 +139,7 @@ QKPage({
       })
       
     }, function (error, msg) {
-      // wx.hideLoading();
+      wx.hideLoading();
 
       wx.showToast({
         title: msg || '数据加载失败',

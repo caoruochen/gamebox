@@ -15,6 +15,7 @@ QKPage({
     bannerImgWidth: bannerImgWidth,
     bannerImgHeight: bannerImgHeight,
     noticeWidth: app.globalData.wwidth/2,
+    activityNotice: "",
     activitys: [],
   },
 
@@ -44,6 +45,7 @@ QKPage({
           act[i] = obj
       }
       that.setData({
+        activityNotice: data.notice,
         activitys: act
       })
     }, function () {

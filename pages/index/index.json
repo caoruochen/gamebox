@@ -2,7 +2,7 @@
   "navigationBarTitleText": "7K7K游戏",
   
   "backgroundTextStyle": "dark",
-  "backgroundColor": "#eee",
+  "backgroundColor": "#f7f7f7",
   
   "usingComponents": {
     "xcx-navigator": "../../components/xcx-navigator/index"

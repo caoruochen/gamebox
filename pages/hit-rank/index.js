@@ -69,4 +69,12 @@ QKPage({
       activitys: this.data.activitys
     })
   },
+
+  clickJumpPage: function(e) {
+    var aid = e.currentTarget.dataset.aid
+    console.log("aid=" + aid)
+    wx.navigateTo({
+      url: '/pages/rank/index?aid=' +aid,
+    })
+  },
 })

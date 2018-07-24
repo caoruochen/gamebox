@@ -14,7 +14,7 @@ QKPage({
   data: {
     bannerImgWidth: bannerImgWidth,
     bannerImgHeight: bannerImgHeight,
-    noticeWidth: app.globalData.wwidth/2.6,
+    noticeWidth: app.globalData.wwidth/2,
     activitys: [],
   },
 

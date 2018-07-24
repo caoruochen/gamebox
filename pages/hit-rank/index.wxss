@@ -141,7 +141,7 @@ page {
   left: 0;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .match-info-text {

@@ -29,7 +29,7 @@ Component({
 			})
 			//还差助力人数
 			if (len < 5) {
-				var list = this.data.helpList.concat() //拷贝数组
+				var list = this.data.helpList.concat()
 				for (var i = 0; i < 5 - len; i++) {
 					list.push(1)
 				}
@@ -43,9 +43,6 @@ Component({
 			this.setData({
 				show: false
 			})
-		},
-		catch: function() {
-			// console.log("阻止事件冒泡")
 		},
 
 		handleDel: function(e) {
@@ -61,9 +58,6 @@ Component({
 				}
 			})
 		},
-		// handleAdd: function(e) {
-		// 	//TODO:邀请好友助力
-		// 	console.log("handleAdd")
-		// },
+
 	}
 })

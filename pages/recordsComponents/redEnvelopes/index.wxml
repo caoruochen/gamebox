@@ -1,15 +1,20 @@
 <view class='records-class'>
-    <view wx:for="{{[1,2,3,4,5,6,6,6,6,1]}}" wx:key>
+    <view wx:for="{{dataList}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.rid}}">
         <!-- 自定义组件的 {{celltype}} -->
         <view class='cell'>
-            <view class='icon'>
-                icon
+            <view>
+                <image class='icon' src='{{item.game.logo}}'></image>
             </view>
             <view class='content'>
-                content
+                <view>
+                    {{item.game.name}}: {{item.activity.name}}
+                </view>
+                <view>
+                    {{item.ctime}}
+                </view>
             </view>
             <view class='sum'>
-                sum
+                {{item.amount}}
             </view>
         </view>
     </view>

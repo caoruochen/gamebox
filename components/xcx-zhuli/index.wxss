@@ -27,12 +27,20 @@
 }
 .help-box{
 	width: 100%;
-	margin-top: 120rpx;
 	background-color: #f4e322;
 	border-radius: 10rpx;
 	text-align: center;
 	padding: 30rpx;
 	box-sizing: border-box;
+	position: relative;	
+}
+.close{
+	width: 30rpx;
+	height:30rpx;
+	position: absolute;
+	top: 0;
+	right:0;
+	margin:20rpx;
 }
 .help-head{
 	font-size:34rpx;

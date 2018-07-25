@@ -1,0 +1,63 @@
+.gamebox-games {
+  box-sizing: border-box;
+}
+
+.gamebox-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 10px;
+  border-bottom: 1rpx solid #eee;
+}
+
+.gamebox-item-logo {
+  padding-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.gamebox-item-logo image {
+  width:  50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.gamebox-item-info {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.gamebox-item-info .gamebox-item-info-title {
+  color: #353535;
+  font-size: 13px;
+  text-align: center;
+}
+
+.gamebox-item-info .gamebox-item-info_desc {
+  font-size: 11px;
+  color: #999;
+  margin-top: 5px;
+}
+
+.gamebox-item-play {
+  border: 1rpx solid #3884d8;
+  font-size: 13.5px;
+  color: #3884d8;
+  border-radius: 15px;
+  padding: 4px 15px;
+}
+
+.gamebox-item-num {
+  font-size: 12px;
+  text-align: center;
+  margin-left: 30rpx;
+}
+
+.gamebox-item-num text {
+  color: #ff0621;
+}

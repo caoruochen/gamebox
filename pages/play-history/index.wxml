@@ -1,0 +1,16 @@
+<view class="gamebox-games">
+  <block wx:for="{{games}}" wx:key="*this">
+    <xcx-navigator nav-class="gamebox-item" game="{{item}}">
+      <view class="gamebox-item-logo">
+        <image lazy-load="{{true}}" src="{{item.logo}}" />
+      </view>
+      <view class="gamebox-item-info">
+        <view class="gamebox-item-info-title">{{item.name}}
+           <!-- <text wx:if="{{item.playerNum}}" class='gamebox-item-num'><text>{{item.playerNum}}</text>人在玩</text> -->
+        </view>
+        <view class="gamebox-item-info_desc">{{item.desc}}</view>
+      </view>
+      <view class="gamebox-item-play">开始</view>
+    </xcx-navigator>
+  </block>
+</view>

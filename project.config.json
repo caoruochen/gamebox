@@ -64,6 +64,12 @@
 					"name": "我的",
 					"pathName": "pages/my/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "最近常玩",
+					"pathName": "pages/play-history/index",
+					"query": ""
 				}
 			]
 		}

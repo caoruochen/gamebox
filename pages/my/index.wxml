@@ -14,11 +14,11 @@
             <image src="../../images/coins-icon.png" class="coins-icon" />
             <text>{{userInfo ? userInfo.coins : '0'}}</text>
           </view>
-          <view class="my-fund packet">
+          <!-- <view class="my-fund packet">
             <image src="../../images/icon-money.png" />
             <text>{{userInfo && userInfo.money ? userInfo.money : '0'}}元</text>
           </view>
-          <view class="withdraw">提现</view>
+          <view class="withdraw">提现</view> -->
         </view>
         
       </view>
@@ -29,6 +29,8 @@
       <!-- <view class="lottery" bindtap="goLottery">
         <image mode="widthFix" src="../../images/lottery-icon.png"></image>
       </view> -->
+      <image class="wave-icon" mode="widthFix" src="../../images/wave-icon1.png"></image>
+      <image class="wave-icon wave-move" mode="widthFix" src="../../images/wave-icon.png" style="width: {{wwidth * 2}}px"></image>
     </view>
   </view>
   
@@ -50,26 +52,29 @@
   </view> -->
 
   <view class="my-block1">
-    <view class="my-block1-item mall">
-      <image src="../../images/coins-icon.png" />
+    <navigator hover-class="none" url="/pages/mall/index" class="my-block1-item mall">
+      <image src="../../images/mall-icon.png" />
       <view >金币商城</view>
       <view class="info">暑期免费道具等你拿</view>
       <view class="right-arrow"></view>
-    </view>
-    <view class="my-block1-item rank">
-      <image src="../../images/icon-money.png" />
+    </navigator>
+    <navigator hover-class="none" url="/pages/records/index" class="my-block1-item rank">
+      <image src="../../images/hit-icon.png" />
       <view>打榜记录</view>
-      <view class="info">3.2元</view>
+      <view class="info">
+        <image mode="widthFix" src="../../images/packet-icon.png" />
+        <text>3.2元</text>
+      </view>
       <view class="right-arrow"></view>
-    </view>
-    <view class="my-block1-item recent">
-      <image src="../../images/coins-icon.png" />
+    </navigator>
+    <navigator wx:if="{{games.length>0}}" hover-class="none" url="/pages/play-history/index" class="my-block1-item recent">
+      <image src="../../images/often-play-icon.png" />
       <view>最近常玩</view>
       <view class="info">
         <image wx:for="{{games}}" wx:for-index="idx" wx:key="item.gameId" wx:if="{{idx<4}}" src="{{item.logo}}"></image>
       </view>
       <view class="right-arrow"></view>
-    </view>
+    </navigator>
   </view>
 
   <!--view class="games">

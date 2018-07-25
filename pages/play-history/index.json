@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "最近常玩",
+  "usingComponents": {
+    "xcx-navigator": "../../components/xcx-navigator/index"
+  }
+}

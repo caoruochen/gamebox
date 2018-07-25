@@ -49,7 +49,30 @@
     </navigator>
   </view> -->
 
-  <view class="games">
+  <view class="my-block1">
+    <view class="my-block1-item mall">
+      <image src="../../images/coins-icon.png" />
+      <view >金币商城</view>
+      <view class="info">暑期免费道具等你拿</view>
+      <view class="right-arrow"></view>
+    </view>
+    <view class="my-block1-item rank">
+      <image src="../../images/icon-money.png" />
+      <view>打榜记录</view>
+      <view class="info">3.2元</view>
+      <view class="right-arrow"></view>
+    </view>
+    <view class="my-block1-item recent">
+      <image src="../../images/coins-icon.png" />
+      <view>最近常玩</view>
+      <view class="info">
+        <image wx:for="{{games}}" wx:for-index="idx" wx:key="item.gameId" wx:if="{{idx<4}}" src="{{item.logo}}"></image>
+      </view>
+      <view class="right-arrow"></view>
+    </view>
+  </view>
+
+  <!--view class="games">
     <view class="item-head">
       <view class="title">最近常玩</view>
     </view>
@@ -60,7 +83,6 @@
           <xcx-navigator class="item_content" game="{{game}}">
             <image lazy-load="{{true}}" class="game-icon" src="{{game.logo}}" style="width: {{gameItemWidth}}px; height: {{gameItemWidth}}px;"/>
             <view style="width:{{gameItemWidth}}px;" class='game-title'>{{game.name}}</view>
-            <!-- <view wx:if="{{game.playerNum}}" style="width:{{gameItemWidth}}px;" class='game-desc'>{{game.playerNum}}人在玩</view> -->
           </xcx-navigator>
         </block>
       </scroll-view>
@@ -76,7 +98,7 @@
   <navigator hover-class="none" url="/pages/records/index" class="card-box hit-record">
     <view class="title">打榜记录</view>
     <view class="right-arrow"></view>
-  </navigator>
+  </navigator-->
 
   <view class="daily-task">
     <view class="item-head">
@@ -86,11 +108,13 @@
     <view class="task-content">
       <view wx:if="{{tasks.list.length < 1}}" class="tips">暂无任务</view>
       <view wx:for="{{tasks.list}}" wx:key="{{index}}}" class="task-item">
-        <image mode="widthFix" src="{{item.icon ? item.icon : '../../images/coins-icon.png'}}" class="task-icon"></image>
         <view class="right-block">
           <view class="task-info">
             <view class="task-name">{{item.name}}</view>
-            <view class="task-award">{{item.desc}}</view>
+            <view class="task-award">
+              <image src="{{item.icon ? item.icon : '../../images/coins-icon.png'}}"></image>
+              <view>{{item.desc}}</view>
+            </view>
           </view>
           <view class="task-status">
             <view class="task-process {{item.done==item.times ? 'task-process_done' : ''}}" style="width: {{item.process ? item.process : 0}}%;"></view>

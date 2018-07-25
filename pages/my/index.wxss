@@ -152,67 +152,99 @@ image{
   margin-top: 10rpx;
 }
 
-/*.banners{
-  display: flex;
-  padding: 44rpx 46rpx 36rpx;
+.right-arrow {
+  display :inline-block;
+  position: relative;
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.right-arrow::after {
+  display: inline-block;
+  content: " ";
+  height: 18rpx;
+  width: 18rpx;
+  border-width: 4rpx 4rpx 0 0;
+  border-color: #a1a1a1;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  right: 6;
+  margin-top: -9rpx;
+}
+
+.my-block1 {
+  background: #fff;
   margin-bottom: 20rpx;
-  background-color: #fff;
+  box-shadow: 0px 2px 15px #ededed;
 }
-.banners > navigator{
+
+.my-block1-item {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 30rpx 30rpx;
+  border-bottom: 1rpx solid #f4f4f6;
+  color: #484848;
+}
+
+.my-block1-item image:nth-child(1) {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+
+.my-block1-item .info {
   flex: 1;
-  padding-left: 30rpx;
-  padding-right: 40rpx;
-  border-radius: 22rpx;
-  color: #fff;
+  text-align: right;
+  color: #a1a1a1;
+  font-size: 13px;
+  margin-right: 15rpx;
 }
-.banners .credits{
+
+.my-block1-item.recent {
+  padding: 20rpx 30rpx;
+}
+
+.my-block1-item.recent .info {
   display: flex;
-  justify-content: space-between;
-  background-color: #f53c66;
+  justify-content: flex-end;
+  padding-right: 30rpx;
 }
-.banners .welfare{
-  display: flex;
-  justify-content: space-between;
-  margin-left: 24rpx;
-  background-color: #ffcc00;
-}
-.banners > navigator .title{
-  font-size: 32rpx;
-  padding: 36rpx 0 20rpx 0;
-}
-.banners > navigator .detail{
-  font-size: 28rpx;
-  padding-bottom: 20rpx;
-}
-.banners .right-block{
+
+.my-block1-item.recent .info image {
   width: 60rpx;
-  padding-top: 60rpx;
-}*/
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: -30rpx;
+  border: 2px solid #fff;
+}
 
 .item-head{
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15rpx 0;
-  border-bottom: 1rpx solid #eee;
-  margin: 0 30rpx 0 16rpx;
+  border-bottom: 1rpx solid #f4f4f6;
 }
+
 .item-head .title{
   position: relative;
-  padding-left: 10rpx;
+  padding-left: 30rpx;
   font-size: 14px;
-  color:#353535;
+  color:#686868;
 }
-/*.item-head .title:before{
+.item-head .title:before{
   content: "";
   position: absolute;
-  top: 8%;
+  top: 10%;
   left: 0;
-  width: 4px;
-  height: 84%;
+  width: 20rpx;
+  height: 80%;
   transform: translateX(-50%);
-  background-color: #f3b244;
-}*/
+  background-color: #feb22b;
+}
 
 
 .card-box{
@@ -234,31 +266,6 @@ image{
   font-size: 16px;
   font-weight: bold;
 }
-.card-box .right-arrow{
-  width: 60rpx;
-}
-
-.card-box .right-arrow {
-  display :inline-block;
-  position: relative;
-  width: 36rpx;
-  height: 36rpx;
-}
-
-.card-box .right-arrow::after {
-  display: inline-block;
-  content: " ";
-  height: 18rpx;
-  width: 18rpx;
-  border-width: 4rpx 4rpx 0 0;
-  border-color: #ccc;
-  border-style: solid;
-  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-  position: absolute;
-  top: 50%;
-  right: 6;
-  margin-top: -9rpx;
-}
 
 .daily-task{
   margin-bottom: 20rpx;
@@ -268,19 +275,15 @@ image{
 .task-item{
   display: flex;
   align-items: center;
-  padding-left: 40rpx;
+  padding: 0 30rpx 0 60rpx;
+  border-bottom: 1rpx solid #eee;
 }
-.task-item .task-icon{
-  width: 50rpx;
-}
+
 .task-item .right-block{
   display: flex;
   flex: 1;
   align-items: center;
-  padding: 15rpx 0;
-  border-bottom: 1rpx solid #eee;
-  margin-left: 30rpx;
-  margin-right: 30rpx;
+  padding: 20rpx 0;
 }
 .task-item:last-child .right-block{
   border-bottom: none;
@@ -297,17 +300,28 @@ image{
   color: #111;
   margin-bottom: 4rpx;
 }
-.daily-task .task-item .task-award{
+.daily-task .task-item .task-award {
   font-size: 11px;
   color: #666;
+  display: flex;
+  align-items: center;
+  margin-top: 8rpx;
+}
+
+.daily-task .task-item .task-award image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
 }
 
 .daily-task .task-item .task-status {
   position: relative;
   background-color: #f6c749;
   border-radius: 30rpx;
-  width: 180rpx;
+  width: 190rpx;
   height: 60rpx;
+  line-height: 60rpx;
+  font-size: 14px;
 }
 
 .daily-task .task-item .task-process {
@@ -320,7 +334,7 @@ image{
   border-bottom-left-radius: 30rpx;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  background-color: #ccc;
+  background-color: #e5e5e5;
 }
 
 .daily-task .task-item .task-process_done {
@@ -334,7 +348,6 @@ image{
   top: 0;
   width: 100%;
   height: 100%;
-  font-size: 12px;
   text-align: center;
   display: flex;
   align-items: center;

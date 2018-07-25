@@ -1,0 +1,10 @@
+<view class="login" wx:if="{{!hasLogin}}">
+  <view class="login-box">
+    <view class="login-body">
+      <view>Hi，你好！</view>
+      <view class="login-btn">
+        <button open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">{{loginText}}</button>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,45 @@
+.login {
+  position: absolute;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+}
+
+.login-box {
+  position:absolute;
+  width: 100%;
+  top: 50%;
+  margin-top: -100rpx;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+
+.login-body {
+  width: 460rpx;  
+  background: #fff;
+  text-align: center;
+  padding-top: 50rpx;
+  border-radius: 30rpx;
+  color: #7d7c82;
+}
+
+.login-btn {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 30rpx;
+  padding: 0 50rpx 40rpx 50rpx;
+}
+
+.login-body button {
+  color: #fff;
+  background: #d90a16;
+  width: 100%;
+  font-size: 16px;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+

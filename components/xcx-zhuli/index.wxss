@@ -48,6 +48,11 @@
 }
 .help-rule{
 	font-size:22rpx;
+  text-align:left;
+  padding-left:30rpx;
+  color:#666;
+  margin-top:10rpx;
+  line-height:1.6;
 }
 .help-content{
 	width: 100%;

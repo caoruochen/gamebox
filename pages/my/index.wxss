@@ -238,10 +238,18 @@ image{
   padding: 20rpx 30rpx;
 }
 
+.my-block1-item.empty {
+  padding: 30rpx 30rpx !important;
+}
+
 .my-block1-item.recent .info {
   display: flex;
   justify-content: flex-end;
   padding-right: 30rpx;
+}
+
+.my-block1-item.empty .info {
+  padding-right: 0 !important;
 }
 
 .my-block1-item.recent .info image {

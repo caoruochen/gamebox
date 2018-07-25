@@ -42,7 +42,7 @@
           </view>
         </view>
         <view>
-            <view class="mybtn zl-btn" bindtap="onHelp">助力</view>
+            <view class="mybtn zl-btn" data-aid="{{aid}}" bindtap="onHelp">助力</view>
             <view class="mybtn"  bindtap="changeStatus">
               <xcx-navigator game="{{intoGame}}">进入游戏</xcx-navigator>
             </view>
@@ -69,3 +69,5 @@
     </view>
   </view>
 </view>
+
+<xcx-login bindonlogin="onLogin" />

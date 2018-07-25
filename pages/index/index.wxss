@@ -40,14 +40,15 @@
 }
 
 .top-bar-info .task {
-  padding: 0 7px;
+  padding: 0 20rpx;
+  height: 48rpx;
+  line-height: 48rpx;
   border-radius: 5px;
   color: #fff;
   background: #f3b244;
   margin: 0 0 4rpx 30rpx;
   box-sizing: border-box;
-  height: 22px;
-  line-height: 22px;
+  font-size: 12px;
 }
 
 .top-bar .wel {

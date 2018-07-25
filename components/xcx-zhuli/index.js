@@ -1,6 +1,8 @@
 var util = require("../../util/util");
 var http = require("../../util/http");
 
+var app = getApp();
+
 Component({
 	externalClasses: [],
 	properties: {
@@ -12,18 +14,17 @@ Component({
 		show: {
 			type: Boolean,
 			value: true
-		}
+		},
+    maxNum: {
+      type: Number,
+      value: 5
+    }
 	},
 	data: {
 		helpNum: 0,
 	},
 
 	attached: function() {
-		var len0 = this.data.helpList.length
-		this.setData({
-			helpNum: len0
-		})
-
 		this.changeHelpList();
 	},
 
@@ -32,15 +33,24 @@ Component({
 			// console.log("changeHelpNum")
 			var len = this.data.helpList.length
 			//还差助力人数
-			if (len < 5) {
-				var list = this.data.helpList.concat()
-				for (var i = 0; i < 5 - len; i++) {
+		  var list = this.data.helpList;
+			if (len < this.data.maxNum) {
+				for (var i = len; i < this.data.maxNum; i++) {
 					list.push(1)
 				}
 				this.setData({
 					helpList: list
 				})
 			}
+      var helpNum = list.length;
+      for (var i=0; i<list.length; i++) {
+        if (list[i] === 1) {
+          helpNum--;
+        }
+      }
+      this.setData({
+        helpNum: helpNum
+      });
 		},
 
 		hideHelp: function() {

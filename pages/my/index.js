@@ -79,6 +79,7 @@ QKPage({
       if (data.games) {
         data0.games = data.games;
       }
+      data0.userInfo = app.globalData.userInfo ? app.globalData.userInfo : null;
       if (Object.keys(data0).length>0) {
         me.setData(data0)
       }

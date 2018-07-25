@@ -8,7 +8,7 @@ QKPage({
 		banner: '../../images/default-banner.png',
 		playerNum: '0',
 		rules: '',
-		uid: 0,
+		uid: app.globalData.userInfo ? app.globalData.userInfo.uid : 0,
 		rank: 0,
 		score: 0,
 		ranks: [],
@@ -80,6 +80,10 @@ QKPage({
 			});
 		}
 	},
+
+  onLogin: function () {
+    // TODO: 登陆后拉取用户数据
+  },
 	loadRankData: function(refresh, aid, fuid) {
 		wx.showLoading({
 			title: '数据加载中'
@@ -153,7 +157,8 @@ QKPage({
 		console.log(e.detail.text)
 	},
 
-	onHelp: function() {
+	onHelp: function(e) {
+    app.globalData.zhuliAid = e.currentTarget.dataset.aid;
 		this.setData({
 			helpShow: true
 		})
@@ -203,7 +208,7 @@ QKPage({
 		})
 	},
 	onShow: function() {
-		console.log('onShow')
+    app.globalData.zhuliAid = null;
 		if (this.data.status) {
 			//延迟 结果查询，显示结果
 			setTimeout(this.getMyRank, 1000)
@@ -215,12 +220,9 @@ QKPage({
 
 	//自定义转发字段
 	onShareAppMessage: function(res) {
-		// if (res.from === 'button') {
-		// 	// 来自页面内转发按钮
-		// }
 		return {
 			title: '我在7k7k游戏打榜！快来助我一把啊！',
-			path: '/pages/rank/index?aid=' + this.data.aid + '&fuid=' + this.data.uid + '&type=1'
+      path: '/pages/rank/index?aid=' + app.globalData.zhuliAid + '&fuid=' + app.globalData.userInfo.uid + '&type=1'
 		}
 	},
 

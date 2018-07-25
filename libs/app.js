@@ -67,7 +67,7 @@ var QKApp = function (options) {
   options.$saveLoginUser = function (user, detail, cb) {
     var userInfo = this.globalData.userInfo;
     if (userInfo) {
-      cb();
+      cb(true);
       return;
     }
 
@@ -196,6 +196,10 @@ var QKApp = function (options) {
             wx.setStorageSync('loginUser', loginUser);
             me.globalData.loginUser = loginUser;
             globalLoginUser = loginUser;
+            if (data.name) {
+              wx.setStorageSync('userInfo', data);
+              me.globalData.userInfo = data;
+            }
             if (data.name && data.avatar) {
               var userInfo = {
                 name: data.name,

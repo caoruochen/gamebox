@@ -63,15 +63,16 @@
       <view>打榜记录</view>
       <view class="info">
         <image mode="widthFix" src="../../images/packet-icon.png" />
-        <text>3.2元</text>
+        <text>{{userInfo && userInfo.money ? userInfo.money : '0'}}元</text>
       </view>
       <view class="right-arrow"></view>
     </navigator>
-    <view bindtap="palyHistory" class="my-block1-item recent">
+    <view bindtap="palyHistory" class="my-block1-item recent {{games.length<1 ? 'empty' : null}}">
       <image src="../../images/often-play-icon.png" />
       <view>最近常玩</view>
       <view class="info">
         <image wx:for="{{games}}" wx:for-index="idx" wx:key="item.gameId" wx:if="{{idx<4}}" src="{{item.logo}}"></image>
+        <view wx:if="{{games.length<1}}">去玩个游戏吧</view>
       </view>
       <view class="right-arrow"></view>
     </view>

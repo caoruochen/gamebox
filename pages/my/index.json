@@ -3,6 +3,7 @@
   "navigationBarBackgroundColor": "#f6c649",
   "navigationBarTextStyle": "white",
   "usingComponents": {
+    "xcx-login": "../../components/xcx-login/index",
     "xcx-navigator": "../../components/xcx-navigator/index"
   }
 }

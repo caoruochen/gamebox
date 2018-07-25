@@ -15,10 +15,11 @@ QKPage({
   data: {
     bannerImgWidth: bannerImgWidth,
     bannerImgHeight: bannerImgHeight,
-    noticeWidth: app.globalData.wwidth/2,
+    noticeWidth: app.globalData.wwidth/2.7,
     activityNotice: "",
     activitys: [],
     helpShow: false,
+    money: app.globalData.userInfo && app.globalData.userInfo.money ? app.globalData.userInfo.money : 0
   },
 
   onLoad: function (options) {
@@ -26,9 +27,14 @@ QKPage({
   },
 
   onShow: function() {
+    app.globalData.zhuliAid = null;
     if(activityId != -1) {
       this.refreshActivityInfo()
     } 
+  },
+
+  onLogin: function () {
+    // TODO 登陆后拉取用户数据
   },
 
   /**
@@ -80,8 +86,15 @@ QKPage({
     }, function () {
     });
   },
+  onShareAppMessage: function(res) {
+    return {
+      title: '我在7k7k游戏打榜！快来助我一把啊！',
+      path: '/pages/rank/index?aid=' + app.globalData.zhuliAid + '&fuid=' + app.globalData.userInfo.uid + '&type=1'
+    }
+  },
 
   onHelp: function(e) {
+    app.globalData.zhuliAid = e.currentTarget.dataset.aid; 
     this.setData({
       helpShow: true
     })

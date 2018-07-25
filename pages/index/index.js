@@ -25,7 +25,7 @@ QKPage({
     categorys: [],
     bannerImgWidth: bannerImgWidth,
     wwidth: app.globalData.wwidth,
-    gameItemWidth: (app.globalData.wwidth-150*ratio) / 4.5,// 60 padding + 3*30 margin
+    gameItemWidth: (app.globalData.wwidth - 150 * ratio) / 4.5, // 60 padding + 3*30 margin
     verifying: false,
     tabs: [],
     tabPageData: {},
@@ -33,42 +33,42 @@ QKPage({
     tabW: app.globalData.wwidth / 4,
     contentHeight: 7 * gameItemHeight * ratio, // 默认显示7条
     itemTextWidth: app.globalData.wwidth - (50 + 60 + 60 * ratio), // 图片宽度 + 按钮 + 左右padding
-    
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var cacheGames = util.getSavedGames();
-    if(Object.keys(cacheGames).length > 0){
+    if (Object.keys(cacheGames).length > 0) {
       this.setData(cacheGames);
     }
     this.loadGameData();
     this.loadCategoryData(0, "hots");
   },
-  onShow: function (options) {
+  onShow: function(options) {
     this.updateProfile();
   },
 
   clickMore: function(e) {
     var index = e.currentTarget.dataset.id
-    
+
     if (index == '-1') {
       index = 0 // 暂时点击游戏一览，跳转到第一项
-    } 
+    }
     var type = this.data.categorys[index].type
     wx.navigateTo({
-      url: '/pages/more-game/more-game?type='+type +'&position='+index,
+      url: '/pages/more-game/more-game?type=' + type + '&position=' + index,
     })
   },
 
-  loadGameData: function () {
+  loadGameData: function() {
     wx.showLoading({
       title: '数据加载中'
     });
     var me = this;
-    http.get('/gamebox/recommends', function (data) {
+    http.get('/gamebox/recommends', function(data) {
       wx.hideLoading();
       var obj = {
         categorys: data.gamelist,
@@ -78,18 +78,18 @@ QKPage({
       };
       me.setData(obj);
       util.setSavedGames(obj);
-    }, function (error, msg) {
+    }, function(error, msg) {
       wx.hideLoading();
-      setTimeout(function () {
+      setTimeout(function() {
         wx.showToast({
           title: msg || '数据加载失败',
           icon: 'none'
         });
       }, 100)
     });
-  }, 
+  },
 
-  tabClick: function (e) {
+  tabClick: function(e) {
     var tabIndex = e.currentTarget.id
     var tabType = e.currentTarget.dataset.type;
     this.setData({
@@ -98,7 +98,7 @@ QKPage({
     });
   },
 
-  bindChange: function (e) {
+  bindChange: function(e) {
     var current = e.detail.current;
     this.setData({
       activeIndex: current,
@@ -109,28 +109,30 @@ QKPage({
   },
 
   /**
- * 加载分类数据
- */
-  loadCategoryData: function (key, param) {
+   * 加载分类数据
+   */
+  loadCategoryData: function(key, param) {
     if (this.data.tabPageData[key] != undefined) {
-      console.log("array size="+this.data.tabPageData[key].length)
+      console.log("array size=" + this.data.tabPageData[key].length)
       return
     }
     wx.showLoading({
       title: '数据加载中'
     });
     var me = this;
-    http.get('/gamebox/list', { type: param }, function (data) {
+    http.get('/gamebox/list', {
+      type: param
+    }, function(data) {
       var tabPageData = me.data.tabPageData;
       tabPageData[key] = data.games;
-    
+
       // 设置tab数据
       me.setData({
         tabs: data.categorys,
         tabPageData: tabPageData,
       })
       wx.hideLoading();
-    }, function (error, msg) {
+    }, function(error, msg) {
       wx.hideLoading();
       wx.showToast({
         title: msg || '数据加载失败',
@@ -138,7 +140,7 @@ QKPage({
       });
     });
   },
-  onGotUserInfo: function (e) {
+  onGotUserInfo: function(e) {
     if (!e.detail || typeof e.detail.userInfo === 'undefined') {
       wx.showToast({
         title: '登陆需要授权',
@@ -147,15 +149,16 @@ QKPage({
       return;
     }
     var me = this;
-    app.$saveLoginUser(e.detail.userInfo, e.detail, function (status) {
+    app.$saveLoginUser(e.detail.userInfo, e.detail, function(status) {
       if (!status) {
         return;
       };
       me.updateProfile();
     });
   },
-  updateProfile: function () {
-    var name = '', coins = 0;
+  updateProfile: function() {
+    var name = '',
+      coins = 0;
     if (app.globalData.userInfo) {
       name = app.globalData.userInfo.name;
       if (app.globalData.userInfo.coins) {

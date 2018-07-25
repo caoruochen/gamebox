@@ -33,7 +33,7 @@ image{
 }
 .base-info{
   display: flex;
-  color: #353535;
+  color: #4f4f4f;
 }
 .base-info > view{
   font-size: 40rpx;
@@ -74,11 +74,6 @@ image{
   display: flex;
   align-items: center;
   margin-top: 18rpx;
-}
-.user-info .bottom-block .more{
-  margin-left: 25px;
-  font-size: 28rpx;
-  color: red;
 }
 .user-info .my-fund{
   display: flex;
@@ -186,7 +181,9 @@ image{
   align-items: center;
   padding: 30rpx 30rpx;
   border-bottom: 1rpx solid #f4f4f6;
-  color: #484848;
+  color: #4f4f4f;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .my-block1-item image:nth-child(1) {
@@ -200,7 +197,12 @@ image{
   text-align: right;
   color: #a1a1a1;
   font-size: 13px;
+  font-weight: normal;
   margin-right: 15rpx;
+}
+
+.my-block1-item.rank .info {
+  color: #fa4b48;
 }
 
 .my-block1-item.recent {
@@ -297,7 +299,7 @@ image{
 .daily-task .task-item .task-name{
   font-size: 13px;
   font-weight: bold;
-  color: #111;
+  color: #4f4f4f;
   margin-bottom: 4rpx;
 }
 .daily-task .task-item .task-award {

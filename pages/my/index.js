@@ -41,7 +41,6 @@ QKPage({
     this.getProfile();
   },
   onShow: function () {
-    console.log(util.getPlayHistory())
     this.updateProfile();
     this.setData({
       games: util.getPlayHistory()
@@ -176,6 +175,35 @@ QKPage({
       });
     });
       
+  },
+  palyHistory: function(){
+    if(this.data.games.length < 1){
+      wx.showToast({
+        title: '你还没有玩游戏, 马上去玩吧',
+        icon: 'none',
+        success: function(){
+          wx.switchTab({
+            url: '/pages/index/index',
+            fail: function () {
+              wx.showToast({
+                title: '操作失败',
+                icon: 'none'
+              });
+            }
+          });
+        }
+      });
+    }else{
+      wx.navigateTo({
+        url: '/pages/play-history/index',
+        fail: function () {
+          wx.showToast({
+            title: '操作失败',
+            icon: 'none'
+          });
+        }
+      });
+    }
   },
   onGotUserInfo: function (e) {
     if (!e.detail || typeof e.detail.userInfo === 'undefined') {

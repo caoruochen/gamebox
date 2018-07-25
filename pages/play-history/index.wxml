@@ -1,3 +1,14 @@
+<swiper indicator-dots="{{false}}" 
+    autoplay="{{true}}" interval="{{5000}}" duration="{{1000}}" style="height:{{swiperHeight}}px !important;">
+  <block wx:for="{{banners}}" wx:key="*this">
+    <swiper-item>
+      <xcx-navigator game="{{item}}">
+        <image lazy-load="{{true}}" mode="aspectFill" src="{{item.pic}}" class="slide-image" style="height:{{swiperHeight}}px; width:{{bannerImgWidth}}px"></image>
+      </xcx-navigator>
+    </swiper-item>
+  </block>
+</swiper>
+
 <view class="gamebox-games">
   <block wx:for="{{games}}" wx:key="*this">
     <xcx-navigator nav-class="gamebox-item" game="{{item}}">

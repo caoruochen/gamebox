@@ -1,4 +1,14 @@
+swiper {
+  width: 100%;
+}
+
+.slide-image {
+  border-radius: 30rpx;
+  margin: 0 30rpx;
+}
+
 .gamebox-games {
+  margin-top: 20rpx;
   box-sizing: border-box;
 }
 

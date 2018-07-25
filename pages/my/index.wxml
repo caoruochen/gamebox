@@ -67,14 +67,14 @@
       </view>
       <view class="right-arrow"></view>
     </navigator>
-    <navigator wx:if="{{games.length>0}}" hover-class="none" url="/pages/play-history/index" class="my-block1-item recent">
+    <view bindtap="palyHistory" class="my-block1-item recent">
       <image src="../../images/often-play-icon.png" />
       <view>最近常玩</view>
       <view class="info">
         <image wx:for="{{games}}" wx:for-index="idx" wx:key="item.gameId" wx:if="{{idx<4}}" src="{{item.logo}}"></image>
       </view>
       <view class="right-arrow"></view>
-    </navigator>
+    </view>
   </view>
 
   <!--view class="games">

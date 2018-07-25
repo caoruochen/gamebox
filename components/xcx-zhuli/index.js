@@ -6,7 +6,8 @@ Component({
 	properties: {
 		helpList: {
 			type: Array,
-			value: null
+			value: null,
+			observer: 'changeHelpList'
 		},
 		show: {
 			type: Boolean,
@@ -18,15 +19,18 @@ Component({
 	},
 
 	attached: function() {
-		this.changeHelpNum();
+		var len0 = this.data.helpList.length
+		this.setData({
+			helpNum: len0
+		})
+
+		this.changeHelpList();
 	},
 
 	methods: {
-		changeHelpNum: function() {
+		changeHelpList: function() {
+			// console.log("changeHelpNum")
 			var len = this.data.helpList.length
-			this.setData({
-				helpNum: len
-			})
 			//还差助力人数
 			if (len < 5) {
 				var list = this.data.helpList.concat()

@@ -7,8 +7,8 @@
           <text class="peopleNum">{{playerNum}}  人参加</text>
           <view class="rule-btn" bindtap="clickRule">规则</view>
         </view>
-        <view class="mybtn" bindtap="changeStatus">
-          <xcx-navigator game="{{intoGame}}">进入游戏</xcx-navigator>
+        <view class="mybtn" bindtap="changeStatus" style="background-color:rgba(0,0,0,0.5);color:#fff;width:180rpx">
+          <xcx-navigator game="{{intoGame}}">进入游戏 ></xcx-navigator>
         </view>
 			</view>
 		</view>
@@ -63,7 +63,9 @@
     <view  class="gotohelpBox">
       <image class="close" mode="aspectFill" src="../../images/close.png" bind:tap="hideGotohelp"/>
       <view>好友 <text style="font-weight: 700;font-size: 38rpx">曹若晨</text> 邀请你帮助Ta打榜得分</view>
-      <view class="gotohelp-btn">去助力</view>
+      <view class="gotohelp-btn" bind:tap="hideGotohelp">
+        <xcx-navigator game="{{intoGame}}">去助力</xcx-navigator>
+      </view>
     </view>
   </view>
 </view>

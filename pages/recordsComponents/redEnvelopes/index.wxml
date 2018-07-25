@@ -2,19 +2,21 @@
     <view wx:for="{{dataList}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.rid}}">
         <!-- 自定义组件的 {{celltype}} -->
         <view class='cell'>
-            <view>
-                <image class='icon' src='{{item.game.logo}}'></image>
-            </view>
-            <view class='content'>
+            <view class='cellContent'>
                 <view>
-                    {{item.game.name}}: {{item.activity.name}}
+                    <image class='icon' src='{{item.game.logo}}'></image>
                 </view>
-                <view>
-                    {{item.ctime}}
+                <view class='content'>
+                    <view class='content-name'>
+                        {{item.game.name}}: {{item.activity.name}}
+                    </view>
+                    <view class='content-ctime'>
+                        {{item.ctime}}
+                    </view>
                 </view>
-            </view>
-            <view class='sum'>
-                {{item.amount}}
+                <view class='sum'>
+                    {{item.amount}}
+                </view>
             </view>
         </view>
     </view>

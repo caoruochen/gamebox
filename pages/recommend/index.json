@@ -2,7 +2,7 @@
   "navigationBarTitleText": "7K7K游戏精选",
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark",
-  "backgroundColor": "#eee",
+  "backgroundColor": "#f7f7f7",
   "onReachBottomDistance": 20,
   "usingComponents": {
     "xcx-navigator": "../../components/xcx-navigator/index"

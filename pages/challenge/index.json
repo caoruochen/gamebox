@@ -1,6 +1,6 @@
 {
 	"navigationBarTitleText": "挑战",
-	"backgroundColor": "#eee",
+	"backgroundColor": "#f7f7f7",
 	"enablePullDownRefresh": true,
 	"backgroundTextStyle": "dark",
 	"usingComponents": {

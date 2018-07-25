@@ -6,10 +6,8 @@
     <button wx:else open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">点击登陆</button>
     <view class="top-bar-info">
       <image src="../../images/coins-icon.png" />
-      <text>{{coins}}</text>
-      <!-- <image class="money" wx:if="{{showMoney}}" src="../../images/icon-money.png" />
-      <text wx:if="{{showMoney}}">{{money}}</text> -->
-      <text>签到</text>
+      <view>{{coins}}</view>
+      <view class="task">签到</view>
     </view>
   </view>
 

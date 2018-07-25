@@ -11,7 +11,7 @@
         </view>
         <view class="bottom-block">
           <view class="my-fund coins">
-            <image mode="widthFix" src="../../images/coins-icon.png" class="coins-icon"></image>
+            <image src="../../images/coins-icon.png" class="coins-icon" />
             <text>{{userInfo ? userInfo.coins : '0'}}</text>
           </view>
           <!-- <view class="my-fund packet">

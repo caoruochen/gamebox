@@ -45,11 +45,19 @@
         <view class="match-info-layout match-info-text" bindtap="clickJumpPage" data-aid = "{{item.aid}}">
           <view class="match-info-top-layout ">
             <view>{{item.name}}</view>
-            <view class="match-status-text">{{item.status_text}}</view>
+            <view class="{{item.status != 1 ? 'match-end-text' : 'match-status-text'}}">{{item.status_text}}</view>
           </view>
-
-          <view>未参赛</view>
-          <view>{{score}}</view>
+          <block wx:if="{{item.score==-1}}">
+            <view>未参赛</view>
+            <view style="display: flex; flex-direction: row;">
+              <text class="dashed-line" style="margin-right: 5px;"/>
+              <text class="dashed-line"/>
+            </view>
+          </block>
+          <block wx:else>
+            <view>我的分数</view>
+            <view style="font-size: 32px; color: #FFFF00; font-weight: 800;">{{item.score}}</view>
+          </block>
           <view>已有{{item.playerNum}}人参赛</view>
         </view>
 
@@ -69,7 +77,7 @@
 
         <!-- 活动简介 -->
         <view class="activity-desc-layout">
-          <view class="{{activitys[index].isFold ? 'activity-desc-collapse-text' : 'activity-desc-text'}}">{{item.desc}}</view>
+          <view class="{{activitys[index].isFold ? 'activity-desc-collapse-text' : 'activity-desc-text'}}">{{item.descs}}</view>
           <view class="fold" bindtap="foldToggle" data-id="{{index}}">
              <image class="{{activitys[index].isFold ? 'arrow-down' : 'arrow-up'}}" src="../../images/arrow.png"/>
           </view>

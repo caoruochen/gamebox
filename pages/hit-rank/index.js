@@ -19,7 +19,6 @@ QKPage({
     activityNotice: "",
     activitys: [],
     helpShow: false,
-    score: 0,
   },
 
   onLoad: function (options) {
@@ -69,10 +68,15 @@ QKPage({
   refreshActivityInfo: function() {
     var that = this;
     http.get('/gamebox/activity/rankinfo', {aid: activityId},function (data) {
+       for (let i = 0; i < that.data.activitys.length; i++) {
+         if(data.aid == that.data.activitys[i].aid) {
+           that.data.activitys[i].score = data.score
+         }
+       }
       
-      that.setData({
-        score: data.info[0].score
-      })
+       that.setData({
+         activitys: that.data.activitys
+       })
     }, function () {
     });
   },

@@ -4,7 +4,7 @@ page {
 .container {
   display: flex;
   flex-direction: column;
-  background-color: #fcfcfc;
+  background-color: #f7f7f7;
   box-sizing: border-box;
 }
 
@@ -166,6 +166,16 @@ page {
   padding: 1px 3px;
 }
 
+.match-end-text {
+  margin-left: 10px; 
+  font-size: 11px; 
+  color: gray;
+  background: #eee;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 1px 3px;
+}
+
 .match-info-top-layout {
   display: flex;
   flex-direction: row;
@@ -181,6 +191,12 @@ page {
   left: 20px;
   top: 160px;
   z-index: 1;
+}
+
+.dashed-line {
+  background: yellow;
+  width: 13px;
+  height: 5px;
 }
 
 .avatar-image {

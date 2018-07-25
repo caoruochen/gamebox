@@ -1,9 +1,9 @@
 Component({
     externalClasses:["records-class"],
     properties: {
-        celltype: {
-            type:String,
-            value: "红包",
+        dataList: {
+            type:Array,
+            value: [],
             observer: function(newValue,oldValue,changedPath) {
                 console.log("newValue -->" + newValue)
                 console.log("oldValue -->" + oldValue)

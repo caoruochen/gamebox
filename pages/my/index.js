@@ -36,11 +36,11 @@ QKPage({
     },
     welfares: welfares
   },
-  // onLoad: function () {
-  //   this.getProfile();
-  // },
-  onShow: function () {
+  onLoad: function () {
     this.getProfile();
+  },
+  onShow: function () {
+    console.log(util.getPlayHistory())
     this.updateProfile();
     this.setData({
       games: util.getPlayHistory()

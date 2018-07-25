@@ -223,102 +223,50 @@ image{
   border: 2px solid #fff;
 }
 
-.card-box{
-  display: flex;
-  justify-content: space-between;
-  padding: 34rpx 40rpx 34rpx 32rpx;
-  border-bottom: 1rpx solid #e4e4e4;
-  background-color: #fff;
-  color: #111;
-}
-.card-box:last-of-type{
-  border-bottom: none;
-  margin-bottom: 20rpx;
-}
-.card-box .left-block, .card-box .right-block{
-  display: flex;
-  align-items: center;
-}
-.card-box .left-block image{
-  width: 46rpx;
-  box-sizing: border-box;
-}
-.card-box .left-block .title{
-  padding-left: 16rpx;
-  font-size: 28rpx;
-  color: #333;
-}
-.card-box .right-block .name{
-  font-size: 24rpx;
-  color: #999;
-}
-.card-box .right-block .packet-icon{
-  width: 50rpx;
-}
-.card-box .right-block .right-arrow{
-  width: 12rpx;
-  padding-left: 16rpx;
-  padding-top: 4rpx;
-}
-.hit-record .left-block image{
-  padding: 0 4rpx;
-}
-.hit-record .right-block .name{
-  padding-left: 5rpx;
-  font-size: 26rpx;
-  color: #eb554e;
-}
-.often-play .game-content{
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.often-play .right-block .game-icon{
-  position: absolute;
-  padding: 4rpx;
-  border-radius: 50%;
-  background-color: #fff;
-}
-.often-play .right-block .game-icon:nth-last-of-type(4){
-  right: 90rpx;
-}
-.often-play .right-block .game-icon:nth-last-of-type(3){
-  right: 60rpx;
-}
-.often-play .right-block .game-icon:nth-last-of-type(2){
-  right: 30rpx;
-}
-.often-play .right-block .game-icon:nth-last-of-type(1){
-  right: 0;
-}
-.often-play .right-block .game-icon image{
-  display: block;
-  width: 54rpx;
-  border-radius: 50%;
-}
-
 .item-head{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15rpx 30rpx 15rpx 0;
-  border-bottom: 1rpx solid #e4e4e4;
+  padding: 15rpx 0;
+  border-bottom: 1rpx solid #f4f4f6;
 }
 
 .item-head .title{
   position: relative;
   padding-left: 30rpx;
-  font-size: 30rpx;
-  color: #666;
+  font-size: 14px;
+  color:#686868;
 }
 .item-head .title:before{
   content: "";
   position: absolute;
   top: 10%;
   left: 0;
-  width: 10rpx;
-  height: 84%;
-  background-color: #f3b244;
+  width: 20rpx;
+  height: 80%;
+  transform: translateX(-50%);
+  background-color: #feb22b;
+}
+
+
+.card-box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30rpx;
+  padding-right: 40rpx;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  color: #353535;
+  box-shadow: 0px 2px 15px #ededed;
+}
+.welfare{
+  margin-bottom: 0;
+}
+.card-box .title{
+  padding: 24rpx 0;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .daily-task{
@@ -329,15 +277,17 @@ image{
 .task-item{
   display: flex;
   align-items: center;
-  padding: 15rpx 20rpx 15rpx 40rpx;
-  border-bottom: 1rpx solid #e4e4e4;
+  padding: 0 30rpx 0 60rpx;
+  border-bottom: 1rpx solid #eee;
 }
-.task-item .task-icon{
-  display: block;
-  width: 28rpx;
-  margin-right: 8rpx;
+
+.task-item .right-block{
+  display: flex;
+  flex: 1;
+  align-items: center;
+  padding: 20rpx 0;
 }
-.task-item:last-child{
+.task-item:last-child .right-block{
   border-bottom: none;
 }
 
@@ -352,10 +302,7 @@ image{
   color: #4f4f4f;
   margin-bottom: 4rpx;
 }
-.daily-task .task-item .task-award{
-  display: flex;
-  align-items: center;
-  margin-top: 10rpx;
+.daily-task .task-item .task-award {
   font-size: 11px;
   color: #666;
   display: flex;
@@ -371,7 +318,7 @@ image{
 
 .daily-task .task-item .task-status {
   position: relative;
-  background-color: #e5e5e5;
+  background-color: #f6c749;
   border-radius: 30rpx;
   width: 190rpx;
   height: 60rpx;
@@ -410,22 +357,6 @@ image{
   color: #fff;
   background: transparent;
 }
-.daily-task .task-item .task-btn_done{
-  color: #999;
-  background: #fff;
-}
-.daily-task .task-item .task-btn_done:before{
-  content: "";
-  display: inline-block;
-  width: 10rpx;
-  height: 10rpx;
-  margin-right: 10rpx;
-  border-radius: 50%;
-  background-color: #f4b63f;
-}
-.daily-task .task-item .task-status-get{
-  background-color: #f6c344
-}
 
 .daily-task .task-item .task-btn_login {
   margin: 0 !important;
@@ -436,7 +367,7 @@ image{
   background-color: #f6c749 !important;
 }
 
-/*.games{
+.games{
   background-color: #fff;
   margin-bottom: 20rpx;
   padding-bottom: 15rpx;
@@ -487,7 +418,7 @@ image{
   height: 0;
   color: transparent;
 }
-*/
+
 .tips {
   text-align: center;
   color: #e4e4e4;

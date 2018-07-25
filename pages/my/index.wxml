@@ -14,11 +14,11 @@
             <image src="../../images/coins-icon.png" class="coins-icon" />
             <text>{{userInfo ? userInfo.coins : '0'}}</text>
           </view>
-          <!-- <view class="my-fund packet">
-            <image mode="widthFix" src="../../images/packet-icon.png" class="packet-icon"></image>
-            <text>{{'5元'}}</text>
+          <view class="my-fund packet">
+            <image src="../../images/icon-money.png" />
+            <text>{{userInfo && userInfo.money ? userInfo.money : '0'}}元</text>
           </view>
-          <view class="withdraw">提现</view> -->
+          <view class="withdraw">提现</view>
         </view>
         
       </view>
@@ -48,52 +48,31 @@
       <image mode="widthFix" src="../../images/welfare.png" class="right-block"></image>
     </navigator>
   </view> -->
-  <navigator hover-class="none" url="/pages/mall/index" class="card-box credits">
-    <view class="left-block">
-      <image mode="widthFix" src="../../images/mall-icon.png"></image>
-      <text class="title">金币商城</text>
-    </view>
-    <view class="right-block">
-      <text class="name">300金币兑换王者荣耀皮肤</text>
-      <image mode="widthFix" src="../../images/right-arrow.png" class="right-arrow"></image>
-    </view>
-  </navigator>
 
-  <navigator hover-class="none" url="/pages/records/index" class="card-box hit-record">
-    <view class="left-block">
-      <image mode="widthFix" src="../../images/hit-icon.png"></image>
-      <text class="title">打榜记录</text>
-    </view>
-    <view class="right-block">
-      <image mode="widthFix" src="../../images/packet-icon.png" class="packet-icon"></image>
-      <text class="name">3.2元</text>
-      <image mode="widthFix" src="../../images/right-arrow.png" class="right-arrow"></image>
-    </view>
-  </navigator>
-
-  <navigator wx:if="{{games.length>0}}" hover-class="none" url="/pages/mall/index" class="card-box often-play">
-    <view class="left-block">
-      <image mode="widthFix" src="../../images/oftwn-play-icon.png"></image>
-      <text class="title">最近常玩</text>
-    </view>
-    <view class="right-block">
-      <view class="game-content">
-        <view wx:for="{{games}}" wx:key="{{index}}" wx:for-item="game" wx:if="{{index < 4}}" class="game-icon">
-          <image mode="widthFix" src="{{game.logo}}"></image>
-        </view>
-      </view>
-      <image mode="widthFix" src="../../images/right-arrow.png" class="right-arrow"></image>
-    </view>
-  </navigator>
-
-  <!-- <navigator hover-class="none" url="/pages/records/index" class="card-box hit-record">
-    <view class="title">最近常玩</view>
-    <view class="arrow-box">
+  <view class="my-block1">
+    <view class="my-block1-item mall">
+      <image src="../../images/coins-icon.png" />
+      <view >金币商城</view>
+      <view class="info">暑期免费道具等你拿</view>
       <view class="right-arrow"></view>
     </view>
-  </navigator> -->
+    <view class="my-block1-item rank">
+      <image src="../../images/icon-money.png" />
+      <view>打榜记录</view>
+      <view class="info">3.2元</view>
+      <view class="right-arrow"></view>
+    </view>
+    <view class="my-block1-item recent">
+      <image src="../../images/coins-icon.png" />
+      <view>最近常玩</view>
+      <view class="info">
+        <image wx:for="{{games}}" wx:for-index="idx" wx:key="item.gameId" wx:if="{{idx<4}}" src="{{item.logo}}"></image>
+      </view>
+      <view class="right-arrow"></view>
+    </view>
+  </view>
 
-  <!-- <view class="games">
+  <!--view class="games">
     <view class="item-head">
       <view class="title">最近常玩</view>
     </view>
@@ -104,13 +83,22 @@
           <xcx-navigator class="item_content" game="{{game}}">
             <image lazy-load="{{true}}" class="game-icon" src="{{game.logo}}" style="width: {{gameItemWidth}}px; height: {{gameItemWidth}}px;"/>
             <view style="width:{{gameItemWidth}}px;" class='game-title'>{{game.name}}</view>
-            <view wx:if="{{game.playerNum}}" style="width:{{gameItemWidth}}px;" class='game-desc'>{{game.playerNum}}人在玩</view>
           </xcx-navigator>
         </block>
       </scroll-view>
     </view>
     <view wx:else class="tips">你最近还没有玩游戏哦，赶紧去玩吧</view>
-  </view> -->
+  </view>
+
+  <navigator hover-class="none" url="/pages/mall/index" class="card-box credits">
+    <view class="title">积分商城</view>
+    <view class="right-arrow"></view>
+  </navigator>
+
+  <navigator hover-class="none" url="/pages/records/index" class="card-box hit-record">
+    <view class="title">打榜记录</view>
+    <view class="right-arrow"></view>
+  </navigator-->
 
   <view class="daily-task">
     <view class="item-head">
@@ -120,21 +108,28 @@
     <view class="task-content">
       <view wx:if="{{tasks.list.length < 1}}" class="tips">暂无任务</view>
       <view wx:for="{{tasks.list}}" wx:key="{{index}}}" class="task-item">
-        <view class="task-info">
-          <view class="task-name">{{item.name}}</view>
-          <view class="task-award">
-            <image mode="widthFix" src="{{item.icon ? item.icon : '../../images/coins-icon.png'}}" class="task-icon"></image>
-            <text>{{item.desc}}</text>
+        <view class="right-block">
+          <view class="task-info">
+            <view class="task-name">{{item.name}}</view>
+            <view class="task-award">
+              <image src="{{item.icon ? item.icon : '../../images/coins-icon.png'}}"></image>
+              <view>{{item.desc}}</view>
+            </view>
           </view>
-        </view>
-        <view class="task-status{{item.done==item.times || item.op == 4 ? ' task-status-get' : ''}}">
-          <view class="task-process {{item.done==item.times ? 'task-process_done' : ''}}" style="width: {{item.process ? item.process : 0}}%;"></view>
-          <button wx:if="{{!userInfo}}" class="task-btn task-btn_login" open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">{{item.opName}}</button>
-          <view wx:else class="task-btn{{item.op == 0 ? ' task-btn_done' : ''}}" bindtap="doTask" data-taskid="{{item.taskId}}" data-times="{{item.times}}" data-done="{{item.done ? item.done : 0}}" data-type="{{item.type}}" data-op="{{item.op}}">{{item.opName}}</view>
+          <view class="task-status">
+            <view class="task-process {{item.done==item.times ? 'task-process_done' : ''}}" style="width: {{item.process ? item.process : 0}}%;"></view>
+            <button wx:if="{{!userInfo}}" class="task-btn task-btn_login" open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">{{item.opName}}</button>
+            <view wx:else class="task-btn" bindtap="doTask" data-taskid="{{item.taskId}}" data-times="{{item.times}}" data-done="{{item.done ? item.done : 0}}" data-type="{{item.type}}" data-op="{{item.op}}">{{item.opName}}</view>
+          </view>
         </view>
       </view>
     </view>
   </view>
+
+  <!-- <navigator hover-class="none" url="/pages/records/index" class="card-box welfare">
+    <view class="title">积分福利</view>
+    <view class="right-arrow"></view>
+  </navigator> -->
 
   <!-- <view class="welfare">
     <view class="item-head">

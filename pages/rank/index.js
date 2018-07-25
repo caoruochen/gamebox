@@ -11,7 +11,6 @@ QKPage({
 		'uid': 0,
 		rank: 0,
 		score: 0,
-		options: [], //控制按钮的显示
 		ranks: [],
 		// ranks: [{
 		// 	avatar: "http://thirdqq.qlogo.cn/qqapp/101472344/6CEAF834088619211BAAC1CE802FC40E/100",
@@ -101,23 +100,34 @@ QKPage({
 		}],
 		aid: '',
 		status: false, //状态标识,onshow是否调用更新排名接口
+		page: 1,
+		gotohelpShow: false,
 	},
 
 
 	onLoad: function(options) {
+		console.log('options', options)
 		var aid = options.aid || '1';
+		var type = options.type;
+		// var aid = '1';
 		this.setData({
-			aid: aid
+			aid: aid,
 		});
-		this.loadRankData(aid);
+		if (type == '1') {
+			this.setData({
+				gotohelpShow: true,
+			});
+		}
+		this.loadRankData(true, aid);
 	},
-	loadRankData: function(aid) {
+	loadRankData: function(refresh, aid) {
 		wx.showLoading({
 			title: '数据加载中'
 		});
 		var me = this;
 		http.get('/gamebox/activity/rank', {
-			aid: aid
+			aid: aid,
+			page: refresh ? 1 : me.data.page
 		}, function(data) {
 			wx.hideLoading();
 			wx.stopPullDownRefresh();
@@ -126,6 +136,7 @@ QKPage({
 			game.gameId = data.gameId
 			game.mode = data.mode
 			game.path = data.path
+			var ranks = refresh ? [].concat(data.ranks) : me.data.ranks.concat(data.ranks)
 			me.setData({
 				uid: data.uid,
 				banner: data.banner,
@@ -133,11 +144,15 @@ QKPage({
 				rules: data.rules,
 				rank: data.rank,
 				score: data.score,
-				options: data.options,
-				ranks: data.ranks,
+				ranks: ranks,
 				intoGame: game,
 			});
-
+			if (data.ranks.length != 0) {
+				var page = refresh ? 2 : me.data.page + 1
+				me.setData({
+					page: page
+				})
+			}
 		}, function(code, msg) {
 			wx.hideLoading();
 			wx.stopPullDownRefresh();
@@ -183,10 +198,15 @@ QKPage({
 	},
 
 	onPullDownRefresh: function() {
-		this.loadRankData(this.data.aid);
+		this.setData({
+			ranks: [],
+			page: 1,
+		})
+		this.loadRankData(true, this.data.aid);
 	},
 	onReachBottom: function(e) {
-		console.log('onReachBottom')
+		console.log('onReachBottom page:' + this.data.page)
+		this.loadRankData(false, this.data.aid);
 	},
 
 	getMyRank: function() {
@@ -196,7 +216,8 @@ QKPage({
 		});
 		var me = this;
 		http.get('/gamebox/activity/rankinfo', {
-			aid: me.data.aid
+			aid: me.data.aid,
+			page: 1
 		}, function(data) {
 			console.log(data)
 			wx.hideLoading();
@@ -218,6 +239,12 @@ QKPage({
 			});
 		})
 	},
+
+	changeStatus: function() {
+		this.setData({
+			status: true
+		})
+	},
 	onShow: function() {
 		console.log('onShow')
 		if (this.data.status) {
@@ -228,13 +255,23 @@ QKPage({
 			status: false
 		})
 	},
-	changeStatus: function() {
+
+	//自定义转发字段
+	onShareAppMessage: function(res) {
+		// if (res.from === 'button') {
+		// 	// 来自页面内转发按钮
+		// 	console.log('onShareAppMessage', res.target)
+		// }
+		return {
+			title: '我在7k7k游戏打榜！快来助我一把啊！',
+			path: '/pages/rank/index?aid=' + this.data.aid + '&uid=' + this.data.uid + '&type=1'
+		}
+	},
+
+	hideGotohelp: function() {
 		this.setData({
-			status: true
+			gotohelpShow: false
 		})
 	},
 
-	onHide: function() {
-		console.log('rank onHide')
-	},
 })

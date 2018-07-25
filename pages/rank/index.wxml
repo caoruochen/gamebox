@@ -24,7 +24,7 @@
         <view class="ranksCont">
           <view class="list-item flex" wx:for="{{ranks}}" wx:key="{{index}}">
               <view class="flex">
-                <text class="ranking" style="color:{{item.rank=='1'?'#ff6d34':(item.rank=='2'?'#1fc3a2':(item.rank=='3'?'#fca237':'#303030'))}}">{{item.rank}}</text> 
+                <text class="ranking" style="color:{{item.rank=='1'?'#ff6d34':(item.rank=='2'?'#1fc3a2':(item.rank=='3'?'#fca237':'#303030'))}}">{{item.rank || '-'}}</text> 
                 <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{item.avatar || '../../images/defaultavatar.png'}}"/>
                 <text class="name">{{item.name || '-'}}</text>
               </view>
@@ -34,21 +34,19 @@
       </view>
       <view class="flex myrank">
         <view class="flex">
-          <text class="ranking" style="color:#fca237">{{rank || '-'}}</text> 
+          <text class="ranking" style="color:#fca237;font-weight:700">{{rank || '-'}}</text> 
             <view class="avatar"><open-data type="userAvatarUrl"></open-data></view>
           <view class="myname">
             <open-data type="userNickName" lang="zh_CN"></open-data>
-            <view style="color:#fca237">{{score || '-'}}<text style="font-weight: 500"> 分</text></view>
+            <view style="color:#fca237">{{score}}<text style="font-weight: 500"> 分</text></view>
           </view>
         </view>
         <view>
-          <block wx:for="{{options}}" wx:key="{{index}}">
-            <view wx:if="{{item=='助力'}}" class="mybtn zl-btn" bindtap="onHelp">助力</view>
-            <view wx:elif="{{item=='挑战'}}" class="mybtn"  bindtap="changeStatus">
+            <view class="mybtn zl-btn" bindtap="onHelp">助力</view>
+            <view class="mybtn"  bindtap="changeStatus">
               <xcx-navigator game="{{intoGame}}">进入游戏</xcx-navigator>
             </view>
-            <!-- <view wx:elif="{{item=='挑战'}}" class="mybtn" bindtap="onChallenge">挑战</view> -->
-          </block>
+            <!-- <view class="mybtn" bindtap="onChallenge">挑战</view> -->
         </view>
       </view>
     <!-- </view> -->
@@ -60,4 +58,12 @@
   <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" />
 
   <xcx-danmu danmuList="{{danmuList}}" height="120" bind:clickText="clickDanmu"/>
+
+  <view class="gotoHelp flex"  style="display: {{gotohelpShow ? 'flex' : 'none'}}">
+    <view  class="gotohelpBox">
+      <image class="close" mode="aspectFill" src="../../images/close.png" bind:tap="hideGotohelp"/>
+      <view>好友 <text style="font-weight: 700;font-size: 38rpx">曹若晨</text> 邀请你帮助Ta打榜得分</view>
+      <view class="gotohelp-btn">去助力</view>
+    </view>
+  </view>
 </view>

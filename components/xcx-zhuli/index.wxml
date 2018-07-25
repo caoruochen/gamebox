@@ -1,5 +1,6 @@
-  <view class="help" style="display: {{show ? 'block' : 'none'}}" bind:tap="hideHelp">
-    <view class="help-box" catch:tap="catch">
+  <view class="help flex" style="display: {{show ? 'flex' : 'none'}}">
+    <view class="help-box">
+      <image class="close" mode="aspectFill" src="../../images/close.png" bind:tap="hideHelp"/>
       <view class="help-head">邀请好友助力({{helpNum}}/5)</view>
       <text class="help-rule">说明：助力分=好友得分*30%，上限不超过50分；可删除已有助力分，重新邀请好友助力得分</text>
       <view class="help-content">

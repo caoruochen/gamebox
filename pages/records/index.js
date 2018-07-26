@@ -12,6 +12,7 @@ Page({
         dataList: [],
         hitRankList: [],
         lotteryList: [],
+        lastRid: 0,
     },
 
     /**
@@ -61,7 +62,8 @@ Page({
      */
     onReachBottom: function() {
         /* 这里边写上拉加载更多 */
-        console.log("喵喵.....拉到底了.....")
+        // console.log("喵喵.....拉到底了.....")
+        this.requestRecordList()
     },
 
     /**
@@ -81,14 +83,35 @@ Page({
     },
     requestRecordList: function() {
         var me = this;
-        console.log(me.data.btnType + 1)
+        console.log("me.data.btnType + 1 ==" + me.data.btnType + 1)
+        console.log("me.data.lastRid ==" + me.data.lastRid)
         http.get('/gamebox/record/list', {
-            "type": me.data.btnType + 1
+            "type": me.data.btnType + 1,
+            "rid": me.data.lastRid
         }, function(data) {
-            console.log(data)
+            // console.log(data)
+            var lastDict = data[data.length - 1];
+            var tempArr = me.data.dataList;
+            var t = []
+            console.log(data[0])
+            console.log(tempArr[tempArr.length - 1])
+            if (tempArr.length > 0 && (data[0].rid > tempArr[tempArr.length - 1].rid)) {
+                t = tempArr.concat(data)
+                console.log("+++++++++++")
+            } else {
+                t = data
+                console.log("===========")
+                console.log(t)
+            }
+            
+            // console.log("t -->  " + t)
+            // tempArr = data
             me.setData({
-                dataList: data
+                dataList: t,
+                lastRid: lastDict.rid,
             })
+            // me.data.dataList.push(tempArr)
+            // console.log(me.data.lastRid)
         }, function(code, msg) {
             console.log("code -->" + code + "msg -->" + msg)
         })

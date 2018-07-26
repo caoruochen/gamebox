@@ -47,11 +47,11 @@
 }
 .rule-btn{
 	display: inline-block;
-	color:#666666;
+	color:#333;
 	width:80rpx;
 	height:36rpx;
 	line-height: 36rpx;
-	background-color: #fff;
+	background-color: rgba(255,255,255,0.8);
 	border-radius: 8rpx;
 	text-align: center;
 	margin-left: 24rpx;
@@ -87,6 +87,20 @@
 	background-color: #fff;
 	padding:0 32rpx;
 }
+.ranksTab{
+	font-size: 28rpx;
+	line-height: 70rpx;
+	border-bottom: 1px solid #eee;
+}
+.tab1{
+	width: 80rpx;
+}
+.tab2{
+	padding-left: 90rpx;
+}
+.tab3{
+	padding-right: 20rpx;
+}
 .list-item{
 	width:100%;
 	height:110rpx;
@@ -119,31 +133,34 @@
 	height: 134rpx;
 	box-sizing: border-box;
 	padding:0 32rpx;
+	font-weight: 700;
 }
 .myname{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	margin-left: 20rpx;
-	font-weight: 700;
 }
 
 .mybtn{
 	margin-left:38rpx;
 	display: inline-block;
-	width: 140rpx;
-	height:56rpx;
-	line-height: 56rpx;
+	width: 160rpx;
+	height:60rpx;
+	line-height: 60rpx;
 	text-align: center;
 	border-radius: 12rpx;
 	font-weight: 700;
 	background-color: #f4e322; 
 }
 .zl-btn{
-	width:130rpx;
 	background-color: #9fcefa;
+	width: 150rpx;
 }
-
+.blackbtn{
+	background-color:rgba(0,0,0,0.5);
+	color:#fff;
+}
 
 .gotoHelp{
 	position: fixed;
@@ -156,11 +173,12 @@
 	justify-content: center;
 }
 .gotohelpBox{
-	width: 420rpx;
+	width: 500rpx;
 	background-color: #fff;
 	border-radius: 20rpx;
 	text-align: center;
 	padding: 30rpx 40rpx;
+	margin:0 100rpx;
 	box-sizing: border-box;
 	font-size: 36rpx;
 	position: relative;
@@ -172,15 +190,21 @@
 	background-color: #f4e322; 
 	border-radius: 30rpx;
 	margin-top: 30rpx;
-	text-align: center;
 	font-weight: 700;
+	font-size: 36rpx;
 	display: inline-block;
 }
+.disableBtn{
+	background-color: #ddd;
+}
 .close{
-	width: 26rpx;
-	height:26rpx;
 	position: absolute;
 	top: 0;
 	right:0;
-	margin:14rpx;
+	padding: 10rpx 16rpx;
+}
+.disText{
+	font-size: 24rpx;
+	color:#aaa;
+	margin-top: 20rpx;
 }

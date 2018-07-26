@@ -9,6 +9,8 @@ QKPage({
 		playerNum: '0',
 		rules: '',
 		uid: app.globalData.userInfo ? app.globalData.userInfo.uid : 0,
+		name: app.globalData.userInfo ? app.globalData.userInfo.name : '-',
+		avatar: app.globalData.userInfo ? app.globalData.userInfo.avatar : '../../images/defaultavatar.png',
 		rank: 0,
 		score: 0,
 		ranks: [],
@@ -24,7 +26,6 @@ QKPage({
 		// 	score: 3000,
 		// }],
 		intoGame: {
-			// bg: "https://snsgame.uimg.cn/video/game/wxl/WechatIMG29.jpeg",
 			appId: "wx530202348351e73c",
 			gameId: 1,
 			mode: 1,
@@ -57,16 +58,21 @@ QKPage({
 		status: false, //状态标识,onshow是否调用更新排名接口
 		page: 1,
 		gotohelpShow: false,
-		fuid: null,
+		fuid: null, //助力的好友uid
+		fname: '', //助力的好友昵称
+		assistNumOut: false, //助力次数已满
+		isAssistanted: false, //是否助力过
+		animationData: {},
 	},
 
 
 	onLoad: function(options) {
-		console.log('options', options)
+		// console.log('options', options)
 		// console.log(app.globalData)
 		var aid = options.aid || '1';
 		var type = options.type;
 		var fuid = options.fuid || null;
+		var fname = options.fname;
 
 		this.loadRankData(true, aid, fuid);
 
@@ -77,13 +83,38 @@ QKPage({
 			this.setData({
 				gotohelpShow: true,
 				fuid: fuid,
+				fname: fname
 			});
 		}
+		// console.log(app.globalData.userInfo)
+		if (app.globalData.userInfo) {
+			this.setData({
+				uid: app.globalData.userInfo.uid,
+				name: app.globalData.userInfo.name,
+				avatar: app.globalData.userInfo.avatar,
+			})
+		}
+	},
+	onShow: function() {
+		app.globalData.zhuliAid = null;
+		if (this.data.status) {
+			//延迟 结果查询，显示结果
+			setTimeout(this.getMyRank, 1000)
+			this.setData({
+				status: false
+			})
+		}
+	},
+	onLogin: function() {
+		// TODO: 登陆后拉取用户数据
+		console.log('onLogin', app.globalData.userInfo)
+		// this.setData({
+		// 	uid: app.globalData.userInfo.uid,
+		// 	name: app.globalData.userInfo.name,
+		// 	avatar: app.globalData.userInfo.avatar,
+		// })
 	},
 
-  onLogin: function () {
-    // TODO: 登陆后拉取用户数据
-  },
 	loadRankData: function(refresh, aid, fuid) {
 		wx.showLoading({
 			title: '数据加载中'
@@ -112,6 +143,8 @@ QKPage({
 				ranks: ranks,
 				intoGame: game,
 				helpList: data.assistance,
+				assistNumOut: data.assistNumOut || false,
+				isAssistanted: data.isAssistanted || false,
 			});
 			if (data.ranks.length != 0) {
 				var page = refresh ? 2 : me.data.page + 1
@@ -128,56 +161,8 @@ QKPage({
 			});
 		})
 	},
-	// clickTab: function(e) {
-	// 	this.setData({
-	// 		activeIndex: e.currentTarget.dataset.index,
-	// 	});
-	// },
-	clickRule: function() {
-		wx.showModal({
-			title: '活动规则',
-			content: this.data.rules,
-			showCancel: false,
-			confirmColor: '#ff8130',
-			success: function(res) {
-				if (res.confirm) {
-					// console.log('用户点击确定')
-				}
-			}
-		})
-	},
-	onChallenge: function() {
-		wx.navigateTo({
-			url: '/pages/challenge/index',
-		})
-	},
-
-	//弹幕点击事件
-	clickDanmu: function(e) {
-		console.log(e.detail.text)
-	},
-
-	onHelp: function(e) {
-    app.globalData.zhuliAid = e.currentTarget.dataset.aid;
-		this.setData({
-			helpShow: true
-		})
-	},
-
-	onPullDownRefresh: function() {
-		this.setData({
-			ranks: [],
-			page: 1,
-		})
-		this.loadRankData(true, this.data.aid, this.data.fuid);
-	},
-	onReachBottom: function(e) {
-		console.log('onReachBottom page:' + this.data.page)
-		this.loadRankData(false, this.data.aid, this.data.fuid);
-	},
 
 	getMyRank: function() {
-		console.log('getMyRank')
 		wx.showLoading({
 			title: '数据更新中'
 		});
@@ -185,12 +170,20 @@ QKPage({
 		http.get('/gamebox/activity/rankinfo', {
 			aid: me.data.aid,
 		}, function(data) {
-			console.log(data)
 			wx.hideLoading();
-			if (data.length != 0) {
+			if (data.length != 0 && data.score > me.data.score) {
+				//分数更新动画
+				var animation = wx.createAnimation({
+					transformOrigin: "50% 80%",
+					duration: 1000,
+					timingFunction: 'ease',
+				})
+				animation.scale(2, 2).step()
+				animation.scale(1, 1).step()
 				me.setData({
 					rank: data.rank,
 					score: data.score,
+					animationData: animation.export()
 				});
 			}
 		}, function(code, msg) {
@@ -202,28 +195,40 @@ QKPage({
 		})
 	},
 
+
+	onPullDownRefresh: function() {
+		this.loadRankData(true, this.data.aid, this.data.fuid);
+		this.setData({
+			ranks: [],
+			page: 1,
+		})
+	},
+	onReachBottom: function(e) {
+		console.log('onReachBottom page:' + this.data.page)
+		this.loadRankData(false, this.data.aid, this.data.fuid);
+	},
+
+
 	changeStatus: function() {
 		this.setData({
 			status: true
 		})
 	},
-	onShow: function() {
-    app.globalData.zhuliAid = null;
-		if (this.data.status) {
-			//延迟 结果查询，显示结果
-			setTimeout(this.getMyRank, 1000)
-		}
-		this.setData({
-			status: false
+
+	clickRule: function() {
+		wx.showModal({
+			title: '活动规则',
+			content: this.data.rules,
+			showCancel: false,
+			confirmColor: '#ff8130',
 		})
 	},
 
-	//自定义转发字段
-	onShareAppMessage: function(res) {
-		return {
-			title: '我在7k7k游戏打榜！快来助我一把啊！',
-      path: '/pages/rank/index?aid=' + app.globalData.zhuliAid + '&fuid=' + app.globalData.userInfo.uid + '&type=1'
-		}
+	onHelp: function(e) {
+		app.globalData.zhuliAid = e.currentTarget.dataset.aid;
+		this.setData({
+			helpShow: true
+		})
 	},
 
 	hideGotohelp: function() {
@@ -232,4 +237,21 @@ QKPage({
 		})
 	},
 
+	//自定义转发字段
+	onShareAppMessage: function(res) {
+		return {
+			title: '我在7k7k游戏打榜！快来助我一把啊！',
+			path: '/pages/rank/index?aid=' + app.globalData.zhuliAid + '&fuid=' + app.globalData.userInfo.uid + '&fname=' + app.globalData.userInfo.name + '&type=1'
+		}
+	},
+
+	// onChallenge: function() {
+	// 	wx.navigateTo({
+	// 		url: '/pages/challenge/index',
+	// 	})
+	// },
+	// //弹幕点击事件
+	// clickDanmu: function(e) {
+	// 	console.log(e.detail.text)
+	// },
 })

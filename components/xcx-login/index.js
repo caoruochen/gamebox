@@ -19,8 +19,8 @@ Component({
     });
   },
   methods: {
-    onGotUserInfo: function (e) {
-      var loginFailed = function (msg) {
+    onGotUserInfo: function(e) {
+      var loginFailed = function(msg) {
         wx.showToast({
           title: msg || '登陆需要授权',
           icon: 'none',
@@ -31,7 +31,7 @@ Component({
         return;
       }
       var me = this;
-      app.$saveLoginUser(e.detail.userInfo, e.detail, function (status) {
+      app.$saveLoginUser(e.detail.userInfo, e.detail, function(status) {
         if (!status) {
           loginFailed('授权失败，请重试');
           return;

@@ -7,7 +7,7 @@
           <text class="peopleNum">{{playerNum}}  人参加</text>
           <view class="rule-btn" bindtap="clickRule">规则</view>
         </view>
-        <view class="mybtn" bindtap="changeStatus" style="background-color:rgba(0,0,0,0.5);color:#fff;width:180rpx">
+        <view class="mybtn blackbtn" bindtap="changeStatus">
           <xcx-navigator game="{{intoGame}}">进入游戏 ></xcx-navigator>
         </view>
 			</view>
@@ -20,8 +20,16 @@
 			<!-- <view class="onetab {{activeIndex == 1? 'activeList':''}}" data-index="1" bindtap="clickTab">评论</view> -->
 		</view>
     <!-- <view style="display:{{activeIndex == 0? 'block':'none'}}"> -->
+      
       <view class="ranks">
         <view class="ranksCont">
+          <view class="ranksTab flex">
+            <view class="flex">
+              <view class="tab1">排名</view>
+              <view class="tab2">玩家</view>
+            </view>
+            <view class="tab3">分数</view>
+          </view>
           <view class="list-item flex" wx:for="{{ranks}}" wx:key="{{index}}">
               <view class="flex">
                 <text class="ranking" style="color:{{item.rank=='1'?'#ff6d34':(item.rank=='2'?'#1fc3a2':(item.rank=='3'?'#fca237':'#303030'))}}">{{item.rank || '-'}}</text> 
@@ -34,11 +42,14 @@
       </view>
       <view class="flex myrank">
         <view class="flex">
-          <text class="ranking" style="color:#fca237;font-weight:700">{{rank || '-'}}</text> 
-            <view class="avatar"><open-data type="userAvatarUrl"></open-data></view>
+          <text class="ranking" animation="{{animationData}}" style="color:#fca237">{{rank || '-'}}</text> 
+          <image class="avatar" mode="aspectFill" src="{{avatar}}" />
           <view class="myname">
-            <open-data type="userNickName" lang="zh_CN"></open-data>
-            <view style="color:#fca237">{{score}}<text style="font-weight: 500"> 分</text></view>
+            <text>{{name}}</text>
+            <view style="color:#fca237">
+              <view animation="{{animationData}}" style="display: inline-block;">{{score}}</view>
+              <text style="font-weight: 500"> 分</text>
+            </view>
           </view>
         </view>
         <view>
@@ -59,12 +70,18 @@
 
   <xcx-danmu danmuList="{{danmuList}}" height="120" bind:clickText="clickDanmu"/>
 
-  <view class="gotoHelp flex"  style="display: {{gotohelpShow ? 'flex' : 'none'}}">
-    <view  class="gotohelpBox">
-      <image class="close" mode="aspectFill" src="../../images/close.png" bind:tap="hideGotohelp"/>
-      <view>好友 <text style="font-weight: 700;font-size: 38rpx">曹若晨</text> 邀请你帮助Ta打榜得分</view>
-      <view class="gotohelp-btn" bind:tap="hideGotohelp">
-        <xcx-navigator game="{{intoGame}}">去助力</xcx-navigator>
+  <view wx:if="{{fuid != uid}}" class="gotoHelp flex"  style="display: {{gotohelpShow ? 'flex' : 'none'}}">
+    <view class="gotohelpBox">
+      <view class="close" bind:tap="hideGotohelp">
+        <image style="width:26rpx;height:26rpx" mode="aspectFill" src="../../images/close.png"/>
+      </view>
+      <view>好友 <text style="font-weight: 700;font-size: 38rpx">{{fname}}</text> 邀请你</view>
+      <view>帮助Ta打榜得分</view>
+      <view wx:if="{{assistNumOut}}" class="disText">Ta的助力次数已满 不能进行助力</view>
+      <view wx:elif="{{isAssistanted}}"  class="disText">你已助力过此好友</view>
+      <view class="gotohelp-btn {{assistNumOut||isAssistanted?'disableBtn':''}}">
+        <text wx:if="{{assistNumOut||isAssistanted}}">去助力</text>
+        <xcx-navigator wx:else game="{{intoGame}}" bind:tap="hideGotohelp">去助力</xcx-navigator>
       </view>
     </view>
   </view>

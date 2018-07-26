@@ -1,6 +1,8 @@
   <view class="help flex" style="display: {{show ? 'flex' : 'none'}}">
     <view class="help-box">
-      <image class="close" mode="aspectFill" src="../../images/close.png" bind:tap="hideHelp"/>
+      <view class="close" bind:tap="hideHelp">
+        <image style="width:30rpx;height:30rpx" mode="aspectFill" src="../../images/close.png" />
+      </view>
       <view class="help-head">邀请好友助力({{helpNum}}/{{maxNum}})</view>
       <view class="help-rule">
         <view>助力分 = 好友得分 * 30%，上限50分；</view>
@@ -22,8 +24,19 @@
           <view class="help2">{{item.score || '-'}}</view>
           <view class="help3">{{item.value || '-'}}</view>
           <view class="help4">
-            <image class="help-img" mode="aspectFit" src="{{item.uid?'../../images/del.png':'../../images/add.png'}}" data-id="{{item.uid}}" bindtap="{{item.uid ? 'handleDel' : null}}"/>
-            <button wx-if="{{!item.uid}}" class="help-img-btn" open-type="share"></button>
+            <image class="help-img" style="width: 36rpx" mode="aspectFit" src="../../images/del.png" data-uid="{{item.uid}}" data-index="{{index}}" bindtap="handleDel"/>
+          </view>
+        </view>
+        <view class="help-item flex" wx:for="{{nohelpList}}" wx:key="{{index}}">
+          <view class="help1 flex">
+            <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="../../images/touxiang.png"/>
+            <text class="name">  ？ </text>
+          </view>
+          <view class="help2"> - </view>
+          <view class="help3"> - </view>
+          <view class="help4">
+            <image class="help-img" mode="aspectFit" src="../../images/add.png"/>
+            <button class="help-img-btn" open-type="share"></button>
           </view>
         </view>
 

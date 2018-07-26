@@ -70,28 +70,6 @@ page {
   font-weight: 800;
 }
 
-.right-arrow {
-  display :inline-block;
-  position: relative;
-  width: 36rpx;
-  height: 36rpx;
-}
-
-.right-arrow::after {
-  display: inline-block;
-  content: " ";
-  height: 15rpx;
-  width: 15rpx;
-  border-width: 4rpx 4rpx 0 0;
-  border-color: #a1a1a1;
-  border-style: solid;
-  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
-  position: absolute;
-  top: 50%;
-  right: 6;
-  margin-top: -9rpx;
-}
-
 .activity-layout {
   display: flex;
   flex-direction: column;
@@ -273,16 +251,16 @@ page {
   flex: 8;
   font-size: 11px;
   color: #b2b2b2;
+  line-height: 40rpx;
 }
 
 .activity-desc-collapse-text {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
   flex: 8;
   font-size: 11px;
   color: #b2b2b2;
+  height: 80rpx;
+  line-height: 40rpx;
+  overflow: hidden;
 }
 
 .game-title-text {
@@ -303,17 +281,37 @@ page {
   align-items: center;
 }
 
-.arrow-down {
-  width: 20px;
-  height: 20px;
+.arrow {
+ position: relative;
+ width: 0;
+ height: 0;
+ border: 8px solid transparent;
 }
 
-.arrow-up {
-  width: 20px;
-  height: 20px;
-  transform: rotate(180deg);
+.arrow::before {
+  content: "";
+  display: block;
   position: absolute;
-  bottom: 0;
+  left: -8px;
+  top: -10px;
+  width: 0px;
+  height: 0px;
+  border: 8px solid transparent;
+  border-top-color:  #fff;
+  z-index: 1;
+
+}
+.arrow::after{
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  border: 8px solid transparent;
+  left:-8px;
+  top: -8px;
+  border-top-color: #000;
+  z-index: 0; 
 }
 
 ::-webkit-scrollbar{

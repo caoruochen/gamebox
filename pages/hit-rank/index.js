@@ -25,6 +25,7 @@ QKPage({
 
   onLoad: function (options) {
     this.loadData()
+   
   },
 
   onShow: function() {
@@ -53,12 +54,18 @@ QKPage({
       for(let i=0;i<act.length; ++i) {
           var obj = act[i]
           obj.isFold = true;
+          /** 测试数据*/
+          if(i % 2 !=0) {
+            obj.texts = ['以为自己有机会出手，又不是回合制游，戏我有阿通在地狱等我']
+          } else {
+            obj.texts = ['以为自己有机会出手，又不是回合制游戏', '我有阿通在地狱等我，你有什么，双手吗？', '看起来你们腐烂的比我还要快']
+          }
+          /******************************/
           act[i] = obj
       }
       that.setData({
         activityNotice: data.notice,
         activitys: act,
-
       })
     }, function () {
       wx.hideLoading();
@@ -141,7 +148,7 @@ QKPage({
   createAnim: function() {
     // 箭头动画
     var animation = wx.createAnimation({
-      duration: 500,
+      duration: 300,
       timingFunction: 'linear'
     })
     return animation;

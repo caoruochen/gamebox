@@ -59,11 +59,15 @@
 
         <!-- 活动简介 -->
         <view class="activity-desc-layout">
-          <view class="{{activitys[index].isFold ? 'activity-desc-collapse-text' : 'activity-desc-text'}}">
-            {{item.descs}}。以为自己有机会出手，又不是回合制游戏。我有阿通在地狱等我，你有什么，双手吗？看起来你们腐烂的比我还要快。
+          <view wx:if="{{item.texts.length==1}}" class="activity-desc-single-text">
+            {{item.texts}}
+          </view> 
+
+          <view wx:else class="{{activitys[index].isFold ? 'activity-desc-two-text' : 'activity-desc-text'}}">
+            {{item.texts}}
           </view>
            
-          <view class="fold" bindtap="foldToggle" data-id="{{index}}">
+          <view wx:if="{{item.texts.length>1}}" class="fold" bindtap="foldToggle" data-id="{{index}}">
             <view class="arrow" animation="{{animationList[index]}}"/>
           </view>
          

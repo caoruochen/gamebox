@@ -254,7 +254,16 @@ page {
   line-height: 40rpx;
 }
 
-.activity-desc-collapse-text {
+.activity-desc-single-text {
+  flex: 8;
+  font-size: 11px;
+  color: #b2b2b2;
+  height: 40rpx;
+  line-height: 40rpx;
+  overflow: hidden;
+}
+
+.activity-desc-two-text {
   flex: 8;
   font-size: 11px;
   color: #b2b2b2;
@@ -310,7 +319,7 @@ page {
   border: 8px solid transparent;
   left:-8px;
   top: -8px;
-  border-top-color: #000;
+  border-top-color: #b2b2b2;
   z-index: 0; 
 }
 

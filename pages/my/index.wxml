@@ -14,43 +14,17 @@
             <image src="../../images/coins-icon.png" class="coins-icon" />
             <text>{{userInfo ? userInfo.coins : '0'}}</text>
           </view>
-          <!-- <view class="my-fund packet">
-            <image src="../../images/icon-money.png" />
-            <text>{{userInfo && userInfo.money ? userInfo.money : '0'}}元</text>
-          </view>
-          <view class="withdraw">提现</view> -->
         </view>
-        
       </view>
       
       <navigator url="/pages/lottery/index" class="lottery">
         <image mode="widthFix" src="../../images/lottery-icon.png"></image>
       </navigator>
-      <!-- <view class="lottery" bindtap="goLottery">
-        <image mode="widthFix" src="../../images/lottery-icon.png"></image>
-      </view> -->
       <image class="wave-icon" mode="widthFix" src="../../images/wave-icon1.png"></image>
       <image class="wave-icon wave-move" mode="widthFix" src="../../images/wave-icon.png" style="width: {{wwidth * 2}}px"></image>
     </view>
   </view>
   
-  <!-- <view class="banners">
-    <navigator hover-class="none" url="/pages/mall/index" class="credits">
-      <view class="left-block">
-        <view class="title">积分商城</view>
-        <view class="detail">查看详情</view>
-      </view>
-      <image mode="widthFix" src="../../images/credit.png" class="right-block"></image>
-    </navigator>
-    <navigator hover-class="none" url="/pages/records/index" class="welfare">
-      <view class="left-block">
-        <view class="title">积分福利</view>
-        <view class="detail">查看详情</view>
-      </view>
-      <image mode="widthFix" src="../../images/welfare.png" class="right-block"></image>
-    </navigator>
-  </view> -->
-
   <view class="my-block1">
     <navigator hover-class="none" url="/pages/mall/index" class="my-block1-item mall">
       <image src="../../images/mall-icon.png" />
@@ -58,7 +32,7 @@
       <view class="info">暑期免费道具等你拿</view>
       <view class="right-arrow"></view>
     </navigator>
-    <navigator hover-class="none" url="/pages/records/index" class="my-block1-item rank">
+    <navigator hover-class="none" url="/pages/records/index?type=1" class="my-block1-item rank">
       <image src="../../images/hit-icon.png" />
       <view>打榜记录</view>
       <view class="info">
@@ -77,34 +51,6 @@
       <view class="right-arrow"></view>
     </view>
   </view>
-
-  <!--view class="games">
-    <view class="item-head">
-      <view class="title">最近常玩</view>
-    </view>
-    
-    <view wx:if="{{games.length>0}}" class="games-box">
-      <scroll-view class="scroll-view_H" scroll-x>
-        <block wx:for="{{games}}" wx:key="{{index}}" wx:for-item="game">
-          <xcx-navigator class="item_content" game="{{game}}">
-            <image lazy-load="{{true}}" class="game-icon" src="{{game.logo}}" style="width: {{gameItemWidth}}px; height: {{gameItemWidth}}px;"/>
-            <view style="width:{{gameItemWidth}}px;" class='game-title'>{{game.name}}</view>
-          </xcx-navigator>
-        </block>
-      </scroll-view>
-    </view>
-    <view wx:else class="tips">你最近还没有玩游戏哦，赶紧去玩吧</view>
-  </view>
-
-  <navigator hover-class="none" url="/pages/mall/index" class="card-box credits">
-    <view class="title">积分商城</view>
-    <view class="right-arrow"></view>
-  </navigator>
-
-  <navigator hover-class="none" url="/pages/records/index" class="card-box hit-record">
-    <view class="title">打榜记录</view>
-    <view class="right-arrow"></view>
-  </navigator-->
 
   <view class="daily-task">
     <view class="item-head">
@@ -131,29 +77,6 @@
       </view>
     </view>
   </view>
-
-  <!-- <navigator hover-class="none" url="/pages/records/index" class="card-box welfare">
-    <view class="title">积分福利</view>
-    <view class="right-arrow"></view>
-  </navigator> -->
-
-  <!-- <view class="welfare">
-    <view class="item-head">
-      <view class="title">福利</view>
-    </view>
-    <view class="welfare-content">
-      <view wx:if="{{welfares.length < 1}}" class="tips">暂无福利</view>
-      <view wx:for="{{welfares}}" wx:key="{{index}}}" class="welfare-item">
-        <view class="welfare-time">{{item.time}}</view>
-        <view class="welfare-name">{{item.name}}</view>
-        <view class="welfare-status{{item.status > 0 ? ' active' : ''}}">
-          <button wx:if="{{!userInfo}}" class="welfare-btn welfare-btn_login" open-type="getUserInfo" lang="zh_CN" type="default" size="mini" bindgetuserinfo="onGotUserInfo">{{item.status > 0 ? "已领取" : "未领取"}}</button>
-          <view wx:else class="welfare-btn" bindtap="doWelfare">{{item.status > 0 ? "已领取" : "未领取"}}</view>
-        </view>
-      </view>
-    </view>
-    <navigator url="/pages/records/index" wx:if="{{!verifying}}" class="look-all" bindtap="clickMore" data-type="welfare">全部福利</navigator>
-  </view> -->
 
   <view class="ad">
     <ad unit-id="adunit-45cb07bb615f7ee9"></ad>

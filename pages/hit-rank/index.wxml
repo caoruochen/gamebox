@@ -9,39 +9,24 @@
       <text>我的红包:</text>
       <text class="activity-head-money-num">{{money}}</text>
       <text>元</text>
-      <text class="activity-head-money-btn">领取</text>
+      <navigator hover-class="none" url="/pages/records/index?type=1">
+        <text class="activity-head-money-btn">领取</text>
+        <!-- <view class="right-arrow" /> -->
+      </navigator>
     </view>
   </view>
-  <!-- 活动图片 -->
-  <!--view class="activity-layout">
-      <view class="personal-layout">
-        <image src="../../images/voice.png" style="width: 20px; height: 16px;"/>
-        <text class="marquee">我是测试文字移动的</text>
-        <view style="width: 1px; height: 60rpx; background: #eee;"/>
-
-        <view style="flex: 5; display: flex; flex-direction: row; justify-content: flex-end; align-items: center;">
-          <text style="font-size: 12px;">我的红包：</text>
-          <text style="font-size: 12px; color: #517BF7; font-weight: 800;">0</text>
-          <text style="font-size: 12px;">元</text>
-          <text class="blue-soild-btn">领取</text>
-        </view>
-      </view>
-  </view-->
-  <!-- 活动内容 -->
 
   <view class="activitys">
-  <view class="item-layout" wx:for="{{activitys}}" wx:key="aid}">
-
-      <!-- <view style="z-index: 10;">名字</view> -->
-       <image lazy-load="{{true}}" 
+    <view class="item-layout" wx:for="{{activitys}}" wx:key="aid}">
+      <image lazy-load="{{true}}" 
         mode="aspectFill" 
         src="{{item.banner}}"
         bindtap="clickJumpPage"
         data-aid="{{item.aid}}"
         style="width: 100%; height: 180px; border-top-left-radius: 15px; border-top-right-radius: 15px;"/>
 
-        <view class="match-info-mask"/>
-         <!--参赛信息-->
+      <view class="match-info-mask"/>
+      <!--参赛信息-->
         <view class="match-info-layout match-info-text" bindtap="clickJumpPage" data-aid = "{{item.aid}}">
           <view class="match-info-top-layout ">
             <view>{{item.name}}</view>
@@ -60,18 +45,16 @@
           </block>
           <view>已有{{item.playerNum}}人参赛</view>
         </view>
-
-        <view class="game-info-layout">
-          <image src="{{item.logo}}"
-          class="avatar-image"/>
-          <view class="game-title-text">{{item.gname}}</view>
-        </view>
-       
          
         <view class="btn-layout">
+          <view class="game-info-layout">
+            <image src="{{item.logo}}" class="avatar-image"  bindtap="clickJumpPage" data-aid = "{{item.aid}}" />
+            <view class="game-title-text">{{item.gname}}</view>
+          </view>
+
           <view class="btn-white-hollow" data-aid="{{item.aid}}" bindtap="onHelp">邀请好友</view>
           <xcx-navigator game="{{item}}">
-          <view class="btn-blue-soild" bindtap="playMatch" data-aid="{{item.aid}}">立即参赛</view>
+            <view class="btn-blue-soild" bindtap="playMatch" data-aid="{{item.aid}}">立即参赛</view>
           </xcx-navigator>
         </view>
 
@@ -79,14 +62,14 @@
         <view class="activity-desc-layout">
           <view class="{{activitys[index].isFold ? 'activity-desc-collapse-text' : 'activity-desc-text'}}">{{item.descs}}</view>
           <view class="fold" bindtap="foldToggle" data-id="{{index}}">
-             <image class="{{activitys[index].isFold ? 'arrow-down' : 'arrow-up'}}" src="../../images/arrow.png"/>
+            <image class="{{activitys[index].isFold ? 'arrow-down' : 'arrow-up'}}" src="../../images/arrow.png"/>
           </view>
          
         </view>
-  </view>
+    </view>
   </view>
 
-   <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" />
+  <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" />
 
 </view>
 <xcx-login bindonlogin="onLogin" />

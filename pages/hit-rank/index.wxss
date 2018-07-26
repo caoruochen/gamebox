@@ -52,6 +52,7 @@ page {
 }
 
 .activity-head-money-btn {
+  display:inline-block;
   background: #517BF7;
   padding: 0 20rpx;
   height: 48rpx;
@@ -67,6 +68,28 @@ page {
   color: #517BF7;
   margin: 0 6rpx;
   font-weight: 800;
+}
+
+.right-arrow {
+  display :inline-block;
+  position: relative;
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.right-arrow::after {
+  display: inline-block;
+  content: " ";
+  height: 15rpx;
+  width: 15rpx;
+  border-width: 4rpx 4rpx 0 0;
+  border-color: #a1a1a1;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+  position: absolute;
+  top: 50%;
+  right: 6;
+  margin-top: -9rpx;
 }
 
 .activity-layout {
@@ -190,9 +213,10 @@ page {
   flex-direction: column;
   align-items: center;
   position: absolute;
-  left: 20px;
-  top: 160px;
-  z-index: 1;
+  left: 0;
+  top: -45rpx;
+  z-index: 100;
+  width: 170rpx;
 }
 
 .dashed-line {
@@ -204,8 +228,8 @@ page {
 .avatar-image {
   border-radius: 50%;
   border: 2px solid white;
-  width: 40px;
-  height: 40px;
+  width: 90rpx;
+  height: 90rpx;
 }
 
 .btn-layout {
@@ -215,6 +239,7 @@ page {
   margin: 0rpx 40rpx;
   padding: 30rpx 0;
   border-bottom: 1px solid #eee;
+  position: relative;
 }
 
 .btn-white-hollow {
@@ -263,6 +288,11 @@ page {
 .game-title-text {
   font-size: 13px;
   color: #353535;
+  width: 170rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  overflow-x: scroll;
+  text-align: center;
 }
 
 .fold {

@@ -23,7 +23,7 @@
 	background-color: rgba(0,0,0,0.5);
 	box-sizing: border-box;
 	padding:0 40rpx;
-	z-index: 3;
+	z-index: 1000;
 }
 .help-box{
 	width: 100%;

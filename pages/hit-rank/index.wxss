@@ -14,7 +14,7 @@ page {
   left: 0;
   height: 60rpx;
   line-height: 60rpx;
-  z-index: 1000;
+  z-index: 500;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -215,7 +215,7 @@ page {
   position: absolute;
   left: 0;
   top: -45rpx;
-  z-index: 100;
+  z-index: 10;
   width: 170rpx;
 }
 

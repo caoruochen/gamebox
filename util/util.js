@@ -1,5 +1,6 @@
 var playHistory = [];
 var savedGames = {};
+var recommondGames = {};
 var util = {
   compareVersion: function (v1, v2) {
     v1 = v1.split('.')
@@ -95,6 +96,30 @@ var util = {
       }
     }
     return savedGames;
+  },
+  setRecommendGames: function(game, remove){
+    if(!game){
+      return
+    }
+    recommondGames = wx.getStorageSync('recommond_game_cache');
+    if(remove && recommondGames){
+      wx.removeStorageSync('recommond_game_cache');
+      return recommondGames;
+    }
+    if(!recommondGames){
+      recommondGames = game;
+      wx.setStorageSync('recommond_game_cache', recommondGames);
+    }
+    return recommondGames;
+  },
+  getRecommondGames: function(){
+    if(Object.keys(recommondGames).length < 1){
+      var games = wx.getStorageSync('recommond_game_cache');
+      if(games){
+        recommondGames = games
+      }
+    }
+    return recommondGames;
   }
 };
 module.exports = util

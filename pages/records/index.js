@@ -8,9 +8,8 @@ Page({
      */
     data: {
         btns: ["红包", "打榜", "抽奖"],
-        headers: ["活动","红包"],
         btnType: 0,
-        redEnvelopeList: [],
+        dataList: [],
         hitRankList: [],
         lotteryList: [],
     },
@@ -78,15 +77,17 @@ Page({
         this.setData({
             btnType: e.currentTarget.dataset.btntype
         });
+        this.requestRecordList()
     },
     requestRecordList: function() {
         var me = this;
+        console.log(me.data.btnType + 1)
         http.get('/gamebox/record/list', {
-            "type": 1
+            "type": me.data.btnType + 1
         }, function(data) {
             console.log(data)
             me.setData({
-                redEnvelopeList: data
+                dataList: data
             })
         }, function(code, msg) {
             console.log("code -->" + code + "msg -->" + msg)

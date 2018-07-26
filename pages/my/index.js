@@ -28,7 +28,6 @@ QKPage({
     userInfo: app.globalData.userInfo,
     games: [],
     gameItemWidth: (app.globalData.wwidth-150*ratio) / 5.6,
-    wwidth: app.globalData.wwidth,
     tasks: {
       doing: 0,
       done: 0,
@@ -179,18 +178,12 @@ QKPage({
   },
   palyHistory: function(){
     if(this.data.games.length < 1){
-      wx.showToast({
-        title: '你还没有玩游戏, 马上去玩吧',
-        icon: 'none',
-        success: function(){
-          wx.switchTab({
-            url: '/pages/index/index',
-            fail: function () {
-              wx.showToast({
-                title: '操作失败',
-                icon: 'none'
-              });
-            }
+      wx.switchTab({
+        url: '/pages/index/index',
+        fail: function () {
+          wx.showToast({
+            title: '操作失败',
+            icon: 'none'
           });
         }
       });

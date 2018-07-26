@@ -26,6 +26,6 @@
   </block>
 </view>
 
-<view class="ad">
+<view class="ad" style="margin-top: {{games.length<4 ? 100*(5-games.length)+'rpx' : null}}">
   <ad unit-id="adunit-45cb07bb615f7ee9"></ad>
 </view>

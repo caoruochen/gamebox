@@ -73,7 +73,7 @@ image{
   bottom: 0;
   width: 100%;
 }
-.wave-move{
+.my-info .wave-icon.wave-move{
   width: 200%;
   animation: wave-move 35s linear infinite;
 }

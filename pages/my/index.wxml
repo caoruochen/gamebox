@@ -21,7 +21,7 @@
         <image mode="widthFix" src="../../images/lottery-icon.png"></image>
       </navigator>
       <image class="wave-icon" mode="widthFix" src="../../images/wave-icon1.png"></image>
-      <image class="wave-icon wave-move" mode="widthFix" src="../../images/wave-icon.png" style="width: {{wwidth * 2}}px"></image>
+      <image class="wave-icon wave-move" mode="widthFix" src="../../images/wave-icon.png"></image>
     </view>
   </view>
   

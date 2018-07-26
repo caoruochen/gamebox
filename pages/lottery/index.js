@@ -20,6 +20,9 @@ QKPage({
         expend: data.expend,
         leftCoin: data.coins
       });
+      app.$updateUser({
+        coins: data.coins
+      });
     });
     this.isRotating = false;
     this.lottery = new rotateAward({page: this});
@@ -44,6 +47,9 @@ QKPage({
         console.log(lastAng)
         me.setData({
           leftCoin: data.coins
+        });
+        app.$updateUser({
+          coins: data.coins
         });
         me.lottery.rotate(lastAng, function(){
           console.log(data.prize);

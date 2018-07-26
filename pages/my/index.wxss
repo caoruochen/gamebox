@@ -18,6 +18,7 @@ image{
   justify-content: space-between;
   align-items: center;
   padding: 20rpx 34rpx 80rpx 60rpx;
+  overflow-x: hidden;
 }
 .my-info .avatar{
   display: block;

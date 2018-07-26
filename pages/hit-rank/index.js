@@ -19,7 +19,8 @@ QKPage({
     activityNotice: "",
     activitys: [],
     helpShow: false,
-    money: app.globalData.userInfo && app.globalData.userInfo.money ? app.globalData.userInfo.money : 0
+    money: app.globalData.userInfo && app.globalData.userInfo.money ? app.globalData.userInfo.money : 0,
+    animationList: {},
   },
 
   onLoad: function (options) {
@@ -109,10 +110,22 @@ QKPage({
     var index = e.currentTarget.dataset.id;
     var obj = this.data.activitys[index];
     var isFold = obj.isFold;
+    // 箭头动画
+    
+    var degree = 0
+    if (isFold) {
+      degree = -180
+    }
+    var anim = this.createAnim()
+    anim.rotate(degree).step()
+    this.data.animationList[index] = anim.export()
+
     obj.isFold = !isFold;
+
     this.data.activitys[index] = obj
     this.setData({
-      activitys: this.data.activitys
+      activitys: this.data.activitys,
+      animationList: this.data.animationList
     })
   },
 
@@ -124,4 +137,13 @@ QKPage({
       url: '/pages/rank/index?aid=' +aid,
     })
   },
+
+  createAnim: function() {
+    // 箭头动画
+    var animation = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'linear'
+    })
+    return animation;
+  }
 })

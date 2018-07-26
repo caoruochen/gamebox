@@ -18,6 +18,7 @@ image{
   justify-content: space-between;
   align-items: center;
   padding: 20rpx 34rpx 80rpx 60rpx;
+  overflow-x: hidden;
 }
 .my-info .avatar{
   display: block;
@@ -72,7 +73,7 @@ image{
   bottom: 0;
   width: 100%;
 }
-.wave-move{
+.my-info .wave-icon.wave-move{
   width: 200%;
   animation: wave-move 35s linear infinite;
 }

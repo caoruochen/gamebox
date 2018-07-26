@@ -11,7 +11,6 @@
       <text>元</text>
       <navigator hover-class="none" url="/pages/records/index?type=1">
         <text class="activity-head-money-btn">领取</text>
-        <!-- <view class="right-arrow" /> -->
       </navigator>
     </view>
   </view>
@@ -60,9 +59,12 @@
 
         <!-- 活动简介 -->
         <view class="activity-desc-layout">
-          <view class="{{activitys[index].isFold ? 'activity-desc-collapse-text' : 'activity-desc-text'}}">{{item.descs}}</view>
+          <view class="{{activitys[index].isFold ? 'activity-desc-collapse-text' : 'activity-desc-text'}}">
+            {{item.descs}}。以为自己有机会出手，又不是回合制游戏。我有阿通在地狱等我，你有什么，双手吗？看起来你们腐烂的比我还要快。
+          </view>
+           
           <view class="fold" bindtap="foldToggle" data-id="{{index}}">
-            <image class="{{activitys[index].isFold ? 'arrow-down' : 'arrow-up'}}" src="../../images/arrow.png"/>
+            <view class="arrow" animation="{{animationList[index]}}"/>
           </view>
          
         </view>

@@ -168,11 +168,10 @@ swiper {
 
 .gamebox-item {
   display: flex;
-  height: 150rpx;
+  height: 140rpx;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 20rpx 0;
   border-bottom: 1rpx solid #eee;
 }
 

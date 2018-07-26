@@ -9,7 +9,7 @@ var bannerImgWidth = app.globalData.wwidth - 60 * ratio;
 var imageWidth = 345;
 var imageHeight = 130;
 var swiperHeight = bannerImgWidth / imageWidth * imageHeight;
-var gameItemHeight = 150;
+var gameItemHeight = 140;
 var defaultBanners = [{
   pic: '../../images/default-banner.png'
 }];

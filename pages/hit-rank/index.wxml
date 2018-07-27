@@ -23,20 +23,7 @@
           src="{{item.banner}}"
           bindtap="clickJumpPage"
           data-aid="{{item.aid}}" />
-          <view class="match-info-mask"/>
-        <!-- <view class="activity-item-poster-mask"></view> -->
-        <!-- <view class="activity-item-status">
-          <view class="activity-item-status-text">进行中</view>
-          <view class="activity-item-result">
-            <view>得分</view>
-            <view class="activity-item-result-sep"></view>
-            <text>9242</text>
-            <view class="activity-item-result-second">排名</view>
-            <view class="activity-item-result-sep"></view>
-            <text>92</text>
-          </view>
-        </view>
-        <view class="activity-item-name">{{item.gname}}</view> -->
+        <view class="match-info-mask"/>
         <view class="match-info-layout match-info-text" bindtap="clickJumpPage" data-aid = "{{item.aid}}">
           <view class="match-info-top-layout ">
             <view>{{item.name}}</view>
@@ -61,28 +48,26 @@
       <!--参赛信息-->
         
          
-        <view class="btn-layout">
-          <view class="game-info-layout">
-            <image src="{{item.logo}}" class="avatar-image"  bindtap="clickJumpPage" data-aid = "{{item.aid}}" />
-            <view class="game-title-text">{{item.gname}}</view>
-          </view>
-
-          <view class="btn-white-hollow" data-aid="{{item.aid}}" bindtap="onHelp">邀请好友</view>
-          <xcx-navigator game="{{item}}">
-            <view class="btn-blue-soild" bindtap="playMatch" data-aid="{{item.aid}}">立即参赛</view>
-          </xcx-navigator>
+      <view class="btn-layout">
+        <view class="game-info-layout">
+          <image src="{{item.logo}}" class="avatar-image"  bindtap="clickJumpPage" data-aid = "{{item.aid}}" />
+          <view class="game-title-text">{{item.gname}}</view>
         </view>
 
-        <!-- 活动简介 -->
-        <view class="activity-desc-layout">
-          <view class="activity-rules rules-line{{item.texts.length>=2 ? '2' : '' }} {{item.isFold ? '' : 'unfold'}}">
-            <view wx:for="{{item.texts}}" wx:for-item="rule" wx:key="*this">
-              {{rule}}
-            </view>
-          </view>
-          <view wx:if="{{item.texts.length>2}}" class="fold" bindtap="foldToggle" data-id="{{index}}">
-            <view class="arrow" animation="{{animationList[index]}}"/>
-          </view>
+        <view class="btn-white-hollow" data-aid="{{item.aid}}" bindtap="onHelp">邀请好友</view>
+        <xcx-navigator game="{{item}}">
+          <view class="btn-blue-soild" bindtap="playMatch" data-aid="{{item.aid}}">立即参赛</view>
+        </xcx-navigator>
+      </view>
+
+      <!-- 活动简介 -->
+      <view class="activity-desc-layout">
+        <view class="activity-rules rules-line{{item.texts.length>=2 ? '2' : '' }} {{item.isFold ? '' : 'unfold'}}">
+          <view wx:for="{{item.texts}}" wx:for-item="rule" wx:key="*this">{{rule}}</view>
+        </view>
+        <view wx:if="{{item.texts.length>2}}" class="fold" bindtap="foldToggle" data-id="{{index}}">
+          <view class="arrow" animation="{{animationList[index]}}"/>
+        </view>
           <!-- <view wx:if="{{item.texts.length==1}}" class="activity-desc-single-text">
             {{item.texts}}
           </view> 

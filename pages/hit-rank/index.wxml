@@ -16,16 +16,27 @@
   </view>
 
   <view class="activitys">
-    <view class="item-layout" wx:for="{{activitys}}" wx:key="aid}">
-      <image lazy-load="{{true}}" 
-        mode="aspectFill" 
-        src="{{item.banner}}"
-        bindtap="clickJumpPage"
-        data-aid="{{item.aid}}"
-        style="width: 100%; height: 180px; border-top-left-radius: 15px; border-top-right-radius: 15px;"/>
-
-      <view class="match-info-mask"/>
-      <!--参赛信息-->
+    <view class="activity-item" wx:for="{{activitys}}" wx:key="{{item.aid}}">
+      <view class="activity-item-poster">
+        <image lazy-load="{{true}}" 
+          mode="aspectFill" 
+          src="{{item.banner}}"
+          bindtap="clickJumpPage"
+          data-aid="{{item.aid}}" />
+          <view class="match-info-mask"/>
+        <!-- <view class="activity-item-poster-mask"></view> -->
+        <!-- <view class="activity-item-status">
+          <view class="activity-item-status-text">进行中</view>
+          <view class="activity-item-result">
+            <view>得分</view>
+            <view class="activity-item-result-sep"></view>
+            <text>9242</text>
+            <view class="activity-item-result-second">排名</view>
+            <view class="activity-item-result-sep"></view>
+            <text>92</text>
+          </view>
+        </view>
+        <view class="activity-item-name">{{item.gname}}</view> -->
         <view class="match-info-layout match-info-text" bindtap="clickJumpPage" data-aid = "{{item.aid}}">
           <view class="match-info-top-layout ">
             <view>{{item.name}}</view>
@@ -44,6 +55,11 @@
           </block>
           <view>已有{{item.playerNum}}人参赛</view>
         </view>
+      </view>
+      
+
+      <!--参赛信息-->
+        
          
         <view class="btn-layout">
           <view class="game-info-layout">
@@ -59,7 +75,15 @@
 
         <!-- 活动简介 -->
         <view class="activity-desc-layout">
-          <view wx:if="{{item.texts.length==1}}" class="activity-desc-single-text">
+          <view class="activity-rules rules-line{{item.texts.length>=2 ? '2' : '' }} {{item.isFold ? '' : 'unfold'}}">
+            <view wx:for="{{item.texts}}" wx:for-item="rule" wx:key="*this">
+              {{rule}}
+            </view>
+          </view>
+          <view wx:if="{{item.texts.length>2}}" class="fold" bindtap="foldToggle" data-id="{{index}}">
+            <view class="arrow" animation="{{animationList[index]}}"/>
+          </view>
+          <!-- <view wx:if="{{item.texts.length==1}}" class="activity-desc-single-text">
             {{item.texts}}
           </view> 
 
@@ -69,7 +93,7 @@
            
           <view wx:if="{{item.texts.length>1}}" class="fold" bindtap="foldToggle" data-id="{{index}}">
             <view class="arrow" animation="{{animationList[index]}}"/>
-          </view>
+          </view> -->
          
         </view>
     </view>

@@ -27,20 +27,81 @@
         <view class="match-info-layout match-info-text" bindtap="clickJumpPage" data-aid = "{{item.aid}}">
           <view class="match-info-top-layout ">
             <view>{{item.name}}</view>
+            <!-- score等于-1的时候，就表示没有参赛 -->
+            <!-- status 0未开始，1进行中，2暂停中，3已结束，4已取消 -->
             <view class="{{item.status != 1 ? 'match-end-text' : 'match-status-text'}}">{{item.status_text}}</view>
           </view>
-          <block wx:if="{{item.score==-1}}">
+          <!--5种status的展示-->
+          <!-- 没有到比赛的时间 -->
+          <block wx:if="{{item.status==0}}">
+            <view style="display:flex; flex-direction: column; align-items:center;">
+              <view style="margin-bottom: 3px;">开赛时间</view>
+              <view>{{item.startTime}}</view>
+            </view>
+          </block>
+        <!-- 未参赛 -->
+          <block wx:if="{{item.status==1 && item.score==-1}}">
             <view>未参赛</view>
             <view style="display: flex; flex-direction: row;">
               <text class="dashed-line" style="margin-right: 5px;"/>
               <text class="dashed-line"/>
             </view>
           </block>
-          <block wx:else>
-            <view>我的分数</view>
-            <view style="font-size: 32px; color: #FFFF00; font-weight: 800;">{{item.score}}</view>
+          <!-- 参赛且有分数 -->
+          <block wx:if="{{item.status==1 && item.score > -1}}">
+            <view class="player-match-status-layout">
+              <view style="flex: 1;"/>
+              <view style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <view>我的分数</view>
+                 <view class="display-score-text">{{item.score}}</view>
+              </view>
+              <view wx:if="{{item.tips.length>0}}" class="red-packet-bg">
+                  <!-- <text>差</text>
+                  <text>750</text>
+                  <text>分瓜分红包</text> -->
+                  {{item.tips}}
+              </view>
+              <view wx:else style="flex: 1;"/>
+            </view>
           </block>
-          <view>已有{{item.playerNum}}人参赛</view>
+          <!-- 比赛结束，但是没有参赛 -->
+           <block wx:if="{{item.status==3 && item.score==-1}}">
+            <view>未参赛</view>
+            <view style="display: flex; flex-direction: row;">
+              <text class="dashed-line" style="margin-right: 5px;"/>
+              <text class="dashed-line"/>
+            </view>
+          </block>
+          <!-- 比赛结束，有分数，但是没有获得红包 -->
+          <block wx:if="{{item.status==3 && item.score>-1 && item.prize == 0}}">
+            <view class="player-match-status-layout">
+              <view style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <view>我的分数</view>
+                 <view class="display-score-text">{{item.score}}0000</view>
+              </view>
+              <view style="width: 1px; height: 100rpx; margin: 0 20rpx;; background: #eee"></view>
+               <view style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                很遗憾未获得奖金
+               </view>
+            </view>
+          </block>
+          <!-- 比赛结束，有分数且获得红包-->
+           <block wx:if="{{item.status==3 && item.score>-1 && item.prize > 0}}">
+            <view class="player-match-status-layout">
+              <view style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <view>我的分数</view>
+                 <view class="display-score-text">{{item.score}}0000</view>
+              </view>
+              <view style="width: 1px; height: 100rpx; margin: 0 20rpx;; background: #eee"></view>
+               <view style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <view>获得现金</view>
+                 <view class="display-score-text">1000000</view>
+              </view>
+            </view>
+          </block>
+          <!--end-->
+          <!-- 未开赛或是取消状态不显示参赛人数 -->
+          <view>{{item.playerNum}}</view>
         </view>
       </view>
       

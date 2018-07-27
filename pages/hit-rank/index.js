@@ -159,5 +159,5 @@ QKPage({
       timingFunction: 'linear'
     })
     return animation;
-  }
+  },
 })

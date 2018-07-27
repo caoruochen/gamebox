@@ -26,7 +26,8 @@ var QKPage = function (options) {
   if (typeof options.onShareAppMessage === 'undefined') {
     options.onShareAppMessage = function (res) {
       var ret = {
-        title: '7K7K游戏'
+        title: '7K7K游戏',
+        path: '/pages/index/index'
       };
       if (app.shareInfo) {
         if (app.shareInfo.title) {

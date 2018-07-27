@@ -42,7 +42,6 @@ Component({
 			this.setData({
 				show: false
 			})
-			this.triggerEvent('closeHelp')
 		},
 
 		handleDel: function(e) {
@@ -61,12 +60,13 @@ Component({
 							aid: app.globalData.zhuliAid,
 							duid: duid,
 						}, function(data) {
-							console.log(data)
+							// console.log(data)
 							var helpList = me.data.helpList.concat();
 							helpList.splice(index, 1)
 							me.setData({
 								helpList: helpList,
 							});
+							me.triggerEvent('deleteHelp')
 						}, function(code, msg) {
 							wx.showToast({
 								title: msg || '删除失败',

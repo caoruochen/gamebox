@@ -170,8 +170,8 @@ QKPage({
 			aid: me.data.aid,
 		}, function(data) {
 			wx.hideLoading();
-			console.log(data)
-			if (data.length != 0 && data.score > me.data.score) {
+			// console.log(data)
+			if (data.length != 0 && data.score != me.data.score) {
 				//分数更新动画
 				var animation = wx.createAnimation({
 					transformOrigin: "50% 80%",
@@ -237,9 +237,8 @@ QKPage({
 		})
 	},
 
-	closeHelp: function() {
-		//关闭助力框 刷新我的分数
-		console.log('closeHelp')
+	deleteHelp: function() {
+		// 删除助力，刷新我的分数
 		this.getMyRank()
 	},
 

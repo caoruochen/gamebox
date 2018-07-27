@@ -66,7 +66,7 @@
     </view> -->
 	</view>
 
-  <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" bind:closeHelp="closeHelp"/>
+  <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" bind:deleteHelp="deleteHelp"/>
 
   <xcx-danmu danmuList="{{danmuList}}" height="120" bind:clickText="clickDanmu"/>
 

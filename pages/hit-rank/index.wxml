@@ -122,11 +122,11 @@
       </view>
 
       <!-- 活动简介 -->
-      <view class="activity-desc-layout">
+      <view class="activity-desc-layout" bindtap="foldToggle" data-id="{{index}}">
         <view class="activity-rules rules-line{{item.texts.length>=2 ? '2' : '' }} {{item.isFold ? '' : 'unfold'}}">
           <view wx:for="{{item.texts}}" wx:for-item="rule" wx:key="*this">{{rule}}</view>
         </view>
-        <view wx:if="{{item.texts.length>2}}" class="fold" bindtap="foldToggle" data-id="{{index}}">
+        <view wx:if="{{item.texts.length>2}}" class="fold">
           <view class="arrow" animation="{{animationList[index]}}"/>
         </view>
           <!-- <view wx:if="{{item.texts.length==1}}" class="activity-desc-single-text">

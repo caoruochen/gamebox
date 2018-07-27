@@ -66,11 +66,11 @@
     </view> -->
 	</view>
 
-  <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" />
+  <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" bind:deleteHelp="deleteHelp"/>
 
   <xcx-danmu danmuList="{{danmuList}}" height="120" bind:clickText="clickDanmu"/>
 
-  <view wx:if="{{fuid != uid}}" class="gotoHelp flex"  style="display: {{gotohelpShow ? 'flex' : 'none'}}">
+  <view wx:if="{{fuid != uid && gotohelpShow}}" class="gotoHelp flex">
     <view class="gotohelpBox">
       <view class="close" bind:tap="hideGotohelp">
         <image style="width:26rpx;height:26rpx" mode="aspectFill" src="../../images/close.png"/>

@@ -56,9 +56,9 @@ QKPage({
           obj.isFold = true;
           /** 测试数据*/
           if(i % 2 !=0) {
-            obj.texts = ['以为自己有机会出手，又不是回合制游，戏我有阿通在地狱等我']
+            obj.texts = ['戏我有阿通在地狱等我']
           } else {
-            obj.texts = ['以为自己有机会出手，又不是回合制游戏', '我有阿通在地狱等我，你有什么，双手吗？', '看起来你们腐烂的比我还要快']
+            obj.texts = ['又不是回合制游戏', '你有什么，双手吗？', '看起来你们腐烂的比我还要快']
           }
           /******************************/
           act[i] = obj
@@ -125,15 +125,22 @@ QKPage({
     }
     var anim = this.createAnim()
     anim.rotate(degree).step()
-    this.data.animationList[index] = anim.export()
+    // this.data.animationList[index] = anim.export()
 
-    obj.isFold = !isFold;
+    // obj.isFold = !isFold;
 
-    this.data.activitys[index] = obj
-    this.setData({
-      activitys: this.data.activitys,
-      animationList: this.data.animationList
-    })
+    var data = {};
+    data["activitys[" + index +"].isFold"] = !isFold;
+    data["animationList[" + index + "]"] = anim.export();
+    this.setData(data)
+
+    console.log(this.data.activitys)
+
+    // this.data.activitys[index] = obj
+    // this.setData({
+    //   activitys: this.data.activitys,
+    //   animationList: this.data.animationList
+    // })
   },
 
   clickJumpPage: function(e) {

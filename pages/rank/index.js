@@ -68,13 +68,11 @@ QKPage({
 
 	onLoad: function(options) {
 		// console.log('options', options)
-		// console.log(app.globalData)
+		console.log('onLoad', app.globalData.userInfo)
 		var aid = options.aid || '1';
 		var type = options.type;
 		var fuid = options.fuid || null;
 		var fname = options.fname;
-
-		this.loadRankData(true, aid, fuid);
 
 		this.setData({
 			aid: aid,
@@ -86,14 +84,24 @@ QKPage({
 				fname: fname
 			});
 		}
-		// console.log(app.globalData.userInfo)
 		if (app.globalData.userInfo) {
+			this.loadRankData(true, aid, fuid);
 			this.setData({
 				uid: app.globalData.userInfo.uid,
 				name: app.globalData.userInfo.name,
 				avatar: app.globalData.userInfo.avatar,
 			})
 		}
+	},
+	onLogin: function() {
+		// TODO: 登陆后拉取用户数据
+		console.log('onLogin', app.globalData.userInfo)
+		this.loadRankData(true, this.data.aid, this.data.fuid);
+		this.setData({
+			uid: app.globalData.userInfo.uid,
+			name: app.globalData.userInfo.name,
+			avatar: app.globalData.userInfo.avatar,
+		})
 	},
 	onShow: function() {
 		app.globalData.zhuliAid = null;
@@ -104,15 +112,6 @@ QKPage({
 				status: false
 			})
 		}
-	},
-	onLogin: function() {
-		// TODO: 登陆后拉取用户数据
-		console.log('onLogin', app.globalData.userInfo)
-		// this.setData({
-		// 	uid: app.globalData.userInfo.uid,
-		// 	name: app.globalData.userInfo.name,
-		// 	avatar: app.globalData.userInfo.avatar,
-		// })
 	},
 
 	loadRankData: function(refresh, aid, fuid) {
@@ -134,7 +133,7 @@ QKPage({
 			game.path = data.path
 			var ranks = refresh ? [].concat(data.ranks) : me.data.ranks.concat(data.ranks)
 			me.setData({
-				uid: data.uid,
+				// uid: data.uid,
 				banner: data.banner,
 				playerNum: data.playerNum,
 				rules: data.rules,
@@ -164,13 +163,14 @@ QKPage({
 
 	getMyRank: function() {
 		wx.showLoading({
-			title: '数据更新中'
+			title: '分数更新'
 		});
 		var me = this;
 		http.get('/gamebox/activity/rankinfo', {
 			aid: me.data.aid,
 		}, function(data) {
 			wx.hideLoading();
+			console.log(data)
 			if (data.length != 0 && data.score > me.data.score) {
 				//分数更新动画
 				var animation = wx.createAnimation({
@@ -189,7 +189,7 @@ QKPage({
 		}, function(code, msg) {
 			wx.hideLoading();
 			wx.showToast({
-				title: msg || '数据加载失败',
+				title: msg || '分数刷新失败',
 				icon: 'none'
 			});
 		})
@@ -235,6 +235,12 @@ QKPage({
 		this.setData({
 			gotohelpShow: false
 		})
+	},
+
+	closeHelp: function() {
+		//关闭助力框 刷新我的分数
+		console.log('closeHelp')
+		this.getMyRank()
 	},
 
 	//自定义转发字段

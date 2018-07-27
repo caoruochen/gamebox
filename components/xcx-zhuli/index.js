@@ -42,6 +42,7 @@ Component({
 			this.setData({
 				show: false
 			})
+			this.triggerEvent('closeHelp')
 		},
 
 		handleDel: function(e) {

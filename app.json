@@ -21,29 +21,29 @@
     "list": [{
       "pagePath": "pages/index/index",
       "text": "游戏",
-      "iconPath": "images/game0.png",
-      "selectedIconPath": "images/game1.png",
+      "iconPath": "images/tab-game0.png",
+      "selectedIconPath": "images/tab-game1.png",
       "selectedColor": "#000000",
       "color": "#8f8f8f"
     }, {
       "pagePath": "pages/recommend/index",
       "text": "精选",
-      "iconPath": "images/jingxuan0.png",
-      "selectedIconPath": "images/jingxuan1.png",
+      "iconPath": "images/tab-star0.png",
+      "selectedIconPath": "images/tab-star1.png",
       "selectedColor": "#000000",
       "color": "#8f8f8f"
     }, {
       "pagePath": "pages/hit-rank/index",
       "text": "打榜",
-      "iconPath": "images/hit0.png",
-      "selectedIconPath": "images/hit1.png",
+      "iconPath": "images/tab-rank0.png",
+      "selectedIconPath": "images/tab-rank1.png",
       "selectedColor": "#000000",
       "color": "#8f8f8f"
     }, {
       "pagePath": "pages/my/index",
       "text": "我的",
-      "iconPath": "images/my0.png",
-      "selectedIconPath": "images/my1.png",
+      "iconPath": "images/tab-my0.png",
+      "selectedIconPath": "images/tab-my1.png",
       "selectedColor": "#000000",
       "color": "#8f8f8f"
     }]

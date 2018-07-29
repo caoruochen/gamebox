@@ -1,8 +1,9 @@
 {
-	"navigationBarTitleText": "打榜",
-	"backgroundColor": "#f7f7f7",
-	"enablePullDownRefresh": true,
-	"onReachBottomDistance": 20,
+	"navigationBarTitleText": "排行榜",
+  "navigationBarBackgroundColor": "#367be9",
+  "navigationBarTextStyle": "#ffffff",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
 	"usingComponents": {
 		"xcx-navigator": "../../components/xcx-navigator/index",
 		"xcx-login": "../../components/xcx-login/index",

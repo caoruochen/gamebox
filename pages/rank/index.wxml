@@ -1,5 +1,38 @@
-<view class="rank">
-	<view class="rank-head">
+<view class="rank" style="background-image: url('/images/rank_bg.png');">
+  
+  <view class="rank-poster">
+    <image mode="aspectFill" src="{{banner}}"/>
+  </view>
+  
+  <view class="rank-head">
+    <view class="rank-row">
+      <view class="rank-num rank-column">排名</view>
+      <view class="rank-player rank-column">玩家</view>
+      <view class="rank-zhuli rank-column">助力人数</view>
+      <view class="rank-score rank-column">分数</view>
+    </view>
+  </view>
+
+  <view class="rank-body">
+    <view wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12,13, 14,15,16,17,18,19]}}" class="rank-row">
+      <view class="rank-num rank-column {{item<4 ? 'top3' : ''}}">
+        <image wx:if="{{item<4}}" src="/images/rank{{item}}.png" />
+        <text>{{item}}</text>
+      </view>
+      <view class="rank-player rank-column">
+        <image src='{{user.avatar}}' />
+        玩家
+      </view>
+      <view class="rank-zhuli rank-column">
+        <image src="/images/people-gray.png" />
+        <text>6</text>
+      </view>
+      <view class="rank-score rank-column">
+        <text>{{100}}</text>分
+      </view>
+    </view>
+  </view>
+	<!-- <view class="rank-head">
 		<image class="head-img" lazy-load="{{true}}" mode="aspectFill" src="{{banner}}"/>
 		<view class="head-mask">
 			<view class="mask-bottom flex">
@@ -12,14 +45,12 @@
         </view>
 			</view>
 		</view>
-	</view>
+	</view> -->
 
-	<view>
+	<!-- <view>
 		<view class="list-tab">
 			<view class="onetab {{activeIndex == 0? 'activeList':''}}" data-index="0" bindtap="clickTab">榜单</view>
-			<!-- <view class="onetab {{activeIndex == 1? 'activeList':''}}" data-index="1" bindtap="clickTab">评论</view> -->
 		</view>
-    <!-- <view style="display:{{activeIndex == 0? 'block':'none'}}"> -->
       
       <view class="ranks">
         <view class="ranksCont">
@@ -57,16 +88,11 @@
             <view class="mybtn"  bindtap="changeStatus">
               <xcx-navigator game="{{intoGame}}">进入游戏</xcx-navigator>
             </view>
-            <!-- <view class="mybtn" bindtap="onChallenge">挑战</view> -->
         </view>
       </view>
-    <!-- </view> -->
-    <!-- <view style="display:{{activeIndex == 1? 'block':'none'}}">
-      <xcx-rr />
-    </view> -->
 	</view>
 
-  <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" bind:deleteHelp="deleteHelp"/>
+  <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" bind:deleteHelp="deleteHelp" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
 
   <xcx-danmu danmuList="{{danmuList}}" height="120" bind:clickText="clickDanmu"/>
 
@@ -84,7 +110,30 @@
         <xcx-navigator wx:else game="{{intoGame}}" bind:tap="hideGotohelp">去助力</xcx-navigator>
       </view>
     </view>
+  </view> -->
+</view>
+
+<view class="rank-my" wx:if="{{user}}">
+  <view>
+    <image class="rank-my-avatar" src='{{user.avatar}}' />
+    <view class="rank-my-result">
+      <view><text class="rank-my-score">399</text> 名</view>
+      <view>23412 分</view>
+    </view>
+  </view>
+  <view class="rank-my-btns">
+    <view class="rank-my-btn-item" bindtap='onHelp' data-aid="{{aid}}">
+      <image class="people-white" src="/images/people-white.png" />
+      <view>助力</view>
+      <view>5</view>
+    </view>
+    <xcx-navigator nav-class="rank-my-btn-item" game="{{intoGame}}">
+      <view>立即参赛</view>
+      <image class="rarraw-dot" src="/images/rarrow-dot.png" />
+    </xcx-navigator>
   </view>
 </view>
+
+<xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" bind:deleteHelp="deleteHelp" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
 
 <xcx-login bindonlogin="onLogin" />

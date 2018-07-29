@@ -1,4 +1,6 @@
 {
+  "navigationBarTitleText": "打榜赢红包",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "xcx-login": "../../components/xcx-login/index",
     "xcx-navigator": "../../components/xcx-navigator/index",

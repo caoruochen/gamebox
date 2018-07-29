@@ -16,132 +16,105 @@
   </view>
 
   <view class="activitys">
-    <view class="activity-item" wx:for="{{activitys}}" wx:key="{{item.aid}}">
-      <view class="activity-item-poster">
+    <view class="activity" wx:for="{{activitys}}" wx:key="{{item.aid}}">
+      <view class="activity-poster">
         <image lazy-load="{{true}}" 
           mode="aspectFill" 
           src="{{item.banner}}"
           bindtap="clickJumpPage"
           data-aid="{{item.aid}}" />
-        <view class="match-info-mask"/>
-        <view class="match-info-layout match-info-text" bindtap="clickJumpPage" data-aid = "{{item.aid}}">
-          <view class="match-info-top-layout ">
+
+        <view class="activity-mask" style="{{item.mask ? 'background:'+item.mask+';' : ''}}" />
+
+        <view class="activity-info" bindtap="gotoRank" data-aid = "{{item.aid}}">
+          <view class="activity-info-head {{item.status != 1 ? 'activity-info-head-offline' : ''}}">
             <view>{{item.name}}</view>
-            <!-- score等于-1的时候，就表示没有参赛 -->
-            <!-- status 0未开始，1进行中，2暂停中，3已结束，4已取消 -->
-            <view class="{{item.status != 1 ? 'match-end-text' : 'match-status-text'}}">{{item.status_text}}</view>
+            <view>{{item.status_text}}</view>
           </view>
-          <!--5种status的展示-->
-          <!-- 没有到比赛的时间 -->
-          <block wx:if="{{item.status==0}}">
-            <view style="display:flex; flex-direction: column; align-items:center;">
-              <view style="margin-bottom: 3px;">开赛时间</view>
-              <view>{{item.startTime}}</view>
+          <view class="activity-info-body">
+
+            <view wx:if="{{item.status==0 || (item.status != 1 && item.score < 0) }}" class="activity-info-body-st0">
+              {{item.status!=1 ? item.status_text : '未参赛'}}
             </view>
-          </block>
-        <!-- 未参赛 -->
-          <block wx:if="{{item.status==1 && item.score==-1}}">
-            <view>未参赛</view>
-            <view style="display: flex; flex-direction: row;">
-              <text class="dashed-line" style="margin-right: 5px;"/>
-              <text class="dashed-line"/>
-            </view>
-          </block>
-          <!-- 参赛且有分数 -->
-          <block wx:if="{{item.status==1 && item.score > -1}}">
-            <view class="player-match-status-layout">
-              <view style="flex: 1;"/>
-              <view style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                <view>我的分数</view>
-                 <view class="display-score-text">{{item.score}}</view>
+
+            <view wx:else class="activity-info-body-st1">
+
+              <view wx:if="{{ item.score < 0 }}" class="activity-info-body-st1-not">
+                <view>
+                  未参赛
+                </view>
+                <view class="activity-info-body-st1-line">
+                  <view></view>
+                  <view></view>
+                </view>
               </view>
-              <view wx:if="{{item.tips.length>0}}" class="red-packet-bg">
-                  <!-- <text>差</text>
-                  <text>750</text>
-                  <text>分瓜分红包</text> -->
-                  {{item.tips}}
+
+              <view wx:if="{{item.score >= 0}}" class="activity-info-body-st1-left {{item.status == 1 ? 'activity-info-body-st1_center' : '' }}">
+                <view class="activity-info-body-st1-title">{{item.title || '我的分数'}}</view>
+                <view class="activity-info-body-st1-score">{{item.score}}</view>
+                <view class="activity-info-body-st1-rank">第{{item.rank}}名</view>
               </view>
-              <view wx:else style="flex: 1;"/>
-            </view>
-          </block>
-          <!-- 比赛结束，但是没有参赛 -->
-           <block wx:if="{{item.status==3 && item.score==-1}}">
-            <view>未参赛</view>
-            <view style="display: flex; flex-direction: row;">
-              <text class="dashed-line" style="margin-right: 5px;"/>
-              <text class="dashed-line"/>
-            </view>
-          </block>
-          <!-- 比赛结束，有分数，但是没有获得红包 -->
-          <block wx:if="{{item.status==3 && item.score>-1 && item.prize == 0}}">
-            <view class="player-match-status-layout">
-              <view style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                <view>我的分数</view>
-                 <view class="display-score-text">{{item.score}}0000</view>
+
+              <view wx:if="{{item.status != 1 && item.score >= 0}}" class='activity-info-body-st1-sep'><view></view></view>
+
+              <view wx:if="{{item.status != 1 && item.score >= 0}}"  class="activity-info-body-st1-right">
+
+                <view wx:if="{{item.money > 0}}" class="activity-info-body-st1-title">获得红包</view>
+                <view wx:if="{{item.money > 0}}" class="activity-info-body-st1-score">{{item.money}}</view>
+
+                <view wx:if="{{item.money <= 0}}" class="activity-info-body-st1-nogain">
+                  <view>很遗憾未获得红包</view>
+                </view>
               </view>
-              <view style="width: 1px; height: 100rpx; margin: 0 20rpx;; background: #eee"></view>
-               <view style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                很遗憾未获得奖金
-               </view>
-            </view>
-          </block>
-          <!-- 比赛结束，有分数且获得红包-->
-           <block wx:if="{{item.status==3 && item.score>-1 && item.prize > 0}}">
-            <view class="player-match-status-layout">
-              <view style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                <view>我的分数</view>
-                 <view class="display-score-text">{{item.score}}0000</view>
-              </view>
-              <view style="width: 1px; height: 100rpx; margin: 0 20rpx;; background: #eee"></view>
-               <view style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                <view>获得现金</view>
-                 <view class="display-score-text">1000000</view>
+
+              <view wx:if="{{item.status == 1 && item.score >= 0}}" class="activity-info-body-st1-tips">
+                差<text>{{item.tips}}</text>分瓜分红包
+                <view></view>
               </view>
             </view>
-          </block>
-          <!--end-->
-          <!-- 未开赛或是取消状态不显示参赛人数 -->
-          <view>{{item.playerNum}}</view>
+          </view>
+
+          <view class="activity-info-foot" wx:if="{{item.status > 0 || item.playerNum>0}}">
+            <view wx:if="{{item.status != 3}}">
+              已有<text>{{item.playerNum}}</text>人参赛
+            </view>
+            <view wx:else>
+              共有<text>{{item.moneyNum}}</text>人瓜分红包
+            </view>
+          </view>
         </view>
       </view>
-      
 
       <!--参赛信息-->
-        
-         
-      <view class="btn-layout">
+      <view class="activity-op">
         <view class="game-info-layout">
-          <image src="{{item.logo}}" class="avatar-image"  bindtap="clickJumpPage" data-aid = "{{item.aid}}" />
+          <image src="{{item.logo}}" class="avatar-image"  bindtap="gotoRank" data-aid = "{{item.aid}}" />
           <view class="game-title-text">{{item.gname}}</view>
         </view>
 
-        <view class="btn-white-hollow" data-aid="{{item.aid}}" bindtap="onHelp">邀请好友</view>
-        <xcx-navigator game="{{item}}">
-          <view class="btn-blue-soild" bindtap="playMatch" data-aid="{{item.aid}}">立即参赛</view>
-        </xcx-navigator>
+        <view class="activity-op-btns">
+          <view class="activity-op-btn-item activity-op-btn-invite" bindtap='onHelp' data-aid="{{item.aid}}">
+            <image class="people-white" src="/images/people.png" />
+            <view>助力</view>
+            <view>5</view>
+          </view>
+          <xcx-navigator nav-class="activity-op-btn-item" game="{{item}}">
+            <view>立即参赛</view>
+            <image class="rarraw-dot" src="/images/rarrow-dot.png" />
+          </xcx-navigator>
+        </view>
+
       </view>
 
       <!-- 活动简介 -->
-      <view class="activity-desc-layout" bindtap="foldToggle" data-id="{{index}}">
-        <view class="activity-rules rules-line{{item.texts.length>=2 ? '2' : '' }} {{item.isFold ? '' : 'unfold'}}">
-          <view wx:for="{{item.texts}}" wx:for-item="rule" wx:key="*this">{{rule}}</view>
+      <view class="activity-desc" bindtap="foldToggle" data-id="{{index}}">
+        <view class="activity-rules rules-line{{item.rules.length>=2 ? '2' : '' }} {{item.ruleOpened ? 'ruleOpened' : ''}}">
+          <view wx:for="{{item.rules}}" wx:for-item="rule" wx:key="*this">{{rule}}</view>
         </view>
-        <view wx:if="{{item.texts.length>2}}" class="fold">
+        <view wx:if="{{item.rules.length>2}}" class="fold">
           <view class="arrow" animation="{{animationList[index]}}"/>
         </view>
-          <!-- <view wx:if="{{item.texts.length==1}}" class="activity-desc-single-text">
-            {{item.texts}}
-          </view> 
-
-          <view wx:else class="{{activitys[index].isFold ? 'activity-desc-two-text' : 'activity-desc-text'}}">
-            {{item.texts}}
-          </view>
-           
-          <view wx:if="{{item.texts.length>1}}" class="fold" bindtap="foldToggle" data-id="{{index}}">
-            <view class="arrow" animation="{{animationList[index]}}"/>
-          </view> -->
-         
-        </view>
+      </view>
     </view>
   </view>
 

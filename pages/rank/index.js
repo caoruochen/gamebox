@@ -3,8 +3,10 @@ var http = require("../../util/http");
 var util = require("../../util/util");
 var app = getApp();
 
+
 QKPage({
 	data: {
+    user: app.globalData.userInfo,
 		banner: '../../images/default-banner.png',
 		playerNum: '0',
 		rules: '',
@@ -14,17 +16,6 @@ QKPage({
 		rank: 0,
 		score: 0,
 		ranks: [],
-		// ranks: [{
-		// 	avatar: "http://thirdqq.qlogo.cn/qqapp/101472344/6CEAF834088619211BAAC1CE802FC40E/100",
-		// 	name: "xx",
-		// 	rank: 1,
-		// 	score: 3000,
-		// }, {
-		// 	avatar: "http://thirdqq.qlogo.cn/qqapp/101472344/6CEAF834088619211BAAC1CE802FC40E/100",
-		// 	name: "xx",
-		// 	rank: 1,
-		// 	score: 3000,
-		// }],
 		intoGame: {
 			appId: "wx530202348351e73c",
 			gameId: 1,
@@ -34,26 +25,9 @@ QKPage({
 
 		activeIndex: 0,
 		helpShow: false,
-		// helpList: [{
-		// 	uid: '38',
-		// 	name: "韩梅梅",
-		// 	avatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132',
-		// 	score: '3000',
-		// 	help: '50',
-		// }],
 		helpList: [],
 		//弹幕列表
-		danmuList: [{
-			text: '第 1s 出现的弹幕第 1s 出现的弹幕',
-			// color: '#ff0000',
-			// time: 1, 
-		}, {
-			text: '第 5s 出现的弹幕',
-			color: '#ff00ff',
-		}, {
-			text: '第 10s 出现的弹幕',
-			color: '#ff0000',
-		}],
+		danmuList: [],
 		aid: '',
 		status: false, //状态标识,onshow是否调用更新排名接口
 		page: 1,
@@ -65,10 +39,9 @@ QKPage({
 		animationData: {},
 	},
 
-
 	onLoad: function(options) {
 		// console.log('options', options)
-		console.log('onLoad', app.globalData.userInfo)
+		console.log('onLoad', app.globalData)
 		var aid = options.aid || '1';
 		var type = options.type;
 		var fuid = options.fuid || null;

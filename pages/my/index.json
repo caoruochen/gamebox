@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "我的",
   "navigationBarBackgroundColor": "#f6c649",
-  "navigationBarTextStyle": "white",
+  "navigationBarTextStyle": "#ffffff",
   "usingComponents": {
     "xcx-login": "../../components/xcx-login/index",
     "xcx-navigator": "../../components/xcx-navigator/index"

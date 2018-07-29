@@ -1,5 +1,56 @@
-  <view class="help flex" wx:if="{{show}}">
+  <view class="help" wx:if="{{show}}">
+    
+    <view class="help-head">
+      <image class="help-people" src="/images/zhuli_people.png" mode="widthFix" />
+      <view class="help-lines">
+        <image class="help-line2" src="/images/zhuli_line2.png" mode="widthFix" />
+        <image class="help-line1" src="/images/zhuli_line.png" mode="widthFix" />
+      </view>
+      <view class="help-close" bind:tap="hideHelp"></view>
+    </view>
     <view class="help-box">
+      <view class="help-box-title">
+        <view class="help-box-title-line"></view>
+        <view>邀请好友助力</view>
+        <view class="help-box-title-line"></view>
+      </view>
+      <view class="help-box-rule">
+        <view>助力分=好友得分*30%，上限50分；</view>
+        <view>删除已有助力分，可重新邀请好友助力。</view>
+      </view>
+      <view class="help-box-friends">
+        <view class="help-box-friends-row">
+          <view class="help-box-friends-user">好友</view>
+          <view class="help-box-friends-score">得分</view>
+          <view class="help-box-friends-score">助力</view>
+          <view class="help-box-friends-op"> </view>
+        </view>
+        <view wx:for="{{[0, 1, 2, 3, 4]}}" class="help-box-friends-row">
+          <view class="help-box-friends-user">
+            <image src="/images/default-avatar.png" />
+            <view> </view>
+          </view>
+          <view class="help-box-friends-score"> - </view>
+          <view class="help-box-friends-score"> - </view>
+          <view class="help-box-friends-op">
+            <image src="/images/{{item == 2 ? 'plus' : 'minus'}}.png" />
+          </view>
+        </view>
+
+        <view class="help-box-invite">
+          <view class="help-box-invite-btn">
+            <image src="/images/people.png" />
+            邀请好友助力
+            <button open-type="share"></button>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="help-foot">
+      <view class="help-close" bind:tap="hideHelp"></view>
+    </view>
+    <!-- <view class="help-box">
       <view class="close" bind:tap="hideHelp">
         <image style="width:30rpx;height:30rpx" mode="aspectFill" src="../../images/close.png" />
       </view>
@@ -41,5 +92,5 @@
         </view>
 
       </view>
-    </view>
+    </view> -->
   </view> 

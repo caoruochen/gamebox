@@ -6,6 +6,14 @@ var app = getApp();
 Component({
 	externalClasses: [],
 	properties: {
+    navBarBGColor: {
+      type: String,
+      value: '#ffffff'
+    },
+    navBarFontColor: {
+      type: String,
+      value: '#000000'
+    },
 		helpList: {
 			type: Array,
 			value: null,
@@ -13,19 +21,45 @@ Component({
 		},
 		show: {
 			type: Boolean,
-			value: true
+			value: true,
+      observer: 'onShow'
 		},
 		maxNum: {
 			type: Number,
 			value: 5
-		}
+		},
+    aid: {
+      type: null,
+      value: '',
+      observer: 'changeActivity'
+    }
 	},
 	data: {
 		helpNum: 0,
 		nohelpList: []
 	},
 
+  ready: function () {
+    console.log('ready')
+  },
+
 	methods: {
+    onShow: function (newVal, oldVal, changedPath) {
+      if (newVal) {
+        wx.setNavigationBarColor({
+          frontColor: '#ffffff',
+          backgroundColor: '#367be9'
+        })
+      } else {
+        wx.setNavigationBarColor({
+          frontColor: this.data.navBarFontColor,
+          backgroundColor: this.data.navBarBGColor
+        })
+      }
+    },
+    changeActivity: function (newVal, oldVal, changedPath) {
+
+    },
 		changeHelpList: function() {
 			var len = this.data.helpList.length
 			var nohelpList = []

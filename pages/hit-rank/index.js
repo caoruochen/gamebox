@@ -25,9 +25,11 @@ QKPage({
 
   onLoad: function (options) {
     this.loadData()
-   
   },
 
+  onPullDownRefresh: function () {
+    this.loadData(true);
+  },
   onShow: function() {
     app.globalData.zhuliAid = null;
     if(activityId != -1) {
@@ -36,39 +38,28 @@ QKPage({
   },
 
   onLogin: function () {
-    // TODO 登陆后拉取用户数据
+    this.loadData();
   },
 
-  /**
-   * 加载活动数据
-   */
-  loadData: function () {
+  loadData: function (isPull) {
     wx.showLoading({
       title: '数据加载中'
     });
     var that = this;
     http.get('/gamebox/activity/list', function (data) {
       wx.hideLoading();
-      console.log(data)
-      var act = data.activitylist;
-      for(let i=0;i<act.length; ++i) {
-          var obj = act[i]
-          obj.isFold = true;
-          /** 测试数据*/
-          if(i % 2 !=0) {
-            obj.texts = ['戏我有阿通在地狱等我']
-          } else {
-            obj.texts = ['又不是回合制游戏', '你有什么，双手吗？', '看起来你们腐烂的比我还要快']
-          }
-          /******************************/
-          act[i] = obj
+      if (isPull) {
+        wx.stopPullDownRefresh();
       }
       that.setData({
         activityNotice: data.notice,
-        activitys: act,
+        activitys: data.activitylist,
       })
     }, function () {
       wx.hideLoading();
+      if (isPull) {
+        wx.stopPullDownRefresh();
+      }
       wx.showToast({
         title: msg || '数据加载失败',
         icon: 'none'
@@ -97,7 +88,7 @@ QKPage({
   onShareAppMessage: function(res) {
     return {
       title: '我在7k7k游戏打榜！快来助我一把啊！',
-      path: '/pages/rank/index?aid=' + app.globalData.zhuliAid + '&fuid=' + app.globalData.userInfo.uid + '&type=1'
+      path: '/pages/hit-rank/index?aid=' + app.globalData.zhuliAid + '&fuid=' + app.globalData.userInfo.uid + '&type=1'
     }
   },
 
@@ -116,34 +107,22 @@ QKPage({
   foldToggle: function(e) {
     var index = e.currentTarget.dataset.id;
     var obj = this.data.activitys[index];
-    var isFold = obj.isFold;
-    // 箭头动画
+    var ruleOpened = obj.ruleOpened;
     
-    var degree = 0
-    if (isFold) {
-      degree = -180
+    var degree = -180
+    if (ruleOpened) {
+      degree = 0
     }
     var anim = this.createAnim()
     anim.rotate(degree).step()
-    // this.data.animationList[index] = anim.export()
-
-    // obj.isFold = !isFold;
 
     var data = {};
-    data["activitys[" + index +"].isFold"] = !isFold;
+    data["activitys[" + index + "].ruleOpened"] = !ruleOpened;
     data["animationList[" + index + "]"] = anim.export();
     this.setData(data)
-
-    console.log(this.data.activitys)
-
-    // this.data.activitys[index] = obj
-    // this.setData({
-    //   activitys: this.data.activitys,
-    //   animationList: this.data.animationList
-    // })
   },
 
-  clickJumpPage: function(e) {
+  gotoRank: function(e) {
     var aid = e.currentTarget.dataset.aid
     activityId = aid
     console.log("aid=" + aid)

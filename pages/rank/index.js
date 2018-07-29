@@ -219,7 +219,8 @@ QKPage({
 	onShareAppMessage: function(res) {
 		return {
 			title: '我在7k7k游戏打榜！快来助我一把啊！',
-			path: '/pages/rank/index?aid=' + app.globalData.zhuliAid + '&fuid=' + app.globalData.userInfo.uid + '&fname=' + app.globalData.userInfo.name + '&type=1'
+			path: '/pages/hit-rank/index?aid=' + app.globalData.zhuliAid + '&fuid=' + app.globalData.userInfo.uid + '&fname=' + app.globalData.userInfo.name + '&type=1',
+      url: '../../images/share.jpg'
 		}
 	},
 

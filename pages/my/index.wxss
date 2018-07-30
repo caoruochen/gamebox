@@ -10,7 +10,7 @@ image{
 }
 
 .my{
-  background-image: linear-gradient(to bottom, #f6c749 0%, #f3b244 100%);
+  background-image: linear-gradient(to bottom, #4f8ded 0%, #367be9 100%);
 }
 .my-info{
   position: relative;
@@ -35,7 +35,7 @@ image{
 }
 .base-info{
   display: flex;
-  color: #4f4f4f;
+  color: #fff;
 }
 .base-info > view{
   font-size: 40rpx;
@@ -65,7 +65,7 @@ image{
 }
 .my-info .lottery image{
   display: block;
-  width: 106rpx;
+  width: 110rpx;
 }
 .my-info .wave-icon{
   position: absolute;
@@ -104,7 +104,7 @@ image{
 }
 .user-info .my-fund text{
   font-size: 12px;
-  color: #fff;
+  color: #cce0ff;
 }
 .user-info .packet image{
   width: 23rpx;
@@ -283,7 +283,7 @@ image{
   width: 20rpx;
   height: 80%;
   transform: translateX(-50%);
-  background-color: #feb22b;
+  background-color: #527cf5;
 }
 
 
@@ -353,7 +353,7 @@ image{
 
 .daily-task .task-item .task-status {
   position: relative;
-  background-color: #f6c749;
+  background-color: #527cf5;
   border-radius: 30rpx;
   width: 190rpx;
   height: 60rpx;
@@ -399,7 +399,7 @@ image{
   border: none !important;
   line-height: normal !important;
   border-radius: 0 !important;
-  background-color: #f6c749 !important;
+  background-color: #527cf5 !important;
 }
 
 .games{

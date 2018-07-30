@@ -45,7 +45,7 @@
   line-height: 48rpx;
   border-radius: 5px;
   color: #fff;
-  background: #f3b244;
+  background: #517BF7;
   margin: 0 0 4rpx 30rpx;
   box-sizing: border-box;
   font-size: 12px;

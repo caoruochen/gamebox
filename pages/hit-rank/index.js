@@ -19,7 +19,7 @@ QKPage({
     activityNotice: "",
     activitys: [],
     helpShow: false,
-    money: app.globalData.userInfo && app.globalData.userInfo.money ? app.globalData.userInfo.money : 0,
+    money: app.globalData.userInfo && app.globalData.userInfo.money ?   app.globalData.userInfo.money : 0,
     animationList: {},
   },
 
@@ -96,7 +96,8 @@ QKPage({
   onHelp: function(e) {
     app.globalData.zhuliAid = e.currentTarget.dataset.aid; 
     this.setData({
-      helpShow: true
+      helpShow: true,
+      aid: e.currentTarget.dataset.aid,
     })
   },
 

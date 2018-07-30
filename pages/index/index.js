@@ -74,10 +74,12 @@ QKPage({
         categorys: data.gamelist,
         adpos: data.adpos,
         banners: (data.banners && data.banners.length > 0) ? data.banners : defaultBanners,
-        verifying: data.verifying ? data.verifying : false,
-        gameItemWidth: data.verifying && (app.globalData.wwidth - 150 * ratio) / 4
+        verifying: data.verifying ? data.verifying : false
       };
       me.setData(obj);
+      if(data.verifying){
+        me.setData({gameItemWidth: (app.globalData.wwidth - 150 * ratio) / 4});
+      }
       util.setSavedGames(obj);
     }, function(error, msg) {
       wx.hideLoading();

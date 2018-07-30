@@ -96,22 +96,25 @@ Page({
             console.log(data[0])
             console.log(tempArr[tempArr.length - 1])
             if (tempArr.length > 0 && (data[0].rid > tempArr[tempArr.length - 1].rid)) {
+                /* 加载更多的时候 */
                 t = tempArr.concat(data)
                 console.log("+++++++++++")
             } else {
-                t = data
+                /* 没有更多数据的时候 */
+                if (tempArr.length > 0) {
+                    t = tempArr
+                } else {
+                    /* 第一次进来的时候 */
+                    t = data
+                }
+                
                 console.log("===========")
                 console.log(t)
             }
-            
-            // console.log("t -->  " + t)
-            // tempArr = data
             me.setData({
                 dataList: t,
                 lastRid: lastDict.rid,
             })
-            // me.data.dataList.push(tempArr)
-            // console.log(me.data.lastRid)
         }, function(code, msg) {
             console.log("code -->" + code + "msg -->" + msg)
         })

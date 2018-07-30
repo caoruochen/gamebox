@@ -44,9 +44,20 @@
 	height:56rpx;
 	color:#fff;
 	justify-content: center;
+  font-size: 24rpx;
+}
+.rank-poster .mask-bottom .rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rank-poster .mask-bottom .rule image {
+  width: 22rpx;
+  height: 22rpx;
+  margin-right: 6rpx;
 }
 .rank-poster .border{
-	margin:100rpx;
+	margin:0 100rpx;
 }
 .rank-head {
   width: 100%;

@@ -4,6 +4,7 @@
   "usingComponents": {
     "xcx-login": "../../components/xcx-login/index",
     "xcx-navigator": "../../components/xcx-navigator/index",
-    "xcx-zhuli": "../../components/xcx-zhuli/index"
+    "xcx-zhuli": "../../components/xcx-zhuli/index",
+    "qk-result": "../../components/qk-result/index"
   }
 }

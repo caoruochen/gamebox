@@ -46,11 +46,25 @@ Component({
 	methods: {
     onShow: function (newVal, oldVal, changedPath) {
       if (newVal) {
+        app.globalData.shareInfo = {
+          stype: 1,
+          __reserved: true,
+          title: '我在7k7k游戏打榜！快来助我一把啊！',
+          path: '/pages/hit-rank/index?'+ 
+              'aid=' + this.data.aid +
+              '&stype=1' +
+              '&fuid=' + app.globalData.userInfo.uid + 
+              '&fname=' + app.globalData.userInfo.name + 
+              '&favatar=' + app.globalData.userInfo.avatar
+        };
         wx.setNavigationBarColor({
           frontColor: '#ffffff',
           backgroundColor: '#367be9'
         })
       } else {
+        app.globalData.shareInfo = {
+          stype: 0
+        };
         wx.setNavigationBarColor({
           frontColor: this.data.navBarFontColor,
           backgroundColor: this.data.navBarBGColor

@@ -127,7 +127,7 @@
       <view>助力</view>
       <view>5</view>
     </view>
-    <xcx-navigator nav-class="rank-my-btn-item" game="{{intoGame}}">
+    <xcx-navigator nav-class="rank-my-btn-item" game="{{intoGame}}" bindonclick="onStartGame">
       <view>立即参赛</view>
       <image class="rarraw-dot" src="/images/rarrow-dot.png" />
     </xcx-navigator>
@@ -135,5 +135,7 @@
 </view>
 
 <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" bind:deleteHelp="deleteHelp" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
+
+<qk-result page-show="{{pageShow}}" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
 
 <xcx-login bindonlogin="onLogin" />

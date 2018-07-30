@@ -119,6 +119,7 @@
   </view>
 
   <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" />
+  <qk-result page-show="{{pageShow}}" />
 
 </view>
 <xcx-login bindonlogin="onLogin" />

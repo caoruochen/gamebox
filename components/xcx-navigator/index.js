@@ -29,6 +29,7 @@ Component({
       app.$reportPreviewNavgator(1, this.data.game, page, this.data.fromHistory);
     },
     onNav: function (e) {
+      this.triggerEvent('onclick')
       var app = getApp();
       var r = util.compareVersion(app.globalData.sysInfo.SDKVersion, '2.0.7');
       if (r < 0) {

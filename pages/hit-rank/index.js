@@ -144,4 +144,7 @@ QKPage({
     })
     return animation;
   },
+  onStartGame: function () {
+    app.globalData.startGame = true;
+  },
 })

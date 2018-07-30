@@ -1,5 +1,28 @@
 var app = getApp();
 
+var checkPageJump = function () {
+  var options = app.globalData.showParams;
+  if (!options || !options.query || !options.query.spage) {
+    return;
+  }
+  delete app.globalData.showParams.spage;
+  var path = options.query.spage;
+  var query = options.query;
+  if (query) {
+    var query0 = []
+    for (var k in query) {
+      if (k != 'spage') {
+        query0.push(k + '=' + query[k]);
+      }
+    }
+    path += '?' + query0.join('&')
+  }
+  console.log(path)
+  wx.navigateTo({
+    url: path
+  })
+};
+
 var QKPage = function (options) {
 
   var onLoad0 = options.onLoad || null;
@@ -13,6 +36,7 @@ var QKPage = function (options) {
   };
 
   options.onShow = function () {
+    checkPageJump()
     wx.showShareMenu();
     app.$reportPreviewNavgator(2);
 
@@ -46,6 +70,20 @@ var QKPage = function (options) {
           title: '闭上眼睛点 款款都正点！7K7K游戏精选！',
           path: '/pages/index/index',
           imageUrl: '/images/share.jpg'
+        }
+      }
+      console.log(ret)
+      if (ret.path) {
+        var pos = ret.path.indexOf('?')
+        var path0 = ret.path;
+        var query = ''
+        if (pos > -1) {
+          path0 = ret.path.substring(0, pos);
+          query = ret.path.substring(pos+1);
+        }
+        console.log(app.globalData.tabPages)
+        if (app.globalData.tabPages.indexOf(path0) < 0) {
+          ret.path = '/pages/index/index?spage=' + path0 + '&' + query
         }
       }
       console.log(ret)

@@ -7,6 +7,7 @@ var app = getApp();
 QKPage({
 	data: {
     user: app.globalData.userInfo,
+    pageShow: false,
 		banner: '../../images/default-banner.png',
 		playerNum: '0',
 		rules: '',
@@ -41,7 +42,7 @@ QKPage({
 
 	onLoad: function(options) {
 		// console.log('options', options)
-		console.log('onLoad', app.globalData)
+		// console.log('onLoad', app.globalData)
 		var aid = options.aid || '1';
 		var type = options.type;
 		var fuid = options.fuid || null;
@@ -68,7 +69,7 @@ QKPage({
 	},
 	onLogin: function() {
 		// TODO: 登陆后拉取用户数据
-		console.log('onLogin', app.globalData.userInfo)
+		// console.log('onLogin', app.globalData.userInfo)
 		this.loadRankData(true, this.data.aid, this.data.fuid);
 		this.setData({
 			uid: app.globalData.userInfo.uid,
@@ -77,6 +78,9 @@ QKPage({
 		})
 	},
 	onShow: function() {
+    this.setData({
+      pageShow: true
+    });
 		app.globalData.zhuliAid = null;
 		if (this.data.status) {
 			//延迟 结果查询，显示结果
@@ -86,6 +90,11 @@ QKPage({
 			})
 		}
 	},
+  onHide: function () {
+    this.setData({
+      pageShow: false
+    });
+  },
 
 	loadRankData: function(refresh, aid, fuid) {
 		wx.showLoading({
@@ -168,7 +177,6 @@ QKPage({
 		})
 	},
 
-
 	onPullDownRefresh: function() {
 		this.loadRankData(true, this.data.aid, this.data.fuid);
 		this.setData({
@@ -177,7 +185,7 @@ QKPage({
 		})
 	},
 	onReachBottom: function(e) {
-		console.log('onReachBottom page:' + this.data.page)
+		// console.log('onReachBottom page:' + this.data.page)
 		this.loadRankData(false, this.data.aid, this.data.fuid);
 	},
 
@@ -215,15 +223,6 @@ QKPage({
 		this.getMyRank()
 	},
 
-	//自定义转发字段
-	onShareAppMessage: function(res) {
-		return {
-			title: '我在7k7k游戏打榜！快来助我一把啊！',
-			path: '/pages/hit-rank/index?aid=' + app.globalData.zhuliAid + '&fuid=' + app.globalData.userInfo.uid + '&fname=' + app.globalData.userInfo.name + '&type=1',
-      url: '../../images/share.jpg'
-		}
-	},
-
 	// onChallenge: function() {
 	// 	wx.navigateTo({
 	// 		url: '/pages/challenge/index',
@@ -233,4 +232,8 @@ QKPage({
 	// clickDanmu: function(e) {
 	// 	console.log(e.detail.text)
 	// },
+
+  onStartGame: function () {
+    app.globalData.startGame = true;
+  },
 })

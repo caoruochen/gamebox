@@ -117,8 +117,8 @@
       </view>
     </view>
   </view>
-
+  
   <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" aid="{{aid}}"/>
-
+  <qk-result page-show="{{pageShow}}" />
 </view>
 <xcx-login bindonlogin="onLogin" />

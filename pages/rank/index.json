@@ -2,7 +2,6 @@
 	"navigationBarTitleText": "排行榜",
 	"navigationBarBackgroundColor": "#367be9",
 	"navigationBarTextStyle": "#ffffff",
-	"enablePullDownRefresh": true,
 	"usingComponents": {
 		"xcx-navigator": "../../components/xcx-navigator/index",
 		"xcx-login": "../../components/xcx-login/index",

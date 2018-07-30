@@ -3,6 +3,8 @@ var http = require("../../util/http");
 
 var app = getApp();
 
+var cachedHelpers = {};
+
 Component({
 	externalClasses: [],
 	properties: {
@@ -19,37 +21,31 @@ Component({
 			value: true,
 			observer: 'onShow'
 		},
-		aid: {
-			type: null,
-			value: '',
-			observer: 'changeActivity'
-		},
-		// maxNum: {
-		// 	type: Number,
-		// 	value: 5
-		// },
+    activity: {
+      type: Object,
+      value: null
+    }
 	},
 	data: {
-		helpList: wx.getStorageSync('helpList'),
-		assistText: []
+    assistances: [],
 	},
-
-	// ready: function() {
-	// 	console.log('ready')
-	// },
 
 	methods: {
 		onShow: function(newVal, oldVal, changedPath) {
 			if (newVal) {
-				if (this.data.show) {
-					this.loadRankData(this.data.aid)
-				}
+        if (this.data.activity && cachedHelpers[this.data.activity.aid]) {
+          this.setData({
+            assistances: cachedHelpers[this.data.activity.aid]
+          });
+        }
+        console.log(this.data.activity)
+        this.getAssistance();
 				app.globalData.shareInfo = {
 					stype: 1,
 					__reserved: true,
 					title: '我在7k7k游戏打榜！快来助我一把啊！',
 					path: '/pages/rank/index?' +
-						'aid=' + this.data.aid +
+            'aid=' + this.data.activity.aid +
 						'&stype=1' +
 						'&fuid=' + app.globalData.userInfo.uid +
 						'&fname=' + encodeURIComponent(app.globalData.userInfo.name) +
@@ -69,39 +65,44 @@ Component({
 				})
 			}
 		},
-		changeActivity: function(newVal, oldVal, changedPath) {
-			this.loadRankData(this.data.aid)
-		},
-		loadRankData: function(aid) {
-			wx.showLoading({
-				title: '数据加载中'
-			});
-			var me = this;
-			http.get('/gamebox/activity/rank', {
-				// fuid: fuid,
-				aid: aid,
-				page: 1
-			}, function(data) {
-				wx.hideLoading();
-				me.setData({
-					helpList: data.assistance,
-					assistText: data.assistText
-				});
-				wx.setStorageSync('helpList', data.assistance);
-			}, function(code, msg) {
-				wx.hideLoading();
-				wx.showToast({
-					title: msg || '数据加载失败',
-					icon: 'none'
-				});
-			})
-		},
+    getAssistance: function () {
+      wx.showLoading({
+        title: '数据加载中'
+      });
+      var me = this;
+      http.get('/gamebox/activity/assists', {
+        aid: this.data.activity.aid
+      }, function (data) {
+        wx.hideLoading();
+        me.setData({
+          assistances: data
+        });
+        if (data && data.length > 0) {
+          cachedHelpers[me.data.activity.aid] = data;
+        }
+      }, function (code, msg) {
+        wx.hideLoading();
+        wx.showToast({
+          title: msg || '数据加载失败',
+          icon: 'none'
+        });
+      })
+    },
 
 		hideHelp: function() {
 			this.setData({
 				show: false
 			})
 		},
+
+    inviteNotice: function () {
+      wx.showModal({
+        title: '最多邀请5位好友',
+        content: '可以删除分数较低的好友后，重新邀请',
+        showCancel: false,
+        confirmText: '关闭'
+      })
+    },
 
 		handleDel: function(e) {
 			var me = this;
@@ -116,7 +117,7 @@ Component({
 						var duid = e.currentTarget.dataset.uid
 						var index = e.currentTarget.dataset.index
 						http.post('/gamebox/rank/delassist', {
-							aid: app.globalData.zhuliAid,
+              aid: me.data.activity.aid,
 							duid: duid,
 						}, function(data) {
 							// console.log(data)

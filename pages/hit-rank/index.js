@@ -19,6 +19,7 @@ QKPage({
     noticeWidth: app.globalData.wwidth/2.7,
     activityNotice: "",
     activitys: [],
+    selectedActivity: null,
     helpShow: false,
     money: app.globalData.userInfo && app.globalData.userInfo.money ?   app.globalData.userInfo.money : 0,
     animationList: {},
@@ -35,7 +36,6 @@ QKPage({
     this.setData({
       pageShow: true
     });
-    app.globalData.zhuliAid = null;
     if(activityId != -1) {
       this.refreshActivityInfo()
     } 
@@ -97,10 +97,24 @@ QKPage({
   },
 
   onHelp: function(e) {
-    app.globalData.zhuliAid = e.currentTarget.dataset.aid; 
+    var aid = e.currentTarget.dataset.aid;
+    var ind = -1;
+    for (var i=0; i<this.data.activitys.length; i++) {
+      if (this.data.activitys[i].aid == aid) {
+        ind = i;
+        break;
+      }
+    }
+    if (ind < 0) {
+      wx.showToast({
+        title: '活动参数错误',
+        icon: 'none'
+      })
+      return;
+    }
     this.setData({
       helpShow: true,
-      aid: e.currentTarget.dataset.aid,
+      selectedActivity: this.data.activitys[ind],
     })
   },
 

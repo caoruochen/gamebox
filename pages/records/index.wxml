@@ -1,4 +1,4 @@
-<view>
+<view class='baseView'>
     <!--  3个火枪手  -->
     <view class='btns'>
         <view wx:for="{{btns}}" wx:for-index="index" wx:for-item="item" wx:key="{{index}}" bindtap='btnTypeTap' class='{{btnType == index ? "selectedBtn" : "btn"}}' data-btnType="{{index}}">{{item}}</view>

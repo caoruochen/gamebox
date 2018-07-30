@@ -1,6 +1,10 @@
 var QKApp = require("./libs/app");
 var http = require("./util/http");
 
+var tabPages = [
+  '/pages/index/index', '/pages/recommend/index', '/pages/hit-rank/index', '/pages/my/index'
+]
+
 QKApp({
   config: {
     api: 'https://api-game.7k.cn',
@@ -15,13 +19,9 @@ QKApp({
     this.globalData.wheight = sysInfo.windowHeight;
     this.globalData.pixelRatio = sysInfo.pixelRatio;
     this.globalData.shareInfo = {};
+    this.globalData.tabPages = tabPages;
   },
-  onShow: function (options) {
-    console.log('app.onshow')
-    console.log(options)
-    this.globalData.showParams = options;
-  },
-  savedOftenGame: function(obj, game){
+  savedOftenGame: function(obj, game) {
     obj.save(game);
   },
   globalData: {},
@@ -30,8 +30,6 @@ QKApp({
       return null;
     }
     var stype = this.globalData.shareInfo.stype;
-    console.log('stype '+stype)
-    console.log(this.globalData.shareInfo)
     switch (stype) {
       case 1: // 邀请助力
         return {

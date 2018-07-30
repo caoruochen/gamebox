@@ -23,7 +23,15 @@ Component({
       type: null,
       value: '',
       observer: 'changeActivity'
-    }
+    },
+    score: {
+      type: Number,
+      value: 0
+    },
+    rank: {
+      type: null,
+      value: ''
+    },
 	},
 	data: {
     show: false
@@ -31,21 +39,28 @@ Component({
 
 	methods: {
     onPageShow: function (newVal, oldVal, changedPath) {
+      console.log("onPageShow " + newVal + ", " + app.globalData.startGame)
       this.setData({
         show: !!(newVal && app.globalData.startGame)
       });
       if (newVal) {
-        // wx.setNavigationBarColor({
-        //   frontColor: '#ffffff',
-        //   backgroundColor: '#367be9'
-        // });
-        app.globalData.startGame = false
-      } else {
-        // wx.setNavigationBarColor({
-        //   frontColor: this.data.navBarFontColor,
-        //   backgroundColor: this.data.navBarBGColor
-        // })
+        if (app.globalData.startGame) {
+          wx.setNavigationBarColor({
+            frontColor: '#ffffff',
+            backgroundColor: '#367be9'
+          });
+          app.globalData.startGame = false
+        }
       }
     },
+    close: function () {
+      this.setData({
+        show: false
+      });
+      wx.setNavigationBarColor({
+         frontColor: this.data.navBarFontColor,
+         backgroundColor: this.data.navBarBGColor
+      })
+    }
 	}
 })

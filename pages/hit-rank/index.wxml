@@ -98,7 +98,7 @@
             <view>助力</view>
             <view>5</view>
           </view>
-          <xcx-navigator nav-class="activity-op-btn-item" game="{{item}}">
+          <xcx-navigator nav-class="activity-op-btn-item" game="{{item}}" bindonclick="onStartGame">
             <view>立即参赛</view>
             <image class="rarraw-dot" src="/images/rarrow-dot.png" />
           </xcx-navigator>

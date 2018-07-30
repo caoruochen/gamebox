@@ -260,6 +260,7 @@ var QKApp = function (options) {
   };
 
   options.onShow = function (params) {
+    this.globalData.showParams = params;
     wx.hideLoading();
     onShow0 && onShow0.call(this, params);
     currentTS1 = (new Date()).getTime();

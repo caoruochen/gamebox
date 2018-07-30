@@ -50,12 +50,12 @@ Component({
           stype: 1,
           __reserved: true,
           title: '我在7k7k游戏打榜！快来助我一把啊！',
-          path: '/pages/hit-rank/index?'+ 
+          path: '/pages/rank/index?'+ 
               'aid=' + this.data.aid +
               '&stype=1' +
               '&fuid=' + app.globalData.userInfo.uid + 
-              '&fname=' + app.globalData.userInfo.name + 
-              '&favatar=' + app.globalData.userInfo.avatar
+            '&fname=' + encodeURIComponent(app.globalData.userInfo.name) + 
+            '&favatar=' + encodeURIComponent(app.globalData.userInfo.avatar)
         };
         wx.setNavigationBarColor({
           frontColor: '#ffffff',

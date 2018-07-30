@@ -16,6 +16,7 @@ QKPage({
 		avatar: app.globalData.userInfo ? app.globalData.userInfo.avatar : '../../images/defaultavatar.png',
 		rank: 0,
 		score: 0,
+    showInvitePop: false,
 		ranks: [],
 		intoGame: {
 			appId: "wx530202348351e73c",
@@ -41,7 +42,7 @@ QKPage({
 	},
 
 	onLoad: function(options) {
-		// console.log('options', options)
+		console.log('options', options)
 		// console.log('onLoad', app.globalData)
 		var aid = options.aid || '1';
 		var type = options.type;
@@ -78,9 +79,16 @@ QKPage({
 		})
 	},
 	onShow: function() {
-    this.setData({
+    console.log(app.globalData.showParams)
+    var params = app.globalData.showParams;
+    var data = {
       pageShow: true
-    });
+    }
+    if (params && params.query && params.query.stype == 1) {
+      data.showInvitePop = true
+    }
+    console.log(data)
+    this.setData(data);
 		app.globalData.zhuliAid = null;
 		if (this.data.status) {
 			//延迟 结果查询，显示结果
@@ -185,7 +193,7 @@ QKPage({
 		})
 	},
 	onReachBottom: function(e) {
-		// console.log('onReachBottom page:' + this.data.page)
+		console.log('onReachBottom page:' + this.data.page)
 		this.loadRankData(false, this.data.aid, this.data.fuid);
 	},
 
@@ -236,4 +244,9 @@ QKPage({
   onStartGame: function () {
     app.globalData.startGame = true;
   },
+  onCloseInvitePop: function () {
+    this.setData({
+      showInvitePop: false
+    })
+  }
 })

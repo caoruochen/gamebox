@@ -6,69 +6,81 @@ var app = getApp();
 Component({
 	externalClasses: [],
 	properties: {
-    navBarBGColor: {
-      type: String,
-      value: '#ffffff'
-    },
-    navBarFontColor: {
-      type: String,
-      value: '#000000'
-    },
-		helpList: {
-			type: Array,
-			value: null,
-			observer: 'changeHelpList'
+		navBarBGColor: {
+			type: String,
+			value: '#ffffff'
+		},
+		navBarFontColor: {
+			type: String,
+			value: '#000000'
 		},
 		show: {
 			type: Boolean,
 			value: true,
-      observer: 'onShow'
+			observer: 'onShow'
 		},
-		maxNum: {
-			type: Number,
-			value: 5
+		aid: {
+			type: null,
+			value: '',
+			observer: 'changeActivity'
 		},
-    aid: {
-      type: null,
-      value: '',
-      observer: 'changeActivity'
-    }
+		// maxNum: {
+		// 	type: Number,
+		// 	value: 5
+		// },
 	},
 	data: {
-		helpNum: 0,
-		nohelpList: []
+		helpList: wx.getStorageSync('helpList'),
+		assistText: []
 	},
 
-  ready: function () {
-    console.log('ready')
-  },
+	// ready: function() {
+	// 	console.log('ready')
+	// },
 
 	methods: {
-    onShow: function (newVal, oldVal, changedPath) {
-      if (newVal) {
-        wx.setNavigationBarColor({
-          frontColor: '#ffffff',
-          backgroundColor: '#367be9'
-        })
-      } else {
-        wx.setNavigationBarColor({
-          frontColor: this.data.navBarFontColor,
-          backgroundColor: this.data.navBarBGColor
-        })
-      }
-    },
-    changeActivity: function (newVal, oldVal, changedPath) {
-
-    },
-		changeHelpList: function() {
-			var len = this.data.helpList.length
-			var nohelpList = []
-			for (var i = len; i < this.data.maxNum; i++) {
-				nohelpList.push(1)
+		onShow: function(newVal, oldVal, changedPath) {
+			if (this.data.show) {
+				this.loadRankData(this.data.aid)
 			}
-			this.setData({
-				helpNum: len,
-				nohelpList: nohelpList,
+
+			if (newVal) {
+				wx.setNavigationBarColor({
+					frontColor: '#ffffff',
+					backgroundColor: '#367be9'
+				})
+			} else {
+				wx.setNavigationBarColor({
+					frontColor: this.data.navBarFontColor,
+					backgroundColor: this.data.navBarBGColor
+				})
+			}
+		},
+		changeActivity: function(newVal, oldVal, changedPath) {
+			this.loadRankData(this.data.aid)
+		},
+		loadRankData: function(aid) {
+			wx.showLoading({
+				title: '数据加载中'
+			});
+			var me = this;
+			http.get('/gamebox/activity/rank', {
+				// fuid: fuid,
+				aid: aid,
+				page: 1
+			}, function(data) {
+				wx.hideLoading();
+				me.setData({
+					helpList: data.assistance,
+					assistText: data.assistText
+				});
+				wx.setStorageSync('helpList', data.assistance);
+			}, function(code, msg) {
+				wx.hideLoading();
+				wx.showToast({
+					title: msg || '数据加载失败',
+					icon: 'none'
+				});
 			})
 		},
 

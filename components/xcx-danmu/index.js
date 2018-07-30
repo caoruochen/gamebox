@@ -5,7 +5,8 @@ Component({
 	properties: {
 		danmuList: {
 			type: Array,
-			value: null
+			value: null,
+			observer: 'changeList'
 		},
 		width: {
 			type: Number,
@@ -18,26 +19,26 @@ Component({
 	},
 	// 私有数据，可用于模版渲染
 	data: {
-		// // [{top:'',playState:''},{top:'',playState:''}]
 		textProps: []
 	},
 	attached: function() {
-		var textProps = [];
-		for (var i = 0; i < this.data.danmuList.length; i++) {
-			//随机位置
-			var top = Math.floor(Math.random() * (this.data.height - 20)) + 'px'
-			textProps.push({
-				top: top,
-				playState: true
-			});
-		}
-		this.setData({
-			textProps: textProps
-		})
-		//循环播放，播放暂停
-
+		// console.log(this.data.danmuList)
 	},
 	methods: {
+		changeList: function() {
+			var textProps = [];
+			for (var i = 0; i < this.data.danmuList.length; i++) {
+				//随机位置
+				var top = Math.floor(Math.random() * (this.data.height - 20)) + 'px'
+				textProps.push({
+					top: top,
+					// playState: true
+				});
+			}
+			this.setData({
+				textProps: textProps
+			})
+		},
 		onTap: function(e) {
 			var text = e.currentTarget.dataset.text;
 			this.triggerEvent('clickText', {

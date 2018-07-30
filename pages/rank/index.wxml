@@ -1,7 +1,15 @@
-<view class="rank" style="background-image: url('/images/rank_bg.png');">
+<view class="rank" style="background-image: url('https://snsgame.uimg.cn/gamebox/res/images/rank_bg.png');">
   
   <view class="rank-poster">
+    <xcx-danmu danmuList="{{danmuList}}" height="80" bind:clickText="clickDanmu"/>
     <image mode="aspectFill" src="{{banner}}"/>
+    <view class="mask" style="background-color:{{maskColor}}">
+      <view class="mask-bottom flex">
+        <text class="peopleNum">{{playerNum}}  人参加</text>
+        <view class="border">|</view>
+        <view class="rule" bindtap="clickRule">游戏规则</view>
+      </view>
+    </view>
   </view>
   
   <view class="rank-head">
@@ -13,25 +21,44 @@
     </view>
   </view>
 
-  <view class="rank-body">
-    <view wx:for="{{[1,2,3,4,5,6,7,8,9,10,11,12,13, 14,15,16,17,18,19]}}" class="rank-row">
-      <view class="rank-num rank-column {{item<4 ? 'top3' : ''}}">
-        <image wx:if="{{item<4}}" src="/images/rank{{item}}.png" />
-        <text>{{item}}</text>
+<!--   <view class="rank-body">
+    <view wx:for="{{ranks}}" wx:key="{{index}}" class="rank-row">
+      <view class="rank-num rank-column {{item.rank<4 ? 'top3' : ''}}">
+        <image wx:if="{{item.rank<4}}" src="/images/rank{{item.rank}}.png" />
+        <text>{{item.rank}}</text>
       </view>
       <view class="rank-player rank-column">
-        <image src='{{user.avatar}}' />
-        玩家
+        <image src="{{item.avatar}}" />
+        <text>{{item.name}}</text>
       </view>
       <view class="rank-zhuli rank-column">
         <image src="/images/people-gray.png" />
-        <text>6</text>
+        <text>{{item.assistanceNum}}</text>
       </view>
       <view class="rank-score rank-column">
-        <text>{{100}}</text>分
+        <text>{{item.score}}</text>分
       </view>
     </view>
-  </view>
+  </view> -->
+  <scroll-view class="rank-body" scroll-y style="height: {{scrollHeight}}px" bindscrolltolower="scrolltoLower">
+    <view wx:for="{{ranks}}" wx:key="{{index}}" class="rank-row">
+      <view class="rank-num rank-column {{item.rank<4 ? 'top3' : ''}}">
+        <image wx:if="{{item.rank<4}}" src="/images/rank{{item.rank}}.png" />
+        <text>{{item.rank}}</text>
+      </view>
+      <view class="rank-player rank-column">
+        <image src="{{item.avatar}}" />
+        <text>{{item.name}}</text>
+      </view>
+      <view class="rank-zhuli rank-column">
+        <image src="/images/people-gray.png" />
+        <text>{{item.assistanceNum}}</text>
+      </view>
+      <view class="rank-score rank-column">
+        <text>{{item.score}}</text>分
+      </view>
+    </view>
+  </scroll-view>
 	<!-- <view class="rank-head">
 		<image class="head-img" lazy-load="{{true}}" mode="aspectFill" src="{{banner}}"/>
 		<view class="head-mask">
@@ -117,15 +144,15 @@
   <view>
     <image class="rank-my-avatar" src='{{user.avatar}}' />
     <view class="rank-my-result">
-      <view><text class="rank-my-score">399</text> 名</view>
-      <view>23412 分</view>
+      <view><text class="rank-my-score">{{rank}}</text> 名</view>
+      <view>{{score}} 分</view>
     </view>
   </view>
   <view class="rank-my-btns">
     <view class="rank-my-btn-item" bindtap='onHelp' data-aid="{{aid}}">
       <image class="people-white" src="/images/people-white.png" />
       <view>助力</view>
-      <view>5</view>
+      <view>{{assistanceNum}}</view>
     </view>
     <xcx-navigator nav-class="rank-my-btn-item" game="{{intoGame}}">
       <view>立即参赛</view>
@@ -134,6 +161,6 @@
   </view>
 </view>
 
-<xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" bind:deleteHelp="deleteHelp" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
+<xcx-zhuli show="{{helpShow}}" aid="{{aid}}" bind:deleteHelp="deleteHelp" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
 
 <xcx-login bindonlogin="onLogin" />

@@ -13,13 +13,14 @@ var activityId = -1;
 QKPage({
 
   data: {
+    pageShow: false,
     bannerImgWidth: bannerImgWidth,
     bannerImgHeight: bannerImgHeight,
     noticeWidth: app.globalData.wwidth/2.7,
     activityNotice: "",
     activitys: [],
     helpShow: false,
-    money: app.globalData.userInfo && app.globalData.userInfo.money ? app.globalData.userInfo.money : 0,
+    money: app.globalData.userInfo && app.globalData.userInfo.money ?   app.globalData.userInfo.money : 0,
     animationList: {},
   },
 
@@ -31,10 +32,19 @@ QKPage({
     this.loadData(true);
   },
   onShow: function() {
+    this.setData({
+      pageShow: true
+    });
     app.globalData.zhuliAid = null;
     if(activityId != -1) {
       this.refreshActivityInfo()
     } 
+  },
+
+  onHide: function () {
+    this.setData({
+      pageShow: false
+    });
   },
 
   onLogin: function () {
@@ -85,18 +95,12 @@ QKPage({
     }, function () {
     });
   },
-  onShareAppMessage: function(res) {
-    return {
-      title: '我在7k7k游戏打榜！快来助我一把啊！',
-      path: '/pages/hit-rank/index?aid=' + app.globalData.zhuliAid + '&fuid=' + app.globalData.userInfo.uid + '&type=1',
-      url: '../../images/share.jpg'
-    }
-  },
 
   onHelp: function(e) {
     app.globalData.zhuliAid = e.currentTarget.dataset.aid; 
     this.setData({
-      helpShow: true
+      helpShow: true,
+      aid: e.currentTarget.dataset.aid,
     })
   },
 
@@ -139,5 +143,8 @@ QKPage({
       timingFunction: 'linear'
     })
     return animation;
+  },
+  onStartGame: function () {
+    app.globalData.startGame = true;
   },
 })

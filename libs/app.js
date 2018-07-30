@@ -11,11 +11,6 @@ var QKApp = function (options) {
   var channel = config.channel || 'gamebox';
   var pname = config.pname || '7k7kgame0';
 
-  options.shareInfo = {
-    title: '闭上眼睛点 款款都正点！7K7K游戏精选！',
-    url: '../../images/share.jpg'
-  }
-
   if (config.acct) {
     accountApi = config.acct;
   }
@@ -182,12 +177,6 @@ var QKApp = function (options) {
             uid = data.uid;
             token = data.token;
             expire = data.expire;
-            if (data.shareTitle) {
-              me.shareInfo.title = data.shareTitle;
-              if (data.shareUrl) {
-                me.shareInfo.url = data.shareUrl;
-              }
-            }
             var loginUser = {
               uid: uid,
               token: token,
@@ -271,6 +260,7 @@ var QKApp = function (options) {
   };
 
   options.onShow = function (params) {
+    this.globalData.showParams = params;
     wx.hideLoading();
     onShow0 && onShow0.call(this, params);
     currentTS1 = (new Date()).getTime();

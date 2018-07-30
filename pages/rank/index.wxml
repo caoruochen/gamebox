@@ -1,4 +1,4 @@
-<view class="rank" style="background-image: url('https://snsgame.uimg.cn/gamebox/res/images/rank_bg.png');">
+<view class="rank">
   
   <view class="rank-poster">
     <xcx-danmu danmuList="{{danmuList}}" height="80" bind:clickText="clickDanmu"/>
@@ -21,25 +21,6 @@
     </view>
   </view>
 
-<!--   <view class="rank-body">
-    <view wx:for="{{ranks}}" wx:key="{{index}}" class="rank-row">
-      <view class="rank-num rank-column {{item.rank<4 ? 'top3' : ''}}">
-        <image wx:if="{{item.rank<4}}" src="/images/rank{{item.rank}}.png" />
-        <text>{{item.rank}}</text>
-      </view>
-      <view class="rank-player rank-column">
-        <image src="{{item.avatar}}" />
-        <text>{{item.name}}</text>
-      </view>
-      <view class="rank-zhuli rank-column">
-        <image src="/images/people-gray.png" />
-        <text>{{item.assistanceNum}}</text>
-      </view>
-      <view class="rank-score rank-column">
-        <text>{{item.score}}</text>分
-      </view>
-    </view>
-  </view> -->
   <scroll-view class="rank-body" scroll-y style="height: {{scrollHeight}}px" bindscrolltolower="scrolltoLower">
     <view wx:for="{{ranks}}" wx:key="{{index}}" class="rank-row">
       <view class="rank-num rank-column {{item.rank<4 ? 'top3' : ''}}">
@@ -59,85 +40,6 @@
       </view>
     </view>
   </scroll-view>
-	<!-- <view class="rank-head">
-		<image class="head-img" lazy-load="{{true}}" mode="aspectFill" src="{{banner}}"/>
-		<view class="head-mask">
-			<view class="mask-bottom flex">
-        <view  class="mask-text">
-          <text class="peopleNum">{{playerNum}}  人参加</text>
-          <view class="rule-btn" bindtap="clickRule">规则</view>
-        </view>
-        <view class="mybtn blackbtn" bindtap="changeStatus">
-          <xcx-navigator game="{{intoGame}}">进入游戏 ></xcx-navigator>
-        </view>
-			</view>
-		</view>
-	</view> -->
-
-	<!-- <view>
-		<view class="list-tab">
-			<view class="onetab {{activeIndex == 0? 'activeList':''}}" data-index="0" bindtap="clickTab">榜单</view>
-		</view>
-      
-      <view class="ranks">
-        <view class="ranksCont">
-          <view class="ranksTab flex">
-            <view class="flex">
-              <view class="tab1">排名</view>
-              <view class="tab2">玩家</view>
-            </view>
-            <view class="tab3">分数</view>
-          </view>
-          <view class="list-item flex" wx:for="{{ranks}}" wx:key="{{index}}">
-              <view class="flex">
-                <text class="ranking" style="color:{{item.rank=='1'?'#ff6d34':(item.rank=='2'?'#1fc3a2':(item.rank=='3'?'#fca237':'#303030'))}}">{{item.rank || '-'}}</text> 
-                <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{item.avatar || '../../images/defaultavatar.png'}}"/>
-                <text class="name">{{item.name || '-'}}</text>
-              </view>
-              <view class="score">{{item.score}}  分</view>
-          </view>
-        </view>
-      </view>
-      <view class="flex myrank">
-        <view class="flex">
-          <text class="ranking" animation="{{animationData}}" style="color:#fca237">{{rank || '-'}}</text> 
-          <image class="avatar" mode="aspectFill" src="{{avatar}}" />
-          <view class="myname">
-            <text>{{name}}</text>
-            <view style="color:#fca237">
-              <view animation="{{animationData}}" style="display: inline-block;">{{score}}</view>
-              <text style="font-weight: 500"> 分</text>
-            </view>
-          </view>
-        </view>
-        <view>
-            <view class="mybtn zl-btn" data-aid="{{aid}}" bindtap="onHelp">助力</view>
-            <view class="mybtn"  bindtap="changeStatus">
-              <xcx-navigator game="{{intoGame}}">进入游戏</xcx-navigator>
-            </view>
-        </view>
-      </view>
-	</view>
-
-  <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" bind:deleteHelp="deleteHelp" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
-
-  <xcx-danmu danmuList="{{danmuList}}" height="120" bind:clickText="clickDanmu"/>
-
-  <view wx:if="{{fuid != uid && gotohelpShow}}" class="gotoHelp flex">
-    <view class="gotohelpBox">
-      <view class="close" bind:tap="hideGotohelp">
-        <image style="width:26rpx;height:26rpx" mode="aspectFill" src="../../images/close.png"/>
-      </view>
-      <view>好友 <text style="font-weight: 700;font-size: 38rpx">{{fname}}</text> 邀请你</view>
-      <view>帮助Ta打榜得分</view>
-      <view wx:if="{{assistNumOut}}" class="disText">Ta的助力次数已满 不能进行助力</view>
-      <view wx:elif="{{isAssistanted}}"  class="disText">你已助力过此好友</view>
-      <view class="gotohelp-btn {{assistNumOut||isAssistanted?'disableBtn':''}}">
-        <text wx:if="{{assistNumOut||isAssistanted}}">去助力</text>
-        <xcx-navigator wx:else game="{{intoGame}}" bind:tap="hideGotohelp">去助力</xcx-navigator>
-      </view>
-    </view>
-  </view> -->
 </view>
 
 <view class="rank-my" wx:if="{{user}}">
@@ -154,7 +56,7 @@
       <view>助力</view>
       <view>{{assistanceNum}}</view>
     </view>
-    <xcx-navigator nav-class="rank-my-btn-item" game="{{intoGame}}">
+    <xcx-navigator nav-class="rank-my-btn-item" game="{{intoGame}}" bindonclick="onStartGame">
       <view>立即参赛</view>
       <image class="rarraw-dot" src="/images/rarrow-dot.png" />
     </xcx-navigator>
@@ -162,5 +64,29 @@
 </view>
 
 <xcx-zhuli show="{{helpShow}}" aid="{{aid}}" bind:deleteHelp="deleteHelp" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
+
+<view class="zhuli-pop" wx:if="{{showInvitePop}}">
+  <view class='zhuli-pop-box'>
+    <view class="zhuli-pop-box-head">
+      <view class="zhuli-pop-box-info">
+        <image src="https://wx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEJcXuypichXUF0JRyVR2Bes61qToddjRIgyEsuQd2Jwb8icuTrU9tJqpdzO5Glv4jP6JffmjxNVrycQ/132"> </image>
+        <view>
+          <view class="zhuli-pop-box-user">为<text>黑桃九</text>助力</view>
+          <view class="zhuli-pop-box-tips">
+            我还差200分即可瓜分2万红包~
+            <view></view>
+          </view>
+        </view>
+      </view>
+      <view class="zhuli-pop-box-btn">
+        <view>助力一下</view>
+      </view>
+    </view>
+    <view class="zhuli-pop-close" bindtap='onCloseInvitePop'>
+    </view>
+  </view>
+</view>
+
+<qk-result page-show="{{pageShow}}" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
 
 <xcx-login bindonlogin="onLogin" />

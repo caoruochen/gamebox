@@ -8,6 +8,7 @@
 		"xcx-login": "../../components/xcx-login/index",
 		"xcx-rr": "../../components/xcx-rr/index",
 		"xcx-danmu": "../../components/xcx-danmu/index",
-		"xcx-zhuli": "../../components/xcx-zhuli/index"
+		"xcx-zhuli": "../../components/xcx-zhuli/index",
+    "qk-result": "../../components/qk-result/index"
 	}
 }

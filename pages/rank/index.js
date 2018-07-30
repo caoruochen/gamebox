@@ -7,6 +7,7 @@ var app = getApp();
 QKPage({
 	data: {
 		user: app.globalData.userInfo,
+		pageShow: false,
 		banner: '../../images/default-banner.png',
 		playerNum: '0',
 		rules: '',
@@ -16,62 +17,8 @@ QKPage({
 		avatar: app.globalData.userInfo ? app.globalData.userInfo.avatar : '../../images/defaultavatar.png',
 		rank: 0,
 		score: 0,
-		// ranks: [],
-		ranks: [{
-			assistanceNum: "0",
-			avatar: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132",
-			name: "曹若晨",
-			rank: 1,
-			score: 0
-		}, {
-			assistanceNum: "0",
-			avatar: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132",
-			name: "曹若晨",
-			rank: 1,
-			score: 0
-		}, {
-			assistanceNum: "0",
-			avatar: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132",
-			name: "曹若晨",
-			rank: 1,
-			score: 0
-		}, {
-			assistanceNum: "0",
-			avatar: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132",
-			name: "曹若晨",
-			rank: 1,
-			score: 0
-		}, {
-			assistanceNum: "0",
-			avatar: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132",
-			name: "曹若晨",
-			rank: 1,
-			score: 0
-		}, {
-			assistanceNum: "0",
-			avatar: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132",
-			name: "曹若晨",
-			rank: 1,
-			score: 0
-		}, {
-			assistanceNum: "0",
-			avatar: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132",
-			name: "曹若晨",
-			rank: 1,
-			score: 0
-		}, {
-			assistanceNum: "0",
-			avatar: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132",
-			name: "曹若晨",
-			rank: 1,
-			score: 0
-		}, {
-			assistanceNum: "0",
-			avatar: "https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epoLgQ007f6jkTJ5n0RpHAwWR56OOlTuboiaC0ucYEQ3BKMJxwPZ9xlvgibwrCS7YSANms02icYbicyTg/132",
-			name: "曹若晨",
-			rank: 1,
-			score: 0
-		}],
+		showInvitePop: false,
+		ranks: [],
 		intoGame: {
 			appId: "wx530202348351e73c",
 			gameId: 1,
@@ -95,7 +42,6 @@ QKPage({
 
 	onLoad: function(options) {
 		console.log('options', options)
-		console.log('onLoad', app.globalData)
 		var aid = options.aid || '1';
 		var type = options.type;
 		var fuid = options.fuid || null;
@@ -133,7 +79,7 @@ QKPage({
 	},
 	onLogin: function() {
 		// TODO: 登陆后拉取用户数据
-		console.log('onLogin', app.globalData.userInfo)
+		// console.log('onLogin', app.globalData.userInfo)
 		this.loadRankData(true, this.data.aid, this.data.fuid);
 		this.setData({
 			uid: app.globalData.userInfo.uid,
@@ -142,6 +88,16 @@ QKPage({
 		})
 	},
 	onShow: function() {
+		console.log(app.globalData.showParams)
+		var params = app.globalData.showParams;
+		var data = {
+			pageShow: true
+		}
+		if (params && params.query && params.query.stype == 1) {
+			data.showInvitePop = true
+		}
+		console.log(data)
+		this.setData(data);
 		app.globalData.zhuliAid = null;
 		if (this.data.status) {
 			//延迟 结果查询，显示结果
@@ -150,6 +106,11 @@ QKPage({
 				status: false
 			})
 		}
+	},
+	onHide: function() {
+		this.setData({
+			pageShow: false
+		});
 	},
 
 	loadRankData: function(refresh, aid, fuid) {
@@ -279,17 +240,12 @@ QKPage({
 		this.getMyRank()
 	},
 
-	//自定义转发字段
-	onShareAppMessage: function(res) {
-		return {
-			title: '我在7k7k游戏打榜！快来助我一把啊！',
-			path: '/pages/rank/index?aid=' + app.globalData.zhuliAid + '&fuid=' + app.globalData.userInfo.uid + '&fname=' + app.globalData.userInfo.name + '&type=1',
-			url: '../../images/share.jpg'
-		}
+	onStartGame: function() {
+		app.globalData.startGame = true;
 	},
-
-	// //弹幕点击事件
-	// clickDanmu: function(e) {
-	// 	console.log(e.detail.text)
-	// },
+	onCloseInvitePop: function() {
+		this.setData({
+			showInvitePop: false
+		})
+	}
 })

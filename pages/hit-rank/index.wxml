@@ -96,11 +96,11 @@
           <view class="activity-op-btn-item activity-op-btn-invite" bindtap='onHelp' data-aid="{{item.aid}}">
             <image class="people-white" src="/images/people.png" />
             <view>助力</view>
-            <view>5</view>
+            <view>{{item.assistance.length >0 ? item.assistance.length : ''}}</view>
           </view>
-          <xcx-navigator nav-class="activity-op-btn-item" game="{{item}}">
+          <xcx-navigator nav-class="activity-op-btn-item" game="{{item}}" bindonclick="onStartGame">
             <view>立即参赛</view>
-            <image class="rarraw-dot" src="/images/rarrow-dot.png" />
+            <!-- <image class="rarraw-dot" src="/images/rarrow-dot.png" /> -->
           </xcx-navigator>
         </view>
 
@@ -117,8 +117,8 @@
       </view>
     </view>
   </view>
-
-  <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" />
-
+  
+  <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" aid="{{aid}}"/>
+  <qk-result page-show="{{pageShow}}" />
 </view>
 <xcx-login bindonlogin="onLogin" />

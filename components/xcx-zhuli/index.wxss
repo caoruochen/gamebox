@@ -249,7 +249,7 @@
   padding: 6px;
   top: 30rpx;
 }
-
+/* 
 .flex{
 	display: flex;
 	flex-direction: row;
@@ -335,4 +335,4 @@
 	top: 0;
 	left: 0;
 	opacity:0;
-}
+} */

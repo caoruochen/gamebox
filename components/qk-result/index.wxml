@@ -1,0 +1,61 @@
+  <view class="help" wx:if="{{show}}">
+
+    <image class="help-win-bg" src="/images/result-bg1.png" mode="widthFix" />
+    
+    <view class="help-head">
+      <image class="help-win" src="/images/result-bg2.png" mode="widthFix" />
+      <view class="help-lines">
+        <image class="help-line2" src="/images/zhuli_line2.png" mode="widthFix" />
+        <image class="help-line1" src="/images/zhuli_line.png" mode="widthFix" />
+      </view>
+    </view>
+    <view class="help-box">
+      <view class="help-box-title">
+        <view class="help-box-title-line"></view>
+        <view>本次得分</view>
+        <view class="help-box-title-line"></view>
+      </view>
+      <view class="help-box-score">999</view>
+      <view class="help-box-tips">
+        获得红包奖励，今晚23:00开奖
+        <view class="help-box-tips-larrow"></view>
+        <view class="help-box-tips-rarrow"></view>
+      </view>
+      <view class="help-box-info">
+        <view class="help-box-info-result">
+          <view class="help-box-info-result0 help-box-info-result1">
+            <view class="">历史最高分</view>
+            <view class="">12231分</view>
+            <view class="">历史排名</view>
+            <view class="">未进入前100名</view>
+          </view>
+          <view class="help-box-info-result-sep">
+            <view></view>
+          </view>
+          <view class="help-box-info-result0 help-box-info-result2">
+            <view class="">本次结果</view>
+            <view class="">获得红包奖励</view>
+            <view class="">本次排名</view>
+            <view class="">未进入前100名</view>
+          </view>
+        </view>
+      </view>
+
+      <!-- <view class="help-box-btns">
+        <view class="help-box-btn-item help-box-btn-invite" bindtap='onHelp' data-aid="{{item.aid}}">
+          <image class="people-white" src="/images/people.png" />
+          <view>邀请助力</view>
+        </view>
+        <xcx-navigator nav-class="help-box-btn-item" game="{{item}}">
+          <view>立即参赛</view>
+          <image class="rarraw-dot" src="/images/rarrow-dot.png" />
+        </xcx-navigator>
+      </view> -->
+
+      <view class="help-box-tips2">小提示：排名前100，红包奖励更多哦~</view>
+    </view>
+
+    <view class="help-foot">
+      <view class="help-close" bind:tap="close"></view>
+    </view>
+  </view> 

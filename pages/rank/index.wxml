@@ -46,8 +46,11 @@
   <view>
     <image class="rank-my-avatar" src='{{user.avatar}}' />
     <view class="rank-my-result">
-      <view><text class="rank-my-score">{{rank}}</text> 名</view>
-      <view>{{score}} 分</view>
+      <block wx:if="{{score>=0}}">
+        <view><text class="rank-my-score">{{rank}}</text> 名</view>
+        <view>{{score}} 分</view>
+      </block>
+      <view wx:else>未参赛</view>
     </view>
   </view>
   <view class="rank-my-btns">

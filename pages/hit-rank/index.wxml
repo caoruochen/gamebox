@@ -68,7 +68,12 @@
               </view>
 
               <view wx:if="{{item.status == 1 && item.score >= 0}}" class="activity-info-body-st1-tips">
+                <block wx:if="{{item.tips - 0 > 0}}">
                 差<text>{{item.tips}}</text>分瓜分红包
+                </block>
+                <block wx:else>
+                  {{item.tips}}
+                </block>
                 <view></view>
               </view>
             </view>

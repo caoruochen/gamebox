@@ -61,6 +61,7 @@ QKPage({
       if (isPull) {
         wx.stopPullDownRefresh();
       }
+      
       that.setData({
         activityNotice: data.notice,
         activitys: data.activitylist,

@@ -6,16 +6,18 @@ var app = getApp();
 
 QKPage({
 	data: {
-    user: app.globalData.userInfo,
-    pageShow: false,
+		user: app.globalData.userInfo,
+		pageShow: false,
 		banner: '../../images/default-banner.png',
 		playerNum: '0',
 		rules: '',
+		maskColor: 'rgba(0,0,0,0.1)',
 		uid: app.globalData.userInfo ? app.globalData.userInfo.uid : 0,
 		name: app.globalData.userInfo ? app.globalData.userInfo.name : '-',
 		avatar: app.globalData.userInfo ? app.globalData.userInfo.avatar : '../../images/defaultavatar.png',
 		rank: 0,
 		score: 0,
+		showInvitePop: false,
 		ranks: [],
 		intoGame: {
 			appId: "wx530202348351e73c",
@@ -23,11 +25,8 @@ QKPage({
 			mode: 1,
 			path: "pages/index/index?__qk_rank_ticket=u1383",
 		},
-
-		activeIndex: 0,
 		helpShow: false,
 		helpList: [],
-		//弹幕列表
 		danmuList: [],
 		aid: '',
 		status: false, //状态标识,onshow是否调用更新排名接口
@@ -37,12 +36,12 @@ QKPage({
 		fname: '', //助力的好友昵称
 		assistNumOut: false, //助力次数已满
 		isAssistanted: false, //是否助力过
-		animationData: {},
+		assistanceNum: 0,
+		scrollHeight: 0,
 	},
 
 	onLoad: function(options) {
-		// console.log('options', options)
-		// console.log('onLoad', app.globalData)
+		console.log('options', options)
 		var aid = options.aid || '1';
 		var type = options.type;
 		var fuid = options.fuid || null;
@@ -66,6 +65,17 @@ QKPage({
 				avatar: app.globalData.userInfo.avatar,
 			})
 		}
+
+		// var me = this;
+		var res = wx.getSystemInfoSync();
+		var ratio = app.globalData.wwidth / 750;
+		console.log(res, ratio)
+		var scrollHeight = res.windowHeight - (20 + 300 + 60 + 120) * ratio;
+		console.log(scrollHeight)
+		// var scrollHeight = res.windowHeight * ratio - 20 - 300 - 60 - 120;
+		this.setData({
+			scrollHeight: scrollHeight
+		});
 	},
 	onLogin: function() {
 		// TODO: 登陆后拉取用户数据
@@ -78,9 +88,16 @@ QKPage({
 		})
 	},
 	onShow: function() {
-    this.setData({
-      pageShow: true
-    });
+		console.log(app.globalData.showParams)
+		var params = app.globalData.showParams;
+		var data = {
+			pageShow: true
+		}
+		if (params && params.query && params.query.stype == 1) {
+			data.showInvitePop = true
+		}
+		console.log(data)
+		this.setData(data);
 		app.globalData.zhuliAid = null;
 		if (this.data.status) {
 			//延迟 结果查询，显示结果
@@ -90,11 +107,11 @@ QKPage({
 			})
 		}
 	},
-  onHide: function () {
-    this.setData({
-      pageShow: false
-    });
-  },
+	onHide: function() {
+		this.setData({
+			pageShow: false
+		});
+	},
 
 	loadRankData: function(refresh, aid, fuid) {
 		wx.showLoading({
@@ -104,7 +121,8 @@ QKPage({
 		http.get('/gamebox/activity/rank', {
 			fuid: fuid,
 			aid: aid,
-			page: refresh ? 1 : me.data.page
+			// page: refresh ? 1 : me.data.page
+			page: 1
 		}, function(data) {
 			wx.hideLoading();
 			wx.stopPullDownRefresh();
@@ -114,18 +132,22 @@ QKPage({
 			game.mode = data.mode
 			game.path = data.path
 			var ranks = refresh ? [].concat(data.ranks) : me.data.ranks.concat(data.ranks)
+			// var ranks = me.data.ranks.concat(data.ranks)
 			me.setData({
 				// uid: data.uid,
 				banner: data.banner,
 				playerNum: data.playerNum,
 				rules: data.rules,
 				rank: data.rank,
-				score: data.score,
+				score: data.score || 0,
 				ranks: ranks,
 				intoGame: game,
 				helpList: data.assistance,
 				assistNumOut: data.assistNumOut || false,
 				isAssistanted: data.isAssistanted || false,
+				assistanceNum: data.assistance.length,
+				maskColor: data.mask,
+				danmuList: data.danmaku,
 			});
 			if (data.ranks.length != 0) {
 				var page = refresh ? 2 : me.data.page + 1
@@ -154,18 +176,9 @@ QKPage({
 			wx.hideLoading();
 			// console.log(data)
 			if (data.length != 0 && data.score != me.data.score) {
-				//分数更新动画
-				var animation = wx.createAnimation({
-					transformOrigin: "50% 80%",
-					duration: 1000,
-					timingFunction: 'ease',
-				})
-				animation.scale(2, 2).step()
-				animation.scale(1, 1).step()
 				me.setData({
 					rank: data.rank,
 					score: data.score,
-					animationData: animation.export()
 				});
 			}
 		}, function(code, msg) {
@@ -184,11 +197,14 @@ QKPage({
 			page: 1,
 		})
 	},
-	onReachBottom: function(e) {
-		// console.log('onReachBottom page:' + this.data.page)
+	// onReachBottom: function(e) {
+	// 	console.log('onReachBottom page:' + this.data.page)
+	// 	this.loadRankData(false, this.data.aid, this.data.fuid);
+	// },
+	scrolltoLower: function() {
+		console.log('onReachBottom page:' + this.data.page)
 		this.loadRankData(false, this.data.aid, this.data.fuid);
 	},
-
 
 	changeStatus: function() {
 		this.setData({
@@ -197,9 +213,10 @@ QKPage({
 	},
 
 	clickRule: function() {
+		var rules = this.data.rules.join(';')
 		wx.showModal({
 			title: '活动规则',
-			content: this.data.rules,
+			content: rules,
 			showCancel: false,
 			confirmColor: '#ff8130',
 		})
@@ -223,17 +240,12 @@ QKPage({
 		this.getMyRank()
 	},
 
-	// onChallenge: function() {
-	// 	wx.navigateTo({
-	// 		url: '/pages/challenge/index',
-	// 	})
-	// },
-	// //弹幕点击事件
-	// clickDanmu: function(e) {
-	// 	console.log(e.detail.text)
-	// },
-
-  onStartGame: function () {
-    app.globalData.startGame = true;
-  },
+	onStartGame: function() {
+		app.globalData.startGame = true;
+	},
+	onCloseInvitePop: function() {
+		this.setData({
+			showInvitePop: false
+		})
+	}
 })

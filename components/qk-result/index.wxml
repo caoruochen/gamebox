@@ -56,6 +56,6 @@
     </view>
 
     <view class="help-foot">
-      <view class="help-close" bind:tap="hideHelp"></view>
+      <view class="help-close" bind:tap="close"></view>
     </view>
   </view> 

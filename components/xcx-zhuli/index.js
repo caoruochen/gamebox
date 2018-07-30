@@ -6,83 +6,94 @@ var app = getApp();
 Component({
 	externalClasses: [],
 	properties: {
-    navBarBGColor: {
-      type: String,
-      value: '#ffffff'
-    },
-    navBarFontColor: {
-      type: String,
-      value: '#000000'
-    },
-		helpList: {
-			type: Array,
-			value: null,
-			observer: 'changeHelpList'
+		navBarBGColor: {
+			type: String,
+			value: '#ffffff'
+		},
+		navBarFontColor: {
+			type: String,
+			value: '#000000'
 		},
 		show: {
 			type: Boolean,
 			value: true,
-      observer: 'onShow'
+			observer: 'onShow'
 		},
-		maxNum: {
-			type: Number,
-			value: 5
+		aid: {
+			type: null,
+			value: '',
+			observer: 'changeActivity'
 		},
-    aid: {
-      type: null,
-      value: '',
-      observer: 'changeActivity'
-    }
+		// maxNum: {
+		// 	type: Number,
+		// 	value: 5
+		// },
 	},
 	data: {
-		helpNum: 0,
-		nohelpList: []
+		helpList: wx.getStorageSync('helpList'),
+		assistText: []
 	},
 
-  ready: function () {
-    console.log('ready')
-  },
+	// ready: function() {
+	// 	console.log('ready')
+	// },
 
 	methods: {
-    onShow: function (newVal, oldVal, changedPath) {
-      if (newVal) {
-        app.globalData.shareInfo = {
-          stype: 1,
-          __reserved: true,
-          title: '我在7k7k游戏打榜！快来助我一把啊！',
-          path: '/pages/hit-rank/index?'+ 
-              'aid=' + this.data.aid +
-              '&stype=1' +
-              '&fuid=' + app.globalData.userInfo.uid + 
-              '&fname=' + app.globalData.userInfo.name + 
-              '&favatar=' + app.globalData.userInfo.avatar
-        };
-        wx.setNavigationBarColor({
-          frontColor: '#ffffff',
-          backgroundColor: '#367be9'
-        })
-      } else {
-        app.globalData.shareInfo = {
-          stype: 0
-        };
-        wx.setNavigationBarColor({
-          frontColor: this.data.navBarFontColor,
-          backgroundColor: this.data.navBarBGColor
-        })
-      }
-    },
-    changeActivity: function (newVal, oldVal, changedPath) {
-
-    },
-		changeHelpList: function() {
-			var len = this.data.helpList.length
-			var nohelpList = []
-			for (var i = len; i < this.data.maxNum; i++) {
-				nohelpList.push(1)
+		onShow: function(newVal, oldVal, changedPath) {
+			if (newVal) {
+				if (this.data.show) {
+					this.loadRankData(this.data.aid)
+				}
+				app.globalData.shareInfo = {
+					stype: 1,
+					__reserved: true,
+					title: '我在7k7k游戏打榜！快来助我一把啊！',
+					path: '/pages/rank/index?' +
+						'aid=' + this.data.aid +
+						'&stype=1' +
+						'&fuid=' + app.globalData.userInfo.uid +
+						'&fname=' + encodeURIComponent(app.globalData.userInfo.name) +
+						'&favatar=' + encodeURIComponent(app.globalData.userInfo.avatar)
+				};
+				wx.setNavigationBarColor({
+					frontColor: '#ffffff',
+					backgroundColor: '#367be9'
+				})
+			} else {
+				app.globalData.shareInfo = {
+					stype: 0
+				};
+				wx.setNavigationBarColor({
+					frontColor: this.data.navBarFontColor,
+					backgroundColor: this.data.navBarBGColor
+				})
 			}
-			this.setData({
-				helpNum: len,
-				nohelpList: nohelpList,
+		},
+		changeActivity: function(newVal, oldVal, changedPath) {
+			this.loadRankData(this.data.aid)
+		},
+		loadRankData: function(aid) {
+			wx.showLoading({
+				title: '数据加载中'
+			});
+			var me = this;
+			http.get('/gamebox/activity/rank', {
+				// fuid: fuid,
+				aid: aid,
+				page: 1
+			}, function(data) {
+				wx.hideLoading();
+				me.setData({
+					helpList: data.assistance,
+					assistText: data.assistText
+				});
+				wx.setStorageSync('helpList', data.assistance);
+			}, function(code, msg) {
+				wx.hideLoading();
+				wx.showToast({
+					title: msg || '数据加载失败',
+					icon: 'none'
+				});
 			})
 		},
 

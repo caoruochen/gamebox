@@ -14,6 +14,9 @@ Component({
   },
   methods: {
     preview: function (e) {
+      if (!this.data.game.bg) {
+        return;
+      }
       var app = getApp();
       var currentPages = getCurrentPages();
       var page = '';

@@ -197,6 +197,7 @@
   width: 50rpx;
   text-align: center;
   box-sizing: border-box;
+  position: relative;
 }
 
 .help-box-friends-op image {
@@ -229,7 +230,7 @@
   height: 34rpx;
 }
 
-.help-box-invite-btn button {
+.yaoqing-btn {
   position: absolute;
   top: 0;
   left: 0;

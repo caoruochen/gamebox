@@ -15,8 +15,7 @@
         <view class="help-box-title-line"></view>
       </view>
       <view class="help-box-rule">
-        <view>助力分=好友得分*30%，上限50分；</view>
-        <view>删除已有助力分，可重新邀请好友助力。</view>
+        <view wx:for="{{assistText}}" wx:key="{{index}}">{{item}}</view>
       </view>
       <view class="help-box-friends">
         <view class="help-box-friends-row">
@@ -25,23 +24,24 @@
           <view class="help-box-friends-score">助力</view>
           <view class="help-box-friends-op"> </view>
         </view>
-        <view wx:for="{{[0, 1, 2, 3, 4]}}" class="help-box-friends-row">
+        <view wx:for="{{[0, 1, 2, 3, 4]}}" class="help-box-friends-row" wx:key="{{index}}">
           <view class="help-box-friends-user">
-            <image src="/images/default-avatar.png" />
-            <view> </view>
+            <image src="{{helpList[item]?helpList[item].avatar:'/images/default-avatar.png'}}" />
+            <view>{{helpList[item]?helpList[item].name:''}}</view>
           </view>
-          <view class="help-box-friends-score"> - </view>
-          <view class="help-box-friends-score"> - </view>
-          <view class="help-box-friends-op">
-            <image src="/images/{{item == 2 ? 'plus' : 'minus'}}.png" />
+          <view class="help-box-friends-score">{{helpList[item]?helpList[item].score:' - '}}</view>
+          <view class="help-box-friends-score">{{helpList[item]?helpList[item].value:' - '}}</view>
+          <view class="help-box-friends-op" data-uid="{{helpList[item].uid}}" data-index="{{index}}" bindtap="{{helpList[item]?'handleDel':''}}">
+            <image src="/images/{{helpList[item] ? 'minus': 'plus'}}.png" />
+            <button wx:if="{{!helpList[item]}}" open-type="share" class="yaoqing-btn"></button>
           </view>
         </view>
 
-        <view class="help-box-invite">
+        <view class="help-box-invite" wx:if="{{helpList.length<5}}" wx:key="{{index}}">
           <view class="help-box-invite-btn">
             <image src="/images/people.png" />
             邀请好友助力
-            <button open-type="share"></button>
+            <button open-type="share" class="yaoqing-btn"></button>
           </view>
         </view>
       </view>

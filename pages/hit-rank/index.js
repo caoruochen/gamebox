@@ -20,7 +20,7 @@ QKPage({
     activityNotice: "",
     activitys: [],
     helpShow: false,
-    money: app.globalData.userInfo && app.globalData.userInfo.money ? app.globalData.userInfo.money : 0,
+    money: app.globalData.userInfo && app.globalData.userInfo.money ?   app.globalData.userInfo.money : 0,
     animationList: {},
   },
 
@@ -61,6 +61,7 @@ QKPage({
       if (isPull) {
         wx.stopPullDownRefresh();
       }
+      
       that.setData({
         activityNotice: data.notice,
         activitys: data.activitylist,
@@ -99,7 +100,8 @@ QKPage({
   onHelp: function(e) {
     app.globalData.zhuliAid = e.currentTarget.dataset.aid; 
     this.setData({
-      helpShow: true
+      helpShow: true,
+      aid: e.currentTarget.dataset.aid,
     })
   },
 
@@ -142,5 +144,8 @@ QKPage({
       timingFunction: 'linear'
     })
     return animation;
+  },
+  onStartGame: function () {
+    app.globalData.startGame = true;
   },
 })

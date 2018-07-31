@@ -193,6 +193,9 @@ QKPage({
 	},
   onResultUpdate: function (e) {
     var data = e.detail;
+    this.setData({
+      helpShow: false,
+    })
     this.updateData(true, data);
   }
 })

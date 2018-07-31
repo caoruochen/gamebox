@@ -62,14 +62,12 @@
       <view>助力</view>
       <view>{{assistanceNum}}</view>
     </view>
-    <xcx-navigator nav-class="rank-my-btn-item" game="{{intoGame}}" bindonclick="onStartGame">
+    <xcx-navigator nav-class="rank-my-btn-item" game="{{intoGame}}" bindonclick="onStartGame" extra="{{activity}}">
       <view>立即参赛</view>
       <image class="rarraw-dot" src="/images/rarrow-dot.png" />
     </xcx-navigator>
   </view>
 </view>
-
-<xcx-zhuli show="{{helpShow}}" activity="{{activity}}" bind:deleteHelp="deleteHelp" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
 
 <view class="zhuli-pop" wx:if="{{showInvitePop}}">
   <view class='zhuli-pop-box'>
@@ -79,7 +77,7 @@
         <view>
           <view class="zhuli-pop-box-user">为<text>{{zhuliInfo.fname}}</text>助力</view>
           <view class="zhuli-pop-box-tips">
-            我还差200分即可瓜分2万红包~
+            {{zhuliTips}}
             <view></view>
           </view>
         </view>
@@ -88,11 +86,13 @@
         <view>助力一下</view>
       </xcx-navigator>
     </view>
-    <view class="zhuli-pop-close" bindtap='onCloseInvitePop'>
-    </view>
+    <!-- <view class="zhuli-pop-close" bindtap='onCloseInvitePop'></view> -->
   </view>
 </view>
 
-<qk-result page-show="{{pageShow}}" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
+<xcx-zhuli show="{{helpShow}}" activity="{{activity}}" bind:deleteHelp="deleteHelp" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
+
+<qk-result page-show="{{pageShow}}" bindonupdate="onResultUpdate" activity="{{activity}}" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
+
 
 <xcx-login bindonlogin="onLogin" />

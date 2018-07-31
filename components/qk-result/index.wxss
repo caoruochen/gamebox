@@ -71,6 +71,11 @@
   z-index: 40;
 }
 
+.help-lose {
+  width: 55%;
+  z-index: 10;
+}
+
 .help-win-bg {
   position: absolute;
   width:100%;
@@ -82,7 +87,7 @@
   position: absolute;
   width:100%;
   left:0;
-  top: 130rpx;
+  top: 140rpx;
 }
 
 .help-head .help-lines image {
@@ -152,12 +157,18 @@
   position: relative;
 }
 
+.lose .help-box-tips {
+  background-image: none !important;
+  background: #ffeed0;
+  color: #ff8400 !important;
+}
+
 .help-box-tips-larrow {
   width: 0;
 	height: 0;
   position: absolute;
   top: 0;
-  right: 0;
+  right: -1rpx;
 	border-top: 25rpx solid transparent;
 	border-right: 30rpx solid #fff;
 	border-bottom: 25rpx solid transparent;
@@ -166,7 +177,7 @@
 .help-box-tips-rarrow {
   position: absolute;
   top: 0;
-  left: 0;
+  left: -1rpx;
   width: 0;
 	height: 0;
 	border-top: 25rpx solid transparent;
@@ -287,4 +298,8 @@
 
 .help-box-info-result2>view:nth-child(2n) {
   color: #517BF7;
+}
+
+.lose .help-box-info-result2>view:nth-child(2) {
+  color: #ff8400 !important;
 }

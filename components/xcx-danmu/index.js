@@ -17,13 +17,10 @@ Component({
 			value: null
 		},
 	},
-	// 私有数据，可用于模版渲染
 	data: {
 		textProps: []
 	},
-	attached: function() {
-		// console.log(this.data.danmuList)
-	},
+
 	methods: {
 		changeList: function() {
 			var textProps = [];
@@ -32,7 +29,6 @@ Component({
 				var top = Math.floor(Math.random() * (this.data.height - 20)) + 'px'
 				textProps.push({
 					top: top,
-					// playState: true
 				});
 			}
 			this.setData({

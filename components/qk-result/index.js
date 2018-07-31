@@ -26,7 +26,10 @@ Component({
 	},
 	data: {
     show: false,
-    newScore: -1
+    lose: false,
+    newScore: -1,
+    rankText: '',
+    tips: '未获奖'
 	},
 
 	methods: {
@@ -48,9 +51,19 @@ Component({
         }, function (data) {
           app.globalData.startGame = false;
           var user = data.userInfo;
-          console.log(user)
+          var tips = user.tips;
+          if (typeof tips == 'number') {
+            tips = '差'+tips+'分瓜分红包';
+          }
+          var lose = user.lastScore < me.data.activity.score;
+          if (lose) {
+            tips = '低于历史最高分';
+          }
           me.setData({
-            newScore: user.score ? user.score : 0
+            newScore: user.lastScore ? user.lastScore : 0,
+            rankText: user.rank_text ? user.rank_text : '',
+            tips: tips,
+            lose: lose
           })
           me.triggerEvent('onupdate', data);
         }, function (code, msg) {

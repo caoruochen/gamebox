@@ -3,6 +3,13 @@ var http = require("../../util/http");
 var util = require("../../util/util");
 var app = getApp();
 
+var helpTips = [
+  '万事俱备 就差你临门一脚了！',
+  '老司机快开车，就差你这一脚油了！',
+  '一直穿云箭，千军万马来相见~',
+  '敌人火力太猛！感谢有你助力！',
+  '活雷锋终于等到你了！来吧准备起飞！'
+];
 
 QKPage({
 	data: {
@@ -15,14 +22,14 @@ QKPage({
 		rank: 0,
 		score: 0,
 		showInvitePop: false,
+    zhuliTips: '',
 		helpShow: false,
 		assistanceNum: 0,
 		aid: '',
-		status: false, //状态标识,onshow是否调用更新排名接口
 		page: 1,
-		gotohelpShow: false,
-		fuid: null, //助力的好友uid
-		fname: '', //助力的好友昵称
+		// gotohelpShow: false,
+		// fuid: null, //助力的好友uid
+		// fname: '', //助力的好友昵称
 		// assistNumOut: false, //助力次数已满
 		// isAssistanted: false, //是否助力过
 		game4Zhuli: {},
@@ -95,13 +102,14 @@ QKPage({
 		}
 		app.globalData.showParams.query.stype = -1;
 		if (data.showInvitePop) {
-			this.setData({
-				zhuliInfo: {
-					fuid: params.query.fuid,
-					fname: decodeURIComponent(params.query.fname),
-					favatar: decodeURIComponent(params.query.favatar),
-				}
-			})
+      data.zhuliInfo = {
+        fuid: params.query.fuid,
+        fname: decodeURIComponent(params.query.fname),
+        favatar: decodeURIComponent(params.query.favatar),
+      }
+      var len = helpTips.length;
+      var r = parseInt((Math.random(0, 10) * 10))%len;
+      data.zhuliTips = helpTips[r];
 			var me = this;
 			http.get('/gamebox/activity/ticket', {
 				aid: params.query.aid,
@@ -128,21 +136,7 @@ QKPage({
 		}, function(data) {
 			wx.hideLoading();
 			wx.stopPullDownRefresh();
-			var ranks = refresh ? [].concat(data.rankslist.list) : me.data.ranks.concat(data.rankslist.list)
-			me.setData({
-				activity: data.activityInfo,
-				intoGame: data.gameInfo,
-				rank: data.userInfo.rank,
-				score: data.userInfo.score,
-				ranks: ranks,
-				assistanceNum: data.userInfo.assistance.length,
-			});
-			if (data.rankslist.list.length != 0) {
-				var page = refresh ? 2 : me.data.page + 1
-				me.setData({
-					page: page
-				})
-			}
+			me.updateData(refresh, data);
 		}, function(code, msg) {
 			wx.hideLoading();
 			wx.showToast({
@@ -151,6 +145,30 @@ QKPage({
 			});
 		})
 	},
+
+  updateData: function (refresh, data) {
+    var ranks = refresh ? [].concat(data.rankslist.list) : this.data.ranks.concat(data.rankslist.list)
+    data.activityInfo.score = data.userInfo.score;
+    data.activityInfo.rank = data.userInfo.rank;
+    data.activityInfo.rank_text = data.userInfo.rank_text;
+    data.activityInfo.tips = data.userInfo.tips;
+    data.activityInfo.lastScore = data.userInfo.lastScore;
+
+    var data0 = {
+      activity: data.activityInfo,
+      intoGame: data.gameInfo,
+      rank: data.userInfo.rank,
+      score: data.userInfo.score,
+      ranks: ranks,
+      assistanceNum: data.userInfo.assistance.length
+    };
+    
+    if (data.rankslist.list.length != 0) {
+      var page = refresh ? 2 : me.data.page + 1
+      data0.page = page;
+    }
+    this.setData(data0);
+  },
 
 	scrolltoLower: function() {
 		console.log('onReachBottom page:' + this.data.page)
@@ -163,22 +181,34 @@ QKPage({
 			title: '活动规则',
 			content: rules,
 			showCancel: false,
-			confirmColor: '#ff8130',
+			confirmColor: '#367be9',
 		})
 	},
 
 	onHelp: function(e) {
 		this.setData({
 			helpShow: true,
+      showInvitePop: false
 		})
 	},
 
-	onStartGame: function() {
-		app.globalData.startGame = true;
+	onStartGame: function(e) {
+    var activity = e.detail;
+    app.globalData.startGame = true;
+    this.setData({
+      showInvitePop: false,
+    })
 	},
 	onCloseInvitePop: function() {
 		this.setData({
 			showInvitePop: false
 		})
-	}
+	},
+  onResultUpdate: function (e) {
+    var data = e.detail;
+    this.setData({
+      showInvitePop: false,
+    })
+    this.updateData(true, data);
+  }
 })

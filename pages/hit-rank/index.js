@@ -52,13 +52,18 @@ QKPage({
       wx.showLoading({
         title: '数据加载中'
       });
+    } else {
+      wx.showNavigationBarLoading()
     }
 
     var that = this;
     http.get('/gamebox/activity/list', function (data) {
-      wx.hideLoading();
+     
       if (isPull) {
-        wx.stopPullDownRefresh();
+        wx.stopPullDownRefresh()
+        wx.hideNavigationBarLoading()
+      } else {
+        wx.hideLoading();
       }
 
       var data0 = {
@@ -71,9 +76,12 @@ QKPage({
       
       that.setData(data0);
     }, function () {
-      wx.hideLoading();
+     
       if (isPull) {
-        wx.stopPullDownRefresh();
+        wx.stopPullDownRefresh()
+        wx.hideNavigationBarLoading()
+      } else {
+        wx.hideLoading();
       }
       wx.showToast({
         title: msg || '数据加载失败',

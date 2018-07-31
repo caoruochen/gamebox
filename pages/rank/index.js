@@ -194,7 +194,7 @@ QKPage({
   onResultUpdate: function (e) {
     var data = e.detail;
     this.setData({
-      helpShow: false,
+      showInvitePop: false,
     })
     this.updateData(true, data);
   }

@@ -3,6 +3,13 @@ var http = require("../../util/http");
 var util = require("../../util/util");
 var app = getApp();
 
+var helpTips = [
+	'万事俱备 就差你临门一脚了！',
+	'老司机快开车，就差你这一脚油了！',
+	'一直穿云箭，千军万马来相见~',
+	'敌人火力太猛！感谢有你助力！',
+	'活雷锋终于等到你了！来吧准备起飞！'
+];
 
 QKPage({
 	data: {
@@ -15,6 +22,7 @@ QKPage({
 		rank: 0,
 		score: 0,
 		showInvitePop: false,
+		zhuliTips: '',
 		helpShow: false,
 		assistanceNum: 0,
 		aid: '',
@@ -95,13 +103,14 @@ QKPage({
 		}
 		app.globalData.showParams.query.stype = -1;
 		if (data.showInvitePop) {
-			this.setData({
-				zhuliInfo: {
-					fuid: params.query.fuid,
-					fname: decodeURIComponent(params.query.fname),
-					favatar: decodeURIComponent(params.query.favatar),
-				}
-			})
+			data.zhuliInfo = {
+				fuid: params.query.fuid,
+				fname: decodeURIComponent(params.query.fname),
+				favatar: decodeURIComponent(params.query.favatar),
+			}
+			var len = helpTips.length;
+			var r = parseInt((Math.random(0, 10) * 10)) % len;
+			data.zhuliTips = helpTips[r];
 			var me = this;
 			http.get('/gamebox/activity/ticket', {
 				aid: params.query.aid,
@@ -182,12 +191,16 @@ QKPage({
 	onHelp: function(e) {
 		this.setData({
 			helpShow: true,
+			showInvitePop: false
 		})
 	},
 
 	onStartGame: function(e) {
 		var activity = e.detail;
 		app.globalData.startGame = true;
+		this.setData({
+			showInvitePop: false,
+		})
 	},
 	onCloseInvitePop: function() {
 		this.setData({
@@ -196,6 +209,9 @@ QKPage({
 	},
 	onResultUpdate: function(e) {
 		var data = e.detail;
+		this.setData({
+			showInvitePop: false,
+		})
 		this.updateData(true, data);
 	},
 	updateHelp: function() {

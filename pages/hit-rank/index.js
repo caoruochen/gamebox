@@ -181,9 +181,16 @@ QKPage({
     }
     
     var data = {};
-    console.log('update')
-    console.log(activity)
     data["activitys[" + ind + "]"] = activity;
     this.setData(data)
+  },
+  getMoney: function () {
+    if (this.data.money < 0.1) {
+      wx.showToast({
+        title: '请努力赚钱！少于0.1元无法提现！',
+        icon: 'none'
+      })
+      return;
+    }
   }
 })

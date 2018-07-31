@@ -17,7 +17,7 @@
         </view>
       </view>
       
-      <navigator url="/pages/lottery/index" class="lottery">
+      <navigator url="/pages/lottery/index" hover-class="none" class="lottery">
         <image mode="widthFix" src="../../images/lottery-icon.png"></image>
       </navigator>
       <image class="wave-icon" mode="widthFix" src="../../images/wave-icon1.png"></image>
@@ -26,12 +26,12 @@
   </view>
   
   <view class="my-block1">
-    <view wx:if="{{!!userInfo}}" hover-class="none" bindtap="goMall" class="my-block1-item mall">
+    <navigator wx:if="{{!!userInfo}}" url="/pages/mall/index" hover-class="none" class="my-block1-item mall">
       <image src="../../images/mall-icon.png" />
       <view >金币商城</view>
       <view class="info">暑期免费道具等你拿</view>
       <view class="right-arrow"></view>
-    </view>
+    </navigator>
     <navigator hover-class="none" url="/pages/records/rankList/index?type=1" class="my-block1-item rank">
       <image src="../../images/hit-icon.png" />
       <view>打榜记录</view>

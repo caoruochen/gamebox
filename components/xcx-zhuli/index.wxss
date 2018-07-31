@@ -245,7 +245,7 @@
 
 .help-foot .help-close {
   right: 50%;
-  margin-right: -21rpx;
+  margin-right: -15px;
   padding: 6px;
-  top: 30rpx;
+  top: 40rpx;
 }

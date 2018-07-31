@@ -7,7 +7,7 @@
     <view class="top-bar-info">
       <image src="../../images/coins-icon.png" />
       <view>{{coins}}</view>
-      <view class="task">签到</view>
+      <!-- <view class="task">签到</view> -->
     </view>
   </view>
 

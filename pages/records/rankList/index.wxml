@@ -1,0 +1,26 @@
+<view class='baseView' wx:for="{{dataList}}" wx:key="{{item.rid}}">
+
+    <view class='cell'>
+        <view class='leftContent'>
+            <view class='icon-name'>
+                <!-- {{item.activity.name}} -->
+                <image class='icon' src='{{item.game.logo}}'></image>
+                <view class='name'>
+                    {{item.activity.name}}
+                </view>
+            </view>
+            <view class='time'>
+                {{item.ctime}}
+            </view>
+        </view>
+        <view class='rightContent'>
+            <view class='score'>
+                {{item.amount}}
+            </view>
+            <view class='prize'>
+                未获得奖励
+            </view>
+        </view>
+    </view>
+
+</view>

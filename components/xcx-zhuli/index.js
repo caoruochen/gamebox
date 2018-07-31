@@ -42,8 +42,9 @@ Component({
 				app.globalData.shareInfo = {
 					stype: 1,
 					__reserved: true,
-					title: '我在7k7k游戏打榜！快来助我一把啊！',
-					path: '/pages/rank/index?' +
+          title: '搞了半天过不去，看样子得你出马了！',
+					path: '/pages/hit-rank/index?' +
+            'spage=/pages/rank/index' +
 						'aid=' + this.data.activity.aid +
 						'&stype=1' +
 						'&fuid=' + app.globalData.userInfo.uid +

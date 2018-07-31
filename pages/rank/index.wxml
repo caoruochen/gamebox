@@ -77,7 +77,7 @@
         <view>
           <view class="zhuli-pop-box-user">为<text>{{zhuliInfo.fname}}</text>助力</view>
           <view class="zhuli-pop-box-tips">
-            我还差200分即可瓜分2万红包~
+            {{zhuliTips}}
             <view></view>
           </view>
         </view>
@@ -86,8 +86,7 @@
         <view>助力一下</view>
       </xcx-navigator>
     </view>
-    <view class="zhuli-pop-close" bindtap='onCloseInvitePop'>
-    </view>
+    <!-- <view class="zhuli-pop-close" bindtap='onCloseInvitePop'></view> -->
   </view>
 </view>
 

@@ -185,5 +185,14 @@ QKPage({
     console.log(activity)
     data["activitys[" + ind + "]"] = activity;
     this.setData(data)
+  },
+  getMoney: function () {
+    if (this.data.money < 0.1) {
+      wx.showToast({
+        title: '少于0.1元无法提现，请努力挣钱吧',
+        icon: 'none'
+      })
+      return;
+    }
   }
 })

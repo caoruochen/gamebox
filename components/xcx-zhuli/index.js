@@ -30,13 +30,9 @@ Component({
 		// },
 	},
 	data: {
-		helpList: wx.getStorageSync('helpList'),
+		helpList: [],
 		assistText: []
 	},
-
-	// ready: function() {
-	// 	console.log('ready')
-	// },
 
 	methods: {
 		onShow: function(newVal, oldVal, changedPath) {
@@ -78,16 +74,14 @@ Component({
 			});
 			var me = this;
 			http.get('/gamebox/activity/rank', {
-				// fuid: fuid,
 				aid: aid,
 				page: 1
 			}, function(data) {
 				wx.hideLoading();
 				me.setData({
-					helpList: data.assistance,
-					assistText: data.assistText
+					helpList: data.assistlist.list,
+					assistText: data.assistlist.text
 				});
-				wx.setStorageSync('helpList', data.assistance);
 			}, function(code, msg) {
 				wx.hideLoading();
 				wx.showToast({

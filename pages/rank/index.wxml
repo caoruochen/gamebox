@@ -1,13 +1,15 @@
 <view class="rank">
   
   <view class="rank-poster">
-    <xcx-danmu danmuList="{{danmuList}}" height="80" bind:clickText="clickDanmu"/>
-    <image mode="aspectFill" src="{{banner}}"/>
-    <view class="mask" style="background-color:{{maskColor}}">
+    <xcx-danmu danmuList="{{activity.danmaku}}" height="80" bind:clickText="clickDanmu"/>
+    <image mode="aspectFill" src="{{activity.banner}}"/>
+    <view class="mask" style="background-color:{{activity.mask}}">
       <view class="mask-bottom flex">
-        <text class="peopleNum">{{playerNum}}  人参加</text>
+        <text class="peopleNum">{{activity.playerNum}} 人参加</text>
         <view class="border">|</view>
-        <view class="rule" bindtap="clickRule">游戏规则</view>
+        <view class="rule flex" bindtap="clickRule">
+          <image src="/images/icon-tips.png"/> 游戏规则
+        </view>
       </view>
     </view>
   </view>
@@ -44,11 +46,12 @@
 
 <view class="rank-my" wx:if="{{user}}">
   <view>
-    <image class="rank-my-avatar" src='{{user.avatar}}' />
-    <view class="rank-my-result">
+    <image class="rank-my-avatar" src="{{user.avatar || '../../images/defaultavatar.png'}}" />
+    <view wx:if="{{score>=0}}" class="rank-my-result">
       <view><text class="rank-my-score">{{rank}}</text> 名</view>
       <view>{{score}} 分</view>
     </view>
+    <view wx:else>未参赛</view>
   </view>
   <view class="rank-my-btns">
     <view class="rank-my-btn-item" bindtap='onHelp' data-aid="{{aid}}">

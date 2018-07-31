@@ -8,7 +8,7 @@
   background-size: cover;
   background-image: url('https://snsgame.uimg.cn/gamebox/res/images/rank_bg.png');
   box-sizing: border-box;
-  padding: 20rpx 40rpx 130rpx 40rpx;
+  padding: 0 40rpx 130rpx 40rpx;
 }
 
 .rank .bg {
@@ -41,12 +41,17 @@
 	position: absolute;
 	bottom: 20rpx;
 	width: 100%;
-	height:56rpx;
 	color:#fff;
 	justify-content: center;
+  	font-size: 26rpx;
 }
 .rank-poster .border{
-	margin:100rpx;
+	margin:0 90rpx;
+}
+.rank-poster .rule image{
+	width: 30rpx;
+  	height: 30rpx;
+  	margin-right: 8rpx;
 }
 .rank-head {
   width: 100%;
@@ -73,6 +78,7 @@
   align-items: center;
   border-bottom: 1px solid #e7e7e7;
   padding: 15rpx 0;
+  /*height: 200rpx;*/
 }
 
 .rank-head .rank-row {
@@ -259,206 +265,6 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-}
-
-.rank-head1{
-	width:100%;
-	height:380rpx;
-	position: relative;
-}
-.head-img{
-	width: 100%;
-	height:100%;
-}
-/*.head-mask{
-	position: absolute;
-	top:0;
-	left:0;
-	width: 100%;
-	height:100%;
-	background-color: rgba(0,0,0,0.1);
-}*/
-/*.mask-bottom{
-	position: absolute;
-	bottom: 30rpx;
-	width: 100%;
-	height:56rpx;
-	padding:0 25rpx;
-	box-sizing: border-box;
-	align-items: flex-end;
-}
-.mask-text{
-	color:#fff;
-	font-size:24rpx;
-	font-weight: 700;
-	margin-left: 25rpx;
-}
-.peopleNum{
-	margin-left:20rpx;
-	font-size:24rpx;
-}*/
-/*.rule-btn{
-	display: inline-block;
-	color:#333;
-	width:80rpx;
-	height:36rpx;
-	line-height: 36rpx;
-	background-color: rgba(255,255,255,0.8);
-	border-radius: 8rpx;
-	text-align: center;
-	margin-left: 24rpx;
-}*/
-
-
-.list-tab{
-	border-bottom: 1rpx solid #ededed;
-	color: #888888;
-}
-.onetab{
-	display: inline-block;
-	/*width: 49%;*/
-	width: 100%;
-	height: 75rpx;
-	line-height: 75rpx;
-	text-align: center;
-}
-.activeList{
-	color:#000;
-	font-weight: 700;
-}
-
-.ranks{
-	box-sizing: border-box;
-	width: 100%;
-	padding:20rpx;
-	margin-bottom: 130rpx;
-	background-color: #f4f3f3;
-}
-.ranksCont{
-	border-radius: 16rpx;
-	background-color: #fff;
-	padding:0 32rpx;
-}
-.ranksTab{
-	font-size: 28rpx;
-	line-height: 70rpx;
-	border-bottom: 1px solid #eee;
-}
-.tab1{
-	width: 80rpx;
-}
-.tab2{
-	padding-left: 90rpx;
-}
-.tab3{
-	padding-right: 20rpx;
-}
-.list-item{
-	width:100%;
-	height:110rpx;
-	box-sizing: border-box;
-	border-bottom: 1px solid #eee;
-}
-.ranking{
-	min-width: 60rpx;
-	padding: 0 10rpx;
-	font-size:36rpx;
-}
-.avatar{
-	width: 70rpx;
-	height: 70rpx;
-	border-radius: 70rpx;
-	overflow: hidden;
-}
-.name{
-	margin-left: 20rpx;
-}
-.score{
-	color:#666666;
-}
-.myrank{
-	position: fixed;
-	bottom: 0;
-	background-color: #fff;
-	box-shadow: 0 -4rpx 20rpx #ddd;
-	width:100%;
-	height: 134rpx;
-	box-sizing: border-box;
-	padding:0 32rpx;
-	font-weight: 700;
-}
-.myname{
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	margin-left: 20rpx;
-}
-
-.mybtn{
-	margin-left:38rpx;
-	display: inline-block;
-	width: 160rpx;
-	height:60rpx;
-	line-height: 60rpx;
-	text-align: center;
-	border-radius: 12rpx;
-	font-weight: 700;
-	background-color: #f4e322; 
-}
-.zl-btn{
-	background-color: #9fcefa;
-	width: 150rpx;
-}
-.blackbtn{
-	background-color:rgba(0,0,0,0.5);
-	color:#fff;
-}
-
-.gotoHelp{
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0,0,0,0.5);
-	z-index: 3;
-	justify-content: center;
-}
-.gotohelpBox{
-	width: 500rpx;
-	background-color: #fff;
-	border-radius: 20rpx;
-	text-align: center;
-	padding: 30rpx 40rpx;
-	margin:0 100rpx;
-	box-sizing: border-box;
-	font-size: 36rpx;
-	position: relative;
-}
-.gotohelp-btn{
-	width: 300rpx;
-	height: 80rpx;
-	line-height: 80rpx;
-	background-color: #f4e322; 
-	border-radius: 30rpx;
-	margin-top: 30rpx;
-	font-weight: 700;
-	font-size: 36rpx;
-	display: inline-block;
-}
-.disableBtn{
-	background-color: #ddd;
-}
-.close{
-	position: absolute;
-	top: 0;
-	right:0;
-	padding: 10rpx 16rpx;
-}
-.disText{
-	font-size: 24rpx;
-	color:#aaa;
-	margin-top: 20rpx;
 }
 
 .zhuli-pop {

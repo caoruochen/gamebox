@@ -168,7 +168,7 @@
 	height: 0;
   position: absolute;
   top: 0;
-  right: 0;
+  right: -1rpx;
 	border-top: 25rpx solid transparent;
 	border-right: 30rpx solid #fff;
 	border-bottom: 25rpx solid transparent;
@@ -177,7 +177,7 @@
 .help-box-tips-rarrow {
   position: absolute;
   top: 0;
-  left: 0;
+  left: -1rpx;
   width: 0;
 	height: 0;
 	border-top: 25rpx solid transparent;
@@ -300,7 +300,6 @@
   color: #517BF7;
 }
 
-
-.lose .help-box-info-result2>view:nth-child(2n) {
+.lose .help-box-info-result2>view:nth-child(2) {
   color: #ff8400 !important;
 }

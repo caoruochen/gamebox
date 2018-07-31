@@ -55,7 +55,7 @@ Component({
           if (typeof tips == 'number') {
             tips = '差'+tips+'分瓜分红包';
           }
-          var lose = user.lastScore > me.data.activity.score;
+          var lose = user.lastScore < me.data.activity.score;
           if (lose) {
             tips = '低于历史最高分';
           }
@@ -63,7 +63,7 @@ Component({
             newScore: user.lastScore ? user.lastScore : 0,
             rankText: user.rank_text ? user.rank_text : '',
             tips: tips,
-            lose: user.lastScore > me.data.activity.score
+            lose: lose
           })
           me.triggerEvent('onupdate', data);
         }, function (code, msg) {

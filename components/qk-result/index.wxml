@@ -35,7 +35,7 @@
           </view>
           <view class="help-box-info-result0 help-box-info-result2">
             <view class="">本次结果</view>
-            <view class="">获得红包奖励</view>
+            <view class="">{{tips}}</view>
             <view class="">本次排名</view>
             <view class="">{{rankText}}</view>
           </view>

@@ -8,7 +8,7 @@
   background-size: cover;
   background-image: url('https://snsgame.uimg.cn/gamebox/res/images/rank_bg.png');
   box-sizing: border-box;
-  padding: 0 40rpx 130rpx 40rpx;
+  padding: 20rpx 40rpx 130rpx 40rpx;
 }
 
 .rank .bg {
@@ -83,6 +83,7 @@
   align-items: center;
   border-bottom: 1px solid #e7e7e7;
   padding: 15rpx 0;
+  /*padding: 150rpx 0;*/
 }
 
 .rank-head .rank-row {
@@ -386,4 +387,41 @@
   margin-top: -10px;
   background-color: #666;
   transform: rotate(45deg);
+}
+
+.ruleBox{
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0,0,0,0.5);
+  position: absolute;
+  top:0;
+  box-sizing: border-box;
+  padding: 200rpx 80rpx;
+}
+.ruleBody{
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8rpx;
+}
+.ruleHead{
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.ruleBtn{
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #367be9;
+  width: 100%;
+  text-align: center;
+}
+.ruleCont{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 30rpx 30rpx 30rpx;
+  font-size: 30rpx;
+  border-bottom: 1px solid #eee;
 }

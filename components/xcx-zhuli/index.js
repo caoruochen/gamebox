@@ -118,13 +118,12 @@ Component({
 							aid: me.data.activity.aid,
 							duid: duid,
 						}, function(data) {
-							console.log(data)
-							// var helpList = me.data.helpList.concat();
-							// helpList.splice(index, 1)
-							// me.setData({
-							// 	helpList: helpList,
-							// });
-							me.triggerEvent('deleteHelp', {})
+							var assistances = me.data.assistances.concat();
+							assistances.splice(index, 1);
+							me.setData({
+								assistances: assistances,
+							});
+							me.triggerEvent('updateHelp');
 						}, function(code, msg) {
 							wx.showToast({
 								title: msg || '删除失败',

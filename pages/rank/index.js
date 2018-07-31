@@ -27,6 +27,7 @@ QKPage({
 		game4Zhuli: {},
 		zhuliInfo: {},
 		scrollHeight: 0,
+		ruleShow: false,
 	},
 
 	onLoad: function(options) {
@@ -46,7 +47,7 @@ QKPage({
 		wx.getSystemInfo({
 			success: function(res) {
 				var ratio = res.windowWidth / 750;
-				var scrollHeight = res.windowHeight - (300 + 60 + 120) * ratio;
+				var scrollHeight = res.windowHeight - (20 + 300 + 60 + 120) * ratio;
 				me.setData({
 					scrollHeight: scrollHeight
 				});
@@ -137,29 +138,29 @@ QKPage({
 		})
 	},
 
-  updateData: function (refresh, data) {
-    var ranks = refresh ? [].concat(data.rankslist.list) : this.data.ranks.concat(data.rankslist.list)
-    data.activityInfo.score = data.userInfo.score;
-    data.activityInfo.rank = data.userInfo.rank;
-    data.activityInfo.rank_text = data.userInfo.rank_text;
-    data.activityInfo.tips = data.userInfo.tips;
-    data.activityInfo.lastScore = data.userInfo.lastScore;
+	updateData: function(refresh, data) {
+		var ranks = refresh ? [].concat(data.rankslist.list) : this.data.ranks.concat(data.rankslist.list)
+		data.activityInfo.score = data.userInfo.score;
+		data.activityInfo.rank = data.userInfo.rank;
+		data.activityInfo.rank_text = data.userInfo.rank_text;
+		data.activityInfo.tips = data.userInfo.tips;
+		data.activityInfo.lastScore = data.userInfo.lastScore;
 
-    var data0 = {
-      activity: data.activityInfo,
-      intoGame: data.gameInfo,
-      rank: data.userInfo.rank,
-      score: data.userInfo.score,
-      ranks: ranks,
-      assistanceNum: data.userInfo.assistance.length
-    };
-    
-    if (data.rankslist.list.length != 0) {
-      var page = refresh ? 2 : me.data.page + 1
-      data0.page = page;
-    }
-    this.setData(data0);
-  },
+		var data0 = {
+			activity: data.activityInfo,
+			intoGame: data.gameInfo,
+			rank: data.userInfo.rank,
+			score: data.userInfo.score,
+			ranks: ranks,
+			assistanceNum: data.userInfo.assistance.length
+		};
+
+		if (data.rankslist.list.length != 0) {
+			var page = refresh ? 2 : this.data.page + 1
+			data0.page = page;
+		}
+		this.setData(data0);
+	},
 
 	scrolltoLower: function() {
 		console.log('onReachBottom page:' + this.data.page)
@@ -167,12 +168,14 @@ QKPage({
 	},
 
 	clickRule: function() {
-		var rules = this.data.activity.rules.join(';')
-		wx.showModal({
-			title: '活动规则',
-			content: rules,
-			showCancel: false,
-			confirmColor: '#367be9',
+		console.log(this.data.activity);
+		this.setData({
+			ruleShow: true
+		})
+	},
+	cancleRule: function() {
+		this.setData({
+			ruleShow: false
 		})
 	},
 
@@ -183,16 +186,20 @@ QKPage({
 	},
 
 	onStartGame: function(e) {
-    var activity = e.detail;
-    app.globalData.startGame = true;
+		var activity = e.detail;
+		app.globalData.startGame = true;
 	},
 	onCloseInvitePop: function() {
 		this.setData({
 			showInvitePop: false
 		})
 	},
-  onResultUpdate: function (e) {
-    var data = e.detail;
-    this.updateData(true, data);
-  }
+	onResultUpdate: function(e) {
+		var data = e.detail;
+		this.updateData(true, data);
+	},
+	updateHelp: function() {
+		// console.log('updateHelp')
+		this.loadRankData(true, this.data.aid);
+	}
 })

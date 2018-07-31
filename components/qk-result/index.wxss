@@ -71,6 +71,11 @@
   z-index: 40;
 }
 
+.help-lose {
+  width: 55%;
+  z-index: 10;
+}
+
 .help-win-bg {
   position: absolute;
   width:100%;
@@ -82,7 +87,7 @@
   position: absolute;
   width:100%;
   left:0;
-  top: 130rpx;
+  top: 140rpx;
 }
 
 .help-head .help-lines image {
@@ -150,6 +155,12 @@
   margin-top: -5rpx;
   background-image: linear-gradient(to right, #fb6f68 30%, #f35e55 60%, #ea4b3e);
   position: relative;
+}
+
+.lose .help-box-tips {
+  background-image: none !important;
+  background: #ffeed0;
+  color: #ff8400 !important;
 }
 
 .help-box-tips-larrow {
@@ -287,4 +298,9 @@
 
 .help-box-info-result2>view:nth-child(2n) {
   color: #517BF7;
+}
+
+
+.lose .help-box-info-result2>view:nth-child(2n) {
+  color: #ff8400 !important;
 }

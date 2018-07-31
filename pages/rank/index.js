@@ -128,21 +128,7 @@ QKPage({
 		}, function(data) {
 			wx.hideLoading();
 			wx.stopPullDownRefresh();
-			var ranks = refresh ? [].concat(data.rankslist.list) : me.data.ranks.concat(data.rankslist.list)
-			me.setData({
-				activity: data.activityInfo,
-				intoGame: data.gameInfo,
-				rank: data.userInfo.rank,
-				score: data.userInfo.score,
-				ranks: ranks,
-				assistanceNum: data.userInfo.assistance.length,
-			});
-			if (data.rankslist.list.length != 0) {
-				var page = refresh ? 2 : me.data.page + 1
-				me.setData({
-					page: page
-				})
-			}
+			me.updateData(refresh, data);
 		}, function(code, msg) {
 			wx.hideLoading();
 			wx.showToast({
@@ -151,6 +137,30 @@ QKPage({
 			});
 		})
 	},
+
+  updateData: function (refresh, data) {
+    var ranks = refresh ? [].concat(data.rankslist.list) : this.data.ranks.concat(data.rankslist.list)
+    data.activityInfo.score = data.userInfo.score;
+    data.activityInfo.rank = data.userInfo.rank;
+    data.activityInfo.rank_text = data.userInfo.rank_text;
+    data.activityInfo.tips = data.userInfo.tips;
+    data.activityInfo.lastScore = data.userInfo.lastScore;
+
+    var data0 = {
+      activity: data.activityInfo,
+      intoGame: data.gameInfo,
+      rank: data.userInfo.rank,
+      score: data.userInfo.score,
+      ranks: ranks,
+      assistanceNum: data.userInfo.assistance.length
+    };
+    
+    if (data.rankslist.list.length != 0) {
+      var page = refresh ? 2 : me.data.page + 1
+      data0.page = page;
+    }
+    this.setData(data0);
+  },
 
 	scrolltoLower: function() {
 		console.log('onReachBottom page:' + this.data.page)
@@ -173,12 +183,17 @@ QKPage({
 		})
 	},
 
-	onStartGame: function() {
-		app.globalData.startGame = true;
+	onStartGame: function(e) {
+    var activity = e.detail;
+    app.globalData.startGame = true;
 	},
 	onCloseInvitePop: function() {
 		this.setData({
 			showInvitePop: false
 		})
-	}
+	},
+  onResultUpdate: function (e) {
+    var data = e.detail;
+    this.updateData(true, data);
+  }
 })

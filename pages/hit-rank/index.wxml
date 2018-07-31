@@ -123,7 +123,7 @@
     </view>
   </view>
   
-  <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" activity="{{selectedActivity}}"/>
+  <xcx-zhuli show="{{helpShow}}" activity="{{selectedActivity}}"/>
   <qk-result page-show="{{pageShow}}" bindonupdate="onResultUpdate" activity="{{selectedActivity}}" />
 </view>
 <xcx-login bindonlogin="onLogin" />

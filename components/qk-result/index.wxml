@@ -1,9 +1,10 @@
-  <view class="help" wx:if="{{show}}">
+  <view class="help {{lose ? 'lose' : ''}}" wx:if="{{show}}">
 
     <image class="help-win-bg" src="/images/result-bg1.png" mode="widthFix" />
     
     <view class="help-head">
-      <image class="help-win" src="/images/result-bg2.png" mode="widthFix" />
+      <image wx:if="{{!lose}}" class="help-win" src="/images/result-bg2.png" mode="widthFix" />
+      <image wx:else class="help-lose" src="/images/result-bg3.png" mode="widthFix" />
       <view class="help-lines">
         <image class="help-line2" src="/images/zhuli_line2.png" mode="widthFix" />
         <image class="help-line1" src="/images/zhuli_line.png" mode="widthFix" />
@@ -15,7 +16,7 @@
         <view>本次得分</view>
         <view class="help-box-title-line"></view>
       </view>
-      <view class="help-box-score">{{newScore}}</view>
+      <view class="help-box-score">{{newScore < 0 ? 0 : newScore}}</view>
       <view class="help-box-tips">
         获得红包奖励，今晚23:00开奖
         <view class="help-box-tips-larrow"></view>
@@ -36,7 +37,7 @@
             <view class="">本次结果</view>
             <view class="">获得红包奖励</view>
             <view class="">本次排名</view>
-            <view class="">未进入前100名</view>
+            <view class="">{{rankText}}</view>
           </view>
         </view>
       </view>

@@ -41,17 +41,6 @@
         </view>
       </view>
 
-      <!-- <view class="help-box-btns">
-        <view class="help-box-btn-item help-box-btn-invite" bindtap='onHelp' data-aid="{{item.aid}}">
-          <image class="people-white" src="/images/people.png" />
-          <view>邀请助力</view>
-        </view>
-        <xcx-navigator nav-class="help-box-btn-item" extra="{{activity}}" game="{{item}}">
-          <view>立即参赛</view>
-          <image class="rarraw-dot" src="/images/rarrow-dot.png" />
-        </xcx-navigator>
-      </view> -->
-
       <view class="help-box-tips2">小提示：排名前100，红包奖励更多哦~</view>
     </view>
 

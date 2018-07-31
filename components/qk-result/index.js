@@ -22,18 +22,11 @@ Component({
     activity: {
       type: null,
       value: {}
-    },
-    newScore: {
-      type: Number,
-      value: 0
-    },
-    newRank: {
-      type: Number,
-      value: 0
     }
 	},
 	data: {
-    show: false
+    show: false,
+    newScore: -1
 	},
 
 	methods: {
@@ -50,30 +43,24 @@ Component({
           frontColor: '#ffffff',
           backgroundColor: '#367be9'
         });
-        app.globalData.startGame = false;
         http.get('/gamebox/activity/rank', {
           aid: this.data.activity.aid
-        }, function (activity) {
-          console.log(activity)
+        }, function (data) {
+          app.globalData.startGame = false;
+          var user = data.userInfo;
+          console.log(user)
+          me.setData({
+            newScore: user.score ? user.score : 0
+          })
           me.triggerEvent('onupdate', data);
         }, function (code, msg) {
+          app.globalData.startGame = false;
           wx.showToast({
             title: msg || '得分刷新失败',
             icon: 'none'
           })
           me.close();
         })
-        // app.globalData.shareInfo = {
-        //   stype: 1,
-        //   __reserved: true,
-        //   title: '我在7k7k游戏打榜！快来助我一把啊！',
-        //   path: '/pages/rank/index?' +
-        //     'aid=' + this.data.activity.aid +
-        //     '&stype=1' +
-        //     '&fuid=' + app.globalData.userInfo.uid +
-        //     '&fname=' + encodeURIComponent(app.globalData.userInfo.name) +
-        //     '&favatar=' + encodeURIComponent(app.globalData.userInfo.avatar)
-        // };
         wx.setNavigationBarColor({
           frontColor: '#ffffff',
           backgroundColor: '#367be9'
@@ -81,12 +68,10 @@ Component({
       }
     },
     close: function () {
+      app.globalData.startGame = false;
       this.setData({
         show: false
       });
-      // app.globalData.shareInfo = {
-      //   stype: 0
-      // };
       wx.setNavigationBarColor({
          frontColor: this.data.navBarFontColor,
          backgroundColor: this.data.navBarBGColor

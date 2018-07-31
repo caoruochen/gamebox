@@ -31,10 +31,12 @@ QKPage({
     this.loadData(true);
   },
   onShow: function() {
+    if (!app.globalData.startGame) {
+      this.loadData();
+    }
     this.setData({
       pageShow: true
     });
-    this.loadData();
   },
 
   onHide: function () {
@@ -138,8 +140,39 @@ QKPage({
     var activity = e.detail;
     app.globalData.startGame = true;
     this.setData({
-      selectedActivity: activity,
-      // pageShow: true
+      selectedActivity: activity
     })
   },
+  onResultUpdate: function (e) {
+    var result = e.detail,
+      activity0 = result.activityInfo,
+      user = result.userInfo,
+      aid = activity0.aid;
+    var activity = null, ind = -1;
+    for (var i = 0; i < this.data.activitys.length; i++) {
+      if (this.data.activitys[i].aid == aid) {
+        activity = this.data.activitys[i];
+        ind = i;
+        break;
+      }
+    }
+    if (!activity) {
+      return;
+    }
+    activity.playerNum = activity0.playerNum;
+    if (user.score > activity.score) {
+      activity.score = user.score;
+      activity.rank = user.rank;
+      activity.rank_text = user.rank_text;
+      if (typeof user.tips !== 'undefined') {
+        activity.tips = user.tips;
+      }
+    }
+    
+    var data = {};
+    console.log('update')
+    console.log(activity)
+    data["activitys[" + ind + "]"] = activity;
+    this.setData(data)
+  }
 })

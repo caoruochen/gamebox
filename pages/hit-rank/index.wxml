@@ -124,6 +124,6 @@
   </view>
   
   <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" activity="{{selectedActivity}}"/>
-  <qk-result page-show="{{pageShow}}" activity="{{selectedActivity}}" />
+  <qk-result page-show="{{pageShow}}" bindonupdate="onResultUpdate" activity="{{selectedActivity}}" />
 </view>
 <xcx-login bindonlogin="onLogin" />

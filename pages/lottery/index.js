@@ -4,15 +4,22 @@ var rotateAward = require("../../util/rotateAward");
 
 var app = getApp();
 var sysInfo = app.globalData.sysInfo;
+var userInfo = app.globalData.userInfo;
 
 QKPage({
   data: {
     rotateAngle: 'transform: rotate(0);',
     turnImg: "",
     expend: 0,
-    leftCoin: 0
+    leftCoin: 0,
+    lotteryUrl: 'https://game.7k.cn/lottery'
   },
-  onLoad: function(){
+  onLoad: function(options){
+    // var lotteryUrl = this.data.lotteryUrl;
+    // var uid = userInfo ? userInfo.uid : -1;
+    // var token = userInfo ? userInfo.token : '';
+    // lotteryUrl = lotteryUrl + '?uid=' + uid + '&token=' + token;
+    // this.setData({lotteryUrl: lotteryUrl});
     var me = this;
     http.get('/gamebox/user/prize', function (data){
       me.setData({

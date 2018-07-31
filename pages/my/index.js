@@ -222,14 +222,6 @@ QKPage({
       url: '/pages/detail/index?gameId='
       +gameId,
     })
-  },
-
-goMall:function(e){
-  var uid = userInfo ? userInfo.uid : -1;
-  var token = userInfo ? userInfo.token : '';
-  wx.navigateTo({
-    url: '/pages/mall/index?uid=' + uid + '&token=' + token
-  });
-}
+  }
 
 });

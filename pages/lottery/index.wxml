@@ -13,3 +13,5 @@
   <view class="tips">每次抽奖耗费{{expend}}金币<text>如何获得金币？</text></view>
 </view>
 
+<!-- <web-view src="{{lotteryUrl}}"></web-view> -->
+

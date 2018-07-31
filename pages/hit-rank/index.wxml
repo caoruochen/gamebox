@@ -68,7 +68,12 @@
               </view>
 
               <view wx:if="{{item.status == 1 && item.score >= 0}}" class="activity-info-body-st1-tips">
+                <block wx:if="{{item.tips - 0 > 0}}">
                 差<text>{{item.tips}}</text>分瓜分红包
+                </block>
+                <block wx:else>
+                  {{item.tips}}
+                </block>
                 <view></view>
               </view>
             </view>
@@ -98,7 +103,7 @@
             <view>助力</view>
             <view>{{item.assistance.length >0 ? item.assistance.length : ''}}</view>
           </view>
-          <xcx-navigator nav-class="activity-op-btn-item" game="{{item}}" bindonclick="onStartGame">
+          <xcx-navigator nav-class="activity-op-btn-item" game="{{item}}" extra="{{item}}" bindonclick="onStartGame">
             <view>立即参赛</view>
             <!-- <image class="rarraw-dot" src="/images/rarrow-dot.png" /> -->
           </xcx-navigator>
@@ -118,7 +123,7 @@
     </view>
   </view>
   
-  <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" aid="{{aid}}"/>
-  <qk-result page-show="{{pageShow}}" />
+  <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" activity="{{selectedActivity}}"/>
+  <qk-result page-show="{{pageShow}}" activity="{{selectedActivity}}" />
 </view>
 <xcx-login bindonlogin="onLogin" />

@@ -34,7 +34,7 @@
           </view>
           <view style="color: {{item.color ? item.color : '#0c0c0c;'}}">{{item.name}}</view>
         </view>
-        <view wx:if="{{!verifying}}" class="game-more" bindtap="clickMore" data-type="{{item.type}}" data-id="{{index}}">更多</view>
+        <view wx:if="{{item.games.length > 4}}" class="game-more" bindtap="clickMore" data-type="{{item.type}}" data-id="{{index}}">更多</view>
       </view>
       <scroll-view class="scroll-view_H" scroll-x>
         <block wx:for="{{item.games}}" wx:key="*this" wx:for-item="game">

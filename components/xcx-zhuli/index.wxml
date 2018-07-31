@@ -6,7 +6,7 @@
         <image class="help-line2" src="/images/zhuli_line2.png" mode="widthFix" />
         <image class="help-line1" src="/images/zhuli_line.png" mode="widthFix" />
       </view>
-      <view class="help-close" bind:tap="hideHelp"></view>
+      <!-- <view class="help-close" bind:tap="hideHelp"></view> -->
     </view>
     <view class="help-box">
       <view class="help-box-title">
@@ -14,8 +14,8 @@
         <view>邀请好友助力</view>
         <view class="help-box-title-line"></view>
       </view>
-      <view class="help-box-rule">
-        <view wx:for="{{assistText}}" wx:key="{{index}}">{{item}}</view>
+      <view wx:if="{{activity}}" class="help-box-rule">
+        <view wx:for="{{activity.assistText}}" wx:key="{{index}}">{{item}}</view>
       </view>
       <view class="help-box-friends">
         <view class="help-box-friends-row">
@@ -26,22 +26,23 @@
         </view>
         <view wx:for="{{[0, 1, 2, 3, 4]}}" class="help-box-friends-row" wx:key="{{index}}">
           <view class="help-box-friends-user">
-            <image src="{{helpList[item]?helpList[item].avatar:'/images/default-avatar.png'}}" />
-            <view>{{helpList[item]?helpList[item].name:''}}</view>
+            <image src="{{assistances[item]?assistances[item].avatar:'/images/default-avatar.png'}}" />
+            <view>{{assistances[item]?assistances[item].name:''}}</view>
           </view>
-          <view class="help-box-friends-score">{{helpList[item]?helpList[item].score:' - '}}</view>
-          <view class="help-box-friends-score">{{helpList[item]?helpList[item].value:' - '}}</view>
-          <view class="help-box-friends-op" data-uid="{{helpList[item].uid}}" data-index="{{index}}" bindtap="{{helpList[item]?'handleDel':''}}">
-            <image src="/images/{{helpList[item] ? 'minus': 'plus'}}.png" />
-            <button wx:if="{{!helpList[item]}}" open-type="share" class="yaoqing-btn"></button>
+          <view class="help-box-friends-score">{{assistances[item]?assistances[item].score:' - '}}</view>
+          <view class="help-box-friends-score">{{assistances[item]?assistances[item].value:' - '}}</view>
+          <view class="help-box-friends-op" data-uid="{{assistances[item].uid}}" data-index="{{index}}" bindtap="{{assistances[item]?'handleDel':''}}">
+            <image src="/images/{{assistances[item] ? 'minus': 'plus'}}.png" />
+            <button wx:if="{{!assistances[item]}}" open-type="share" class="yaoqing-btn"></button>
           </view>
         </view>
 
-        <view class="help-box-invite" wx:if="{{helpList.length<5}}" wx:key="{{index}}">
+        <view class="help-box-invite" wx:key="{{index}}">
           <view class="help-box-invite-btn">
             <image src="/images/people.png" />
             邀请好友助力
-            <button open-type="share" class="yaoqing-btn"></button>
+            <button  wx:if="{{assistances.length<5}}" open-type="share" class="yaoqing-btn"></button>
+            <view wx:else bindtap='inviteNotice' class="yaoqing-btn"></view>
           </view>
         </view>
       </view>
@@ -50,47 +51,4 @@
     <view class="help-foot">
       <view class="help-close" bind:tap="hideHelp"></view>
     </view>
-    <!-- <view class="help-box">
-      <view class="close" bind:tap="hideHelp">
-        <image style="width:30rpx;height:30rpx" mode="aspectFill" src="../../images/close.png" />
-      </view>
-      <view class="help-head">邀请好友助力({{helpNum}}/{{maxNum}})</view>
-      <view class="help-rule">
-        <view>助力分 = 好友得分 * 30%，上限50分；</view>
-        <view>删除已有助力分，可重新邀请好友助力。</view>
-      </view>
-      <view class="help-content">
-        <view class="help-tab flex">
-          <view class="help1">好友</view>
-          <view class="help2">得分</view>
-          <view class="help3">助力分</view>
-          <view class="help4"></view>
-        </view>
-
-        <view class="help-item flex" wx:for="{{helpList}}" wx:key="{{index}}">
-          <view class="help1 flex">
-            <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="{{item.avatar || '../../images/touxiang.png'}}"/>
-            <text class="name">{{item.name || '  ？'}}</text>
-          </view>
-          <view class="help2">{{item.score || '-'}}</view>
-          <view class="help3">{{item.value || '-'}}</view>
-          <view class="help4">
-            <image class="help-img" style="width: 36rpx" mode="aspectFit" src="../../images/del.png" data-uid="{{item.uid}}" data-index="{{index}}" bindtap="handleDel"/>
-          </view>
-        </view>
-        <view class="help-item flex" wx:for="{{nohelpList}}" wx:key="{{index}}">
-          <view class="help1 flex">
-            <image class="avatar" lazy-load="{{true}}" mode="aspectFill" src="../../images/touxiang.png"/>
-            <text class="name">  ？ </text>
-          </view>
-          <view class="help2"> - </view>
-          <view class="help3"> - </view>
-          <view class="help4">
-            <image class="help-img" mode="aspectFit" src="../../images/add.png"/>
-            <button class="help-img-btn" open-type="share"></button>
-          </view>
-        </view>
-
-      </view>
-    </view> -->
   </view> 

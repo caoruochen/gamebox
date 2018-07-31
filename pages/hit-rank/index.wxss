@@ -59,7 +59,7 @@ page {
   line-height: 48rpx;
   color: #fff;
   border-radius: 5px;
-  margin-left: 16rpx;
+  margin: 0 0 10rpx 16rpx;
   font-size: 12px;
 }
 

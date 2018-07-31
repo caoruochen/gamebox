@@ -7,8 +7,9 @@
       <view class="mask-bottom flex">
         <text class="peopleNum">{{activity.playerNum}} 人参加</text>
         <view class="border">|</view>
-        <view class="rule flex" bindtap="clickRule">
-          <image src="/images/icon-tips.png"/> 游戏规则
+        <view class="rule" bindtap="clickRule">
+          <image src="/images/icon-tips.png" />
+          <view>游戏规则</view>
         </view>
       </view>
     </view>
@@ -47,11 +48,13 @@
 <view class="rank-my" wx:if="{{user}}">
   <view>
     <image class="rank-my-avatar" src="{{user.avatar || '../../images/defaultavatar.png'}}" />
-    <view wx:if="{{score>=0}}" class="rank-my-result">
-      <view><text class="rank-my-score">{{rank}}</text> 名</view>
-      <view>{{score}} 分</view>
+    <view class="rank-my-result">
+      <block wx:if="{{score>=0}}">
+        <view><text class="rank-my-score">{{rank}}</text> 名</view>
+        <view>{{score}} 分</view>
+      </block>
+      <view wx:else>未参赛</view>
     </view>
-    <view wx:else>未参赛</view>
   </view>
   <view class="rank-my-btns">
     <view class="rank-my-btn-item" bindtap='onHelp' data-aid="{{aid}}">
@@ -66,24 +69,24 @@
   </view>
 </view>
 
-<xcx-zhuli show="{{helpShow}}" aid="{{aid}}" bind:deleteHelp="deleteHelp" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
+<xcx-zhuli show="{{helpShow}}" activity="{{activity}}" bind:deleteHelp="deleteHelp" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
 
 <view class="zhuli-pop" wx:if="{{showInvitePop}}">
   <view class='zhuli-pop-box'>
     <view class="zhuli-pop-box-head">
       <view class="zhuli-pop-box-info">
-        <image src="https://wx.qlogo.cn/mmopen/vi_32/PiajxSqBRaEJcXuypichXUF0JRyVR2Bes61qToddjRIgyEsuQd2Jwb8icuTrU9tJqpdzO5Glv4jP6JffmjxNVrycQ/132"> </image>
+        <image src="{{zhuliInfo.favatar}}"> </image>
         <view>
-          <view class="zhuli-pop-box-user">为<text>黑桃九</text>助力</view>
+          <view class="zhuli-pop-box-user">为<text>{{zhuliInfo.fname}}</text>助力</view>
           <view class="zhuli-pop-box-tips">
             我还差200分即可瓜分2万红包~
             <view></view>
           </view>
         </view>
       </view>
-      <view class="zhuli-pop-box-btn">
+      <xcx-navigator nav-class="zhuli-pop-box-btn" game="{{game4Zhuli}}" bindonclick="onStartGame">
         <view>助力一下</view>
-      </view>
+      </xcx-navigator>
     </view>
     <view class="zhuli-pop-close" bindtap='onCloseInvitePop'>
     </view>

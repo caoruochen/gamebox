@@ -4,7 +4,7 @@
     "pages/my/index",
     "pages/recommend/index",
     "pages/rank/index",
-    "pages/more-game/more-game",
+    "pages/more-game/index",
     "pages/lottery/index",
     "pages/detail/index",
     "pages/more-record/index",
@@ -15,7 +15,8 @@
     "pages/hit-rank/index",
     "pages/mall/index",
     "pages/more-task/index",
-    "pages/play-history/index"
+    "pages/play-history/index",
+    "pages/records/rankList/index"
   ],
   "tabBar": {
     "list": [{

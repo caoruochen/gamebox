@@ -31,7 +31,7 @@ QKPage({
     tabPageData: {},
     activeIndex: 0,
     tabW: app.globalData.wwidth / 4,
-    contentHeight: 7 * gameItemHeight * ratio, // 默认显示7条
+    contentHeight: 5 * gameItemHeight * ratio, // 默认显示7条
     itemTextWidth: app.globalData.wwidth - (50 + 60 + 60 * ratio), // 图片宽度 + 按钮 + 左右padding
 
   },
@@ -59,7 +59,7 @@ QKPage({
     }
     var type = this.data.categorys[index].type
     wx.navigateTo({
-      url: '/pages/more-game/more-game?type=' + type + '&position=' + index,
+      url: '/pages/more-game/index?type=' + type + '&position=' + index,
     })
   },
 
@@ -77,6 +77,9 @@ QKPage({
         verifying: data.verifying ? data.verifying : false
       };
       me.setData(obj);
+      if(data.verifying){
+        me.setData({gameItemWidth: (app.globalData.wwidth - 150 * ratio) / 4});
+      }
       util.setSavedGames(obj);
     }, function(error, msg) {
       wx.hideLoading();
@@ -130,6 +133,7 @@ QKPage({
       me.setData({
         tabs: data.categorys,
         tabPageData: tabPageData,
+        contentHeight: data.showNum * gameItemHeight * ratio,
       })
       wx.hideLoading();
     }, function(error, msg) {

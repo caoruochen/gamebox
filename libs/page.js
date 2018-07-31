@@ -5,7 +5,6 @@ var checkPageJump = function () {
   if (!options || !options.query || !options.query.spage) {
     return;
   }
-  delete app.globalData.showParams.spage;
   var path = options.query.spage;
   var query = options.query;
   if (query) {
@@ -17,7 +16,7 @@ var checkPageJump = function () {
     }
     path += '?' + query0.join('&')
   }
-  console.log(path)
+  delete app.globalData.showParams.query.spage;
   wx.navigateTo({
     url: path
   })

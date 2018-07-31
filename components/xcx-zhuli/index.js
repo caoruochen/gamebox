@@ -3,6 +3,8 @@ var http = require("../../util/http");
 
 var app = getApp();
 
+var cachedHelpers = {};
+
 Component({
 	externalClasses: [],
 	properties: {
@@ -19,33 +21,30 @@ Component({
 			value: true,
 			observer: 'onShow'
 		},
-		aid: {
-			type: null,
-			value: '',
-			observer: 'changeActivity'
-		},
-		// maxNum: {
-		// 	type: Number,
-		// 	value: 5
-		// },
+		activity: {
+			type: Object,
+			value: null
+		}
 	},
 	data: {
-		helpList: [],
-		assistText: []
+		assistances: [],
 	},
 
 	methods: {
 		onShow: function(newVal, oldVal, changedPath) {
 			if (newVal) {
-				if (this.data.show) {
-					this.loadRankData(this.data.aid)
+				if (this.data.activity && cachedHelpers[this.data.activity.aid]) {
+					this.setData({
+						assistances: cachedHelpers[this.data.activity.aid]
+					});
 				}
+				this.getAssistance();
 				app.globalData.shareInfo = {
 					stype: 1,
 					__reserved: true,
 					title: '我在7k7k游戏打榜！快来助我一把啊！',
 					path: '/pages/rank/index?' +
-						'aid=' + this.data.aid +
+						'aid=' + this.data.activity.aid +
 						'&stype=1' +
 						'&fuid=' + app.globalData.userInfo.uid +
 						'&fname=' + encodeURIComponent(app.globalData.userInfo.name) +
@@ -65,23 +64,21 @@ Component({
 				})
 			}
 		},
-		changeActivity: function(newVal, oldVal, changedPath) {
-			this.loadRankData(this.data.aid)
-		},
-		loadRankData: function(aid) {
+		getAssistance: function() {
 			wx.showLoading({
 				title: '数据加载中'
 			});
 			var me = this;
-			http.get('/gamebox/activity/rank', {
-				aid: aid,
-				page: 1
+			http.get('/gamebox/activity/assists', {
+				aid: this.data.activity.aid
 			}, function(data) {
 				wx.hideLoading();
 				me.setData({
-					helpList: data.assistlist.list,
-					assistText: data.assistlist.text
+					assistances: data
 				});
+				if (data && data.length > 0) {
+					cachedHelpers[me.data.activity.aid] = data;
+				}
 			}, function(code, msg) {
 				wx.hideLoading();
 				wx.showToast({
@@ -97,6 +94,15 @@ Component({
 			})
 		},
 
+		inviteNotice: function() {
+			wx.showModal({
+				title: '最多邀请5位好友',
+				content: '可以删除分数较低的好友后，重新邀请',
+				showCancel: false,
+				confirmText: '关闭'
+			})
+		},
+
 		handleDel: function(e) {
 			var me = this;
 			wx.showModal({
@@ -106,20 +112,19 @@ Component({
 				confirmColor: '#ff8130',
 				success: function(res) {
 					if (res.confirm) {
-						//TODO:掉接口删除
 						var duid = e.currentTarget.dataset.uid
 						var index = e.currentTarget.dataset.index
 						http.post('/gamebox/rank/delassist', {
-							aid: app.globalData.zhuliAid,
+							aid: me.data.activity.aid,
 							duid: duid,
 						}, function(data) {
-							// console.log(data)
-							var helpList = me.data.helpList.concat();
-							helpList.splice(index, 1)
-							me.setData({
-								helpList: helpList,
-							});
-							me.triggerEvent('deleteHelp')
+							console.log(data)
+							// var helpList = me.data.helpList.concat();
+							// helpList.splice(index, 1)
+							// me.setData({
+							// 	helpList: helpList,
+							// });
+							me.triggerEvent('deleteHelp', {})
 						}, function(code, msg) {
 							wx.showToast({
 								title: msg || '删除失败',

@@ -11,17 +11,7 @@ var headerRHeight = 220;
 var tabbarRHeight = 110;
 var adRHeight = 300;
 var tabbodyHeight = app.globalData.wheight - (headerRHeight + tabbarRHeight + adRHeight) * ratio;
-var welfares = [{
-  time: "2018-07-23",
-  name: "100元红包",
-  status: 0
-},
-{
-  time: "2018-07-22",
-  name: "50金币",
-  status: 1
-}
-]
+var userInfo = app.globalData.userInfo;
 
 QKPage({
   data: {
@@ -34,7 +24,6 @@ QKPage({
       total: 0,
       list: []
     },
-    welfares: welfares
   },
   onLoad: function () {
     this.getProfile();
@@ -235,10 +224,12 @@ QKPage({
     })
   },
 
-goMoreTask:function(e){
+goMall:function(e){
+  var uid = userInfo ? userInfo.uid : -1;
+  var token = userInfo ? userInfo.token : '';
   wx.navigateTo({
-    url: '/pages/more-task/index'
-  })
+    url: '/pages/mall/index?uid=' + uid + '&token=' + token
+  });
 }
 
 });

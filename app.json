@@ -15,7 +15,8 @@
     "pages/hit-rank/index",
     "pages/mall/index",
     "pages/more-task/index",
-    "pages/play-history/index"
+    "pages/play-history/index",
+    "pages/records/rankList/index"
   ],
   "tabBar": {
     "list": [{

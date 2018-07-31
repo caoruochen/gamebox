@@ -48,9 +48,12 @@ QKPage({
   },
 
   loadData: function (isPull) {
-    wx.showLoading({
-      title: '数据加载中'
-    });
+    if(!isPull) {
+      wx.showLoading({
+        title: '数据加载中'
+      });
+    }
+
     var that = this;
     http.get('/gamebox/activity/list', function (data) {
       wx.hideLoading();

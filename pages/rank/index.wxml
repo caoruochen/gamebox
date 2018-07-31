@@ -1,11 +1,11 @@
 <view class="rank">
   
   <view class="rank-poster">
-    <xcx-danmu danmuList="{{danmuList}}" height="80" bind:clickText="clickDanmu"/>
-    <image mode="aspectFill" src="{{banner}}"/>
-    <view class="mask" style="background-color:{{maskColor}}">
+    <xcx-danmu danmuList="{{activity.danmaku}}" height="80" bind:clickText="clickDanmu"/>
+    <image mode="aspectFill" src="{{activity.banner}}"/>
+    <view class="mask" style="background-color:{{activity.mask}}">
       <view class="mask-bottom flex">
-        <text class="peopleNum">{{playerNum}}  人参加</text>
+        <text class="peopleNum">{{activity.playerNum}} 人参加</text>
         <view class="border">|</view>
         <view class="rule" bindtap="clickRule">
           <image src="/images/icon-tips.png" />
@@ -47,7 +47,7 @@
 
 <view class="rank-my" wx:if="{{user}}">
   <view>
-    <image class="rank-my-avatar" src='{{user.avatar}}' />
+    <image class="rank-my-avatar" src="{{user.avatar || '../../images/defaultavatar.png'}}" />
     <view class="rank-my-result">
       <block wx:if="{{score>=0}}">
         <view><text class="rank-my-score">{{rank}}</text> 名</view>
@@ -69,7 +69,7 @@
   </view>
 </view>
 
-<xcx-zhuli show="{{helpShow}}" aid="{{aid}}" bind:deleteHelp="deleteHelp" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
+<xcx-zhuli show="{{helpShow}}" activity="{{activity}}" bind:deleteHelp="deleteHelp" navBarBGColor="#3c7fea" navBarFontColor='#ffffff' />
 
 <view class="zhuli-pop" wx:if="{{showInvitePop}}">
   <view class='zhuli-pop-box'>

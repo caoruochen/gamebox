@@ -6,122 +6,116 @@ var app = getApp();
 
 QKPage({
 	data: {
-    aid: '',
+		aid: '',
 		user: app.globalData.userInfo,
 		pageShow: false,
-		banner: '../../images/default-banner.png',
-		playerNum: '0',
-		rules: '',
-		maskColor: 'rgba(0,0,0,0.1)',
-		uid: app.globalData.userInfo ? app.globalData.userInfo.uid : 0,
-		name: app.globalData.userInfo ? app.globalData.userInfo.name : '-',
-		avatar: app.globalData.userInfo ? app.globalData.userInfo.avatar : '../../images/defaultavatar.png',
+		activity: {},
+		intoGame: {},
+		ranks: [],
 		rank: 0,
 		score: 0,
 		showInvitePop: false,
-		ranks: [],
-		intoGame: {},
-    game4Zhuli: {},
-    zhuliInfo: {},
 		helpShow: false,
-		helpList: [],
-		danmuList: [],
+		assistanceNum: 0,
+		aid: '',
+		status: false, //状态标识,onshow是否调用更新排名接口
 		page: 1,
 		gotohelpShow: false,
-		assistNumOut: false, //助力次数已满
-		isAssistanted: false, //是否助力过
-		assistanceNum: 0,
+		fuid: null, //助力的好友uid
+		fname: '', //助力的好友昵称
+		// assistNumOut: false, //助力次数已满
+		// isAssistanted: false, //是否助力过
+		game4Zhuli: {},
+		zhuliInfo: {},
 		scrollHeight: 0,
 	},
 
 	onLoad: function(options) {
-    console.log(options)
-    var aid = options.aid
-    if (!aid) {
-      wx.showToast({
-        title: '活动参数错误',
-        icon: 'none'
-      })
-      return;
-    }
-    this.setData({
-      aid: aid
-    });
-    var me = this
-    wx.getSystemInfo({
-      success: function (res) {
-        var ratio = res.windowWidth / 750;
-        var scrollHeight = res.windowHeight - (20 + 300 + 60 + 120) * ratio;
-        me.setData({
-          scrollHeight: scrollHeight
-        });
-      },
-      fail: function () {
-        me.setData({
-          scrollHeight: 300
-        });
-      }
-    })
+		console.log(options)
+		var aid = options.aid
+		if (!aid) {
+			wx.showToast({
+				title: '活动参数错误',
+				icon: 'none'
+			})
+			return;
+		}
+		this.setData({
+			aid: aid
+		});
+		var me = this
+		wx.getSystemInfo({
+			success: function(res) {
+				var ratio = res.windowWidth / 750;
+				var scrollHeight = res.windowHeight - (300 + 60 + 120) * ratio;
+				me.setData({
+					scrollHeight: scrollHeight
+				});
+			},
+			fail: function() {
+				me.setData({
+					scrollHeight: 300
+				});
+			}
+		})
 		if (app.globalData.userInfo) {
 			this.loadRankData(true, aid);
 		}
 	},
-  onShow: function () {
-    this.showAssistPop();
-  },
-  onHide: function () {
-    this.setData({
-      pageShow: false
-    });
-  },
+	onShow: function() {
+		this.showAssistPop();
+	},
+	onHide: function() {
+		this.setData({
+			pageShow: false
+		});
+	},
 	onLogin: function() {
-    this.showAssistPop();
+		this.showAssistPop();
 		this.loadRankData(true, this.data.aid);
 		this.setData({
-			uid: app.globalData.userInfo.uid,
-			name: app.globalData.userInfo.name,
-			avatar: app.globalData.userInfo.avatar,
+			user: app.globalData.userInfo
 		})
 	},
 
-  showAssistPop: function () {
-    var uid = app.globalData.userInfo ? app.globalData.userInfo.uid : -1;
-    if (uid < 0) {
-      return;
-    }
-    var params = app.globalData.showParams;
-    var data = {
-      pageShow: true
-    }
-    if (params && params.query &&
-      params.query.stype == 1 &&
-      params.query.fuid &&
-      params.query.fuid != uid) {
-      data.showInvitePop = true
-    }
-    app.globalData.showParams.query.stype = -1;
-    if (data.showInvitePop) {
-      this.setData({
-        zhuliInfo: {
-          fuid: params.query.fuid,
-          fname: decodeURIComponent(params.query.fname),
-          favatar: decodeURIComponent(params.query.favatar),
-        }
-      })
-      var me = this;
-      http.get('/gamebox/activity/ticket', {
-        aid: params.query.aid,
-        fuid: params.query.fuid
-      }, function (game) {
-        me.setData({
-          game4Zhuli: game
-        });
-      }, function (code, msg) {
+	showAssistPop: function() {
+		var uid = app.globalData.userInfo ? app.globalData.userInfo.uid : -1;
+		if (uid < 0) {
+			return;
+		}
+		var params = app.globalData.showParams;
+		var data = {
+			pageShow: true
+		}
+		if (params && params.query &&
+			params.query.stype == 1 &&
+			params.query.fuid &&
+			params.query.fuid != uid) {
+			data.showInvitePop = true
+		}
+		app.globalData.showParams.query.stype = -1;
+		if (data.showInvitePop) {
+			this.setData({
+				zhuliInfo: {
+					fuid: params.query.fuid,
+					fname: decodeURIComponent(params.query.fname),
+					favatar: decodeURIComponent(params.query.favatar),
+				}
+			})
+			var me = this;
+			http.get('/gamebox/activity/ticket', {
+				aid: params.query.aid,
+				fuid: params.query.fuid
+			}, function(game) {
+				me.setData({
+					game4Zhuli: game
+				});
+			}, function(code, msg) {
 
-      });
-    }
-    this.setData(data);
-  },
+			});
+		}
+		this.setData(data);
+	},
 
 	loadRankData: function(refresh, aid) {
 		wx.showLoading({
@@ -130,32 +124,20 @@ QKPage({
 		var me = this;
 		http.get('/gamebox/activity/rank', {
 			aid: aid,
-			// page: refresh ? 1 : me.data.page
-			page: 1
+			page: refresh ? 1 : me.data.page
 		}, function(data) {
 			wx.hideLoading();
-			var game = {}
-			game.appId = data.appId
-			game.gameId = data.gameId
-			game.mode = data.mode
-			game.path = data.path
-			var ranks = refresh ? [].concat(data.ranks) : me.data.ranks.concat(data.ranks)
+			wx.stopPullDownRefresh();
+			var ranks = refresh ? [].concat(data.rankslist.list) : me.data.ranks.concat(data.rankslist.list)
 			me.setData({
-				banner: data.banner,
-				playerNum: data.playerNum,
-				rules: data.rules,
-				rank: data.rank,
-				score: data.score || 0,
+				activity: data.activityInfo,
+				intoGame: data.gameInfo,
+				rank: data.userInfo.rank,
+				score: data.userInfo.score,
 				ranks: ranks,
-				intoGame: game,
-				helpList: data.assistance,
-				assistNumOut: data.assistNumOut || false,
-				isAssistanted: data.isAssistanted || false,
-				assistanceNum: data.assistance.length,
-				maskColor: data.mask,
-				danmuList: data.danmaku,
+				assistanceNum: data.userInfo.assistance.length,
 			});
-			if (data.ranks.length != 0) {
+			if (data.rankslist.list.length != 0) {
 				var page = refresh ? 2 : me.data.page + 1
 				me.setData({
 					page: page
@@ -176,7 +158,7 @@ QKPage({
 	},
 
 	clickRule: function() {
-		var rules = this.data.rules.join(";")
+		var rules = this.data.activity.rules.join(';')
 		wx.showModal({
 			title: '活动规则',
 			content: rules,
@@ -187,7 +169,7 @@ QKPage({
 
 	onHelp: function(e) {
 		this.setData({
-			helpShow: true
+			helpShow: true,
 		})
 	},
 

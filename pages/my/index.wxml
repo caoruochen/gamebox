@@ -32,7 +32,7 @@
       <view class="info">暑期免费道具等你拿</view>
       <view class="right-arrow"></view>
     </view>
-    <navigator hover-class="none" url="/pages/records/index?type=1" class="my-block1-item rank">
+    <navigator hover-class="none" url="/pages/records/rankList/index?type=1" class="my-block1-item rank">
       <image src="../../images/hit-icon.png" />
       <view>打榜记录</view>
       <view class="info">

@@ -43,6 +43,7 @@ Component({
 					stype: 1,
 					__reserved: true,
           title: '搞了半天过不去，看样子得你出马了！',
+          imageUrl: '/images/share2.jpg',
 					path: '/pages/hit-rank/index?' +
             'spage=/pages/rank/index' +
 						'&aid=' + this.data.activity.aid +

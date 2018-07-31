@@ -45,7 +45,7 @@ Component({
           title: '搞了半天过不去，看样子得你出马了！',
 					path: '/pages/hit-rank/index?' +
             'spage=/pages/rank/index' +
-						'aid=' + this.data.activity.aid +
+						'&aid=' + this.data.activity.aid +
 						'&stype=1' +
 						'&fuid=' + app.globalData.userInfo.uid +
 						'&fname=' + encodeURIComponent(app.globalData.userInfo.name) +

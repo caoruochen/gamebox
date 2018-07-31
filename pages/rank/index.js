@@ -18,11 +18,10 @@ QKPage({
 		helpShow: false,
 		assistanceNum: 0,
 		aid: '',
-		status: false, //状态标识,onshow是否调用更新排名接口
 		page: 1,
-		gotohelpShow: false,
-		fuid: null, //助力的好友uid
-		fname: '', //助力的好友昵称
+		// gotohelpShow: false,
+		// fuid: null, //助力的好友uid
+		// fname: '', //助力的好友昵称
 		// assistNumOut: false, //助力次数已满
 		// isAssistanted: false, //是否助力过
 		game4Zhuli: {},
@@ -173,7 +172,7 @@ QKPage({
 			title: '活动规则',
 			content: rules,
 			showCancel: false,
-			confirmColor: '#ff8130',
+			confirmColor: '#367be9',
 		})
 	},
 

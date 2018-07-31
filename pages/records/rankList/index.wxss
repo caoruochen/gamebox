@@ -1,6 +1,6 @@
 /* pages/records/rankList/index.wxss */
 .cell {
-    background: #f0f0f0;
+    background: #f1f1f1;
     border-radius: 5px;
     display: flex;
     flex: row;
@@ -26,7 +26,7 @@
 }
 
 .name {
-    color: #000;
+    color: #333;
     font-size: 17px;
     margin-left: 5px;
     margin-top: 3px;
@@ -51,4 +51,6 @@
 
 .prize {
     text-align: center;
+    color: #999;
+    font-size: 14px;
 }

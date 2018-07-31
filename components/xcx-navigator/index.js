@@ -10,6 +10,10 @@ Component({
     fromHistory: { // 从玩过的记录打开
       type: Number,
       value: 0
+    },
+    extra: {
+      type: null,
+      value: null
     }
   },
   methods: {
@@ -32,7 +36,8 @@ Component({
       app.$reportPreviewNavgator(1, this.data.game, page, this.data.fromHistory);
     },
     onNav: function (e) {
-      this.triggerEvent('onclick')
+      console.log(this.data.extra)
+      this.triggerEvent('onclick', this.data.extra);
       var app = getApp();
       var r = util.compareVersion(app.globalData.sysInfo.SDKVersion, '2.0.7');
       if (r < 0) {

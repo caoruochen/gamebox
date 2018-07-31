@@ -103,7 +103,7 @@
             <view>助力</view>
             <view>{{item.assistance.length >0 ? item.assistance.length : ''}}</view>
           </view>
-          <xcx-navigator nav-class="activity-op-btn-item" game="{{item}}" bindonclick="onStartGame">
+          <xcx-navigator nav-class="activity-op-btn-item" game="{{item}}" extra="{{item}}" bindonclick="onStartGame">
             <view>立即参赛</view>
             <!-- <image class="rarraw-dot" src="/images/rarrow-dot.png" /> -->
           </xcx-navigator>
@@ -124,6 +124,6 @@
   </view>
   
   <xcx-zhuli show="{{helpShow}}" helpList="{{helpList}}" activity="{{selectedActivity}}"/>
-  <qk-result page-show="{{pageShow}}" />
+  <qk-result page-show="{{pageShow}}" activity="{{selectedActivity}}" />
 </view>
 <xcx-login bindonlogin="onLogin" />

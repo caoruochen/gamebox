@@ -8,7 +8,6 @@ var bannerImgWidth = app.globalData.wwidth - 60 * ratio;
 var imageWidth = 345;
 var imageHeight = 110;
 var bannerImgHeight = bannerImgWidth / imageWidth * imageHeight;
-var activityId = -1;
 
 QKPage({
 
@@ -26,7 +25,6 @@ QKPage({
   },
 
   onLoad: function (options) {
-    this.loadData()
   },
 
   onPullDownRefresh: function () {
@@ -36,9 +34,7 @@ QKPage({
     this.setData({
       pageShow: true
     });
-    if(activityId != -1) {
-      this.refreshActivityInfo()
-    } 
+    this.loadData();
   },
 
   onHide: function () {
@@ -61,11 +57,16 @@ QKPage({
       if (isPull) {
         wx.stopPullDownRefresh();
       }
-      
-      that.setData({
+
+      var data0 = {
         activityNotice: data.notice,
         activitys: data.activitylist,
-      })
+      };
+      if (data.money) {
+        data0.money = data.money;
+      }
+      
+      that.setData(data0);
     }, function () {
       wx.hideLoading();
       if (isPull) {
@@ -75,25 +76,6 @@ QKPage({
         title: msg || '数据加载失败',
         icon: 'none'
       });
-    });
-  },
-
-  /**
-   * 刷新活动信息
-   */
-  refreshActivityInfo: function() {
-    var that = this;
-    http.get('/gamebox/activity/rankinfo', {aid: activityId},function (data) {
-       for (let i = 0; i < that.data.activitys.length; i++) {
-         if(data.aid == that.data.activitys[i].aid) {
-           that.data.activitys[i].score = data.score
-         }
-       }
-      
-       that.setData({
-         activitys: that.data.activitys
-       })
-    }, function () {
     });
   },
 
@@ -119,11 +101,6 @@ QKPage({
     })
   },
 
-  playMatch: function(e) {
-    var aid = e.currentTarget.dataset.aid;
-    activityId = aid;
-  },
-
   foldToggle: function(e) {
     var index = e.currentTarget.dataset.id;
     var obj = this.data.activitys[index];
@@ -143,9 +120,7 @@ QKPage({
   },
 
   gotoRank: function(e) {
-    var aid = e.currentTarget.dataset.aid
-    activityId = aid
-    console.log("aid=" + aid)
+    var aid = e.currentTarget.dataset.aid;
     wx.navigateTo({
       url: '/pages/rank/index?aid=' +aid,
     })
@@ -159,7 +134,12 @@ QKPage({
     })
     return animation;
   },
-  onStartGame: function () {
+  onStartGame: function (e) {
+    var activity = e.detail;
     app.globalData.startGame = true;
+    this.setData({
+      selectedActivity: activity,
+      // pageShow: true
+    })
   },
 })

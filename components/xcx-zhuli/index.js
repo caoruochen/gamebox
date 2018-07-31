@@ -38,7 +38,6 @@ Component({
             assistances: cachedHelpers[this.data.activity.aid]
           });
         }
-        console.log(this.data.activity)
         this.getAssistance();
 				app.globalData.shareInfo = {
 					stype: 1,

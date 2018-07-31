@@ -15,7 +15,7 @@
         <view>本次得分</view>
         <view class="help-box-title-line"></view>
       </view>
-      <view class="help-box-score">999</view>
+      <view class="help-box-score">{{newScore}}</view>
       <view class="help-box-tips">
         获得红包奖励，今晚23:00开奖
         <view class="help-box-tips-larrow"></view>
@@ -25,9 +25,9 @@
         <view class="help-box-info-result">
           <view class="help-box-info-result0 help-box-info-result1">
             <view class="">历史最高分</view>
-            <view class="">12231分</view>
+            <view class="">{{activity.score < 0 ? '未参赛': activity.score + '分'}}</view>
             <view class="">历史排名</view>
-            <view class="">未进入前100名</view>
+            <view class="">{{activity.rank < 1 ? '未参赛' : activity.rank_text}}</view>
           </view>
           <view class="help-box-info-result-sep">
             <view></view>
@@ -46,7 +46,7 @@
           <image class="people-white" src="/images/people.png" />
           <view>邀请助力</view>
         </view>
-        <xcx-navigator nav-class="help-box-btn-item" game="{{item}}">
+        <xcx-navigator nav-class="help-box-btn-item" extra="{{activity}}" game="{{item}}">
           <view>立即参赛</view>
           <image class="rarraw-dot" src="/images/rarrow-dot.png" />
         </xcx-navigator>

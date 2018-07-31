@@ -6,7 +6,7 @@
         <image class="help-line2" src="/images/zhuli_line2.png" mode="widthFix" />
         <image class="help-line1" src="/images/zhuli_line.png" mode="widthFix" />
       </view>
-      <view class="help-close" bind:tap="hideHelp"></view>
+      <!-- <view class="help-close" bind:tap="hideHelp"></view> -->
     </view>
     <view class="help-box">
       <view class="help-box-title">
